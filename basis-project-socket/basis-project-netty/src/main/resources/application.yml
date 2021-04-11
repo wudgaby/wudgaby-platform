@@ -1,0 +1,6 @@
+server:
+  port: 15100
+
+spring:
+  application:
+    name: netty-demo

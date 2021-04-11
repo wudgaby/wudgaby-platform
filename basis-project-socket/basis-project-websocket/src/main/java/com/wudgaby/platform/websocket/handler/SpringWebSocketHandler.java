@@ -1,0 +1,94 @@
+package com.wudgaby.platform.websocket.handler;
+
+import com.alibaba.fastjson.JSON;
+import com.wudgaby.platform.websocket.storage.WsSessionManager;
+import com.wudgaby.platform.websocket.vo.WsMessage;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Component;
+import org.springframework.web.socket.CloseStatus;
+import org.springframework.web.socket.TextMessage;
+import org.springframework.web.socket.WebSocketSession;
+import org.springframework.web.socket.handler.TextWebSocketHandler;
+
+import javax.websocket.Session;
+import java.security.Principal;
+import java.util.Date;
+import java.util.Objects;
+import java.util.Optional;
+
+/**
+ * @ClassName : SpringSocketHandler
+ * @Author :  WudGaby
+ * @Version :  1.0
+ * @Date : 2020/6/26 5:39
+ * @Desc :   TODO
+ */
+@Slf4j
+@Component
+public class SpringWebSocketHandler extends TextWebSocketHandler {
+    @Override
+    public void afterConnectionEstablished(WebSocketSession session) throws Exception {
+        String name = Optional.ofNullable(session.getPrincipal()).map(Principal::getName).orElse(null);
+        if(name == null){
+            throw new RuntimeException("未登录的用户!");
+        }
+        WsSessionManager.add(session.getPrincipal().getName(), session);
+
+        WsMessage msg = new WsMessage();
+        msg.setDate(new Date());
+        msg.setName(name);
+        msg.setMsg("欢迎 " + name + " 进入聊天室.");
+        msg.setType(WsMessage.MsgType.NOTICE);
+        msg.setOnlineNum(WsSessionManager.getOnlineNum());
+        session.sendMessage(new TextMessage(JSON.toJSONString(msg)));
+
+        msg = new WsMessage();
+        msg.setDate(new Date());
+        msg.setName(name);
+        msg.setMsg(name + " 进入聊天室");
+        msg.setType(WsMessage.MsgType.NOTICE);
+        msg.setOnlineNum(WsSessionManager.getOnlineNum());
+
+        for(WebSocketSession s : WsSessionManager.getWebSocketSessions()) {
+            if (s == session) {
+                continue;
+            }
+            s.sendMessage(new TextMessage(JSON.toJSONString(msg)));
+        }
+    }
+
+    @Override
+    protected void handleTextMessage(WebSocketSession session, TextMessage message) throws Exception {
+        String name = Optional.ofNullable(session.getPrincipal()).map(Principal::getName).orElse(null);
+        String payload = message.getPayload();
+        WsMessage receiveMessage = JSON.parseObject(payload, WsMessage.class);
+
+        WsMessage msg = new WsMessage();
+        msg.setDate(new Date());
+        msg.setName(name);
+        msg.setMsg(receiveMessage.getMsg());
+        msg.setType(WsMessage.MsgType.MSG);
+        msg.setOnlineNum(WsSessionManager.getOnlineNum());
+
+        for(WebSocketSession wss : WsSessionManager.getWebSocketSessions()){
+            wss.sendMessage(new TextMessage(JSON.toJSONString(msg)));
+        }
+    }
+
+    @Override
+    public void afterConnectionClosed(WebSocketSession session, CloseStatus status) throws Exception {
+        String name = Optional.ofNullable(session.getPrincipal()).map(Principal::getName).orElse(null);
+        WsSessionManager.removeWebSocketSession(name);
+
+        WsMessage msg = new WsMessage();
+        msg.setDate(new Date());
+        msg.setName(name);
+        msg.setMsg(name + " 离开了聊天室.");
+        msg.setType(WsMessage.MsgType.NOTICE);
+        msg.setOnlineNum(WsSessionManager.getOnlineNum());
+
+        for(WebSocketSession s : WsSessionManager.getWebSocketSessions()){
+            s.sendMessage(new TextMessage(JSON.toJSONString(msg)));
+        }
+    }
+}

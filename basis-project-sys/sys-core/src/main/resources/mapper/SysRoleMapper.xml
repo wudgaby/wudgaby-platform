@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wudgaby.platform.sys.mapper.SysRoleMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.wudgaby.platform.sys.entity.SysRole">
+    <result column="id" property="id" />
+    <result column="create_time" property="createTime" />
+    <result column="update_time" property="updateTime" />
+    <result column="create_by" property="createBy" />
+    <result column="update_by" property="updateBy" />
+        <result column="role_name" property="roleName" />
+        <result column="role_code" property="roleCode" />
+        <result column="role_desc" property="roleDesc" />
+        <result column="status" property="status" />
+        <result column="deleted" property="deleted" />
+        <result column="sort" property="sort" />
+        <result column="is_sys" property="sys" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,
+        create_time,
+        update_time,
+        create_by,
+        update_by,
+        role_name, role_code, role_desc, status, deleted, sort, is_sys
+    </sql>
+
+</mapper>

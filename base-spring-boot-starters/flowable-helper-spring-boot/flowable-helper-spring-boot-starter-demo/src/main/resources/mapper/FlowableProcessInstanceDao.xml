@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wudgaby.platform.flowable.helper.mapper.FlowableProcessInstanceDao" >
+    <!--<select id="getPagerModel" parameterType="net.cnns.caseoa.server.pojo.vo.ProcessInstanceQueryVo"
+            resultType="net.cnns.caseoa.server.pojo.vo.ProcessInstanceVo">
+        SELECT DISTINCT
+            t1.ID_ AS processInstanceId,
+            t1.PROC_DEF_ID_ as processDefinitionId,
+            t1.NAME_ AS formName,
+            t1.TENANT_ID_ AS systemSn,
+            t1.BUSINESS_KEY_ AS businessKey,
+            t1.START_TIME_ AS startTime,
+            t1.END_TIME_ AS endTime,
+            t2.ID_ AS starterId,
+            t2.FIRST_ as starter
+        FROM
+            act_hi_procinst t1
+        LEFT JOIN act_id_user t2 ON t1.START_USER_ID_ = t2.ID_
+        <where>
+            <if test="userCode != null">and t1.START_USER_ID_ = #{userCode}</if>
+            <if test="userName != null">and t2.FIRST_ like CONCAT('%',#{userName},'%')</if>
+            <if test="formName != null">and t1.NAME_ like CONCAT('%',#{formName},'%')</if>
+        </where>
+    </select>-->
+
+    <select id="listPage" resultType="com.wudgaby.platform.flowable.helper.vo.ProcessInstanceVo">
+        SELECT DISTINCT
+        t1.ID_ AS processInstanceId,
+        t1.PROC_DEF_ID_ as processDefinitionId,
+        t1.NAME_ AS formName,
+        t1.TENANT_ID_ AS systemSn,
+        t1.BUSINESS_KEY_ AS businessKey,
+        t1.START_TIME_ AS startTime,
+        t1.END_TIME_ AS endTime,
+        t2.ID_ AS starterId,
+        t2.FIRST_ as starter
+        FROM
+        ACT_HI_PROCINST t1
+        LEFT JOIN ACT_ID_USER t2 ON t1.START_USER_ID_ = t2.ID_
+        <where>
+            <if test="query.userCode != null and query.userCode != ''">and t1.START_USER_ID_ = #{query.userCode}</if>
+            <if test="query.userName != null and query.userName != ''">and t2.FIRST_ like CONCAT('%',#{query.userName},'%')</if>
+            <if test="query.formName != null and query.formName != ''">and t1.NAME_ like CONCAT('%',#{query.formName},'%')</if>
+        </where>
+        ORDER BY START_TIME_ DESC
+    </select>
+
+    <select id="getByProcessInstanceId" resultType="com.wudgaby.platform.flowable.helper.vo.ProcessInstanceVo">
+        SELECT DISTINCT
+            t1.ID_ AS processInstanceId,
+            t1.PROC_DEF_ID_ as processDefinitionId,
+            t1.NAME_ AS formName,
+            t1.TENANT_ID_ AS systemSn,
+            t1.BUSINESS_KEY_ AS businessKey,
+            t1.START_TIME_ AS startTime,
+            t1.END_TIME_ AS endTime,
+            t2.ID_ AS starterId,
+            t2.FIRST_ as starter
+        FROM
+            ACT_HI_PROCINST t1
+            LEFT JOIN ACT_ID_USER t2 ON t1.START_USER_ID_ = t2.ID_
+        WHERE t1.ID_ = #{processInstanceId}
+    </select>
+
+</mapper>

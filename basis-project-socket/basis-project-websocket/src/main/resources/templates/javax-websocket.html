@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>websocket</title>
+    <style>
+        .u-chat {
+            padding:20px 50px;
+            font-size:16px;
+            font-family: 'Microsoft Yahei', Arial, 'Hiragino Sans GB';
+        }
+        .u-chat h2 {
+            font-size:18px;
+        }
+        .u-chat li {
+            display:block;
+            list-style: none;
+            padding:10px 0;
+        }
+        .u-chat li b{
+            font-weight:normal;
+            display:inline-block;
+            padding-right:15px;
+        }
+
+    </style>
+</head>
+
+<body>
+<div class="u-chat">
+    <h2>javax websocket聊天室 </h2>
+    <h4>人数:<b id="onlineNum">0</b></h4>
+    <ul id="uChat"></ul>
+    <input type="text" style="width:70px" id="txtName" placeholder="昵称"/>
+    <input type="text" id="txtMsg" placeholder="内容"/>
+    <input type="button" id="btnSend" value="发言"/>
+</div>
+
+<script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+<script src="//cdn.bootcdn.net/ajax/libs/moment.js/2.26.0/moment.min.js"></script>
+<script src="//cdn.bootcdn.net/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
+<script>
+    var ws;
+    var socket;
+    var isConnected = false;
+    var host = window.location.host;
+    var wsServer = "ws://" + host + "/websocket/javax";
+    $(function(){
+        initSocket();
+        //socketIO();
+
+        $("#uChat").append("<li>连接中...</li>");
+        $("#btnSend").click(function(){
+            var name = $("#txtName").val();
+            var message = $("#txtMsg").val();
+            $("#txtMsg").val("");
+            if(!name){
+                alert("如何称呼?");
+                return;
+            }
+            if(!message){
+                alert("说点什么吧.");
+                return;
+            }
+
+            var json = {name:name,msg:message};
+            sendMsg(JSON.stringify(json));
+            //socket.send(msg);
+        });
+
+        $("#txtMsg").keypress(function(evt){
+            if(evt.keyCode == 13){
+                $("#btnSend").trigger("click");
+            }
+        });
+    });
+
+    function socketIO(){
+        var opts = {};
+        opts.transports=['websocket'];
+        socket = io(wsServer ,opts);
+        socket.on('connect', function(){$("#uChat").append("<li>连接成功</li>");});
+        socket.on('event', function(data){$("#uChat").append("<li>"+data+"</li>");});
+        socket.on('reconnect', function(){$("#uChat").append("<li>重新连接中...</li>");});
+        socket.on('disconnect', function(){socket.close();});
+        socket.on('error', function(obj){console.info(obj);});
+    }
+
+    function initSocket(){
+        if(!window.WebSocket){
+            alert("浏览器不支持!");
+            return;
+        }
+        ws = new WebSocket(wsServer);
+        ws.onopen = doOpen;
+        ws.onmessage = doMessage;
+        ws.onerror = doError;
+        ws.onclose = doClose;
+    }
+
+    function sendMsg(msg){
+        if(ws && ws.readyState==1){
+            ws.send(msg);
+        }else{
+            console.info("重新连接中...");
+            $("#uChat").append("<li>重新连接中...</li>");
+            initSocket();
+        }
+    }
+
+    function doOpen(evt){
+        isConnected = true;
+        $("#uChat").append("<li>连接成功</li>");
+    }
+
+    function doMessage(evt){
+        console.info(evt);
+        var message = JSON.parse(evt.data);
+        showMessage(message)
+    }
+
+    function doError(evt){
+        console.log('error',evt);
+    }
+
+    function doClose(evt){
+        console.log('close',evt);
+        ws.close();
+    }
+
+    function showMessage(message){
+        if(!$("#txtName").val()){
+            $("#txtName").val(message.name);
+        }
+
+        $("#onlineNum").text(message.onlineNum);
+
+        var date = moment(message.date).format("hh:mm:ss");
+
+        if(message.type == "NOTICE"){
+            $("#uChat").append("<li>"+date+ " "+message.msg+"</li>");
+        }else{
+            $("#uChat").append("<li>"+date+" <b>"+message.name+":</b>"+message.msg+"</li>");
+        }
+    }
+</script>
+</body>
+</html>

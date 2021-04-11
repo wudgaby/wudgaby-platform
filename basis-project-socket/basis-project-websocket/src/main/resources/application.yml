@@ -1,0 +1,9 @@
+server:
+  port: 15000
+
+spring:
+  application:
+    name: web-socket-demo
+  redis:
+    password: redis-pwd
+    database: 1

@@ -1,0 +1,22 @@
+spring:
+  cloud:
+    stream:
+      rocketmq:
+        binder:
+          name-server: localhost:9876
+        bindings:
+          rocketmq:
+            bindings:
+              resource-output:
+                producer:
+                  group: api-res-producer-group
+                  sync: false
+      bindings:
+        resource-output:
+          destination: api-res-register-topic
+          content-type: application/json
+
+        resource-input:
+          destination: api-res-register-topic
+          content-type: application/json
+          group: api-res-consumer-group

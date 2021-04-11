@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wudgaby.platform.sys.mapper.SysFileMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.wudgaby.platform.sys.entity.SysFile">
+    <result column="id" property="id" />
+    <result column="create_time" property="createTime" />
+    <result column="update_time" property="updateTime" />
+    <result column="create_by" property="createBy" />
+    <result column="update_by" property="updateBy" />
+        <result column="file_bucket" property="fileBucket" />
+        <result column="file_name" property="fileName" />
+        <result column="file_suffix" property="fileSuffix" />
+        <result column="file_path" property="filePath" />
+        <result column="file_md5" property="fileMd5" />
+        <result column="file_unique_id" property="fileUniqueId" />
+        <result column="file_size" property="fileSize" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,
+        create_time,
+        update_time,
+        create_by,
+        update_by,
+        file_bucket, file_name, file_suffix, file_path, file_md5, file_unique_id, file_size
+    </sql>
+
+</mapper>

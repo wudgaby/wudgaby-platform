@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wudgaby.oauth2.uaa.mapper.ResourceMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.wudgaby.oauth2.uaa.entity.Resource">
+        <id column="id" property="id" />
+        <result column="create_time" property="createTime" />
+        <result column="update_time" property="updateTime" />
+        <result column="create_by" property="createBy" />
+        <result column="update_by" property="updateBy" />
+        <result column="parent_id" property="parentId" />
+        <result column="parent_ids" property="parentIds" />
+        <result column="sort" property="sort" />
+        <result column="res_name" property="resName" />
+        <result column="res_url" property="resUrl" />
+        <result column="res_type" property="resType" />
+        <result column="res_method" property="resMethod" />
+        <result column="target" property="target" />
+        <result column="status" property="status" />
+        <result column="perm_code" property="permCode" />
+        <result column="icon" property="icon" />
+        <result column="component" property="component" />
+        <result column="class_name" property="className" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        res.create_time,
+        res.update_time,
+        res.create_by,
+        res.update_by,
+        res.id, res.parent_id, res.parent_ids, res.sort, res.res_name, res.res_url, res.res_type, res.res_method, res.target,
+        res.status, res.perm_code, res.icon, res.component, res.class_name
+    </sql>
+
+    <select id="listByRoleId" resultMap="BaseResultMap">
+        select <include refid="Base_Column_List"/> from sys_resource res
+        join sys_role_resource srr on res.id = srr.resource_id
+        join sys_role r on r.id = srr.role_id
+        where r.id = #{roleId}
+    </select>
+</mapper>

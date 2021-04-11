@@ -1,0 +1,5 @@
+# Auto Configure
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.wudgaby.redis.starter.config.RedisConfiguration
+org.springframework.boot.env.EnvironmentPostProcessor=\
+  com.wudgaby.redis.starter.support.RedisEnvironmentPostProcessor

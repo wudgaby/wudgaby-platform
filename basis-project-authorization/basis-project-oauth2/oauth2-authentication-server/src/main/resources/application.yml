@@ -1,0 +1,49 @@
+server:
+  port: 8100
+  servlet:
+    context-path: /uaa # User Account and Authentication
+
+spring:
+  application:
+    name: uaa-service
+  redis:
+    host: 127.0.0.1
+    password: redis-pwd
+    port: 6379
+    database: 5
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/oauth2?useUnicode=true&characterEncoding=UTF8&serverTimezone=UTC&useSSL=false
+    username: root
+    password: root
+
+  thymeleaf:
+    prefix: classpath:/templates/
+    cache: false
+    suffix: .html
+    encoding: UTF-8
+    servlet:
+      content-type: text/html
+    check-template: true
+
+logging:
+  level:
+    org.springframework.security: DEBUG
+
+mybatis-plus:
+  mapper-locations: classpath:mapper/**/*Mapper.xml
+  type-aliases-package: com.wudgaby.oauth2.entity
+  type-enums-package: com.wudgaby.oauth2.enums
+
+  global-config:
+    db-config:
+      #tablePrefix: poe
+      insert-strategy: not_null
+      update-strategy: not_null
+      #select-strategy: default
+      id-type: assign_id
+      table-underline: true
+      #全局逻辑删除字段值
+      logic-delete-field: deleted
+      logic-delete-value: 1
+      logic-not-delete-value: 0

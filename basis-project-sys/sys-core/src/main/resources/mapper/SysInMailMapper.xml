@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wudgaby.platform.sys.mapper.SysInMailMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.wudgaby.platform.sys.entity.SysInMail">
+        <result column="id" property="id" />
+        <result column="create_time" property="createTime" />
+        <result column="update_time" property="updateTime" />
+        <result column="create_by" property="createBy" />
+        <result column="update_by" property="updateBy" />
+        <result column="in_mail_type" property="inMailType" />
+        <result column="title" property="title" />
+        <result column="content" property="content" />
+        <result column="sender_id" property="senderId" />
+        <result column="is_send_all" property="sendAll" />
+        <result column="deleted" property="deleted" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,
+        create_time,
+        update_time,
+        create_by,
+        update_by,
+        in_mail_type, title, content, sender_id, is_send_all, deleted
+    </sql>
+
+    <resultMap id="noticeFullMap" type="com.wudgaby.platform.sys.dto.InMailDTO">
+        <id column="imId"/>
+        <association property="sysInMail" autoMapping="true">
+            <result property="id" column="imId"/>
+        </association>
+        <collection property="attachmentList" ofType="com.wudgaby.platform.sys.dto.AttachmentDTO" autoMapping="true"/>
+        <collection property="receiverNameList" ofType="string" javaType="list">
+            <result column="receiver_name"/>
+        </collection>
+    </resultMap>
+
+    <resultMap id="noticePageMap" type="com.wudgaby.platform.sys.dto.InMailDTO">
+        <id column="imId"/>
+        <association property="sysInMail" autoMapping="true">
+            <result property="id" column="imId"/>
+        </association>
+        <!--列表不需要显示附件-->
+        <!--<collection property="attachmentList" ofType="com.gd.admin.dto.AttachmentDTO" select="listFiles" column="noticeId" autoMapping="true"/>-->
+        <collection property="receiverNameList" ofType="string" javaType="list" select="listReceivers" column="imId">
+            <result column="receiver_name"/>
+        </collection>
+    </resultMap>
+
+    <select id="queryById" resultMap="noticeFullMap">
+        select sn.id as imId, sn.create_time, sn.is_send_all, sn.sender_id, sn.create_by, sn.content, sn.title, sn.in_mail_type,
+               snf.id as fileId, snf.file_name, snf.file_url,
+               snr.receiver_name
+
+        from sys_in_mail sn
+                 left join sys_in_mail_file snf on sn.id = snf.im_id
+                 left join sys_in_mail_receiver snr on sn.id = snr.im_id
+        where sn.id = #{id}
+    </select>
+
+    <select id="queryByIdAndUserId" resultMap="noticeFullMap">
+        select sn.id as imId, sn.create_time, sn.is_send_all, sn.sender_id, sn.create_by, sn.content, sn.title, sn.in_mail_type,
+               snf.id as fileId, snf.file_name, snf.file_url,
+               snr.receiver_name
+
+        from sys_in_mail sn
+                 left join sys_in_mail_file snf on sn.id = snf.im_id
+                 left join sys_in_mail_receiver snr on sn.id = snr.im_id
+        where sn.id = #{id} and snr.receiver_id = #{userId}
+    </select>
+
+    <select id="listPage" resultMap="noticePageMap">
+        select sn.id as imId, sn.create_time, sn.is_send_all, sn.sender_id, sn.create_by, sn.content, sn.title, sn.in_mail_type
+        ,snr.status
+        from sys_in_mail sn
+        left join sys_in_mail_receiver snr on sn.id = snr.im_id
+
+        <trim prefix="where" prefixOverrides="and | or">
+            <if test="param.keyword != null and param.keyword != ''">
+                and sn.title like concat("%", #{param.keyword}, "%")
+            </if>
+            <if test="param.inMailType != null">
+                and sn.in_mail_type = #{param.inMailType}
+            </if>
+            <if test="param.issueIds != null and param.issueIds.size() > 0">
+                and sn.sender_id in
+                <foreach collection="param.issueIds" item="item" separator="," open="(" close=")">
+                    #{item}
+                </foreach>
+            </if>
+            <if test="param.beginDate != null">
+                and sn.create_time <![CDATA[ >= ]]> #{param.beginDate}
+            </if>
+            <if test="param.endDate != null">
+                and sn.create_time <![CDATA[ <= ]]> #{param.endDate}
+            </if>
+            <if test="param.userId != null and param.userId != ''">
+                and snr.receiver_id = #{param.userId}
+            </if>
+        </trim>
+        group by sn.id
+        order by sn.create_time desc
+    </select>
+
+    <select id="listFiles" resultType="com.wudgaby.platform.sys.dto.AttachmentDTO">
+        select snf.id as fileId, snf.file_name, snf.file_url from sys_in_mail_file snf
+        where snf.im_id = #{noticeId}
+    </select>
+
+    <select id="listReceivers" resultType="string">
+        select snr.receiver_name from sys_in_mail_receiver snr
+        where snr.im_id = #{noticeId}
+    </select>
+
+    <select id="listUnReadCountGroupByNoticeType" resultType="com.wudgaby.platform.sys.dto.InMailTypeStDTO">
+        select sn.in_mail_type, ifnull(count(1), 0)  as unreadTotal
+        from sys_in_mail sn
+        left join sys_in_mail_receiver snr on sn.id = snr.im_id
+        <trim prefix="where" prefixOverrides="and | or">
+            <if test="userId != null and userId != ''">
+                and snr.receiver_id = #{userId}
+            </if>
+            AND status = 0
+        </trim>
+        group by sn.in_mail_type
+    </select>
+</mapper>

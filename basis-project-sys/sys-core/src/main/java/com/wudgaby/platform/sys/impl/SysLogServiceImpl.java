@@ -1,0 +1,91 @@
+package com.wudgaby.platform.sys.impl;
+
+import cn.hutool.core.exceptions.ExceptionUtil;
+import cn.hutool.http.useragent.UserAgent;
+import cn.hutool.http.useragent.UserAgentUtil;
+import com.wudgaby.logger.api.event.AccessLoggerAfterEvent;
+import com.wudgaby.logger.api.vo.AccessLoggerInfo;
+import com.wudgaby.platform.core.result.ApiResult;
+import com.wudgaby.platform.security.core.SecurityUtils;
+import com.wudgaby.platform.security.core.UserInfo;
+import com.wudgaby.platform.sys.entity.SysLog;
+import com.wudgaby.platform.sys.mapper.SysLogMapper;
+import com.wudgaby.platform.sys.service.SysLogService;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.wudgaby.platform.utils.FastJsonUtil;
+import com.wudgaby.platform.utils.UserAgentUtils;
+import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.exception.ExceptionUtils;
+import org.springframework.context.event.EventListener;
+import org.springframework.scheduling.annotation.Async;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.net.InetAddress;
+import java.net.UnknownHostException;
+import java.util.Optional;
+
+/**
+ * <p>
+ * 访问日志表 服务实现类
+ * </p>
+ *
+ * @author WudGaby
+ * @since 2020-09-28
+ */
+@Slf4j
+@Service
+public class SysLogServiceImpl extends ServiceImpl<SysLogMapper, SysLog> implements SysLogService {
+
+    @Async
+    @EventListener
+    public void accessLoggerAfterEvent(AccessLoggerAfterEvent event) {
+        AccessLoggerInfo loggerInfo = event.getAccessLogInfoVo();
+
+        UserInfo userInfo = SecurityUtils.getSafeCurrentUser();
+        SysLog sysLog = new SysLog();
+        sysLog.setUserId((long)userInfo.getId());
+        sysLog.setUserName(userInfo.getName());
+        sysLog.setAction(loggerInfo.getAction());
+        sysLog.setDesc(loggerInfo.getDescribe());
+        sysLog.setUserAgent(loggerInfo.getUserAgent());
+        sysLog.setReqUrl(loggerInfo.getUrl());
+        sysLog.setReqMethod(loggerInfo.getHttpMethod());
+
+        String contentType = loggerInfo.getHttpHeaders().get("content-type");
+        if(StringUtils.isNotBlank(contentType) && contentType.contains("multipart/form-data")){
+            sysLog.setReqParam(StringUtils.EMPTY);
+        }else{
+            sysLog.setReqParam(FastJsonUtil.collectToString(loggerInfo.getParameters()));
+        }
+
+        sysLog.setClientIp(loggerInfo.getIp());
+        try{
+            sysLog.setServerAddr(InetAddress.getLocalHost().getHostAddress());
+        }catch (UnknownHostException e) {
+            log.error("获取本机ip失败. {}", e.getMessage());
+        }
+
+        sysLog.setExceptionInfo(Optional.ofNullable(loggerInfo.getException())
+                .map(e -> ExceptionUtils.getMessage(loggerInfo.getException()) + "\n" + ExceptionUtils.getStackTrace(loggerInfo.getException()))
+                .orElse(null));
+        sysLog.setExecuteTime((int)(loggerInfo.getResponseTime() - loggerInfo.getRequestTime()));
+        sysLog.setType("SYSTEM");
+
+        if(loggerInfo.getResponse() instanceof ApiResult){
+            sysLog.setSucceed(ApiResult.isSuccess((ApiResult)loggerInfo.getResponse()));
+        }else{
+            sysLog.setSucceed(StringUtils.isBlank(sysLog.getExceptionInfo()));
+        }
+        sysLog.setResponse(Optional.ofNullable(loggerInfo.getResponse()).map(resp -> FastJsonUtil.collectToString(resp)).orElse(null));
+
+        UserAgent userAgent = UserAgentUtil.parse(loggerInfo.getUserAgent());
+        if(userAgent != null){
+            sysLog.setOs(userAgent.getOs().toString());
+            sysLog.setBrowser(userAgent.getBrowser().toString());
+        }
+        this.save(sysLog);
+    }
+}

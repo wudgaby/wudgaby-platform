@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>单点登录</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+</head>
+
+<body style="background: url(https://api.isoyu.com/bing_images.php) no-repeat center center fixed; background-size: 100%;">
+<div class="modal-dialog" style="margin-top: 10%; ">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h4 class="modal-title text-center" id="myModalLabel">平台单点登录</h4>
+        </div>
+        <form id="loginForm" method="post" th:href="@{/sso/login}">
+            <div class="modal-body" id = "model-body">
+                <div class="form-group">
+                    <input type="text" class="form-control" id="account" name="account" placeholder="用户名" required autofocus="autofocus"/>
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" id="password" name="password" placeholder="密码" required />
+                </div>
+                <div class="form-group">
+                    <label style="display:inline;color: red;" th:text="${errorMsg}"></label>
+                    <!--<input type="hidden" name="redirectUrl" th:value="${redirectUrl}"/>-->
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="form-group">
+                    <button class="btn btn-primary form-control">登录</button>
+                </div>
+            </div>
+        </form>
+
+    </div>
+</div>
+
+<script src="https://cdn.bootcss.com/jquery/1.10.2/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script>
+    $(function(){
+        //回车键事件
+        $(document).keyup(function(){
+            if (event.keyCode == 13){
+                $("#loginForm").submit();
+            }
+        });
+    });
+</script>
+</body>
+</html>

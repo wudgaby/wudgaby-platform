@@ -1,0 +1,62 @@
+server:
+  port: 9100
+  servlet:
+    #当不使用redis的时候,键名为 JSESSIONID
+    #当使用redis的时候,键名为 SESSION
+    session:
+      cookie:
+        name: JSESSIONID
+      #优先级低
+      #timeout: 60m
+
+spring:
+  application:
+    name: auth-server
+  http:
+    encoding:
+      charset: UTF-8
+  mvc:
+    throw-exception-if-no-handler-found: false
+  datasource:
+    url: jdbc:mysql://localhost:3306/wudgaby_sys?useSSL=false&characterEncoding=UTF-8&serverTimezone=UTC
+    password: root
+    username: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  redis:
+    host: localhost
+    port: 6379
+    password: redis-pwd
+  session:
+    store-type: redis
+    timeout: 30m
+
+security:
+  jwt:
+    enabled: false
+    header: Authorization
+    secret: mySecret
+    token-expiration-time: 15
+    refresh-token-exp-time: 60
+    # token is valid 24 hours
+    token-validity-in-seconds: 86400
+    # valid 30 hours
+    token-validity-in-seconds-for-remember-me: 108000
+    route:
+      authentication:
+        auth: /auth/login
+        refresh: /auth/refresh
+
+mybatis-plus:
+  mapper-locations: classpath:mapper/**/*Mapper.xml
+  typeAliasesPackage: com.wudgaby.platform.auth.model.entity
+  type-enums-package: com.wudgaby.platform.auth.enums
+
+logging.level.org.springframework.security: DEBUG
+
+swagger:
+  enabled: true
+  title: securtiy
+  version: 1.0.0
+  base-package: com.wudgaby.platform.auth
+  base-path: /**
+  exclude-path: /error

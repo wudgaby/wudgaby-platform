@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>首页</title>
+</head>
+<body>
+<h1 th:text="|欢迎: ${session.sessionUser.name}|"></h1>
+<h3><a href="/ws/javax">Javax Websocket demo</a> </h3>
+<h3><a href="/ws/spring">Spring Websocket demo</a> </h3>
+<h3><a href="/ws/stomp">Stomp demo</a> </h3>
+<h4><a href="/logout">退出</a></h4>
+</body>
+</html>

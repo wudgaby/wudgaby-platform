@@ -1,0 +1,167 @@
+justauth:
+  enabled: true
+  type:
+    QQ:
+      client-id: 10**********6
+      client-secret: 1f7d08**********5b7**********29e
+      redirect-uri: http://oauth.wudgaby.com/oauth/qq/callback
+      union-id: false
+    WEIBO:
+      client-id: 10**********6
+      client-secret: 1f7d08**********5b7**********29e
+      redirect-uri: http://oauth.wudgaby.com/oauth/weibo/callback
+    GITEE:
+      client-id: 835d9350cfa260df1d3db67ec3158ce99cea90340537e8a3d0229affc05fb0ee
+      client-secret: c0dac0a90dda1d5cd0c2315140d6cccce787aa5df9d7aaecc0638a5f70aa2004
+      redirect-uri: http://oauth.wudgaby.com/oauth/gitee/callback
+    DINGTALK:
+      client-id: 10**********6
+      client-secret: 1f7d08**********5b7**********29e
+      redirect-uri: http://oauth.wudgaby.com/oauth/dingtalk/callback
+    BAIDU:
+      client-id: 10**********6
+      client-secret: 1f7d08**********5b7**********29e
+      redirect-uri: http://oauth.wudgaby.com/oauth/baidu/callback
+    CSDN:
+      client-id: 10**********6
+      client-secret: 1f7d08**********5b7**********29e
+      redirect-uri: http://oauth.wudgaby.com/oauth/csdn/callback
+    CODING:
+      client-id: 10**********6
+      client-secret: 1f7d08**********5b7**********29e
+      redirect-uri: http://oauth.wudgaby.com/oauth/coding/callback
+      coding-group-name: xx
+    OSCHINA:
+      client-id: 10**********6
+      client-secret: 1f7d08**********5b7**********29e
+      redirect-uri: http://oauth.wudgaby.com/oauth/oschina/callback
+    ALIPAY:
+      client-id: 10**********6
+      client-secret: 1f7d08**********5b7**********29e
+      redirect-uri: http://oauth.wudgaby.com/oauth/alipay/callback
+      alipay-public-key: MIIB**************DAQAB
+    WECHAT_OPEN:
+      client-id: 10**********6
+      client-secret: 1f7d08**********5b7**********29e
+      redirect-uri: http://oauth.wudgaby.com/oauth/wechat_open/callback
+    WECHAT_MP:
+      client-id: wxcc3b39f331bb2a80
+      client-secret: a6dc60c8c3816a36a14b1cc75a97d8c2
+      redirect-uri: http://oauth.wudgaby.com/oauth/wechat_mp/callback
+    WECHAT_ENTERPRISE:
+      client-id: 10**********6
+      client-secret: 1f7d08**********5b7**********29e
+      redirect-uri: http://oauth.wudgaby.com/oauth/wechat_enterprise/callback
+      agent-id: 1000002
+    TAOBAO:
+      client-id: 10**********6
+      client-secret: 1f7d08**********5b7**********29e
+      redirect-uri: http://oauth.wudgaby.com/oauth/taobao/callback
+    GOOGLE:
+      client-id: 10**********6
+      client-secret: 1f7d08**********5b7**********29e
+      redirect-uri: http://oauth.wudgaby.com/oauth/google/callback
+    FACEBOOK:
+      client-id: 10**********6
+      client-secret: 1f7d08**********5b7**********29e
+      redirect-uri: http://oauth.wudgaby.com/oauth/facebook/callback
+    DOUYIN:
+      client-id: 10**********6
+      client-secret: 1f7d08**********5b7**********29e
+      redirect-uri: http://oauth.wudgaby.com/oauth/douyin/callback
+    LINKEDIN:
+      client-id: 10**********6
+      client-secret: 1f7d08**********5b7**********29e
+      redirect-uri: http://oauth.wudgaby.com/oauth/linkedin/callback
+    MICROSOFT:
+      client-id: 10**********6
+      client-secret: 1f7d08**********5b7**********29e
+      redirect-uri: http://oauth.wudgaby.com/oauth/microsoft/callback
+    MI:
+      client-id: 10**********6
+      client-secret: 1f7d08**********5b7**********29e
+      redirect-uri: http://oauth.wudgaby.com/oauth/mi/callback
+    TOUTIAO:
+      client-id: 10**********6
+      client-secret: 1f7d08**********5b7**********29e
+      redirect-uri: http://oauth.wudgaby.com/oauth/toutiao/callback
+    TEAMBITION:
+      client-id: 10**********6
+      client-secret: 1f7d08**********5b7**********29e
+      redirect-uri: http://oauth.wudgaby.com/oauth/teambition/callback
+    RENREN:
+      client-id: 10**********6
+      client-secret: 1f7d08**********5b7**********29e
+      redirect-uri: http://oauth.wudgaby.com/oauth/renren/callback
+    PINTEREST:
+      client-id: 10**********6
+      client-secret: 1f7d08**********5b7**********29e
+      redirect-uri: http://oauth.wudgaby.com/oauth/pinterest/callback
+    STACK_OVERFLOW:
+      client-id: 10**********6
+      client-secret: 1f7d08**********5b7**********29e
+      redirect-uri: http://oauth.wudgaby.com/oauth/stack_overflow/callback
+      stack-overflow-key: asd*********asd
+    HUAWEI:
+      client-id: 10**********6
+      client-secret: 1f7d08**********5b7**********29e
+      redirect-uri: http://oauth.wudgaby.com/oauth/huawei/callback
+    KUJIALE:
+      client-id: 10**********6
+      client-secret: 1f7d08**********5b7**********29e
+      redirect-uri: http://oauth.wudgaby.com/oauth/kujiale/callback
+    GITLAB:
+      client-id: 10**********6
+      client-secret: 1f7d08**********5b7**********29e
+      redirect-uri: http://oauth.wudgaby.com/oauth/gitlab/callback
+    MEITUAN:
+      client-id: 10**********6
+      client-secret: 1f7d08**********5b7**********29e
+      redirect-uri: http://oauth.wudgaby.com/oauth/meituan/callback
+    ELEME:
+      client-id: 10**********6
+      client-secret: 1f7d08**********5b7**********29e
+      redirect-uri: http://oauth.wudgaby.com/oauth/eleme/callback
+    TWITTER:
+      client-id: 10**********6
+      client-secret: 1f7d08**********5b7**********29e
+      redirect-uri: http://oauth.wudgaby.com/oauth/twitter/callback
+  cache:
+    type: default
+
+  #代理
+  #http-config:
+    #timeout: 30000
+    #proxy:
+      #GOOGLE:
+        #type: HTTP
+        #hostname: 127.0.0.1
+        #port: 10080
+
+  #使用redis缓存
+  #cache:
+    #type: redis
+    # 缓存前缀，目前只对redis缓存生效，默认 JUSTAUTH::STATE::
+    #prefix: ''
+    # 超时时长，目前只对redis缓存生效，默认3分钟
+    #timeout: 1h
+
+#spring:
+  #redis:
+    #host: localhost
+    #port: 6379
+    #password: redis-pwd
+    # 连接超时时间（记得添加单位，Duration）
+    #timeout: 10000ms
+    # Redis默认情况下有16个分片，这里配置具体使用的分片
+    # database: 0
+    #lettuce:
+    #  pool:
+        # 连接池最大连接数（使用负值表示没有限制） 默认 8
+    #    max-active: 8
+        # 连接池最大阻塞等待时间（使用负值表示没有限制） 默认 -1
+    #    max-wait: -1ms
+        # 连接池中的最大空闲连接 默认 8
+    #    max-idle: 8
+        # 连接池中的最小空闲连接 默认 0
+    #    min-idle: 0

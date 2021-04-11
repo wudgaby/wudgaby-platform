@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: redis-demo
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+
+  redis:
+    password: redis-pwd

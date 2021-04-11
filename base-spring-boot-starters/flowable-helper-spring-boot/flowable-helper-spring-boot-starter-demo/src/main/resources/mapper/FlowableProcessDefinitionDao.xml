@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wudgaby.platform.flowable.helper.mapper.FlowableProcessDefinitionDao">
+    <select id="getById" parameterType="java.lang.String"
+            resultType="com.wudgaby.platform.flowable.helper.vo.ProcessDefinitionVo">
+        SELECT
+        t.CATEGORY_ AS category,
+        t.ID_ AS id,
+        t.NAME_ AS NAME,
+        t.KEY_ AS modelKey,
+        t.RESOURCE_NAME_ AS resourceName,
+        t.DGRM_RESOURCE_NAME_ as dgrmResourceName,
+        t.SUSPENSION_STATE_ as suspensionState,
+        t.VERSION_ AS version,
+        t.DEPLOYMENT_ID_ AS deploymentId,
+        t.TENANT_ID_ AS tenantId
+        FROM
+        ACT_RE_PROCDEF t
+        where t.ID_ = #{value}
+    </select>
+
+    <select id="findProcessDefList" resultType="com.wudgaby.platform.flowable.helper.vo.ProcessDefinitionVo">
+        SELECT
+            t.CATEGORY_ AS category,
+            t.ID_ AS id,
+            t.NAME_ AS processName,
+            t.KEY_ AS modelKey,
+            t.RESOURCE_NAME_ AS resourceName,
+            t.DGRM_RESOURCE_NAME_ as dgrmResourceName,
+            t.SUSPENSION_STATE_ as suspensionState,
+            t.VERSION_ AS version,
+            t.DEPLOYMENT_ID_ AS deploymentId,
+            t.TENANT_ID_ AS tenantId,
+            dep.DEPLOY_TIME_ AS deployTime,
+            dep.NAME_ AS name
+        FROM
+            ACT_RE_PROCDEF t join ACT_RE_DEPLOYMENT dep on t.DEPLOYMENT_ID_ = dep.ID_
+        <trim prefix="WHERE" prefixOverrides="AND |OR ">
+            <if test="query.processType != null">
+                AND t.CATEGORY_ = #{query.processType}
+            </if>
+            <if test="query.beginDate != null">
+                AND dep.DEPLOY_TIME_ between #{query.beginDate} and #{query.endDate}
+            </if>
+        </trim>
+        ORDER BY dep.DEPLOY_TIME_ desc, t.VERSION_ desc
+    </select>
+
+</mapper>

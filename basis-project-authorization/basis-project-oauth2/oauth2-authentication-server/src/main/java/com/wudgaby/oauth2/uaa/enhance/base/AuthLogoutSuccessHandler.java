@@ -1,0 +1,25 @@
+package com.wudgaby.oauth2.uaa.enhance.base;
+
+import org.springframework.security.core.Authentication;
+import org.springframework.security.web.authentication.logout.LogoutSuccessHandler;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+
+/**
+ * @ClassName : AuthLogoutSuccessHandler
+ * @Author :  WudGaby
+ * @Version :  1.0
+ * @Date : 2019/10/9 18:48
+ * @Desc :   TODO
+ */
+public class AuthLogoutSuccessHandler implements LogoutSuccessHandler {
+    @Override
+    public void onLogoutSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
+        response.setHeader("Content-Type", "application/json;charset=utf-8");
+        response.getWriter().print("{\"code\":0,\"message\":\"已注销\"}");
+        response.getWriter().flush();
+    }
+}

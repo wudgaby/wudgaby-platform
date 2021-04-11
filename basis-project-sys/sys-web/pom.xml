@@ -1,0 +1,380 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>basis-project-sys</artifactId>
+        <groupId>com.wudgaby.platform</groupId>
+        <version>${revision}</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>sys-web</artifactId>
+
+    <properties>
+        <docker.image.prefix>wudgaby</docker.image.prefix>
+        <docker.registryUrl>182.92.203.94:5000</docker.registryUrl>
+        <spring.boot.version>2.3.1.RELEASE</spring.boot.version>
+        <!--表示该模块 不会进行install-->
+        <maven.install.skip>true</maven.install.skip>
+    </properties>
+
+    <dependencies>
+        <!--<dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+        </dependency>-->
+        <dependency>
+            <groupId>com.wudgaby.platform</groupId>
+            <artifactId>sys-core</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.wudgaby.platform</groupId>
+            <artifactId>basis-project-web-core</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-boot-starter</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid-spring-boot-starter</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.github.xiaoymin</groupId>
+            <artifactId>knife4j-spring-boot-starter</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.github.xiaoymin</groupId>
+            <artifactId>swagger-bootstrap-ui</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>io.swagger</groupId>
+            <artifactId>swagger-models</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger-ui</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.github.pagehelper</groupId>
+            <artifactId>pagehelper-spring-boot-starter</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.wudgaby.platform</groupId>
+            <artifactId>logger-spring-boot-starter</artifactId>
+            <version>${starter.version}</version>
+        </dependency>
+
+        <!--www.jitpack.io-->
+        <dependency>
+            <groupId>com.github.core-lib</groupId>
+            <artifactId>xjar</artifactId>
+            <version>4.0.1</version>
+            <!--如果使用 JUnit 测试类来运行加密可以将 XJar 依赖的 scope 设置为 test.-->
+            <!-- <scope>test</scope> -->
+        </dependency>
+
+        <dependency>
+            <groupId>com.github.core-lib</groupId>
+            <artifactId>xjar-maven-plugin</artifactId>
+            <version>4.0.1</version>
+        </dependency>
+    </dependencies>
+
+    <repositories>
+        <repository>
+            <id>jitpack.io</id>
+            <url>https://jitpack.io</url>
+        </repository>
+    </repositories>
+
+    <!-- 设置 jitpack.io 插件仓库 -->
+    <pluginRepositories>
+        <pluginRepository>
+            <id>jitpack.io</id>
+            <url>https://jitpack.io</url>
+        </pluginRepository>
+    </pluginRepositories>
+
+    <build>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <excludes>
+                    <exclude>application-*.yml</exclude>
+                </excludes>
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+                <!--引入所需环境的配置文件-->
+                <filtering>true</filtering>
+                <includes>
+                    <include>application-${profile.active}.yml</include>
+                </includes>
+            </resource>
+        </resources>
+
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <!--<configuration>
+                    <executable>false</executable>
+                </configuration>-->
+            </plugin>
+
+            <!--<plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>${spring.boot.version}</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>-->
+            <!--<plugin>
+                <groupId>com.spotify</groupId>
+                <artifactId>docker-maven-plugin</artifactId>
+                <version>1.2.2</version>
+
+                &lt;!&ndash;registry外部访问 必须使用https 参考配置:https://segmentfault.com/a/1190000015108428&ndash;&gt;
+                <configuration>
+                    <dockerHost>http://182.92.203.94:2375</dockerHost>
+                    &lt;!&ndash;这里要注意的是，imageName必须符合正则[a-z0-9-_.]，docker的imageName只能是小写字母，数字，点号，下划线&ndash;&gt;
+                    <imageName>${docker.registryUrl}/${docker.image.prefix}/${project.artifactId}</imageName>
+                    <dockerDirectory>${project.basedir}/src/main/docker</dockerDirectory>
+                    &lt;!&ndash;<serverId>myDocker</serverId>&ndash;&gt;
+                    &lt;!&ndash;<registryUrl>http://182.92.203.94:5000</registryUrl>&ndash;&gt;
+                    <forceTags>true</forceTags>
+                    <resources>
+                        <resource>
+                            <targetPath>/</targetPath>
+                            <directory>${project.build.directory}</directory>
+                            <include>${project.build.finalName}.jar</include>
+                        </resource>
+                    </resources>
+                    <imageTags>
+                        &lt;!&ndash;<imageTag>${project.version}</imageTag>&ndash;&gt;
+                        <imageTag>latest</imageTag>
+                    </imageTags>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>build-image</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>build</goal>
+                        </goals>
+                    </execution>
+                    &lt;!&ndash;<execution>
+                        <id>tag-image</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>tag</goal>
+                        </goals>
+                        <configuration>
+                            <image>${docker.image.prefix}/${project.artifactId}</image>
+                            <newName>${docker.image.prefix}/${project.artifactId}:1.0.0</newName>
+                        </configuration>
+                    </execution>&ndash;&gt;
+                    <execution>
+                        <id>push-image</id>
+                        <phase>deploy</phase>
+                        <goals>
+                            <goal>push</goal>
+                        </goals>
+                        <configuration>
+                            <imageName>${docker.registryUrl}/${docker.image.prefix}/${project.artifactId}</imageName>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>-->
+
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>findbugs-maven-plugin</artifactId>
+                <version>3.0.4</version>
+            </plugin>
+
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>versions-maven-plugin</artifactId>
+                <version>2.8.1</version>
+            </plugin>
+
+            <!--打包前端-->
+            <!--<plugin>
+                <groupId>com.github.eirslett</groupId>
+                <artifactId>frontend-maven-plugin</artifactId>
+                <version>1.10.3</version>
+            </plugin>-->
+
+            <!--代码混淆-->
+            <!--<plugin>
+                <groupId>com.github.wvengen</groupId>
+                <artifactId>proguard-maven-plugin</artifactId>
+                <version>2.0.14</version>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals><goal>proguard</goal></goals>
+                    </execution>
+                </executions>
+                <dependencies>
+                    <dependency>
+                        <groupId>net.sf.proguard</groupId>
+                        <artifactId>proguard-base</artifactId>
+                        <version>6.2.2</version>
+                        <scope>runtime</scope>
+                    </dependency>
+                </dependencies>
+                <configuration>
+                    <proguardVersion>6.0.2</proguardVersion>
+                    &lt;!&ndash; 需要做混淆的jar或目录 &ndash;&gt;
+                    <injar>${project.build.finalName}.jar</injar>
+                    &lt;!&ndash;class 混淆后输出的jar包 &ndash;&gt;
+                    <outjar>${project.build.finalName}-pg.jar</outjar>
+                    &lt;!&ndash;输出目录&ndash;&gt;
+                    <outputDirectory>${project.build.directory}</outputDirectory>
+                    &lt;!&ndash; 是否将生成的PG文件安装部署 &ndash;&gt;
+                    <attach>true</attach>
+                    &lt;!&ndash; 是否混淆 &ndash;&gt;
+                    <obfuscate>true</obfuscate>
+                    &lt;!&ndash; 指定生成文件分类 &ndash;&gt;
+                    <attachArtifactClassifier>pg</attachArtifactClassifier>
+                    &lt;!&ndash; ProGuard配置参数(可引用cfg配置文件) &ndash;&gt;
+                    <options>
+                        &lt;!&ndash; JDK目标版本1.8&ndash;&gt;
+                        <option>-target 1.8</option>
+                        &lt;!&ndash; 不做收缩（删除注释、未被引用代码） &ndash;&gt;
+                        <option>-dontshrink</option>
+                        &lt;!&ndash; 不做优化（变更代码实现逻辑） &ndash;&gt;
+                        <option>-dontoptimize</option>
+                        &lt;!&ndash; 不路过非公用类文件及成员 &ndash;&gt;
+                        <option>-dontskipnonpubliclibraryclasses</option>
+                        <option>-dontskipnonpubliclibraryclassmembers</option>
+                        &lt;!&ndash; 优化时允许访问并修改有修饰符的类和类的成员 &ndash;&gt;
+                        <option>-allowaccessmodification</option>
+                        &lt;!&ndash; 确定统一的混淆类的成员名称来增加混淆 &ndash;&gt;
+                        <option>-useuniqueclassmembernames</option>
+                        &lt;!&ndash; 不混淆所有包名，本人测试混淆后WEB项目问题实在太多，毕竟Spring配置中有
+                        大量固定写法的包名 &ndash;&gt;
+                        <option>-keeppackagenames</option>
+                        <option>-adaptclassstrings</option>
+                        &lt;!&ndash; 不混淆所有特殊的类 &ndash;&gt;
+                        <option>-keepattributes
+                            Exceptions,InnerClasses,Signature,Deprecated,SourceFile,LineNumberTable,LocalVariable*Table,*Annotation*,Synthetic,EnclosingMethod</option>
+                        <option>-keepparameternames</option>
+                        <option>-dontusemixedcaseclassnames</option>
+                        <option>-dontskipnonpubliclibraryclasses</option>
+                        <option>-verbose</option>
+                        <option>-ignorewarnings</option>
+                        <option>-keepclassmembers class * {
+                            @org.springframework.beans.factory.annotation.Autowired *;
+                            @org.springframework.beans.factory.annotation.Value *;
+                            }
+                        </option>
+                        &lt;!&ndash; 不混淆main方法 &ndash;&gt;
+                        <option>-keep class com.wudgaby.platform.sys.SysBootstrap { *; }</option>
+
+                        &lt;!&ndash; 不混淆所有的set/get方法 &ndash;&gt;
+                        <option>-keepclassmembers public class * {void set*(***);*** get*();}</option>
+                        &lt;!&ndash; 不混淆包中的所有类以及类的属性及方法，实体包，混淆了会导致ORM框架及前端无法识别 &ndash;&gt;
+
+                        &lt;!&ndash; 不对包类的类名进行混淆，但对类中的属性和方法混淆 &ndash;&gt;
+                        <option>-keep class com.wudgaby.platform.sys.controller.** </option>
+                        <option>-keep class com.wudgaby.platform.sys.service.** </option>
+                        &lt;!&ndash; 不混淆包下的所有类名，且类中的方法也不混淆 &ndash;&gt;
+                        <option>-keep class com.wudgaby.platform.sys.entity.** {*;}</option>
+                        <option>-keep class com.wudgaby.platform.sys.dto.** {*;}</option>
+
+                        <option>-keep class com.wudgaby.platform.sys.mapper.config.**{*;}</option>
+                        <option>-keep class com.wudgaby.platform.sys.mapper.** {*;}</option>
+                        &lt;!&ndash;不显示警告信息&ndash;&gt;
+                        <option>-dontwarn **</option>
+                    </options>
+                    <libs>
+                        &lt;!&ndash; 混淆时需要引用的java库，这些库的类不会做混淆 &ndash;&gt;
+                        <lib>${java.home}/lib/rt.jar</lib>
+                        <lib>${java.home}/lib/jce.jar</lib>
+                    </libs>
+                </configuration>
+            </plugin>-->
+
+            <!--jar加密 测试可行-->
+            <plugin>
+                <groupId>com.github.core-lib</groupId>
+                <artifactId>xjar-maven-plugin</artifactId>
+                <version>4.0.1</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>build</goal>
+                        </goals>
+                        <phase>package</phase>
+                        <configuration>
+                            <password>jarpwd</password>
+                            <includes>
+                                <include>com/wudgaby/**</include>
+                                <include>mapper/*Mapper.xml</include>
+                            </includes>
+                            <excludes>
+                                <exclude>static/**</exclude>
+                                <exclude>META-INF/resources/**</exclude>
+                            </excludes>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+    <profiles>
+        <profile>
+            <id>dev</id>
+            <properties>
+                <profile.active>dev</profile.active>
+            </properties>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+        </profile>
+        <profile>
+            <id>test</id>
+            <properties>
+                <profile.active>test</profile.active>
+            </properties>
+        </profile>
+        <profile>
+            <id>prod</id>
+            <properties>
+                <profile.active>prod</profile.active>
+            </properties>
+        </profile>
+    </profiles>
+</project>

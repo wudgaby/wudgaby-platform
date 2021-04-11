@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Ela Admin - HTML5 Admin Template</title>
+    <meta name="description" content="Ela Admin - HTML5 Admin Template">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link type="text/css" rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+
+</head>
+<body class="bg-dark">
+
+<div class="sufee-login d-flex align-content-center flex-wrap">
+    <div class="container">
+        <div class="login-content">
+            <div class="login-logo">
+                <h1 style="color: #57bf95;">登录</h1>
+            </div>
+            <div class="login-form">
+                <form th:action="@{/login}" method="post">
+                    <div class="form-group">
+                        <label>Username</label>
+                        <input type="text" class="form-control" name="username" placeholder="Username">
+                    </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" class="form-control" name="password" placeholder="Password">
+                    </div>
+                    <div class="form-group">
+                        <label>验证码</label>
+                        <input type="text" class="form-control" name="verifyCode" placeholder="verifyCode">
+                    </div>
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox"> Remember Me
+                        </label>
+                        <label class="pull-right">
+                            <a href="#">Forgotten Password?</a>
+                        </label>
+                        <label class="pull-right">
+                            <a th:href="@{/mobileLogin}">手机登录</a>
+                        </label>
+                    </div>
+                    <button type="submit" class="btn btn-success btn-flat m-b-30 m-t-30" style="font-size: 18px;">登录</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript" th:src="@{/js/jquery-2.0.3.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/bootstrap.min.js}"></script>
+
+</body>
+</html>

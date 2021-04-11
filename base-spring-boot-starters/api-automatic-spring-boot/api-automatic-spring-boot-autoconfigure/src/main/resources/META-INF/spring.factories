@@ -1,0 +1,2 @@
+org.springframework.boot.env.EnvironmentPostProcessor=\
+    net.cnns.zy.starter.autoregister.config.MqConfigEnvironmentPostProcessor

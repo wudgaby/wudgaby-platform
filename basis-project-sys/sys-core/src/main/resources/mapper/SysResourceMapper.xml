@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wudgaby.platform.sys.mapper.SysResourceMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.wudgaby.platform.sys.entity.SysResource">
+    <result column="id" property="id" />
+    <result column="create_time" property="createTime" />
+    <result column="update_time" property="updateTime" />
+    <result column="create_by" property="createBy" />
+    <result column="update_by" property="updateBy" />
+        <result column="parent_id" property="parentId" />
+        <result column="parent_ids" property="parentIds" />
+        <result column="sort" property="sort" />
+        <result column="res_name" property="resName" />
+        <result column="res_url" property="resUrl" />
+        <result column="res_type" property="resType" />
+        <result column="res_method" property="resMethod" />
+        <result column="target" property="target" />
+        <result column="status" property="status" />
+        <result column="perm_code" property="permCode" />
+        <result column="icon" property="icon" />
+        <result column="component" property="component" />
+        <result column="class_name" property="className" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,
+        create_time,
+        update_time,
+        create_by,
+        update_by,
+        parent_id, parent_ids, sort, res_name, res_url, res_type, res_method, target, status, perm_code, icon, component, class_name
+    </sql>
+
+</mapper>

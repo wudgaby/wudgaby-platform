@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wudgaby.platform.flowable.helper.mapper.FlowConfigMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.wudgaby.platform.flowable.helper.entity.FlowConfig">
+        <id column="id" property="id" />
+        <result column="name" property="name" />
+        <result column="group" property="group" />
+        <result column="defkey" property="defkey" />
+        <result column="desc" property="desc" />
+        <result column="auto_repeat" property="autoRepeat" />
+        <result column="auto_approve" property="autoApprove" />
+        <result column="comment_hint" property="commentHint" />
+        <result column="version" property="version" />
+        <result column="create_time" property="createTime" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, name, group, defkey, desc, auto_repeat, auto_approve, comment_hint, version, create_time
+    </sql>
+
+</mapper>

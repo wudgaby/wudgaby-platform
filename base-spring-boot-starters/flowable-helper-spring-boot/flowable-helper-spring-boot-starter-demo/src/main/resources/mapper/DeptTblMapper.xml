@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wudgaby.platform.flowable.helper.mapper.DeptTblMapper">
+
+    <select id="getDeptByUserId" resultType="com.wudgaby.platform.flowable.helper.entity.DeptTbl">
+        select d.*
+        from oa_user t
+        INNER JOIN oa_dept d on t.user_dept = d.dept_id
+        where t.user_id = #{userId} and d.dept_state = 0
+    </select>
+</mapper>

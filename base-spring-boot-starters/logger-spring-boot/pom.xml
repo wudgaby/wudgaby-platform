@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>base-spring-boot-starters</artifactId>
+        <groupId>com.wudgaby.platform</groupId>
+        <version>${revision}</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>logger-spring-boot</artifactId>
+    <packaging>pom</packaging>
+    <name>操作日志-启动器 - DONE</name>
+    <modules>
+        <module>logger-spring-boot-autoconfigure</module>
+        <module>logger-spring-boot-starter</module>
+        <module>logger-spring-boot-sample</module>
+        <module>logger-api</module>
+    </modules>
+
+
+</project>

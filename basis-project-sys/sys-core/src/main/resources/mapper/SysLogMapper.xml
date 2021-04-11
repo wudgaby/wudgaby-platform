@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wudgaby.platform.sys.mapper.SysLogMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.wudgaby.platform.sys.entity.SysLog">
+    <result column="id" property="id" />
+    <result column="create_time" property="createTime" />
+    <result column="update_time" property="updateTime" />
+    <result column="create_by" property="createBy" />
+    <result column="update_by" property="updateBy" />
+        <result column="user_id" property="userId" />
+        <result column="user_name" property="userName" />
+        <result column="action" property="action" />
+        <result column="desc" property="desc" />
+        <result column="user_agent" property="userAgent" />
+        <result column="req_url" property="reqUrl" />
+        <result column="req_method" property="reqMethod" />
+        <result column="req_param" property="reqParam" />
+        <result column="client_ip" property="clientIp" />
+        <result column="server_addr" property="serverAddr" />
+        <result column="exception_info" property="exceptionInfo" />
+        <result column="execute_time" property="executeTime" />
+        <result column="type" property="type" />
+        <result column="os" property="os" />
+        <result column="browser" property="browser" />
+        <result column="is_succeed" property="succeed" />
+        <result column="response" property="response" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,
+        create_time,
+        update_time,
+        create_by,
+        update_by,
+        user_id, user_name, action, desc, user_agent, req_url, req_method, req_param, client_ip, server_addr, exception_info, execute_time, type, os, browser, is_succeed, response
+    </sql>
+
+</mapper>

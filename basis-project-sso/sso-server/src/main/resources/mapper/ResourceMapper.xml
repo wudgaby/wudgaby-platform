@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wudgaby.platform.sso.server.mapper.ResourceMapper">
+
+    <select id="listResourceByUserId" resultType="com.wudgaby.platform.sso.server.entity.Resource">
+        select * from sys_resource res
+        join sys_role_resource srr on res.resource_id = srr.resource_id
+        join sys_user_role sur on sur.role_id = srr.role_id
+        where sur.user_id = #{userId} and sys_code = #{sysCode}
+    </select>
+</mapper>

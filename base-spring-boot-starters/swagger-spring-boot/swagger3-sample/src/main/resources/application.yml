@@ -1,0 +1,10 @@
+server:
+  port: 8900
+
+# ===== 自定义swagger配置 ===== #
+swagger:
+  enable: true
+  application-name: swagger3-demo
+  application-version: 1.0
+  application-description: springfox swagger 3.0整合Demo
+  try-host: http://localhost:${server.port}

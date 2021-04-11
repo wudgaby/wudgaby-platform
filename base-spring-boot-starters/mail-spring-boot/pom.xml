@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.wudgaby.platform</groupId>
+        <artifactId>base-spring-boot-starters</artifactId>
+        <version>${revision}</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+
+    <artifactId>mail-spring-boot</artifactId>
+    <packaging>pom</packaging>
+    <name>邮件收发-启动器 - DONE</name>
+
+    <modules>
+        <module>mail-spring-boot-autoconfigure</module>
+        <module>mail-spring-boot-starter</module>
+        <module>mail-spring-boot-starter-demo</module>
+    </modules>
+</project>

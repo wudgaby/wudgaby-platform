@@ -1,0 +1,71 @@
+server:
+  port: 18888
+  #max-http-header-size: 1MB
+  tomcat:
+    uri-encoding: UTF-8
+    max-threads: 1000
+    max-connections: 2000
+    min-spare-threads: 30
+    connection-timeout: 20000
+  undertow:
+    io-threads: 16
+    worker-threads: 256
+    buffer-size: 1024
+  servlet:
+    session:
+      timeout: 1800
+
+spring:
+  mvc:
+    async:
+      request-timeout: 20000
+    throw-exception-if-no-handler-found: true
+  main:
+    allow-bean-definition-overriding: true
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 100MB
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+  application:
+    name: 工作流助手
+  #--------------------------charset--------------------------
+  http:
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
+
+# Mybatis-Plus 配置
+mybatis-plus:
+  mapper-locations: classpath*:/mapper/**/*.xml
+  type-aliases-package: net.cnns.caseoa.server.entity
+  type-enums-package: net.cnns.caseoa.server.enums
+
+  global-config:
+    db-config:
+      insert-strategy: not_null
+      update-strategy: not_null
+      #select-strategy: default
+      id-type: auto
+      table-underline: true
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+
+logging:
+  config: classpath:logback-spring.xml
+log:
+  path: /home/logs/caseoa
+
+flowable:
+  labelFontName: 宋体
+  activityFontName: 宋体
+  annotationFontName: 宋体
+  database-schema-update: true
+  check-process-definitions: false
+
+#swagger配置
+swagger:
+  enabled: true

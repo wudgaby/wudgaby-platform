@@ -1,0 +1,3 @@
+spring:
+  application:
+    name: mail-spring-boot-demo

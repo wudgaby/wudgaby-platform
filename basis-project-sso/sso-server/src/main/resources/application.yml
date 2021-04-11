@@ -1,0 +1,36 @@
+server:
+  port: 9900
+
+spring:
+  application:
+    name: sso-server
+  http:
+    encoding:
+      charset: UTF-8
+  mvc:
+    throw-exception-if-no-handler-found: false
+  datasource:
+    url: jdbc:mysql://localhost:3306/sso?useSSL=false&characterEncoding=UTF-8&serverTimezone=UTC
+    password: root
+    username: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  redis:
+    host: localhost
+    port: 6379
+    password: redis-pwd
+  thymeleaf:
+    cache: false
+
+logging:
+  config: classpath:logback-spring.xml
+
+mybatis-plus:
+  mapper-locations: classpath:mapper/**/*Mapper.xml
+  typeAliasesPackage: com.wudgaby.platform.sso.server.entity
+  type-enums-package: com.wudgaby.platform.sso.server.enmus
+
+swagger:
+  enabled: true
+
+sso:
+  session-timeout: 60

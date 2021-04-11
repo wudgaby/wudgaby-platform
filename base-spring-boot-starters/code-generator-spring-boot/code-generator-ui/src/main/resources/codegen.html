@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="cn">
+<head>
+    <meta charset="utf-8">
+    <title>代码生成器</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="webjars/layui/css/layui.css" media="all">
+    <link rel="shortcut icon" href="static/favicon.ico"/>
+</head>
+
+<style>
+    .layui-form-pane .layui-form-label{
+        width: 150px;
+    }
+    .layui-form-pane .layui-input-block {
+        margin-left: 150px;
+    }
+</style>
+
+<body>
+
+<!--<ul class="layui-nav" lay-filter="">
+    <li class="layui-nav-item"><a href="javascript:;">代码生成</a></li>
+</ul>-->
+
+<fieldset class="layui-elem-field layui-field-title" style="margin-top: 10px;">
+    <legend>代码生成</legend>
+</fieldset>
+
+<div class="layui-fluid">
+    <div class="layui-row">
+        <div class="layui-col-md4">
+            <form id="searchForm" style="margin: 10px 10px;" class="layui-form layui-form-pane" onsubmit="return false;">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">表名</label>
+                    <div class="layui-input-block">
+                        <input type="text" id="txtTableName" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">数据库URL</label>
+                    <div class="layui-input-block">
+                        <input type="text" id="txtUrl" value="jdbc:mysql://localhost:3306/demo" name="url" placeholder="jdbc:mysql://localhost:3306/demo" autocomplete="off"
+                               class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">数据库账号</label>
+                    <div class="layui-input-block">
+                        <input type="text" id="txtUsername" name="username" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">数据库密码</label>
+                    <div class="layui-input-block">
+                        <input type="text" id="txtPassword" name="password" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <div class="layui-input-block">
+                        <input type="button" class="layui-btn layui-btn-normal" id="btnSearch" value="搜索" lay-filter="formsearch">
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <label class="layui-form-label">表前缀</label>
+                    <div class="layui-input-block">
+                        <input type="text" id="txtTablePrefix" name="tablePrefix" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <label class="layui-form-label">项目包名</label>
+                    <div class="layui-input-block">
+                        <input type="text" id="txtBasePackage" name="basePackage" placeholder="com.wudgaby" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <label class="layui-form-label">controller包名</label>
+                    <div class="layui-input-block">
+                        <input type="text" id="txtControllerPackage" name="controllerPackage" placeholder="controller" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <label class="layui-form-label">entity包名</label>
+                    <div class="layui-input-block">
+                        <input type="text" id="txtEntityPackage" name="entityPackage" placeholder="model.entity" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <label class="layui-form-label">entity父类</label>
+                    <div class="layui-input-block">
+                        <input type="text" id="txtSuperEntityClass" name="superEntityClass" value="com.wudgaby.platform.core.entity.BaseEntity" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <label class="layui-form-label">公共列名</label>
+                    <div class="layui-input-block">
+                        <input type="text" id="txtSuperEntityColumns" name="superEntityColumns" placeholder="id,create_time,update_time,create_by,update_by" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <label class="layui-form-label">service包名</label>
+                    <div class="layui-input-block">
+                        <input type="text" id="txtServicePackage" name="servicePackage" placeholder="service" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <label class="layui-form-label">serviceImpl包名</label>
+                    <div class="layui-input-block">
+                        <input type="text" id="txtServiceImplPackage" name="serviceImplPackage" placeholder="service.impl" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <label class="layui-form-label">mapper包名</label>
+                    <div class="layui-input-block">
+                        <input type="text" id="txtMapperPackage" name="mapperPackage" placeholder="mapper" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <label class="layui-form-label">mapper.xml包名</label>
+                    <div class="layui-input-block">
+                        <input type="text" id="txtXmlPackage" name="xmlPackage" placeholder="mapper.xml" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <div class="layui-input-block">
+                        <input type="button" class="layui-btn layui-btn-normal" id = "btnCodeGen" value="生成代码">
+                        <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div class="layui-col-md8">
+            <fieldset class="layui-elem-field">
+                <legend>
+                    <input type="button" class="layui-btn layui-btn-normal" id = "btnClearSelected" value="清空选中">
+                </legend>
+                <div id="showTableDiv" class="layui-field-box"></div>
+            </fieldset>
+            <table class="layui-hide" id="tableList" lay-filter="tableList"></table>
+        </div>
+    </div>
+</div>
+
+<script src="webjars/layui/layui.js" charset="utf-8"></script>
+<script src="webjars/jquery-1.11.3.min.js" charset="utf-8"></script>
+
+<script>
+    var ctxPath = getContextPath();
+    var tableIns;
+    var selectedTables = [];
+
+    layui.use(['form', 'table'], function () {
+        var table = layui.table;
+        var form = layui.table;
+
+        tableIns = table.render({
+            elem: '#tableList'
+            , title: "数据表"
+            , url: ctxPath + '/codeGen/tables'
+            , parseData: function (res) { //res 即为原始返回的数据
+                return {
+                    "code": res.code, //解析接口状态
+                    "msg": res.message, //解析提示文本
+                    "count": res.totalData, //解析数据长度
+                    "data": res.data //解析数据列表
+                };
+            }
+            , request: {
+                pageName: 'pageNum' //页码的参数名称，默认：page
+                , limitName: 'pageCount' //每页数据量的参数名，默认：limit
+            }
+            , response: {
+                statusName: 'code' //规定数据状态的字段名称，默认：code
+                , statusCode: 1 //规定成功的状态码，默认：0
+                , msgName: 'msg' //规定状态信息的字段名称，默认：msg
+                , countName: 'count' //规定数据总数的字段名称，默认：count
+                , dataName: 'data' //规定数据列表的字段名称，默认：data
+            }
+            , cols: [[
+                {type: 'checkbox', width: '10%'}
+                , {field: 'tableName', width: '20%', title: '表名', sort: true}
+                , {field: 'engine', width: '10%', title: '引擎'}
+                , {field: 'createTime', width: '20%', title: '创建时间', sort: true}
+                , {field: 'tableComment', width: '40%', title: '注释'}
+            ]]
+            , page: true
+            , loading: true
+            , limit: 15
+            , limits: [10, 15, 50, 100]
+        });
+
+        table.on('checkbox(tableList)', function(obj){
+            /*console.log(obj.checked); //当前是否选中状态
+            console.log(obj.data); //选中行的相关数据
+            console.log(obj.type); //如果触发的是全选，则为：all，如果触发的是单选，则为：one*/
+
+            var checkStatus = table.checkStatus('tableList');
+            /*var supplierList = table.cache.tableList;
+            console.log(checkStatus.data); //获取选中行的数据
+            console.log(checkStatus.data.length); //获取选中行数量，可作为是否有选中行的条件
+            console.log(checkStatus.isAll ); //表格是否全选*/
+
+            checkStatus.data.forEach(function(item, index, arr){
+                selectedTables.push(item.tableName);
+            });
+            showSelectedTables();
+        });
+
+        /*form.on('submit(*)', function(data){
+            return false;
+        });*/
+
+        $("#btnSearch").click(function(){
+            var searchParam = {};
+            searchParam.tableName=$("#txtTableName").val();
+            searchParam.url=$("#txtUrl").val();
+            searchParam.username=$("#txtUsername").val();
+            searchParam.password=$("#txtPassword").val();
+
+            /*for (attr in searchParam)   {
+                if(!searchParam[attr]){
+                    delete searchParam[attr];
+                }
+            }*/
+
+            tableIns.reload({
+                where: searchParam
+                ,page: {
+                    curr: 1 //重新从第 1 页开始
+                }
+            });
+        });
+
+        $("#btnCodeGen").click(function(){
+            var paramObj = $("#searchForm").serializeObject();
+            if(selectedTables){
+                paramObj.tableNames = selectedTables.join(",");
+            }
+
+            for (attr in paramObj)   {
+                if(!paramObj[attr]){
+                    delete paramObj[attr];
+                }
+            }
+
+            window.location.href = ctxPath + "/codeGen/genCode?" + $.param(paramObj);
+        });
+
+        $("#btnClearSelected").click(function(){
+            selectedTables = [];
+            showSelectedTables();
+        });
+    });
+
+    function getContextPath() {
+        var pathName = document.location.pathname;
+        var index = pathName.substr(1).indexOf("/");
+        var result = pathName.substr(0, index + 1);
+        return result;
+    }
+
+    function showSelectedTables(){
+        if(selectedTables && selectedTables.length > 1){
+            selectedTables = Array.from(new Set(selectedTables));
+        }
+        $("#showTableDiv").text(selectedTables.join(", "));
+    }
+
+    jQuery.prototype.serializeObject = function () {
+        var a,o,h,i,e;
+        a = this.serializeArray();
+        o={};
+        h=o.hasOwnProperty;
+        for(i=0;i<a.length;i++){
+            e=a[i];
+            if(!h.call(o,e.name)){
+                o[e.name]=e.value;
+            }
+        }
+        return o;
+    }
+</script>
+
+</body>
+</html>

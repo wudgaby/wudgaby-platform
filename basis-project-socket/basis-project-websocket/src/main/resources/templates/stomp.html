@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>stomp</title>
+    <link href="https://cdn.bootcss.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/sockjs-client/1.1.4/sockjs.min.js"></script>
+    <script src="https://cdn.bootcss.com/stomp.js/2.3.3/stomp.min.js"></script>
+
+</head>
+<body>
+<noscript><h2 style="color: #ff0000">看起来你的浏览器不支持Javascript!Websocket依赖于Javascript
+    启用。请使
+    Javascript和重载这个页面!</h2></noscript>
+<div id="main-content" class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <form class="form-inline">
+                <div class="form-group">
+                    <label for="connect">注册用户，输入名称:</label>
+                    <input type="text" id="username" class="form-control" placeholder="Your name here...">
+                    <button id="confirm" class="btn btn-default" type="submit">确认</button>
+                </div>
+                <div class="form-group">
+                    <label for="connect">WebSocket连接:</label>
+                    <button id="connect" class="btn btn-default" type="submit">连接</button>
+                    <button id="disconnect" class="btn btn-default" type="submit" disabled="disabled">断开连接
+                    </button>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-6">
+            <form class="form-inline">
+                <div class="form-group">
+                    <label for="name">你叫什么名字?</label>
+                    <input type="text" id="name" class="form-control" placeholder="Your name here...">
+                </div>
+                <button id="send" class="btn btn-default" type="submit">发送</button>
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <table id="conversation" class="table table-striped">
+                <thead>
+                <tr>
+                    <th>问候</th>
+                </tr>
+                </thead>
+                <tbody id="greetings">
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<script th:inline="javascript">
+    /**
+     *
+     */
+    var stompClient = null;
+
+    var url = "ws://" + window.location.host + "/websocket/stomp";
+    function setConnected(connected) {
+        $("#connect").prop("disabled", connected);
+        $("#disconnect").prop("disabled", !connected);
+        if (connected) {
+            $("#conversation").show();
+        }
+        else {
+            $("#conversation").hide();
+        }
+        $("#greetings").html("");
+    }
+    var username = "";
+    function connect() {
+        var socket = new SockJS("/websocket/stomp");
+        stompClient = Stomp.client(url);
+
+        /*var socket = new SockJS("/sockjs/websocket/stomp");
+        stompClient = Stomp.over(socket);*/
+
+        //stompClient.debug = null;
+        stompClient.connect({}, function (frame) {
+            setConnected(true);
+            console.log('Connected: ' + frame);
+            stompClient.subscribe('/topic/hello', function (greeting) {
+                showGreeting('/topic/hello == ' + greeting.body);
+            });
+            stompClient.subscribe('/topic/greetings', function (greeting) {
+                showGreeting('/topic/greetings == ' + greeting.body);
+            });
+            stompClient.subscribe('/user/topic/chat', function (greeting) {
+                showGreeting('/user/topic/chat == ' + greeting.body);
+            });
+            stompClient.subscribe('/user/topic/sub', function (greeting) {
+                showGreeting('/user/topic/sub  == ' + greeting.body);
+            });
+            stompClient.subscribe('/user/topic/errors', function (greeting) {
+                showGreeting('/user/errors == ' + greeting.body);
+            });
+            stompClient.subscribe('/topic/sub', function (greeting) {
+                showGreeting('/topic/sub == ' + greeting.body);
+            });
+            stompClient.subscribe('/app/subscribe', function (greeting) {
+                showGreeting('/app/subscribe == ' + greeting.body);
+            });
+            stompClient.send("/app/subscribe", {},$("#name").val());
+            stompClient.send("/app/hello", {},$("#name").val());
+        });
+
+        //若使用STOMP 1.1 版本，默认开启了心跳检测机制（默认值都是10000ms）
+        stomp.heartbeat.outgoing = 20000;
+        //客户端不从服务端接收心跳包
+        stomp.heartbeat.incoming = 0;
+    }
+
+    function disconnect() {
+        if (stompClient !== null) {
+            stompClient.disconnect();
+        }
+        setConnected(false);
+        console.log("Disconnected");
+    }
+
+    function sendName() {
+        stompClient.send("/app/hello", {},$("#name").val());
+        stompClient.send("/app/send2User", {},$("#name").val());
+    }
+
+    function showGreeting(message) {
+        $("#greetings").append("<tr><td>" + message + "</td></tr>");
+    }
+
+    $(function () {
+        $("form").on('submit', function (e) {
+            e.preventDefault();
+        });
+        $( "#connect" ).click(function() { connect(); });
+        $( "#disconnect" ).click(function() { disconnect(); });
+        $( "#send" ).click(function() { sendName(); });
+        $("#confirm").click(function(){username=$("#username").val();disconnect();connect();});
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wudgaby.platform.sys.mapper.SysInMailFileMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.wudgaby.platform.sys.entity.SysInMailFile">
+    <result column="id" property="id" />
+    <result column="create_time" property="createTime" />
+        <result column="im_id" property="imId" />
+        <result column="file_name" property="fileName" />
+        <result column="file_url" property="fileUrl" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,
+        create_time,
+        im_id, file_name, file_url
+    </sql>
+
+</mapper>
