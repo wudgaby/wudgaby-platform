@@ -12,15 +12,11 @@
 	
 	<artifactId>retrofit-spring-boot-starter</artifactId>
 
-	<properties>
-		<retrofit-spring-boot.version>${revision}</retrofit-spring-boot.version>
-	</properties>
-
 	<dependencies>
 		<dependency>
 			<groupId>com.wudgaby.platform</groupId>
 			<artifactId>retrofit-spring-boot-autoconfigure</artifactId>
-			<version>${retrofit-spring-boot.version}</version>
+			<version>${project.version}</version>
 		</dependency>
 	</dependencies>
 

@@ -22,6 +22,8 @@
 
 	<properties>
 		<spring-cloud-context.version>2.2.2.RELEASE</spring-cloud-context.version>
+		<maven.install.skip>true</maven.install.skip>
+		<maven.deploy.skip>true</maven.deploy.skip>
 	</properties>
 
 	<dependencyManagement>
