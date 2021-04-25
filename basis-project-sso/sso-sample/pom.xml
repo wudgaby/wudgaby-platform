@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>basis-project-sso-sample</artifactId>
+    <artifactId>sso-sample</artifactId>
     <packaging>pom</packaging>
     <version>${revision}</version>
     <description>单点登录示例</description>

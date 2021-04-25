@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>basis-project-sso-server</artifactId>
+    <artifactId>sso-server</artifactId>
     <description>sso-服务端</description>
 
     <dependencies>
