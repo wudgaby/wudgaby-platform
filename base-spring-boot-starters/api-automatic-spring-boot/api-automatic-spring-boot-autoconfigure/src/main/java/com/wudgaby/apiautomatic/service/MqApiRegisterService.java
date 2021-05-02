@@ -16,16 +16,18 @@ import java.util.List;
  * @Desc :   TODO
  */
 @Slf4j
-public class ResourceService {
+public class MqApiRegisterService implements ApiRegisterService {
     @Autowired
     private ResourceSource resourceSource;
 
+    @Override
     public void register(ApiDTO apiDTO) {
         Message message = MessageBuilder.withPayload(apiDTO).build();
         resourceSource.resourceChannel().send(message);
         log.info("注册资源: {}", apiDTO);
     }
 
+    @Override
     public void batchRegister(List<ApiDTO> apiDTOList) {
         Message message = MessageBuilder.withPayload(apiDTOList).build();
         resourceSource.resourceChannel().send(message);

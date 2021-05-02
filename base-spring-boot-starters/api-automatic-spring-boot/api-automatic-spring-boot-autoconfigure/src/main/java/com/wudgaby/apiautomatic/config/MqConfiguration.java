@@ -1,8 +1,8 @@
 package com.wudgaby.apiautomatic.config;
 
-import com.wudgaby.apiautomatic.extend.WebServerStartedListener;
 import com.wudgaby.apiautomatic.mq.ResourceSource;
-import com.wudgaby.apiautomatic.service.ResourceService;
+import com.wudgaby.apiautomatic.service.MqApiRegisterService;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.cloud.stream.annotation.EnableBinding;
 import org.springframework.context.annotation.Bean;
 
@@ -13,15 +13,11 @@ import org.springframework.context.annotation.Bean;
  * @Date : 2019/9/2 14:37
  * @Desc :   TODO
  */
+@ConditionalOnProperty(value = "api.register.type", havingValue = "mq")
 @EnableBinding({ResourceSource.class})
 public class MqConfiguration {
     @Bean
-    public WebServerStartedListener webServerStartedListener() {
-        return new WebServerStartedListener();
-    }
-
-    @Bean
-    public ResourceService resourceService() {
-        return new ResourceService();
+    public MqApiRegisterService resourceService() {
+        return new MqApiRegisterService();
     }
 }

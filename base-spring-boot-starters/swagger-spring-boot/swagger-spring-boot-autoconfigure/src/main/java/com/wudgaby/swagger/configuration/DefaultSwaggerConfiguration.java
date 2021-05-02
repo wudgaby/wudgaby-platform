@@ -3,8 +3,12 @@ package com.wudgaby.swagger.configuration;
 import com.github.xiaoymin.knife4j.spring.annotations.EnableKnife4j;
 import com.google.common.base.Predicates;
 import io.swagger.annotations.ApiOperation;
+import lombok.AllArgsConstructor;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Conditional;
 import org.springframework.context.annotation.Configuration;
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;
@@ -14,6 +18,8 @@ import springfox.documentation.service.Contact;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
+
+import java.util.Optional;
 
 /**
  * @ClassName : DefaultSwaggerConfiguration
@@ -25,9 +31,14 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @Configuration
 @EnableSwagger2
 @EnableKnife4j
+@EnableConfigurationProperties(SwaggerProperties.class)
 @ConditionalOnProperty(name = "swagger.enabled", havingValue = "true", matchIfMissing = true)
+@AllArgsConstructor
 public class DefaultSwaggerConfiguration {
+    private final SwaggerProperties swaggerProperties;
 
+    //@Conditional(SwaggerCondition.class)
+    @ConditionalOnMissingBean
     @ConditionalOnProperty(name = "swagger.showDefaultGroup", havingValue = "true", matchIfMissing = true)
     @Bean(value = "defaultGroup")
     public Docket defaultGroup() {
@@ -43,11 +54,13 @@ public class DefaultSwaggerConfiguration {
 
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-                .title("默认接口文档")
-                .description("默认接口文档")
-                .termsOfServiceUrl("http://www.wudgaby.com")
-                .contact(new Contact("wudgaby", "www.wudgaby.com", "wudgaby@cnns.net"))
-                .version("1.0")
+                .title(Optional.ofNullable(swaggerProperties.getTitle()).orElse("默认接口文档"))
+                .description(Optional.ofNullable(swaggerProperties.getDescription()).orElse("默认接口文档"))
+                .termsOfServiceUrl(Optional.ofNullable(swaggerProperties.getTermsOfServiceUrl()).orElse("http://www.wudgaby.com"))
+                .contact(new Contact(Optional.ofNullable(swaggerProperties.getContact()).map(c->c.getEmail()).orElse("wudgaby"),
+                        Optional.ofNullable(swaggerProperties.getContact()).map(c->c.getUrl()).orElse("www.wudgaby.com"),
+                        Optional.ofNullable(swaggerProperties.getContact()).map(c->c.getEmail()).orElse("wudgaby@sina.com")))
+                .version(Optional.ofNullable(swaggerProperties.getVersion()).orElse("1.0"))
                 .build();
     }
 }

@@ -5,11 +5,11 @@ package com.wudgaby.apiautomatic.enums;
  * @Author :  WudGaby
  * @Version :  1.0
  * @Date : 2019/8/30 15:39
- * @Desc :   api资源状态
+ * @Desc :   注册类型
  */
-public enum ApiStatus {
-    /**禁用*/
-    DISABLE,
-    /**启用*/
-    ENABLED;
+public enum RegisterType {
+    /**redis*/
+    REDIS,
+    /**mq*/
+    MQ;
 }
