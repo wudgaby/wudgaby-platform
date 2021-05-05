@@ -32,6 +32,8 @@ public class AutoRegisterApiConfiguration {
         return new RedisApiRegisterService();
     }
 
+    @Bean
+    @ConditionalOnMissingBean
     @ConditionalOnProperty(value = "api.register.type", havingValue = "MQ")
     public ApiRegisterService mqResourceService() {
         return new MqApiRegisterService();
