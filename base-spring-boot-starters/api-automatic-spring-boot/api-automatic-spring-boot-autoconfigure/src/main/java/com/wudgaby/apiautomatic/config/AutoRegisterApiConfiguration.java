@@ -1,6 +1,6 @@
 package com.wudgaby.apiautomatic.config;
 
-import com.wudgaby.apiautomatic.extend.WebServerStartedListener;
+import com.wudgaby.apiautomatic.listeners.WebServerStartedListener;
 import com.wudgaby.apiautomatic.service.ApiRegisterService;
 import com.wudgaby.apiautomatic.service.MqApiRegisterService;
 import com.wudgaby.apiautomatic.service.RedisApiRegisterService;
