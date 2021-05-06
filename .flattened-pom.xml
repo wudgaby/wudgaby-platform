@@ -26,6 +26,7 @@
     </developer>
   </developers>
   <modules>
+    <module>basis-project-dependencies</module>
     <module>basis-project-parent</module>
     <module>basis-project-core</module>
     <module>basis-project-utils</module>
@@ -80,6 +81,17 @@
           <flattenMode>resolveCiFriendliesOnly</flattenMode>
         </configuration>
       </plugin>
+      <plugin>
+        <groupId>org.sonatype.plugins</groupId>
+        <artifactId>nexus-staging-maven-plugin</artifactId>
+        <version>1.6.8</version>
+        <extensions>true</extensions>
+        <configuration>
+          <serverId>sonatype-nexus-staging</serverId>
+          <nexusUrl>https://oss.sonatype.org/</nexusUrl>
+          <autoReleaseAfterClose>true</autoReleaseAfterClose>
+        </configuration>
+      </plugin>
     </plugins>
   </build>
   <profiles>
@@ -108,38 +120,10 @@
                 <goals>
                   <goal>sign</goal>
                 </goals>
-                <configuration>
-                  <skip>true</skip>
-                </configuration>
               </execution>
             </executions>
             <configuration>
               <skip>true</skip>
-            </configuration>
-          </plugin>
-          <plugin>
-            <groupId>org.codehaus.mojo</groupId>
-            <artifactId>flatten-maven-plugin</artifactId>
-            <version>1.1.0</version>
-            <executions>
-              <execution>
-                <id>flatten</id>
-                <phase>process-resources</phase>
-                <goals>
-                  <goal>flatten</goal>
-                </goals>
-              </execution>
-              <execution>
-                <id>flatten.clean</id>
-                <phase>clean</phase>
-                <goals>
-                  <goal>clean</goal>
-                </goals>
-              </execution>
-            </executions>
-            <configuration>
-              <updatePomFile>true</updatePomFile>
-              <flattenMode>resolveCiFriendliesOnly</flattenMode>
             </configuration>
           </plugin>
         </plugins>

@@ -49,8 +49,8 @@
   </scm>
   <properties>
     <flatten-maven-plugin.version>1.1.0</flatten-maven-plugin.version>
-    <maven-compiler-plugin.version>3.7.0</maven-compiler-plugin.version>
     <spring-boot.version>2.3.1.RELEASE</spring-boot.version>
+    <maven-compiler-plugin.version>3.7.0</maven-compiler-plugin.version>
     <common-lang.version>3.8.1</common-lang.version>
     <commons-beanutils.version>1.9.3</commons-beanutils.version>
     <thread-local.version>2.11.4</thread-local.version>
@@ -66,11 +66,11 @@
     <java.version>1.8</java.version>
     <gmavenplus-plugin.version>1.6</gmavenplus-plugin.version>
     <hutool.version>5.3.8</hutool.version>
-    <commons-lang3.version>3.10</commons-lang3.version>
     <guava.version>28.0-jre</guava.version>
+    <commons-lang3.version>3.10</commons-lang3.version>
     <maven-surefire-plugin.version>2.21.0</maven-surefire-plugin.version>
-    <maven-deploy-plugin.version>2.8.2</maven-deploy-plugin.version>
     <basis-project.version>1.0.0-SNAPSHOT</basis-project.version>
+    <maven-deploy-plugin.version>2.8.2</maven-deploy-plugin.version>
     <common-math.version>3.6.1</common-math.version>
     <jacoco.version>0.8.3</jacoco.version>
     <aspectj.version>1.9.2</aspectj.version>

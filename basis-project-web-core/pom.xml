@@ -6,7 +6,6 @@
         <artifactId>basis-project-parent</artifactId>
         <groupId>com.wudgaby.platform</groupId>
         <version>${revision}</version>
-        <relativePath>../basis-project-parent</relativePath>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 

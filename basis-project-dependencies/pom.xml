@@ -3,19 +3,22 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>basis-project</artifactId>
-        <groupId>com.wudgaby.platform</groupId>
-        <version>${revision}</version>
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-dependencies-parent</artifactId>
+        <version>2.3.1.RELEASE</version>
         <relativePath/>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>basis-project-parent</artifactId>
+    <groupId>com.wudgaby.platform</groupId>
+    <artifactId>basis-project-dependencies</artifactId>
+    <version>${revision}</version>
     <packaging>pom</packaging>
-    <name>Basis Project parent</name>
-    <description>Project :: Parent</description>
+    <name>Basis Project Dependencies</name>
+    <description>Project :: Dependencies</description>
 
     <properties>
+        <revision>1.0.0-SNAPSHOT</revision>
         <java.version>1.8</java.version>
         <java.source.version>1.8</java.source.version>
         <java.target.version>1.8</java.target.version>

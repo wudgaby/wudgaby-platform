@@ -14,6 +14,7 @@
     <properties>
         <docker.image.prefix>wudgaby</docker.image.prefix>
         <docker.registryUrl>182.92.203.94:5000</docker.registryUrl>
+        <docker.host>http://182.92.203.94:2375</docker.host>
         <spring.boot.version>2.3.1.RELEASE</spring.boot.version>
         <!--表示该模块 不会进行install-->
         <maven.install.skip>true</maven.install.skip>
@@ -140,14 +141,6 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <!--<configuration>
-                    <executable>false</executable>
-                </configuration>-->
-            </plugin>
-
-            <!--<plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
                 <version>${spring.boot.version}</version>
                 <executions>
                     <execution>
@@ -156,20 +149,20 @@
                         </goals>
                     </execution>
                 </executions>
-            </plugin>-->
-            <!--<plugin>
+            </plugin>
+            <plugin>
                 <groupId>com.spotify</groupId>
                 <artifactId>docker-maven-plugin</artifactId>
                 <version>1.2.2</version>
 
-                &lt;!&ndash;registry外部访问 必须使用https 参考配置:https://segmentfault.com/a/1190000015108428&ndash;&gt;
+                <!--registry外部访问 必须使用https 参考配置:https://segmentfault.com/a/1190000015108428-->
                 <configuration>
-                    <dockerHost>http://182.92.203.94:2375</dockerHost>
-                    &lt;!&ndash;这里要注意的是，imageName必须符合正则[a-z0-9-_.]，docker的imageName只能是小写字母，数字，点号，下划线&ndash;&gt;
+                    <dockerHost>${docker.host}</dockerHost>
+                    <!--这里要注意的是，imageName必须符合正则[a-z0-9-_.]，docker的imageName只能是小写字母，数字，点号，下划线-->
                     <imageName>${docker.registryUrl}/${docker.image.prefix}/${project.artifactId}</imageName>
                     <dockerDirectory>${project.basedir}/src/main/docker</dockerDirectory>
-                    &lt;!&ndash;<serverId>myDocker</serverId>&ndash;&gt;
-                    &lt;!&ndash;<registryUrl>http://182.92.203.94:5000</registryUrl>&ndash;&gt;
+                    <!--<serverId>myDocker</serverId>-->
+                    <!--<registryUrl>http://182.92.203.94:5000</registryUrl>-->
                     <forceTags>true</forceTags>
                     <resources>
                         <resource>
@@ -179,7 +172,7 @@
                         </resource>
                     </resources>
                     <imageTags>
-                        &lt;!&ndash;<imageTag>${project.version}</imageTag>&ndash;&gt;
+                        <!--<imageTag>${project.version}</imageTag>-->
                         <imageTag>latest</imageTag>
                     </imageTags>
                 </configuration>
@@ -191,7 +184,7 @@
                             <goal>build</goal>
                         </goals>
                     </execution>
-                    &lt;!&ndash;<execution>
+                    <!--<execution>
                         <id>tag-image</id>
                         <phase>package</phase>
                         <goals>
@@ -201,7 +194,7 @@
                             <image>${docker.image.prefix}/${project.artifactId}</image>
                             <newName>${docker.image.prefix}/${project.artifactId}:1.0.0</newName>
                         </configuration>
-                    </execution>&ndash;&gt;
+                    </execution>-->
                     <execution>
                         <id>push-image</id>
                         <phase>deploy</phase>
@@ -213,7 +206,7 @@
                         </configuration>
                     </execution>
                 </executions>
-            </plugin>-->
+            </plugin>
 
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>

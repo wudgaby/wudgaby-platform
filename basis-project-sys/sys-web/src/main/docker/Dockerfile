@@ -14,7 +14,8 @@ VOLUME /tmp
 EXPOSE 8010
 
 # 将jar包添加到容器中并更名为app.jar
-ADD sysweb*.jar app.jar
+ARG JAR_FILE=target/*.jar
+COPY ["$JAR_FILE", "app.jar"]
 
 # 运行jar包
 RUN sh -c 'touch /app.jar'

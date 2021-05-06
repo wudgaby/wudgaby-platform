@@ -2,12 +2,9 @@ package com.wudgaby.apiautomatic.service;
 
 import com.wudgaby.apiautomatic.consts.ApiRegisterConst;
 import com.wudgaby.apiautomatic.dto.ApiDTO;
-import com.wudgaby.apiautomatic.mq.ResourceSource;
 import com.wudgaby.redis.api.RedisSupport;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.messaging.Message;
-import org.springframework.messaging.support.MessageBuilder;
 
 import java.util.List;
 
