@@ -1,1 +1,1 @@
-mvn clean install -pl basis-project-web-core -N
+mvn clean install -rf :basis-project-web-core

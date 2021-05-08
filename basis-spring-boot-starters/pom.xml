@@ -72,7 +72,6 @@
     <modules>
         <module>mail-spring-boot</module>
         <module>pdf-spring-boot-starter</module>
-        <module>retrofit-spring-boot</module>
         <module>quartz-spring-boot</module>
         <module>flowable-module-spring-boot</module>
         <module>code-generator-spring-boot</module>
