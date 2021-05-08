@@ -2,7 +2,6 @@ package com.wudgaby.platform.websocket.handler;
 
 import com.wudgaby.platform.websocket.consts.SysConsts;
 import com.wudgaby.platform.websocket.vo.FastPrincipal;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.http.server.ServerHttpRequest;
 import org.springframework.http.server.ServletServerHttpRequest;
 import org.springframework.stereotype.Component;
@@ -12,7 +11,6 @@ import org.springframework.web.socket.server.support.DefaultHandshakeHandler;
 import javax.servlet.http.HttpServletRequest;
 import java.security.Principal;
 import java.util.Map;
-import java.util.Objects;
 
 /**
  * @ClassName : SpringHandshakeHandler

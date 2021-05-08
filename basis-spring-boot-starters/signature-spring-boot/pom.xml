@@ -16,7 +16,6 @@
     <modules>
         <module>signature-spring-boot-autoconfigure</module>
         <module>signature-spring-boot-starter</module>
-        <module>signature-spring-boot-sample</module>
         <module>signature-api</module>
         <module>open-api-spring-boot-autoconfigure</module>
         <module>open-api-spring-boot-starter</module>

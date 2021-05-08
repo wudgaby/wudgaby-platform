@@ -14,7 +14,7 @@
     <packaging>pom</packaging>
     <name>两步认证 - OPTIMIZE</name>
     <modules>
-        <module>two-factor-auth-spring-boot-sample</module>
+
     </modules>
 
 

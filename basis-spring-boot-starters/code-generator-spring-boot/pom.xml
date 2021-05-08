@@ -16,7 +16,6 @@
     <modules>
         <module>code-generator-ui</module>
         <module>code-generator-spring-boot-autoconfigure</module>
-        <module>code-generator-spring-boot-demo</module>
         <module>code-generator-spring-boot-starter</module>
     </modules>
 

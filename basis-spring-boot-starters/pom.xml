@@ -70,25 +70,26 @@
     </scm>
 
     <modules>
+        <module>rate-limiter-spring-boot</module>
+        <module>redis-spring-boot</module>
+        <module>resubmit-spring-boot</module>
+        <module>swagger-spring-boot</module>
         <module>mail-spring-boot</module>
+        <module>logger-spring-boot</module>
+        <module>signature-spring-boot</module>
+        <module>distributed-lock-spring-boot</module>
+        <module>code-generator-spring-boot</module>
+        <module>api-automatic-spring-boot</module>
+        <module>two-factor-auth-spring-boot</module>
+
         <module>pdf-spring-boot-starter</module>
         <module>quartz-spring-boot</module>
         <module>flowable-module-spring-boot</module>
-        <module>code-generator-spring-boot</module>
         <module>flowable-helper-spring-boot</module>
-        <module>rate-limiter-spring-boot</module>
-        <module>redis-spring-boot</module>
-        <module>distributed-lock-spring-boot</module>
-        <module>api-automatic-spring-boot</module>
-        <module>logger-spring-boot</module>
-        <module>swagger-spring-boot</module>
-        <module>signature-spring-boot</module>
         <module>zxing-spring-boot</module>
         <module>social-spring-boot</module>
         <module>pay-spring-boot</module>
-        <module>two-factor-auth-spring-boot</module>
         <module>minio-spring-boot</module>
-        <module>resubmit-spring-boot</module>
     </modules>
 
     <dependencyManagement>

@@ -10,10 +10,8 @@ import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketSession;
 import org.springframework.web.socket.handler.TextWebSocketHandler;
 
-import javax.websocket.Session;
 import java.security.Principal;
 import java.util.Date;
-import java.util.Objects;
 import java.util.Optional;
 
 /**

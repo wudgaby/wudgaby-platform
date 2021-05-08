@@ -16,9 +16,7 @@
     <modules>
         <module>flowable-helper-spring-boot-starter</module>
         <module>flowable-helper-spring-boot-autoconfigure</module>
-        <module>flowable-helper-spring-boot-starter-demo</module>
         <module>flowable-helper-spring-web</module>
-        <module>spring-statemachine-demo</module>
     </modules>
 
 

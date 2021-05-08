@@ -6,7 +6,6 @@ import com.wudgaby.platform.websocket.vo.WsMessage;
 import javax.websocket.DecodeException;
 import javax.websocket.Decoder;
 import javax.websocket.EndpointConfig;
-import java.io.IOException;
 
 /**
  * @ClassName : MessageDecode

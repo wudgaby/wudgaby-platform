@@ -16,6 +16,5 @@
     <modules>
         <module>mail-spring-boot-autoconfigure</module>
         <module>mail-spring-boot-starter</module>
-        <module>mail-spring-boot-starter-demo</module>
     </modules>
 </project>

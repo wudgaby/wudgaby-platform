@@ -15,7 +15,6 @@ import org.springframework.security.web.util.matcher.RequestMatcher;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import java.util.Collection;
-import java.util.List;
 import java.util.Set;
 
 /**

@@ -16,7 +16,6 @@
     <modules>
         <module>zxing-spring-boot-starter</module>
         <module>zxing-spring-boot-autoconfigure</module>
-        <module>zxing-spring-boot-sample</module>
     </modules>
 
 

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>wudgaby-platform</artifactId>
+        <groupId>com.wudgaby.platform</groupId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>basis-examples</artifactId>
+    <packaging>pom</packaging>
+
+    <properties>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
+    </properties>
+
+    <modules>
+        <module>api-automatic-spring-boot-sample</module>
+        <module>zxing-spring-boot-sample</module>
+        <module>two-factor-auth-spring-boot-sample</module>
+        <module>swagger-spring-boot-sample</module>
+        <module>social-spring-boot-sample</module>
+        <module>signature-spring-boot-sample</module>
+        <module>resubmit-spring-boot-starter-sample</module>
+        <module>redis-spring-boot-starter-demo</module>
+        <module>rate-limiter-spring-boot-sample</module>
+        <module>pay-spring-boot-sample</module>
+        <module>minio-spring-boot-sample</module>
+        <module>mail-spring-boot-starter-demo</module>
+        <module>logger-spring-boot-sample</module>
+        <module>flowable-module-spring-boot-starter-demo</module>
+        <module>code-generator-spring-boot-demo</module>
+        <module>distributed-lock-spring-boot-demo</module>
+        <module>flowable-helper-spring-boot-starter-demo</module>
+    </modules>
+</project>

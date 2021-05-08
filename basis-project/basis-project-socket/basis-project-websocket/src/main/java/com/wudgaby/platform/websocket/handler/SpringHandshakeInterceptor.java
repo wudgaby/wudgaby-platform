@@ -1,12 +1,8 @@
 package com.wudgaby.platform.websocket.handler;
 
-import cn.hutool.extra.servlet.ServletUtil;
-import cn.hutool.http.HttpUtil;
 import com.wudgaby.platform.websocket.consts.SysConsts;
 import com.wudgaby.platform.websocket.vo.FastPrincipal;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang3.StringUtils;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.server.ServerHttpRequest;
 import org.springframework.http.server.ServerHttpResponse;
@@ -15,11 +11,8 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.socket.WebSocketHandler;
 import org.springframework.web.socket.server.HandshakeInterceptor;
 
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
-import java.nio.charset.StandardCharsets;
 import java.util.Map;
-import java.util.Optional;
 
 /**
  * @ClassName : SpringHandshakeInterceptor

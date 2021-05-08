@@ -1,6 +1,5 @@
 package com.wudgaby.sample;
 
-import com.wudgaby.platform.core.annotation.EnableOwnFrame;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 

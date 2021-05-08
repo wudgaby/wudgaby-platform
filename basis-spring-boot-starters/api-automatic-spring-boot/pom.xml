@@ -16,7 +16,6 @@
     <modules>
         <module>api-automatic-spring-boot-autoconfigure</module>
         <module>api-automatic-spring-boot-starter</module>
-        <module>api-automatic-spring-boot-sample</module>
     </modules>
 
 

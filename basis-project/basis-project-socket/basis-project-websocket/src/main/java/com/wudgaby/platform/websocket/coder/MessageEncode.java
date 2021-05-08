@@ -1,7 +1,6 @@
 package com.wudgaby.platform.websocket.coder;
 
 import com.alibaba.fastjson.JSON;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.wudgaby.platform.websocket.vo.WsMessage;
 
 import javax.websocket.EncodeException;

@@ -16,7 +16,6 @@
     <modules>
         <module>swagger-spring-boot-autoconfigure</module>
         <module>swagger-spring-boot-starter</module>
-        <module>swagger-spring-boot-sample</module>
         <module>swagger3-sample</module>
     </modules>
 </project>

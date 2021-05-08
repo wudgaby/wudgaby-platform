@@ -15,7 +15,6 @@
     <modules>
         <module>minio-spring-boot-starter</module>
         <module>minio-spring-boot-autoconfigure</module>
-        <module>minio-spring-boot-sample</module>
     </modules>
 
 

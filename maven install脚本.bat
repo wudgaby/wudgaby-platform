@@ -1,1 +1,0 @@
-mvn clean install -rf :basis-project-web-core

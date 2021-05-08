@@ -16,7 +16,6 @@
     <modules>
         <module>resubmit-spring-boot-autoconfigure</module>
         <module>resubmit-spring-boot-starter</module>
-        <module>resubmit-spring-boot-starter-sample</module>
         <module>resubmit-api</module>
     </modules>
 </project>

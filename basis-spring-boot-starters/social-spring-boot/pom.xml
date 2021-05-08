@@ -15,7 +15,6 @@
     <modules>
         <module>social-spring-boot-starter</module>
         <module>social-spring-boot-autoconfigure</module>
-        <module>social-spring-boot-sample</module>
     </modules>
 
 

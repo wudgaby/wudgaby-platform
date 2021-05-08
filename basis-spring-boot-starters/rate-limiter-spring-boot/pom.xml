@@ -17,7 +17,6 @@
         <module>rate-limiter-spring-boot-starter</module>
         <module>rate-limiter-spring-boot-autoconfigure</module>
         <module>rate-limiter-core</module>
-        <module>rate-limiter-spring-boot-sample</module>
     </modules>
 
 

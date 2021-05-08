@@ -17,7 +17,6 @@
         <module>flowable-module-ui</module>
         <module>flowable-module-spring-boot-autoconfigure</module>
         <module>flowable-module-spring-boot-starter</module>
-        <module>flowable-module-spring-boot-starter-demo</module>
         <module>flowable-module-spring-web</module>
     </modules>
 

@@ -16,7 +16,6 @@
     <modules>
         <module>logger-spring-boot-autoconfigure</module>
         <module>logger-spring-boot-starter</module>
-        <module>logger-spring-boot-sample</module>
         <module>logger-api</module>
     </modules>
 
