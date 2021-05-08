@@ -73,4 +73,5 @@ fabric.properties
 
 !.gitignore
 target/
-**/.flattened-pom.xml
+.flattened-pom.xml
+/**/.flattened-pom.xml

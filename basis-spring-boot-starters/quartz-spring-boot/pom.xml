@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>basis-spring-boot-starters</artifactId>
+        <groupId>com.wudgaby.platform</groupId>
+        <version>${revision}</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>quartz-spring-boot</artifactId>
+    <packaging>pom</packaging>
+    <name>quartz定时任务-启动器 - OPTIMIZE</name>
+    <modules>
+        <module>quartz-spring-boot-autoconfigure</module>
+        <module>quartz-spring-boot-starter</module>
+    </modules>
+
+
+</project>
