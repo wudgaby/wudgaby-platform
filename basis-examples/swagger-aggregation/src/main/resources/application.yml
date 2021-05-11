@@ -1,0 +1,17 @@
+server:
+  port: 8080
+
+knife4j:
+  enableAggregation: true
+  cloud:
+    enable: true
+    routes:
+      - name: 本地组
+        uri: localhost:8080
+        location: /v2/api-docs
+      - name: 测试分组1
+        uri: swagger2.com:8081
+        location: /v2/api-docs?group=组1
+      - name: 测试分组2
+        uri: swagger2.com:8081
+        location: /v2/api-docs?group=组2

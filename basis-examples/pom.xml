@@ -36,5 +36,7 @@
         <module>distributed-lock-spring-boot-demo</module>
         <module>flowable-helper-spring-boot-starter-demo</module>
         <module>sso-sample</module>
+        <module>swagger-aggregation</module>
+        <module>swagger3-sample</module>
     </modules>
 </project>
