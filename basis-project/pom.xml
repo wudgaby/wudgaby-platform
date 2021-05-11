@@ -45,8 +45,8 @@
         <module>basis-project-http-client</module>
 
         <module>basis-project-ops</module>
-        <module>basis-project-sys</module>
         <module>basis-project-sso</module>
+        <module>basis-project-sys</module>
         <module>basis-project-authorization</module>
         <module>basis-project-socket</module>
     </modules>

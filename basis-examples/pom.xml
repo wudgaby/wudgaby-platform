@@ -35,5 +35,6 @@
         <module>code-generator-spring-boot-demo</module>
         <module>distributed-lock-spring-boot-demo</module>
         <module>flowable-helper-spring-boot-starter-demo</module>
+        <module>sso-sample</module>
     </modules>
 </project>

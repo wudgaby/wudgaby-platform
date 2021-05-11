@@ -3,22 +3,15 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>basis-project-sso</artifactId>
+        <artifactId>basis-project</artifactId>
         <groupId>com.wudgaby.platform</groupId>
         <version>${revision}</version>
+        <relativePath>../pom.xml</relativePath>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>sso-sample</artifactId>
-    <packaging>pom</packaging>
-    <version>${revision}</version>
-    <description>单点登录示例</description>
-    <modules>
-        <module>sso-token-sample</module>
-        <module>sso-web-sample</module>
-    </modules>
+    <artifactId>basis-project-common</artifactId>
+    <description>框架通用包</description>
 
-    <properties>
-        <maven.install.skip>true</maven.install.skip>
-    </properties>
+
 </project>

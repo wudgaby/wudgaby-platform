@@ -14,9 +14,8 @@
     <packaging>pom</packaging>
     <description>单点登录</description>
     <modules>
-        <module>sso-server</module>
         <module>sso-core</module>
-        <module>sso-sample</module>
+        <module>sso-server</module>
     </modules>
 
 
