@@ -177,13 +177,13 @@
                     </imageTags>
                 </configuration>
                 <executions>
-                    <execution>
+                    <!--<execution>
                         <id>build-image</id>
                         <phase>package</phase>
                         <goals>
                             <goal>build</goal>
                         </goals>
-                    </execution>
+                    </execution>-->
                     <!--<execution>
                         <id>tag-image</id>
                         <phase>package</phase>
