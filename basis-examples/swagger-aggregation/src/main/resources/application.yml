@@ -5,6 +5,10 @@ knife4j:
   enableAggregation: true
   cloud:
     enable: true
+    routeAuth:
+      enable: false
+      username: test
+      password: test
     routes:
       - name: 本地组
         uri: localhost:8080
