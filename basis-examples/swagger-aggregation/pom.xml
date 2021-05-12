@@ -10,7 +10,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>sswagger-aggregation</artifactId>
+    <artifactId>swagger-aggregation</artifactId>
 
     <properties>
         <maven.install.skip>true</maven.install.skip>
