@@ -59,7 +59,7 @@ CREATE TABLE `sys_config` (
 -- ----------------------------
 -- Table structure for sys_dept
 -- ----------------------------
-DROP TABLE IF EXISTS `sys_dept`;
+/*DROP TABLE IF EXISTS `sys_dept`;
 CREATE TABLE `sys_dept`  (
   `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '主键',
   `create_time` datetime(0) NOT NULL COMMENT '创建时间',
@@ -78,7 +78,7 @@ CREATE TABLE `sys_dept`  (
   `org_id` bigint(20) NOT NULL COMMENT '所属公司',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '部门表' ROW_FORMAT = Dynamic;
-
+*/
 -- ----------------------------
 -- Table structure for sys_dict_item
 -- ----------------------------
@@ -257,13 +257,14 @@ CREATE TABLE `sys_org`  (
   `parent_id` bigint(20) NOT NULL COMMENT '父id 0:根节点',
   `parent_ids` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '0' COMMENT '父级ids ,分隔',
   `level` int(11) NOT NULL DEFAULT 0 COMMENT '层级',
+  `type` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '类型: ORG:机构, DEPT:部门',
   `leader` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '负责人',
   `phone` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '负责人电话',
   `email` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '负责人邮箱',
   `address` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '负责人地址',
   `remark` varchar(500) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '备注',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '机构表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '组织架构表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Table structure for sys_post

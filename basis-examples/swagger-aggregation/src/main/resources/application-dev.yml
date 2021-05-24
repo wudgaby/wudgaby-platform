@@ -1,0 +1,32 @@
+server:
+  port: 18888
+  servlet:
+    context-path: /swagger
+
+knife4j:
+  enableAggregation: true
+  cloud:
+    enable: true
+    routeAuth:
+      enable: true
+      username: cnns
+      password: cnns@123
+    routes:
+      - name: 综合管理服务
+        uri: qdfz.online:12306/api/admin
+        location: /v2/api-docs?group=综合管理
+      - name: 警情案件服务
+        uri: qdfz.online:12306/api/case
+        location: /v2/api-docs?group=警情、案件管理
+      - name: 反制服务
+        uri: qdfz.online:12306/api/counter
+        location: /v2/api-docs?group=反制防控
+      - name: 宣传防范相关
+        uri: qdfz.online:12306/api/propaganda
+        location: /v2/api-docs?group=所有接口
+      - name: 研判服务
+        uri: qdfz.online:12306/api/judge
+        location: /v2/api-docs?group=研判管理系统
+      - name: 工作流服务
+        uri: qdfz.online:12306/api/flow
+        location: /v2/api-docs?group=所有接口
