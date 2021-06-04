@@ -97,3 +97,36 @@ CREATE TABLE `base_authority_user`
     KEY            `authority_id` (`authority_id`) USING BTREE,
     KEY            `user_id` (`user_id`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT COMMENT='系统权限-用户关联';
+
+DROP TABLE IF EXISTS `base_authority_app`;
+CREATE TABLE `base_authority_app`
+(
+    `authority_id` bigint(50) NOT NULL COMMENT '权限ID',
+    `app_id`       varchar(100) NOT NULL COMMENT '应用ID',
+    `expire_time`  datetime DEFAULT NULL COMMENT '过期时间:null表示长期',
+    `create_time`  datetime DEFAULT NULL COMMENT '创建时间',
+    `update_time`  datetime DEFAULT NULL COMMENT '修改时间',
+    KEY            `authority_id` (`authority_id`) USING BTREE,
+    KEY            `app_id` (`app_id`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT COMMENT='系统权限-应用关联';
+
+DROP TABLE IF EXISTS `base_app`;
+CREATE TABLE `base_app`
+(
+    `app_id`       varchar(50)  NOT NULL COMMENT '客户端ID',
+    `api_key`      varchar(255) DEFAULT NULL COMMENT 'API访问key',
+    `secret_key`   varchar(255) NOT NULL COMMENT 'API访问密钥',
+    `app_name`     varchar(255) NOT NULL COMMENT 'app名称',
+    `app_name_en`  varchar(255) NOT NULL COMMENT 'app英文名称',
+    `app_icon`     varchar(255) NOT NULL COMMENT '应用图标',
+    `app_type`     varchar(50)  NOT NULL COMMENT 'app类型:server-服务应用 app-手机应用 pc-PC网页应用 wap-手机网页应用',
+    `app_desc`     varchar(255) DEFAULT NULL COMMENT 'app描述',
+    `app_os`       varchar(25)  DEFAULT NULL COMMENT '移动应用操作系统:ios-苹果 android-安卓',
+    `website`      varchar(255) NOT NULL COMMENT '官网地址',
+    `developer_id` bigint(20) NOT NULL DEFAULT '0' COMMENT '开发者ID:默认为0',
+    `create_time`  datetime     NOT NULL COMMENT '创建时间',
+    `update_time`  datetime     DEFAULT NULL COMMENT '更新时间',
+    `status`       tinyint(3) NOT NULL DEFAULT '1' COMMENT '状态:0-无效 1-有效',
+    `is_persist`   tinyint(3) NOT NULL DEFAULT '0' COMMENT '保留数据0-否 1-是 不允许删除',
+    PRIMARY KEY (`app_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT COMMENT='系统应用-基础信息';
