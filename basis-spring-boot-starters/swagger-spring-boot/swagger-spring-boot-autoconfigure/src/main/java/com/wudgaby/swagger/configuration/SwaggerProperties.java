@@ -27,27 +27,27 @@ public class SwaggerProperties {
     /**
      * 标题
      **/
-    private String title = "";
+    private String title;
     /**
      * 描述
      **/
-    private String description = "";
+    private String description;
     /**
      * 版本
      **/
-    private String version = "";
+    private String version;
     /**
      * 许可证
      **/
-    private String license = "";
+    private String license;
     /**
      * 许可证URL
      **/
-    private String licenseUrl = "";
+    private String licenseUrl;
     /**
      * 服务条款URL
      **/
-    private String termsOfServiceUrl = "";
+    private String termsOfServiceUrl;
 
     /**
      * 忽略的参数类型
@@ -59,7 +59,7 @@ public class SwaggerProperties {
     /**
      * swagger会解析的包路径
      **/
-    private String basePackage = "";
+    private String basePackage;
 
     /**
      * swagger会解析的url规则
@@ -78,7 +78,7 @@ public class SwaggerProperties {
     /**
      * host信息
      **/
-    private String host = "";
+    private String host;
 
     /**
      * 全局参数配置
@@ -137,38 +137,38 @@ public class SwaggerProperties {
         /**
          * 分组名称
          */
-        private String groupName = "";
+        private String groupName;
         /**
          * 标题
          **/
-        private String title = "";
+        private String title;
         /**
          * 描述
          **/
-        private String description = "";
+        private String description;
         /**
          * 版本
          **/
-        private String version = "";
+        private String version;
         /**
          * 许可证
          **/
-        private String license = "";
+        private String license;
         /**
          * 许可证URL
          **/
-        private String licenseUrl = "";
+        private String licenseUrl;
         /**
          * 服务条款URL
          **/
-        private String termsOfServiceUrl = "";
+        private String termsOfServiceUrl;
 
         private Contact contact = new Contact();
 
         /**
          * swagger会解析的包路径
          **/
-        private String basePackage = "";
+        private String basePackage;
 
         /**
          * swagger会解析的url规则
@@ -195,15 +195,15 @@ public class SwaggerProperties {
         /**
          * 联系人
          **/
-        private String name = "";
+        private String name;
         /**
          * 联系人url
          **/
-        private String url = "";
+        private String url;
         /**
          * 联系人email
          **/
-        private String email = "";
+        private String email;
 
     }
 

@@ -11,7 +11,7 @@ import org.springframework.context.annotation.FilterType;
  * @Author :  WudGaby
  * @Version :  1.0
  * @Date : 2020/6/24 15:57
- * @Desc :   TODO
+ * @Desc :
  */
 @SpringBootApplication
 @ComponentScan(value = "com.wudgaby.platform",

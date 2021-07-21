@@ -7,7 +7,7 @@ import lombok.Data;
  * @Author :  WudGaby
  * @Version :  1.0
  * @Date : 2020/6/24 21:54
- * @Desc :   TODO
+ * @Desc :
  */
 @Data
 public class DemoVo {

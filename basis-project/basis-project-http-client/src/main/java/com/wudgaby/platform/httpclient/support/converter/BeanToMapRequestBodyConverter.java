@@ -9,7 +9,7 @@ import java.io.IOException;
  * @author wudgaby
  * @version V1.0
  * @ClassName: BeanToMapRequestBodyConverter
- * @Description: TODO
+ * @description: 
  * @date 2018/9/27 13:57
  */
 public class BeanToMapRequestBodyConverter<T> implements Converter<T, RequestBody> {

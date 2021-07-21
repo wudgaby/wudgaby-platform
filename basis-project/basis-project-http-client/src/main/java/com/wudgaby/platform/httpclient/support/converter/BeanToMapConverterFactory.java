@@ -11,7 +11,7 @@ import java.lang.reflect.Type;
  * @author wudgaby
  * @version V1.0
  * @ClassName: BeanToMapConverterFactory
- * @Description: TODO
+ * @description: 
  * @date 2018/9/27 14:02
  */
 public class BeanToMapConverterFactory extends Converter.Factory {

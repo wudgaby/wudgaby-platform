@@ -11,7 +11,7 @@ import java.util.concurrent.ThreadLocalRandom;
  * @Author :  WudGaby
  * @Version :  1.0
  * @Date : 2019/8/22 19:36
- * @Desc :   TODO
+ * @Desc :
  */
 @UtilityClass
 public class RandomUtil {

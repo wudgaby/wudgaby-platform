@@ -20,7 +20,7 @@ import javax.annotation.Resource;
  * @Author :  WudGaby
  * @Version :  1.0
  * @Date : 2020/2/3 21:28
- * @Desc :   TODO
+ * @Desc :   
  */
 @Component
 public class EmailAuthenticationSecurityConfig extends SecurityConfigurerAdapter<DefaultSecurityFilterChain, HttpSecurity> {

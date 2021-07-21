@@ -5,7 +5,7 @@ package com.wudgaby.platform.flowable.helper.consts;
  * @Author :  WudGaby
  * @Version :  1.0
  * @Date : 2020/2/28 17:24
- * @Desc :   TODO
+ * @Desc :
  */
 public interface SysConstant {
     int TREE_ROOT = 0;

@@ -8,7 +8,7 @@ import org.springframework.messaging.SubscribableChannel;
  * @Author :  WudGaby
  * @Version :  1.0
  * @Date : 2019/9/2 18:16
- * @Desc :   TODO
+ * @Desc :
  */
 public interface ResourceSink {
     String INPUT = "resource-input";

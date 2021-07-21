@@ -15,7 +15,7 @@ import java.util.Collection;
  * @Author :  WudGaby
  * @Version :  1.0
  * @Date : 2020/4/24 15:18
- * @Desc :   TODO
+ * @Desc :   
  */
 public class FastJson2JsonRedisSerializer<T> implements RedisSerializer<T> {
     private static ParserConfig defaultRedisConfig = new ParserConfig();

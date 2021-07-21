@@ -5,7 +5,7 @@ package com.wudgaby.platform.limiter.core;
  * @Author :  WudGaby
  * @Version :  1.0
  * @Date : 2020/4/30 23:51
- * @Desc :   TODO
+ * @Desc :
  */
 public class LimitException extends RuntimeException {
 }

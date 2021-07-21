@@ -21,7 +21,7 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
  * @Author :  WudGaby
  * @Version :  1.0
  * @Date : 2018/9/24/024 2:01
- * @Desc :   TODO
+ * @Desc :
  */
 @Documented
 @Target({ METHOD, FIELD, ANNOTATION_TYPE, CONSTRUCTOR, PARAMETER, TYPE_USE })

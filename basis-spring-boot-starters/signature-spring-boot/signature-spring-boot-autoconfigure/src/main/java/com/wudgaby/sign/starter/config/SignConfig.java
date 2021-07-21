@@ -15,7 +15,7 @@ import org.springframework.context.annotation.Configuration;
  * @Author :  WudGaby
  * @Version :  1.0
  * @Date : 2020/6/17 0:35
- * @Desc :   TODO
+ * @Desc :   
  */
 @Configuration
 public class SignConfig {

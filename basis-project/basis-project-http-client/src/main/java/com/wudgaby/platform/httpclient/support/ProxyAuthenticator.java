@@ -7,7 +7,7 @@ import java.net.PasswordAuthentication;
  * @Author :  WudGaby
  * @Version :  1.0
  * @Date : 2020/4/9 9:26
- * @Desc :   TODO
+ * @Desc :
  */
 public class ProxyAuthenticator extends java.net.Authenticator {
     private String username;

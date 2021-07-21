@@ -13,7 +13,7 @@ import java.util.Date;
  * @Author :  WudGaby
  * @Version :  1.0
  * @Date : 2020/2/21 11:38
- * @Desc :   TODO
+ * @Desc :
  */
 @Data
 @ApiModel("案情任务流程传输对象")

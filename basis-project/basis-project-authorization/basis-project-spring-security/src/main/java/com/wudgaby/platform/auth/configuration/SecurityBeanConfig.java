@@ -18,7 +18,7 @@ import java.util.concurrent.TimeUnit;
  * @Author :  WudGaby
  * @Version :  1.0
  * @Date : 2020/2/5 20:02
- * @Desc :   TODO
+ * @Desc :   
  */
 @Configuration
 public class SecurityBeanConfig {

@@ -5,7 +5,7 @@ package com.wudgaby.oauth2.uaa.enhance.mobile;
  * @Author :  WudGaby
  * @Version :  1.0
  * @Date : 2019/10/9 19:02
- * @Desc :   TODO
+ * @Desc :
  */
 
 import cn.hutool.core.codec.Base64;

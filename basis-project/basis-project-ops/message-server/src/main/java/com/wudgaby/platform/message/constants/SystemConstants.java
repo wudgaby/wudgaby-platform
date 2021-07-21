@@ -5,7 +5,7 @@ package com.wudgaby.platform.message.constants;
  * @Author :  WudGaby
  * @Version :  1.0
  * @Date : 2019/7/10 10:08
- * @Desc :   TODO
+ * @Desc :
  */
 public class SystemConstants {
     private SystemConstants() {

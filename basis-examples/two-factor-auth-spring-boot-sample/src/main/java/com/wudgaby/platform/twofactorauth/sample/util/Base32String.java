@@ -8,7 +8,7 @@ import java.util.Locale;
  * @Author :  WudGaby
  * @Version :  1.0
  * @Date : 2020/12/9 23:37
- * @Desc :   TODO
+ * @Desc :
  */
 public class Base32String {
     // singleton

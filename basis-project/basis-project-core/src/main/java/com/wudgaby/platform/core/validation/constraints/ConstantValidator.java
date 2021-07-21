@@ -10,7 +10,7 @@ import javax.validation.ConstraintValidatorContext;
  * @Author :  WudGaby
  * @Version :  1.0
  * @Date : 2019/5/29/029 11:17
- * @Desc :   TODO
+ * @Desc :
  */
 public class ConstantValidator implements ConstraintValidator<Constant, String> {
     private String constantVal;

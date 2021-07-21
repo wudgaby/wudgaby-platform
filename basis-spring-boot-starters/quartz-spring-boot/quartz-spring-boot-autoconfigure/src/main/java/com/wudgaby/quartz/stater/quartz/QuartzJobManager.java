@@ -316,7 +316,7 @@ public class QuartzJobManager {
     }
     
     /**
-    　　* @Description: TODO
+    　　* @Description: 
     　　* @param [cronJobInfo]
     　　* @return java.util.Date
     　　* @throws 

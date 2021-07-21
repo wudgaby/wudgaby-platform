@@ -9,7 +9,7 @@ import javax.validation.constraints.NotBlank;
  * @Author :  WudGaby
  * @Version :  1.0
  * @Date : 2020/12/8 10:17
- * @Desc :   TODO
+ * @Desc :
  */
 @Data
 public class LoginForm {

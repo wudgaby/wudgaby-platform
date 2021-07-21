@@ -16,7 +16,7 @@ import java.security.NoSuchAlgorithmException;
  * @Author :  WudGaby
  * @Version :  1.0
  * @Date : 2018/9/19 20:00
- * @Desc :   TODO
+ * @Desc :
  */
 @UtilityClass
 public class MD5Util {

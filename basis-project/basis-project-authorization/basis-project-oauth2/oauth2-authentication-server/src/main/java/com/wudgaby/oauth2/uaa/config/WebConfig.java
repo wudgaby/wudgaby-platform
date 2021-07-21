@@ -9,7 +9,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupp
  * @Author :  WudGaby
  * @Version :  1.0
  * @Date : 2019/10/8 19:20
- * @Desc :   TODO
+ * @Desc :
  */
 @Configuration
 public class WebConfig extends WebMvcConfigurationSupport {

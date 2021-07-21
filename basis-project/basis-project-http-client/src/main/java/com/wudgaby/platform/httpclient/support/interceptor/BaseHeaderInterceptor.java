@@ -12,7 +12,7 @@ import java.io.IOException;
  * @author wudgaby
  * @version V1.0
  * @ClassName: BaseHeaderInterceptor
- * @Description: TODO
+ * @description: 
  * @date 2018/9/27 14:53
  */
 @Slf4j

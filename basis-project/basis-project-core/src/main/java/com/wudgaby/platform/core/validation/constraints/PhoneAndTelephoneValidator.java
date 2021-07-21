@@ -11,7 +11,7 @@ import javax.validation.ConstraintValidatorContext;
  * @Author :  WudGaby
  * @Version :  1.0
  * @Date : 2018/9/24/024 3:24
- * @Desc :   TODO
+ * @Desc :
  */
 public class PhoneAndTelephoneValidator implements ConstraintValidator<PhoneAndTelephone, String> {
     @Override

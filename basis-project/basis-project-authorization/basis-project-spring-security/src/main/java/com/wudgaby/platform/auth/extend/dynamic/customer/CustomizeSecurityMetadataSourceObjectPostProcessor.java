@@ -8,7 +8,7 @@ import org.springframework.security.web.access.intercept.FilterSecurityIntercept
  * @Author :  WudGaby
  * @Version :  1.0
  * @Date : 2020/2/11 12:32
- * @Desc :   TODO
+ * @Desc :
  */
 public class CustomizeSecurityMetadataSourceObjectPostProcessor implements ObjectPostProcessor<FilterSecurityInterceptor> {
 

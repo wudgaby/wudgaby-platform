@@ -16,7 +16,7 @@ import org.springframework.web.servlet.DispatcherServlet;
  * @Author :  WudGaby
  * @Version :  1.0
  * @Date : 2020/2/24 23:56
- * @Desc :   TODO
+ * @Desc :   
  */
 @Configuration
 @EnableConfigurationProperties({

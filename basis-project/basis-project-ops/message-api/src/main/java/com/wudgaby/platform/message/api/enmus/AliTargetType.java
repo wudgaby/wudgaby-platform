@@ -7,7 +7,7 @@ import lombok.Getter;
  * @Author :  WudGaby
  * @Version :  1.0
  * @Date : 2019/12/20 15:03
- * @Desc :   TODO
+ * @Desc :
  */
 @Getter
 public enum AliTargetType {

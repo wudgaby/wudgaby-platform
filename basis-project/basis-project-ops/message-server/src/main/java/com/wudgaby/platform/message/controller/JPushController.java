@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @Author :  WudGaby
  * @Version :  1.0
  * @Date : 2019/11/18 11:45
- * @Desc :   TODO
+ * @Desc :
  */
 @Api(tags = "极光推送")
 @RestController

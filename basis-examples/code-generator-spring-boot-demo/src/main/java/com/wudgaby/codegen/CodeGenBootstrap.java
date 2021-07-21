@@ -8,7 +8,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @Author :  WudGaby
  * @Version :  1.0
  * @Date : 2020/4/3 18:36
- * @Desc :   TODO
+ * @Desc :
  */
 @SpringBootApplication(scanBasePackages = "com.wudgaby")
 public class CodeGenBootstrap {

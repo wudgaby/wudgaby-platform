@@ -15,7 +15,7 @@ import org.springframework.stereotype.Component;
  * @Author :  WudGaby
  * @Version :  1.0
  * @Date : 2020/2/22 19:19
- * @Desc :   TODO
+ * @Desc :
  */
 @Slf4j(topic = "FLOW_LOG")
 @Component("skipListener")

@@ -5,7 +5,7 @@ package com.wudgaby.plugin.resubmit;
  * @Author :  WudGaby
  * @Version :  1.0
  * @Date : 2021/3/14 0:30
- * @Desc :   TODO
+ * @Desc :
  */
 public class ResubmitException extends RuntimeException {
     public ResubmitException(){

@@ -5,7 +5,7 @@ package com.wudgaby.platform.sso.core.exception;
  * @Author :  WudGaby
  * @Version :  1.0
  * @Date : 2020/6/24 12:01
- * @Desc :   TODO
+ * @Desc :   
  */
 public class SsoException extends RuntimeException{
 

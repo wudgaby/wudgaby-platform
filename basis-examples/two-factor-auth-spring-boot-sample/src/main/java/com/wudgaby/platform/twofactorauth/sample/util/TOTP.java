@@ -15,7 +15,7 @@ import java.util.List;
  * @Author :  WudGaby
  * @Version :  1.0
  * @Date : 2020/12/9 23:31
- * @Desc :   TODO
+ * @Desc :   
  */
 @UtilityClass
 public class TOTP {

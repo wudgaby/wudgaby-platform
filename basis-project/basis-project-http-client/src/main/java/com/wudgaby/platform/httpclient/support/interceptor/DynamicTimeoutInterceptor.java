@@ -5,7 +5,7 @@ package com.wudgaby.platform.httpclient.support.interceptor;
  * @Author :  WudGaby
  * @Version :  1.0
  * @Date : 2020/3/21 18:24
- * @Desc :   TODO
+ * @Desc :
  */
 
 import okhttp3.Interceptor;

@@ -16,7 +16,7 @@ import java.io.IOException;
  * @Author :  WudGaby
  * @Version :  1.0
  * @Date : 2020/2/3 18:42
- * @Desc :   TODO
+ * @Desc :
  */
 public class MyExpiredSessionStrategy implements SessionInformationExpiredStrategy {
 

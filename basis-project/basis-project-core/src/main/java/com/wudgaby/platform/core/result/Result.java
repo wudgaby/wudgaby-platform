@@ -7,7 +7,7 @@ import java.io.Serializable;
  * @Author :  WudGaby
  * @Version :  1.0
  * @Date : 2018/9/26/026 22:03
- * @Desc :   TODO
+ * @Desc :
  */
 public interface Result extends Serializable {
 }

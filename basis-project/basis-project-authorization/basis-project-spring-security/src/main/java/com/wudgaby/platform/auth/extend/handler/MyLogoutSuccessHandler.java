@@ -18,7 +18,7 @@ import java.io.IOException;
  * @Author :  WudGaby
  * @Version :  1.0
  * @Date : 2020/2/3 16:48
- * @Desc :   TODO
+ * @Desc :   
  */
 @Component
 public class MyLogoutSuccessHandler extends SimpleUrlLogoutSuccessHandler {

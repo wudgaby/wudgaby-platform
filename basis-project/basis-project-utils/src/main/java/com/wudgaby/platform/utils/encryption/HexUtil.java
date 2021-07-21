@@ -7,7 +7,7 @@ import lombok.experimental.UtilityClass;
  * @Author :  WudGaby
  * @Version :  1.0
  * @Date : 2018/9/19/019 20:03
- * @Desc :   TODO
+ * @Desc :
  */
 @UtilityClass
 public class HexUtil {

@@ -11,7 +11,7 @@ import org.springframework.core.env.Environment;
  * @Author :  WudGaby
  * @Version :  1.0
  * @Date : 2020/4/3 21:57
- * @Desc :   TODO
+ * @Desc :
  */
 @Configuration
 public class CodeGenConfiguration {

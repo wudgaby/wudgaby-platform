@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @Author :  WudGaby
  * @Version :  1.0
  * @Date : 2020/6/4 15:42
- * @Desc :   TODO
+ * @Desc :
  */
 @Api(value = "日志演示", tags = "日志")
 @RestController

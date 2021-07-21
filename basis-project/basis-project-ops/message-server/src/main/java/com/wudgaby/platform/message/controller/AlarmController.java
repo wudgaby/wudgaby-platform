@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @Author :  WudGaby
  * @Version :  1.0
  * @Date : 2019/7/10 10:44
- * @Desc :   TODO
+ * @Desc :
  */
 @Slf4j
 @Api(tags = "告警功能")

@@ -9,7 +9,7 @@ import lombok.Getter;
  * @Author :  WudGaby
  * @Version :  1.0
  * @Date : 2020/10/9 21:01
- * @Desc :   TODO
+ * @Desc :   
  */
 @Getter
 public enum GeneralStatusEnum {

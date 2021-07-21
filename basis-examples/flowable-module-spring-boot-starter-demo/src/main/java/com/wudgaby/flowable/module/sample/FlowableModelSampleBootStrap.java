@@ -13,7 +13,7 @@ import org.springframework.context.annotation.FilterType;
  * @Author :  WudGaby
  * @Version :  1.0
  * @Date : 2020/5/9 17:37
- * @Desc :   TODO
+ * @Desc :   
  */
 @EnableOwnFrame(scanBasePackageClasses = {FlowableModelSampleBootStrap.class})
 @SpringBootApplication(exclude = {SecurityAutoConfiguration.class})

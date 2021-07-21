@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
  * @Author :  WudGaby
  * @Version :  1.0
  * @Date : 2020/6/4 10:06
- * @Desc :   TODO
+ * @Desc :
  */
 @Component
 public class SsoWebHelper {

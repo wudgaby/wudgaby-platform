@@ -1,7 +1,5 @@
 package com.wudgaby.swagger.configuration;
 
-import com.google.common.base.Predicate;
-import com.google.common.base.Predicates;
 import com.google.common.collect.Lists;
 import lombok.AllArgsConstructor;
 import org.apache.commons.lang3.StringUtils;
@@ -10,16 +8,14 @@ import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.BeanFactoryAware;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
-import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.web.bind.annotation.RequestMethod;
 import springfox.documentation.builders.*;
 import springfox.documentation.schema.ModelRef;
 import springfox.documentation.service.*;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spi.service.contexts.SecurityContext;
+import springfox.documentation.spring.web.plugins.ApiSelectorBuilder;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger.web.ApiKeyVehicle;
 
@@ -33,10 +29,7 @@ import java.util.stream.Collectors;
  * @Desc : https://github.com/SpringForAll/spring-boot-starter-swagger/blob/1.9.1.RELEASE/README.md
  *
  */
-@Configuration
-@EnableConfigurationProperties(SwaggerProperties.class)
 @AllArgsConstructor
-@ConditionalOnProperty(name = "swagger.enabled", matchIfMissing = true)
 public class SwaggerConfiguration implements BeanFactoryAware {
     private final SwaggerProperties swaggerProperties;
     private BeanFactory beanFactory;
@@ -47,44 +40,27 @@ public class SwaggerConfiguration implements BeanFactoryAware {
     }
 
     @Bean
-    //@Conditional(SwaggerCondition.class)
     @ConditionalOnMissingBean
     public List<Docket> createRestApi(SwaggerProperties swaggerProperties) {
         ConfigurableBeanFactory configurableBeanFactory = (ConfigurableBeanFactory) beanFactory;
         List<Docket> docketList = new LinkedList<>();
 
         // 没有分组
-        if (swaggerProperties.getDocket().size() == 0 || !swaggerProperties.isShowDefaultGroup()) {
+        if (swaggerProperties.getDocket().size() == 0 && !swaggerProperties.isShowDefaultGroup()) {
             ApiInfo apiInfo = new ApiInfoBuilder()
-                    .title(swaggerProperties.getTitle())
-                    .description(swaggerProperties.getDescription())
-                    .version(swaggerProperties.getVersion())
-                    .license(swaggerProperties.getLicense())
-                    .licenseUrl(swaggerProperties.getLicenseUrl())
+                    .title(StringUtils.trimToEmpty(swaggerProperties.getTitle()))
+                    .description(StringUtils.trimToEmpty(swaggerProperties.getDescription()))
+                    .version(StringUtils.trimToEmpty(swaggerProperties.getVersion()))
+                    .license(StringUtils.trimToEmpty(swaggerProperties.getLicense()))
+                    .licenseUrl(StringUtils.trimToEmpty(swaggerProperties.getLicenseUrl()))
                     .contact(new Contact(swaggerProperties.getContact().getName(),
                             swaggerProperties.getContact().getUrl(),
                             swaggerProperties.getContact().getEmail()))
-                    .termsOfServiceUrl(swaggerProperties.getTermsOfServiceUrl())
+                    .termsOfServiceUrl(StringUtils.trimToEmpty(swaggerProperties.getTermsOfServiceUrl()))
                     .build();
 
-            // base-path处理
-            // 当没有配置任何path的时候，解析/**
-            if (swaggerProperties.getBasePath().isEmpty()) {
-                swaggerProperties.getBasePath().add("/**");
-            }
-            List<Predicate<String>> basePath = new ArrayList();
-            for (String path : swaggerProperties.getBasePath()) {
-                basePath.add(PathSelectors.ant(path));
-            }
-
-            // exclude-path处理
-            List<Predicate<String>> excludePath = new ArrayList<>();
-            for (String path : swaggerProperties.getExcludePath()) {
-                excludePath.add(PathSelectors.ant(path));
-            }
-
             Docket docketForBuilder = new Docket(DocumentationType.SWAGGER_2)
-                    .host(swaggerProperties.getHost())
+                    .host(StringUtils.trimToEmpty(swaggerProperties.getHost()))
                     .apiInfo(apiInfo)
                     .securityContexts(Collections.singletonList(securityContext()))
                     .globalOperationParameters(buildGlobalOperationParametersFromSwaggerProperties(
@@ -101,14 +77,25 @@ public class SwaggerConfiguration implements BeanFactoryAware {
                 buildGlobalResponseMessage(swaggerProperties, docketForBuilder);
             }
 
-            Docket docket = docketForBuilder.select()
-                    .apis(RequestHandlerSelectors.basePackage(swaggerProperties.getBasePackage()))
-                    .paths(
-                            Predicates.and(
-                                    Predicates.not(Predicates.or(excludePath)),
-                                    Predicates.or(basePath)
-                            )
-                    ).build();
+
+            ApiSelectorBuilder apiSelectorBuilder = docketForBuilder.select()
+                    .apis(RequestHandlerSelectors.basePackage(swaggerProperties.getBasePackage()));
+
+            // base-path处理
+            // 当没有配置任何path的时候，解析/**
+            if (swaggerProperties.getBasePath().isEmpty()) {
+                swaggerProperties.getBasePath().add("/**");
+            }
+            for (String path : swaggerProperties.getBasePath()) {
+                apiSelectorBuilder.paths(PathSelectors.ant(path));
+            }
+
+            //exclude-path处理
+            for (String path : swaggerProperties.getExcludePath()) {
+                apiSelectorBuilder.paths(PathSelectors.regex("^" +path));
+            }
+
+            Docket docket = apiSelectorBuilder.build();
 
             /* ignoredParameterTypes **/
             Class<?>[] array = new Class[swaggerProperties.getIgnoredParameterTypes().size()];
@@ -126,36 +113,21 @@ public class SwaggerConfiguration implements BeanFactoryAware {
             String groupName = docketInfo.getGroupName();
 
             ApiInfo apiInfo = new ApiInfoBuilder()
-                    .title(docketInfo.getTitle().isEmpty() ? swaggerProperties.getTitle() : docketInfo.getTitle())
-                    .description(docketInfo.getDescription().isEmpty() ? swaggerProperties.getDescription() : docketInfo.getDescription())
-                    .version(docketInfo.getVersion().isEmpty() ? swaggerProperties.getVersion() : docketInfo.getVersion())
-                    .license(docketInfo.getLicense().isEmpty() ? swaggerProperties.getLicense() : docketInfo.getLicense())
-                    .licenseUrl(docketInfo.getLicenseUrl().isEmpty() ? swaggerProperties.getLicenseUrl() : docketInfo.getLicenseUrl())
+                    .title(StringUtils.isEmpty(docketInfo.getTitle()) ? swaggerProperties.getTitle() : docketInfo.getTitle())
+                    .description(StringUtils.isEmpty(docketInfo.getDescription()) ? swaggerProperties.getDescription() : docketInfo.getDescription())
+                    .version(StringUtils.isEmpty(docketInfo.getVersion()) ? swaggerProperties.getVersion() : docketInfo.getVersion())
+                    .license(StringUtils.isEmpty(docketInfo.getLicense()) ? swaggerProperties.getLicense() : docketInfo.getLicense())
+                    .licenseUrl(StringUtils.isEmpty(docketInfo.getLicenseUrl()) ? swaggerProperties.getLicenseUrl() : docketInfo.getLicenseUrl())
                     .contact(
                             new Contact(
-                                    docketInfo.getContact().getName().isEmpty() ? swaggerProperties.getContact().getName() : docketInfo.getContact().getName(),
-                                    docketInfo.getContact().getUrl().isEmpty() ? swaggerProperties.getContact().getUrl() : docketInfo.getContact().getUrl(),
-                                    docketInfo.getContact().getEmail().isEmpty() ? swaggerProperties.getContact().getEmail() : docketInfo.getContact().getEmail()
+                                    StringUtils.isEmpty(docketInfo.getContact().getName()) ? swaggerProperties.getContact().getName() : docketInfo.getContact().getName(),
+                                    StringUtils.isEmpty(docketInfo.getContact().getUrl()) ? swaggerProperties.getContact().getUrl() : docketInfo.getContact().getUrl(),
+                                    StringUtils.isEmpty(docketInfo.getContact().getEmail()) ? swaggerProperties.getContact().getEmail() : docketInfo.getContact().getEmail()
                             )
                     )
-                    .termsOfServiceUrl(docketInfo.getTermsOfServiceUrl().isEmpty() ? swaggerProperties.getTermsOfServiceUrl() : docketInfo.getTermsOfServiceUrl())
+                    .termsOfServiceUrl(StringUtils.isEmpty(docketInfo.getTermsOfServiceUrl()) ? swaggerProperties.getTermsOfServiceUrl() : docketInfo.getTermsOfServiceUrl())
                     .build();
 
-            // base-path处理
-            // 当没有配置任何path的时候，解析/**
-            if (docketInfo.getBasePath().isEmpty()) {
-                docketInfo.getBasePath().add("/**");
-            }
-            List<Predicate<String>> basePath = new ArrayList();
-            for (String path : docketInfo.getBasePath()) {
-                basePath.add(PathSelectors.ant(path));
-            }
-
-            // exclude-path处理
-            List<Predicate<String>> excludePath = new ArrayList();
-            for (String path : docketInfo.getExcludePath()) {
-                excludePath.add(PathSelectors.ant(path));
-            }
 
             Docket docketForBuilder = new Docket(DocumentationType.SWAGGER_2)
                     .host(swaggerProperties.getHost())
@@ -175,16 +147,24 @@ public class SwaggerConfiguration implements BeanFactoryAware {
                 buildGlobalResponseMessage(swaggerProperties, docketForBuilder);
             }
 
-            Docket docket = docketForBuilder.groupName(groupName)
-                    .select()
-                    .apis(RequestHandlerSelectors.basePackage(docketInfo.getBasePackage()))
-                    .paths(
-                            Predicates.and(
-                                    Predicates.not(Predicates.or(excludePath)),
-                                    Predicates.or(basePath)
-                            )
-                    )
-                    .build();
+            ApiSelectorBuilder apiSelectorBuilder = docketForBuilder.select()
+                    .apis(RequestHandlerSelectors.basePackage(swaggerProperties.getBasePackage()));
+
+            // base-path处理
+            // 当没有配置任何path的时候，解析/**
+            if (swaggerProperties.getBasePath().isEmpty()) {
+                swaggerProperties.getBasePath().add("/**");
+            }
+            for (String path : swaggerProperties.getBasePath()) {
+                apiSelectorBuilder.paths(PathSelectors.ant(path));
+            }
+
+            //exclude-path处理
+            for (String path : swaggerProperties.getExcludePath()) {
+                apiSelectorBuilder.paths(PathSelectors.regex("^" +path));
+            }
+
+            Docket docket = apiSelectorBuilder.build();
 
             /* ignoredParameterTypes **/
             Class<?>[] array = new Class[docketInfo.getIgnoredParameterTypes().size()];

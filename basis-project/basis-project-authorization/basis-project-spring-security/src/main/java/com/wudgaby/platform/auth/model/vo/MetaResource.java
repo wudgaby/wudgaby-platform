@@ -7,7 +7,7 @@ import lombok.Data;
  * @Author :  WudGaby
  * @Version :  1.0
  * @Date : 2020/2/10 10:20
- * @Desc :   TODO
+ * @Desc :
  */
 @Data
 public class MetaResource {

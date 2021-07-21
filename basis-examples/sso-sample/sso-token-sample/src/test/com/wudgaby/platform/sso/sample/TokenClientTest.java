@@ -40,7 +40,7 @@ import java.util.Map;
  * @Author :  WudGaby
  * @Version :  1.0
  * @Date : 2020/6/25 2:21
- * @Desc :   TODO
+ * @Desc :
  */
 @Slf4j
 public class TokenClientTest {

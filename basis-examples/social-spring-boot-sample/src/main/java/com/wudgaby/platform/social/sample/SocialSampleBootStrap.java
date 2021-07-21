@@ -8,7 +8,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @Author :  WudGaby
  * @Version :  1.0
  * @Date : 2020/12/5 16:00
- * @Desc :   TODO
+ * @Desc :   
  */
 @SpringBootApplication
 public class SocialSampleBootStrap {

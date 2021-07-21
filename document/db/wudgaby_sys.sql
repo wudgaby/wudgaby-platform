@@ -218,7 +218,6 @@ CREATE TABLE `sys_log` (
    `response` text COMMENT '返回消息',
    PRIMARY KEY (`id`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='访问日志表';
-
 -- ----------------------------
 -- Table structure for sys_notice
 -- ----------------------------

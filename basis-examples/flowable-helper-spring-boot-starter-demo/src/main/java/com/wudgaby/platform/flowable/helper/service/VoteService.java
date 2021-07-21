@@ -9,7 +9,7 @@ import java.util.List;
  * @Author :  WudGaby
  * @Version :  1.0
  * @Date : 2020/3/19 14:45
- * @Desc :   TODO
+ * @Desc :
  */
 public interface VoteService {
     /**

@@ -10,7 +10,7 @@ import io.netty.handler.codec.MessageToByteEncoder;
  * @Author :  WudGaby
  * @Version :  1.0
  * @Date : 2020/6/28 11:14
- * @Desc :   TODO
+ * @Desc :
  */
 public class ChineseMessageEncoder extends MessageToByteEncoder<ChineseMessage> {
     @Override

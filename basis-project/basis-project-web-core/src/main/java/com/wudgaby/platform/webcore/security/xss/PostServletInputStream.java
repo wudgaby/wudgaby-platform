@@ -5,7 +5,7 @@ package com.wudgaby.platform.webcore.security.xss;
  * @Author :  WudGaby
  * @Version :  1.0
  * @Date : 2018/10/5/005 22:22
- * @Desc :   TODO
+ * @Desc :   
  */
 
 import javax.servlet.ReadListener;

@@ -13,7 +13,7 @@ import java.util.Set;
  * @Author :  WudGaby
  * @Version :  1.0
  * @Date : 2020/2/26 9:29
- * @Desc :   TODO
+ * @Desc :
  */
 @Data
 public class AuditNoticeVo {

@@ -12,7 +12,7 @@ import javax.websocket.EndpointConfig;
  * @Author :  WudGaby
  * @Version :  1.0
  * @Date : 2020/6/27 1:26
- * @Desc :   TODO
+ * @Desc :
  */
 public class MessageEncode implements Encoder.Text<WsMessage> {
 

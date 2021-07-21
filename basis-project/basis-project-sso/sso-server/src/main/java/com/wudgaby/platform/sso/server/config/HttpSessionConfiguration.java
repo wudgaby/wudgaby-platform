@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Configuration;
  * @Author :  WudGaby
  * @Version :  1.0
  * @Date : 2020/12/8 16:20
- * @Desc :   TODO
+ * @Desc :
  */
 @Configuration
 public class HttpSessionConfiguration {

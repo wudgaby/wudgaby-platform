@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
  * @Author :  WudGaby
  * @Version :  1.0
  * @Date : 2019/10/9 12:11
- * @Desc :   TODO
+ * @Desc :
  */
 @Component("customWebResponseExceptionTranslator")
 public class CustomWebResponseExceptionTranslator implements WebResponseExceptionTranslator {

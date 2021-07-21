@@ -7,7 +7,7 @@ import org.springframework.lang.Nullable;
  * @Author :  WudGaby
  * @Version :  1.0
  * @Date : 2019/4/12/012 13:06
- * @Desc :   TODO
+ * @Desc :
  */
 public class MailServiceException extends RuntimeException {
     public MailServiceException() {

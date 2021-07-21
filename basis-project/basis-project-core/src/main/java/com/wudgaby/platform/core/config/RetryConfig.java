@@ -11,7 +11,7 @@ import org.springframework.retry.support.RetryTemplate;
  * @Author :  WudGaby
  * @Version :  1.0
  * @Date : 2020/6/16 23:51
- * @Desc :   TODO
+ * @Desc :
  */
 @Configuration
 public class RetryConfig {

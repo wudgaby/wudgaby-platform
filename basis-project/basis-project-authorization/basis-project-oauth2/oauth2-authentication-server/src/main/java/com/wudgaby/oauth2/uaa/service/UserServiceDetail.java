@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
  * @Author :  WudGaby
  * @Version :  1.0
  * @Date : 2019/9/23 17:37
- * @Desc :   TODO
+ * @Desc :
  */
 @Service("userServiceDetail")
 public class UserServiceDetail implements UserDetailsService {

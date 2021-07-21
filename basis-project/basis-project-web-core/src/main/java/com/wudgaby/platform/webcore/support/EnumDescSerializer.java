@@ -15,7 +15,7 @@ import java.lang.reflect.Type;
  * @Author :  WudGaby
  * @Version :  1.0
  * @Date : 2019/10/14 15:29
- * @Desc :   TODO
+ * @Desc :
  */
 @Slf4j
 public class EnumDescSerializer implements ObjectSerializer {

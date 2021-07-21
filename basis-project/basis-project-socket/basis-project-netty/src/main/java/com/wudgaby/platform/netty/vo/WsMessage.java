@@ -11,7 +11,7 @@ import java.util.Date;
  * @Author :  WudGaby
  * @Version :  1.0
  * @Date : 2020/6/26 19:12
- * @Desc :   TODO
+ * @Desc :   
  */
 @Data
 public class WsMessage implements Serializable {

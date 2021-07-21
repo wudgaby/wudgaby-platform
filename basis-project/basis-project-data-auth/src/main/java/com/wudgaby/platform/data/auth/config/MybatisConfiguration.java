@@ -12,7 +12,7 @@ import java.util.Properties;
  * @Author :  WudGaby
  * @Version :  1.0
  * @Date : 2020/7/8 16:47
- * @Desc :   TODO
+ * @Desc :
  */
 @Configuration
 public class MybatisConfiguration {

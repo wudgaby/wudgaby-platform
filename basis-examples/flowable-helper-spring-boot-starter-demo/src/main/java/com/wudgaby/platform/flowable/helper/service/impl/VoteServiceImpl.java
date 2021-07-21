@@ -25,7 +25,7 @@ import java.util.Objects;
  * @Author :  WudGaby
  * @Version :  1.0
  * @Date : 2020/3/19 14:47
- * @Desc :   TODO
+ * @Desc :
  */
 @Service("voteService")
 public class VoteServiceImpl implements VoteService {

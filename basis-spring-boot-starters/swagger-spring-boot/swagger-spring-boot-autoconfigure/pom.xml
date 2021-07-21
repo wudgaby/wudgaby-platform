@@ -11,27 +11,31 @@
 
     <artifactId>swagger-spring-boot-autoconfigure</artifactId>
 
+    <properties>
+        <springfox.swagger.version>2.10.5</springfox.swagger.version>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>io.springfox</groupId>
             <artifactId>springfox-swagger2</artifactId>
-            <version>2.9.2</version>
+            <version>${springfox.swagger.version}</version>
         </dependency>
-        <dependency>
+        <!--<dependency>
             <groupId>io.swagger</groupId>
             <artifactId>swagger-models</artifactId>
             <version>1.6.0</version>
-        </dependency>
+        </dependency>-->
         <dependency>
             <groupId>io.springfox</groupId>
             <artifactId>springfox-swagger-ui</artifactId>
-            <version>2.9.2</version>
+            <version>${springfox.swagger.version}</version>
         </dependency>
 
         <dependency>
             <groupId>com.github.xiaoymin</groupId>
             <artifactId>knife4j-spring-boot-starter</artifactId>
-            <version>2.0.2</version>
+            <version>2.0.9</version>
             <!--<optional>true</optional>-->
         </dependency>
 

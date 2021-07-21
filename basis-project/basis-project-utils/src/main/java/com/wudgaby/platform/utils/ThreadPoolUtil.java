@@ -7,7 +7,7 @@ import lombok.experimental.UtilityClass;
  * @Author :  WudGaby
  * @Version :  1.0
  * @Date : 2019/7/10 10:13
- * @Desc :   TODO
+ * @Desc :
  */
 @UtilityClass
 public class ThreadPoolUtil {

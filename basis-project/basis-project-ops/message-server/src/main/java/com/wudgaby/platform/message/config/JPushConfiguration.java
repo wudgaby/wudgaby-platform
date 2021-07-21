@@ -12,7 +12,7 @@ import org.springframework.context.annotation.Configuration;
  * @Author :  WudGaby
  * @Version :  1.0
  * @Date : 2019/11/18 10:53
- * @Desc :   TODO
+ * @Desc :   
  */
 @ConditionalOnClass(JPushClient.class)
 @Configuration

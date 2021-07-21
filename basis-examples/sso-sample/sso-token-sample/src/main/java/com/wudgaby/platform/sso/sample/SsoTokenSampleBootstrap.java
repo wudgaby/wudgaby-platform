@@ -8,7 +8,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @Author :  WudGaby
  * @Version :  1.0
  * @Date : 2020/6/24 15:51
- * @Desc :   TODO
+ * @Desc :   
  */
 @SpringBootApplication(scanBasePackages = "com.wudgaby.platform")
 public class SsoTokenSampleBootstrap {

@@ -9,6 +9,7 @@ import com.wudgaby.codegen.ui.form.TableQueryForm;
 import com.wudgaby.codegen.ui.service.GeneratorCodeService;
 import com.wudgaby.codegen.ui.service.TableService;
 import com.wudgaby.platform.core.result.ApiPageResult;
+import com.wudgaby.platform.core.result.ApiResult;
 import com.wudgaby.platform.core.vo.PageVo;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -21,6 +22,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.util.Date;
 import java.util.List;
 
@@ -29,7 +31,7 @@ import java.util.List;
  * @Author :  WudGaby
  * @Version :  1.0
  * @Date : 2019/7/6/006 23:35
- * @Desc :   TODO
+ * @Desc :
  */
 @Slf4j
 @ApiIgnore
@@ -53,12 +55,19 @@ public class GeneratorCodeController {
         String fileName = "代码生成-" + DateUtil.format(new Date(), DatePattern.PURE_DATETIME_PATTERN) + ".rar";
         String downloadFileName = URLEncoder.encode(fileName, "UTF-8");
 
-        response.setContentType("application/octet-stream; charset=UTF-8");
-        response.setHeader("Content-Disposition", "attachment; filename=\"" + downloadFileName + "\"");
-        response.setCharacterEncoding(Charsets.UTF_8.name());
-
         OutputStream outputStream = response.getOutputStream();
-        generatorCodeService.downloadZip(outputStream, codeDownLoadForm);
-        response.flushBuffer();
+        try{
+            response.setContentType("application/octet-stream; charset=UTF-8");
+            response.setHeader("Content-Disposition", "attachment; filename=\"" + downloadFileName + "\"");
+            response.setCharacterEncoding(Charsets.UTF_8.name());
+            generatorCodeService.downloadZip(outputStream, codeDownLoadForm);
+        }catch (Exception ex) {
+            response.setContentType("application/json; charset=UTF-8");
+            response.setHeader("Content-Disposition", "inline");
+            response.setCharacterEncoding(Charsets.UTF_8.name());
+            outputStream.write(new String("代码生成失败! " + ex.getMessage()).getBytes(StandardCharsets.UTF_8));
+        } finally {
+            response.flushBuffer();
+        }
     }
 }

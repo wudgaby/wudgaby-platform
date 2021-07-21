@@ -49,6 +49,7 @@
         <module>basis-project-sys</module>
         <module>basis-project-authorization</module>
         <module>basis-project-socket</module>
+        <module>basis-project-permission</module>
     </modules>
 
     <properties>
@@ -130,12 +131,12 @@
         <redisson.starter.version>3.11.0</redisson.starter.version>
 
         <!--swagger-->
-        <swagger.version>2.9.2</swagger.version>
+        <swagger.version>2.10.5</swagger.version>
         <swagger.models.version>1.6.0</swagger.models.version>
         <swagger.annotations.version>1.6.0</swagger.annotations.version>
         <spring4all.swagger.version>1.9.1.RELEASE</spring4all.swagger.version>
         <swagger.bootstrapui.version>1.9.6</swagger.bootstrapui.version>
-        <knife4j.version>2.0.2</knife4j.version>
+        <knife4j.version>2.0.9</knife4j.version>
         <easy-captcha.version>1.6.2</easy-captcha.version>
         <xxl-job.version>2.2.0</xxl-job.version>
         <jooq.version>3.13.1</jooq.version>

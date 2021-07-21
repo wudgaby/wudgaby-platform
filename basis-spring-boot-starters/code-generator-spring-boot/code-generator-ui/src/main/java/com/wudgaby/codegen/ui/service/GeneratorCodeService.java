@@ -40,7 +40,7 @@ import java.util.Arrays;
  * @Author :  WudGaby
  * @Version :  1.0
  * @Date : 2019/7/6/006 21:41
- * @Desc :   TODO
+ * @Desc :
  */
 @Slf4j
 @Service
@@ -49,22 +49,18 @@ public class GeneratorCodeService {
     private final DataSourceProperties dataSourceProperties;
     private final CodeGenProperties codeGenProperties;
 
-    public void downloadZip(OutputStream outputStream, CodeDownLoadForm codeDownLoadForm){
-        try{
-            genCode(codeDownLoadForm);
+    public void downloadZip(OutputStream outputStream, CodeDownLoadForm codeDownLoadForm) throws IOException{
+        genCode(codeDownLoadForm);
 
-            File outZip = new File(codeGenProperties.getZipPath());
-            File genCodeDir = new File(codeGenProperties.getOutputPath());
-            ZipUtil.deCompress(genCodeDir, codeGenProperties.getZipPath());
+        File outZip = new File(codeGenProperties.getZipPath());
+        File genCodeDir = new File(codeGenProperties.getOutputPath());
+        ZipUtil.deCompress(genCodeDir, codeGenProperties.getZipPath());
 
-            try(InputStream in = new FileInputStream(outZip)){
-                IOUtils.copy(in, outputStream);
-            }
-            FileUtils.deleteQuietly(genCodeDir);
-            FileUtils.deleteQuietly(outZip);
-        }catch (IOException ioe){
-            log.error(ioe.getMessage(), ioe);
+        try(InputStream in = new FileInputStream(outZip)){
+            IOUtils.copy(in, outputStream);
         }
+        FileUtils.deleteQuietly(genCodeDir);
+        FileUtils.deleteQuietly(outZip);
     }
 
     public void genCode(CodeDownLoadForm codeDownLoadForm){

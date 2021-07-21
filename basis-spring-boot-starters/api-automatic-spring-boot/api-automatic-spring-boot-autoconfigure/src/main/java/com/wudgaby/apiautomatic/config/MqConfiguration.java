@@ -11,7 +11,7 @@ import org.springframework.context.annotation.Bean;
  * @Author :  WudGaby
  * @Version :  1.0
  * @Date : 2019/9/2 14:37
- * @Desc :   TODO
+ * @Desc :
  */
 @ConditionalOnProperty(value = "api.register.type", havingValue = "mq")
 @EnableBinding({ResourceSource.class})

@@ -23,7 +23,7 @@ import java.security.Principal;
  * @Author :  WudGaby
  * @Version :  1.0
  * @Date : 2020/6/26 15:32
- * @Desc :   TODO
+ * @Desc :
  */
 @Configuration
 @EnableWebSocketMessageBroker

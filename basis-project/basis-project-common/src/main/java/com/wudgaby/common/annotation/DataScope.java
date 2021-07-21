@@ -7,7 +7,7 @@ import java.lang.annotation.*;
  * @Author :  WudGaby
  * @Version :  1.0
  * @Date : 2020/4/9 18:32
- * @Desc :   TODO
+ * @Desc :
  */
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)

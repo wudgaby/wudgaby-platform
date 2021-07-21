@@ -7,7 +7,7 @@ import java.util.concurrent.TimeUnit;
  * @Author :  WudGaby
  * @Version :  1.0
  * @Date : 2020/6/19 18:23
- * @Desc :   TODO
+ * @Desc :
  */
 public interface SignConst {
     String RESUBMIT_KEY = "sign:resubmit:nonce:";

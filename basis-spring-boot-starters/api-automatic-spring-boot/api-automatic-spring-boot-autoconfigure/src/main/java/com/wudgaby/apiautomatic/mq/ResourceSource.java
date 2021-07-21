@@ -8,7 +8,7 @@ import org.springframework.messaging.MessageChannel;
  * @Author :  WudGaby
  * @Version :  1.0
  * @Date : 2020/5/7 18:14
- * @Desc :   TODO
+ * @Desc :   
  */
 public interface ResourceSource {
     String OUTPUT = "resource-output";

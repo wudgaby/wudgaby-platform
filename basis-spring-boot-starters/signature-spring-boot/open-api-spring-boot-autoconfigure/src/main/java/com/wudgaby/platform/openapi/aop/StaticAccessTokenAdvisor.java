@@ -18,6 +18,8 @@ import java.lang.reflect.Method;
 
 @Component
 public class StaticAccessTokenAdvisor extends StaticMethodMatcherPointcutAdvisor {
+    private static final String ACCESS_TOKEN = "accessToken";
+
     @Autowired
     private RedisSupport redisSupport;
 
@@ -45,17 +47,17 @@ public class StaticAccessTokenAdvisor extends StaticMethodMatcherPointcutAdvisor
             //校验accessToken
             //String accessToken = String.valueOf(methodInterceptorHolder.getArgs().get("accessToken"));
 
-            String paramAccessToken = RequestContextHolderSupport.getRequest().getParameter("accessToken");
-            String headerAccessToken = RequestContextHolderSupport.getRequest().getHeader("accessToken");
+            String paramAccessToken = RequestContextHolderSupport.getRequest().getParameter(ACCESS_TOKEN);
+            String headerAccessToken = RequestContextHolderSupport.getRequest().getHeader(ACCESS_TOKEN);
 
             String accessToken = StringUtils.isBlank(paramAccessToken) ? headerAccessToken : paramAccessToken;
             if(StringUtils.isBlank(accessToken)){
-                throw new BusinessException("缺少accessToken参数");
+                throw new BusinessException("缺少" +ACCESS_TOKEN+ "参数");
             }
 
             Object result = redisSupport.get(accessToken);
             if(result == null){
-                throw new BusinessException("无效的accessToken");
+                throw new BusinessException("无效的" + ACCESS_TOKEN);
             }
             Object response = methodInvocation.proceed();
             return response;

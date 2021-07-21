@@ -5,7 +5,7 @@ package com.wudgaby.platform.core.enums;
  * @Author :  WudGaby
  * @Version :  1.0
  * @Date : 2019/8/26 12:14
- * @Desc :   TODO
+ * @Desc :
  */
 public enum DesensitizedType {
     /**名称**/

@@ -5,7 +5,7 @@ package com.wudgaby.platform.flowable.helper.enums;
  * @Author :  WudGaby
  * @Version :  1.0
  * @Date : 2020/3/19 15:13
- * @Desc :   TODO
+ * @Desc :
  */
 public enum VoteResultType {
     /**

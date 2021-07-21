@@ -5,7 +5,7 @@ package com.wudgaby.codegen.ui.constant;
  * @Author :  WudGaby
  * @Version :  1.0
  * @Date : 2019/7/6/006 21:43
- * @Desc :   TODO
+ * @Desc :
  */
 public interface GeneratorConstant {
 

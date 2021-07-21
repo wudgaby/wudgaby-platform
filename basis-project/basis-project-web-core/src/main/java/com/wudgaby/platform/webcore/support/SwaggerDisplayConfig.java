@@ -1,7 +1,6 @@
 package com.wudgaby.platform.webcore.support;
 
 import com.fasterxml.classmate.ResolvedType;
-import com.google.common.base.Optional;
 import com.wudgaby.platform.core.annotation.SwaggerDisplayEnum;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.extern.slf4j.Slf4j;
@@ -23,6 +22,7 @@ import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 /**
@@ -169,13 +169,13 @@ public class SwaggerDisplayConfig implements ModelPropertyBuilderPlugin {
     }
 
     private Optional<ApiModelProperty> getApiModelPropertyAnnotation(ModelPropertyContext context){
-        Optional<ApiModelProperty> annotation = Optional.absent();
+        Optional<ApiModelProperty> annotation = Optional.empty();
 
         if (context.getAnnotatedElement().isPresent()) {
-            annotation = annotation.or(ApiModelProperties.findApiModePropertyAnnotation(context.getAnnotatedElement().get()));
+            annotation = ApiModelProperties.findApiModePropertyAnnotation(context.getAnnotatedElement().get());
         }
         if (context.getBeanPropertyDefinition().isPresent()) {
-            annotation = annotation.or(Annotations.findPropertyAnnotation(context.getBeanPropertyDefinition().get(), ApiModelProperty.class));
+            annotation = Annotations.findPropertyAnnotation(context.getBeanPropertyDefinition().get(), ApiModelProperty.class);
         }
         return annotation;
     }

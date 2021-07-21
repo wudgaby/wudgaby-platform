@@ -13,7 +13,7 @@ import java.net.UnknownHostException;
  * @Author :  WudGaby
  * @Version :  1.0
  * @Date : 2020/7/3 16:33
- * @Desc :   TODO
+ * @Desc :
  */
 public class ProxySSLSocketFactory extends SSLSocketFactory {
     private Proxy proxy;

@@ -14,7 +14,7 @@ import javax.servlet.http.HttpSession;
  * @Author :  WudGaby
  * @Version :  1.0
  * @Date : 2018/9/26/026 23:18
- * @Desc :   TODO
+ * @Desc :   
  */
 public class RequestContextHolderSupport {
     public static HttpServletRequest getRequest() {

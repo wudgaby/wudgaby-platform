@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wudgaby.platform.permission.mapper.BaseAuthorityMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.wudgaby.platform.permission.entity.BaseAuthority">
+        <id column="authority_id" property="authorityId" />
+        <result column="authority" property="authority" />
+        <result column="menu_id" property="menuId" />
+        <result column="api_id" property="apiId" />
+        <result column="action_id" property="actionId" />
+        <result column="status" property="status" />
+        <result column="create_time" property="createTime" />
+        <result column="update_time" property="updateTime" />
+    </resultMap>
+
+    <resultMap id="AuthorityResource" type="com.wudgaby.platform.permission.dto.AuthorityResource">
+        <result column="path" jdbcType="VARCHAR" property="path"/>
+        <result column="authority" jdbcType="VARCHAR" property="authority"/>
+        <result column="service_id" jdbcType="VARCHAR" property="serviceId"/>
+        <result column="is_auth" jdbcType="INTEGER" property="isAuth"/>
+        <result column="is_open" jdbcType="INTEGER" property="isOpen"/>
+        <result column="prefix" jdbcType="VARCHAR" property="prefix"/>
+        <result column="status" jdbcType="INTEGER" property="status"/>
+    </resultMap>
+
+    <resultMap id="Authority" type="com.wudgaby.platform.permission.dto.OpenAuthority">
+        <result column="authority_id" jdbcType="BIGINT" property="authorityId"/>
+        <result column="authority" jdbcType="VARCHAR" property="authority"/>
+        <result column="expire_time" jdbcType="TIMESTAMP" property="expireTime"/>
+        <result column="owner" jdbcType="VARCHAR" property="owner"/>
+    </resultMap>
+
+    <resultMap id="AuthorityMenu" type="com.wudgaby.platform.permission.dto.AuthorityMenu"
+               extends="com.wudgaby.platform.permission.mapper.BaseMenuMapper.BaseResultMap">
+        <result column="authority_id" jdbcType="BIGINT" property="authorityId"/>
+        <result column="authority" jdbcType="VARCHAR" property="authority"/>
+        <collection property="actionList" column="{menuId=menu_id,status=status}" select="selectAuthorityAction"/>
+    </resultMap>
+
+    <resultMap id="AuthorityAction" type="com.wudgaby.platform.permission.dto.AuthorityAction"
+               extends="com.wudgaby.platform.permission.mapper.BaseActionMapper.BaseResultMap">
+        <result column="authority_id" jdbcType="BIGINT" property="authorityId"/>
+        <result column="authority" jdbcType="VARCHAR" property="authority"/>
+        <result column="service_id" jdbcType="VARCHAR" property="serviceId"/>
+    </resultMap>
+
+    <resultMap id="AuthorityApi" type="com.wudgaby.platform.permission.dto.AuthorityApi"
+               extends="com.wudgaby.platform.permission.mapper.BaseApiMapper.BaseResultMap">
+        <result column="authority_id" jdbcType="BIGINT" property="authorityId"/>
+        <result column="authority" jdbcType="VARCHAR" property="authority"/>
+        <result column="prefix" jdbcType="VARCHAR" property="prefix"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        authority_id, authority, menu_id, api_id, action_id, status, create_time, update_time
+    </sql>
+
+    <select id="selectAuthorityMenu" resultMap="AuthorityMenu">
+        SELECT
+        a.authority_id,
+        a.authority,
+        m.*
+        FROM
+        base_authority AS a
+        INNER JOIN base_menu AS m ON a.menu_id = m.menu_id
+        <where>
+            <if test="status!=null">
+                AND m.status = #{status}
+            </if>
+        </where>
+    </select>
+
+    <select id="selectAuthorityAction" resultMap="AuthorityAction">
+        SELECT
+        a.authority_id,
+        a.authority,
+        o.*
+        FROM
+        base_authority AS a
+        INNER JOIN base_action AS o ON a.action_id = o.action_id
+        <if test="roleId!=null">
+            INNER JOIN base_authority_role AS ra ON ra.authority_id = a.authority_id
+        </if>
+        <if test="userId!=null">
+            INNER JOIN base_authority_user AS ua ON ua.authority_id = a.authority_id
+        </if>
+        <where>
+            <if test="status!=null">
+                AND o.status = #{status}
+            </if>
+            <if test="menuId!=null">
+                AND o.menu_id = #{menuId}
+            </if>
+            <if test="roleId!=null">
+                AND ra.role_id = #{roleId}
+            </if>
+            <if test="userId!=null">
+                AND ua.user_id = #{userId}
+            </if>
+        </where>
+    </select>
+
+    <select id="selectAuthorityApi" resultMap="AuthorityApi">
+        SELECT
+        a.authority_id,
+        a.authority,
+        api.*,
+        "" as prefix
+        FROM
+        base_authority AS a
+        INNER JOIN base_api AS api ON a.api_id = api.api_id
+        <where>
+            <if test="status!=null">
+                AND api.status = #{status}
+            </if>
+            <if test="serviceId!=null and serviceId!=''">
+                AND api.service_id = #{serviceId}
+            </if>
+        </where>
+        order by api.create_time desc
+    </select>
+
+    <select id="selectAuthorityAll"
+            resultMap="Authority">
+        select
+        authority_id,
+        authority,
+        'user' as owner
+        from base_authority
+        <where>
+            <if test="status!=null">
+                AND status = #{status}
+            </if>
+            <if test="type!=null and type!='' and type == '1'.toString()">
+                and api_id is null
+            </if>
+            <if test="type!=null and type!='' and type == '2'.toString()">
+                and api_id is not null
+            </if>
+        </where>
+    </select>
+
+    <select id="selectAllAuthorityResource" resultMap="AuthorityResource">
+        SELECT
+            a.authority_id,
+            a.authority,
+            menu.path,
+            menu.service_id,
+            '1' AS is_auth,
+            '1' AS is_open,
+            menu.`status`,
+            "" AS prefix
+        FROM
+            base_authority AS a
+                INNER JOIN base_menu AS menu ON a.menu_id = menu.menu_id
+        WHERE
+            menu.`status` = 1
+        UNION ALL
+        SELECT
+            a.authority_id,
+            a.authority,
+            api.path,
+            api.service_id,
+            api.is_auth,
+            api.is_open,
+            api.`status`,
+            "" AS prefix
+        FROM
+            base_authority AS a
+                INNER JOIN base_api AS api ON a.api_id = api.api_id
+        UNION ALL
+        SELECT
+            a.authority_id,
+            a.authority,
+            api.path,
+            api.service_id,
+            api.is_auth,
+            api.is_open,
+            api.`status`,
+            "" AS prefix
+        FROM
+            base_authority_action AS ac
+                INNER JOIN base_authority AS a ON a.action_id = ac.action_id
+                INNER JOIN base_authority AS a2 ON ac.authority_id = a2.authority_id
+                INNER JOIN base_api AS api ON a2.api_id = api.api_id
+                INNER JOIN base_action AS action ON ac.action_id = action.action_id
+        WHERE
+            action.`status` = 1
+    </select>
+</mapper>

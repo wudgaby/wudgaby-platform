@@ -11,7 +11,7 @@ import javax.validation.constraints.NotBlank;
  * @Author :  WudGaby
  * @Version :  1.0
  * @Date : 2020/10/9 18:11
- * @Desc :   TODO
+ * @Desc :
  */
 @Data
 @ApiModel("公告表单")

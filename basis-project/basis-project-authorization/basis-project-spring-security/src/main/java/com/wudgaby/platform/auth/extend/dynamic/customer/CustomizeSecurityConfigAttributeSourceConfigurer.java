@@ -12,7 +12,7 @@ import java.util.Objects;
  * @Author :  WudGaby
  * @Version :  1.0
  * @Date : 2020/2/11 12:31
- * @Desc :   TODO
+ * @Desc :
  */
 public class CustomizeSecurityConfigAttributeSourceConfigurer {
     public static <T extends ExpressionUrlAuthorizationConfigurer.ExpressionInterceptUrlRegistry> T enable(

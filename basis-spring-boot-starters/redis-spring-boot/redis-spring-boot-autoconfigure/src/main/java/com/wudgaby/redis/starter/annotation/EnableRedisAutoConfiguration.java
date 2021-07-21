@@ -10,7 +10,7 @@ import java.lang.annotation.*;
  * @Author :  WudGaby
  * @Version :  1.0
  * @Date : 2019/8/16 10:32
- * @Desc :   TODO
+ * @Desc :
  */
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)

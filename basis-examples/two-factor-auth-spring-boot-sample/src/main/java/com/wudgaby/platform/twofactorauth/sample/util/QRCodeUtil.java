@@ -5,7 +5,7 @@ package com.wudgaby.platform.twofactorauth.sample.util;
  * @Author :  WudGaby
  * @Version :  1.0
  * @Date : 2020/12/9 23:40
- * @Desc :   TODO
+ * @Desc :
  */
 
 import com.google.zxing.BarcodeFormat;

@@ -12,7 +12,7 @@ import javax.validation.constraints.NotNull;
  * @Author :  WudGaby
  * @Version :  1.0
  * @Date : 2021/1/2 17:50
- * @Desc :   TODO
+ * @Desc :   
  */
 @Data
 @ApiModel("更新密码表单")

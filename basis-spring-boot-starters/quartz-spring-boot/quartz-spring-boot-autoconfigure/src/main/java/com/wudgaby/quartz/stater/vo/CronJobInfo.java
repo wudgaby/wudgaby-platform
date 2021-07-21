@@ -9,7 +9,7 @@ import java.util.Map;
  * @author wudgaby
  * @version V1.0
  * @ClassName: CronJobInfo
- * @Description: TODO
+ * @description: 
  * @date 2018/9/20 09:30
  */
 @Data

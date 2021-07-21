@@ -15,7 +15,7 @@ import java.util.Map;
  * @Author :  WudGaby
  * @Version :  1.0
  * @Date : 2019/10/9 12:08
- * @Desc :   TODO
+ * @Desc :   
  */
 public class CustomOAuth2ExceptionSerializer extends StdSerializer<CustomerOAuth2Exception> {
     public CustomOAuth2ExceptionSerializer() {

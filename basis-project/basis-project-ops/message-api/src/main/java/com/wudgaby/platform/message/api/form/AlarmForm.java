@@ -19,7 +19,7 @@ import java.io.Serializable;
  * @Author :  WudGaby
  * @Version :  1.0
  * @Date : 2019/7/10 12:56
- * @Desc :   TODO
+ * @Desc :
  */
 @Data
 @ApiModel("告警表单")

@@ -10,7 +10,7 @@ import java.net.Proxy;
  * @Author :  WudGaby
  * @Version :  1.0
  * @Date : 2020/4/8 10:24
- * @Desc :   TODO
+ * @Desc :   
  */
 @UtilityClass
 public class ProxyUtil {

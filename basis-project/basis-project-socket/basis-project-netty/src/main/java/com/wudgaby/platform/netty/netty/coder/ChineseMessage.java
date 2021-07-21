@@ -9,7 +9,7 @@ import java.io.Serializable;
  * @Author :  WudGaby
  * @Version :  1.0
  * @Date : 2020/6/28 11:15
- * @Desc :   TODO
+ * @Desc :   
  */
 @Data
 public class ChineseMessage implements Serializable {

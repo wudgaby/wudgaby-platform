@@ -8,7 +8,7 @@ import org.springframework.security.oauth2.common.exceptions.OAuth2Exception;
  * @Author :  WudGaby
  * @Version :  1.0
  * @Date : 2019/10/9 12:07
- * @Desc :   TODO
+ * @Desc :
  */
 @JsonSerialize(using = CustomOAuth2ExceptionSerializer.class)
 public class CustomerOAuth2Exception extends OAuth2Exception {

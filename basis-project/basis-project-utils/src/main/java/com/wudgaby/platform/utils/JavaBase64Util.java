@@ -10,7 +10,7 @@ import java.util.Base64;
  * @Author :  WudGaby
  * @Version :  1.0
  * @Date : 2020/6/14 15:06
- * @Desc :   TODO
+ * @Desc :
  */
 @UtilityClass
 public class JavaBase64Util {

@@ -10,7 +10,7 @@ import org.springframework.session.web.http.HttpSessionIdResolver;
  * @Author :  WudGaby
  * @Version :  1.0
  * @Date : 2020/6/26 19:32
- * @Desc :   TODO
+ * @Desc :
  */
 @EnableRedisHttpSession(maxInactiveIntervalInSeconds = 1800)
 public class HttpSessionConfig {

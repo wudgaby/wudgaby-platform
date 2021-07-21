@@ -10,7 +10,7 @@ import javax.validation.ConstraintValidatorContext;
  * @Author :  WudGaby
  * @Version :  1.0
  * @Date : 2020/6/15 1:41
- * @Desc :   TODO
+ * @Desc :
  */
 public class CoordsValidator implements ConstraintValidator<Coords, String> {
     public static final String LONGITUDE_MIN = "73.66";

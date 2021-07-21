@@ -7,7 +7,7 @@ import lombok.experimental.UtilityClass;
  * @Author :  WudGaby
  * @Version :  1.0
  * @Date : 2019/10/14 18:35
- * @Desc :   TODO
+ * @Desc :
  */
 @UtilityClass
 public class BeanUtils {

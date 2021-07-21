@@ -7,18 +7,18 @@ import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.scheduling.annotation.EnableAsync;
-import springfox.documentation.swagger2.annotations.EnableSwagger2;
+import springfox.documentation.swagger2.annotations.EnableSwagger2WebMvc;
 
 /**
  * @ClassName : SysBootstrap
  * @Author :  WudGaby
  * @Version :  1.0
  * @Date : 2020/9/28 18:28
- * @Desc :   TODO
+ * @Desc :
  */
 @SpringBootApplication(scanBasePackages = "com.wudgaby.platform")
 @MapperScan(value = {"com.wudgaby.platform.sys.mapper"})
-@EnableSwagger2
+@EnableSwagger2WebMvc
 @EnableKnife4j
 @EnableAccessLogger
 @EnableOwnFrame

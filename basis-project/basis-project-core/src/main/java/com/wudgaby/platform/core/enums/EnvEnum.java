@@ -8,7 +8,7 @@ import org.springframework.util.Assert;
  * @Author :  WudGaby
  * @Version :  1.0
  * @Date : 2018/9/26/026 20:47
- * @Desc :   TODO
+ * @Desc :
  */
 @Getter
 public enum EnvEnum {

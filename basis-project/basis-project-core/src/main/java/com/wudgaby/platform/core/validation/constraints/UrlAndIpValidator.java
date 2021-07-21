@@ -12,7 +12,7 @@ import javax.validation.ConstraintValidatorContext;
  * @Author :  WudGaby
  * @Version :  1.0
  * @Date : 2018/9/24/024 3:24
- * @Desc :   TODO
+ * @Desc :
  */
 @Slf4j
 public class UrlAndIpValidator implements ConstraintValidator<URLAndIP, String> {

@@ -14,7 +14,7 @@ import org.springframework.web.socket.server.HandshakeInterceptor;
  * @Author :  WudGaby
  * @Version :  1.0
  * @Date : 2020/6/25 19:47
- * @Desc :   TODO
+ * @Desc :
  */
 @Configuration
 @EnableWebSocket

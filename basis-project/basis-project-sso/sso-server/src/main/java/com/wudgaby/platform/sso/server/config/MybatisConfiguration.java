@@ -16,7 +16,7 @@ import java.util.List;
  * @Author :  WudGaby
  * @Version :  1.0
  * @Date : 2019/7/8 10:40
- * @Desc :   TODO
+ * @Desc :
  */
 @Configuration
 @MapperScan("com.wudgaby.platform.sso.server.mapper")

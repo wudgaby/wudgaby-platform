@@ -48,7 +48,7 @@ public class StartedEventListener {
         if(ClassUtils.isPresent("com.github.xiaoymin.knife4j.spring.annotations.EnableKnife4j", null)){
             log.info("knife4j Swagger地址: {}://localhost:{}{}/doc.html", protocol, localPort, contextPath);
         }
-        if (ClassUtils.isPresent("springfox.documentation.swagger2.annotations.EnableSwagger2", null)) {
+        if (ClassUtils.isPresent("springfox.documentation.swagger2.annotations.EnableSwagger2WebMvc", null)) {
             log.info("Swagger地址: {}://localhost:{}{}/swagger-ui.html", protocol, localPort, contextPath);
         }
         if (ClassUtils.isPresent("springfox.documentation.oas.annotations.EnableOpenApi", null)) {

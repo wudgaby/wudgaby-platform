@@ -9,7 +9,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @Author :  WudGaby
  * @Version :  1.0
  * @Date : 2020/7/8 16:28
- * @Desc :   TODO
+ * @Desc :
  */
 @MapperScan("com.wudgaby.platform.data.auth.mapper")
 @SpringBootApplication

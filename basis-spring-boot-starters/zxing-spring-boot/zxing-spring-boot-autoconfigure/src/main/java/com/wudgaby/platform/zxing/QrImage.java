@@ -5,7 +5,7 @@ package com.wudgaby.platform.zxing;
  * @Author :  WudGaby
  * @Version :  1.0
  * @Date : 2020/7/16 17:36
- * @Desc :   TODO
+ * @Desc :   
  */
 import lombok.AllArgsConstructor;
 import lombok.Builder;

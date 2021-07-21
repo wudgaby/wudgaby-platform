@@ -13,7 +13,7 @@ import java.io.Serializable;
  * @Author :  WudGaby
  * @Version :  1.0
  * @Date : 2019/7/10 12:18
- * @Desc :   TODO
+ * @Desc :   
  */
 @Data
 @ApiModel("普通邮件表单")

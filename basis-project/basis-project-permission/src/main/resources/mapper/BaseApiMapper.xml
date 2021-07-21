@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wudgaby.platform.permission.mapper.BaseApiMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.wudgaby.platform.permission.entity.BaseApi">
+        <id column="api_id" property="apiId" />
+        <result column="api_code" property="apiCode" />
+        <result column="api_name" property="apiName" />
+        <result column="api_category" property="apiCategory" />
+        <result column="api_desc" property="apiDesc" />
+        <result column="request_method" property="requestMethod" />
+        <result column="content_type" property="contentType" />
+        <result column="service_id" property="serviceId" />
+        <result column="path" property="path" />
+        <result column="priority" property="priority" />
+        <result column="status" property="status" />
+        <result column="create_time" property="createTime" />
+        <result column="update_time" property="updateTime" />
+        <result column="is_persist" property="isPersist" />
+        <result column="is_auth" property="isAuth" />
+        <result column="is_open" property="isOpen" />
+        <result column="class_name" property="className" />
+        <result column="method_name" property="methodName" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        api_id, api_code, api_name, api_category, api_desc, request_method, content_type, service_id, path, priority, status, create_time, update_time, is_persist, is_auth, is_open, class_name, method_name
+    </sql>
+
+</mapper>

@@ -11,7 +11,7 @@ import java.io.IOException;
  * @Author :  WudGaby
  * @Version :  1.0
  * @Date : 2020/7/17 15:33
- * @Desc :   TODO
+ * @Desc :
  */
 public class QrCodeTest {
     public static void main(String[] args) throws NotFoundException, IOException {

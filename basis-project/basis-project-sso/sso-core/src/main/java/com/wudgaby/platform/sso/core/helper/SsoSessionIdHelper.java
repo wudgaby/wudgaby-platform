@@ -14,7 +14,7 @@ import java.util.List;
  * @Author :  WudGaby
  * @Version :  1.0
  * @Date : 2020/6/24 9:39
- * @Desc :   TODO
+ * @Desc :   
  */
 @UtilityClass
 public class SsoSessionIdHelper {

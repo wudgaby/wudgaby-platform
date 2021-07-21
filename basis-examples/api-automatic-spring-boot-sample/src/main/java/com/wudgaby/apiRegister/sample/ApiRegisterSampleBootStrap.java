@@ -9,7 +9,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @Author :  WudGaby
  * @Version :  1.0
  * @Date : 2020/5/9 15:17
- * @Desc :   TODO
+ * @Desc :
  */
 @EnableOwnFrame(scanBasePackageClasses = {ApiRegisterSampleBootStrap.class})
 @SpringBootApplication

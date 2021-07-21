@@ -16,7 +16,7 @@ import java.util.Date;
  * @Author :  wudgaby
  * @Version :  1.0
  * @Date : 2018/9/19/01919:49
- * @Desc :   TODO
+ * @Desc :
  */
 @UtilityClass
 public class LocalDateTimeUtil {
@@ -53,7 +53,7 @@ public class LocalDateTimeUtil {
     }
 
     /**
-    　　* @Description: TODO
+    　　* @Description: 
         * @package com.wudgaby.util.util
     　　* @param [time]
     　　* @return java.util.Date

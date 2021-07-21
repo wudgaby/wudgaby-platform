@@ -8,7 +8,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @Author :  WudGaby
  * @Version :  1.0
  * @Date : 2020/3/31 14:46
- * @Desc :   TODO
+ * @Desc :
  */
 @SpringBootApplication(scanBasePackages = "com.wudgaby")
 public class MailDemoBootstrap {

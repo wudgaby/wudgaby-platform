@@ -4,6 +4,7 @@ import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.alibaba.fastjson.serializer.ValueFilter;
 import com.alibaba.fastjson.support.config.FastJsonConfig;
 import com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter;
+import com.alibaba.fastjson.util.TypeUtils;
 import com.wudgaby.platform.core.result.ApiResult;
 import com.wudgaby.platform.utils.LocalDateTimeUtil;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
@@ -25,7 +26,7 @@ import java.util.*;
  * @Author :  WudGaby
  * @Version :  1.0
  * @Date : 2018/9/26/026 23:30
- * @Desc :   TODO
+ * @Desc :
  */
 @Configuration
 @ConditionalOnClass(FastJsonHttpMessageConverter.class)
@@ -38,9 +39,9 @@ public class FastJsonConverter {
             SerializerFeature.WriteEnumUsingToString,
             SerializerFeature.WriteNullListAsEmpty,
             SerializerFeature.WriteMapNullValue,
-            SerializerFeature.WriteNonStringValueAsString,
             SerializerFeature.WriteBigDecimalAsPlain,
             SerializerFeature.DisableCircularReferenceDetect,
+            //SerializerFeature.WriteNonStringValueAsString,
             //SerializerFeature.WriteClassName,
             //SerializerFeature.BrowserCompatible,
             //SerializerFeature.PrettyFormat,
@@ -51,7 +52,6 @@ public class FastJsonConverter {
      *
      * @return
      */
-    @Bean
     public ValueFilter dateFilter() {
         ValueFilter dateFilter = (Object obj, String name, Object val) -> {
             try {
@@ -86,7 +86,6 @@ public class FastJsonConverter {
      *
      * @return
      */
-    @Bean
     public ValueFilter objectFilter() {
         return (Object obj, String name, Object val) -> {
             try {
@@ -130,6 +129,8 @@ public class FastJsonConverter {
         //添加序列化过滤器, objectFilter()
         fastJsonConfig.setSerializeFilters(dateFilter(), objectFilter(), new MySensitiveContextValueFilter());
 
+        // 处理首字母大小写问题
+        TypeUtils.compatibleWithJavaBean = true;
         // 在转换器中添加配置信息
         fastConverter.setFastJsonConfig(fastJsonConfig);
 

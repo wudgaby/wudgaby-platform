@@ -9,7 +9,7 @@ import java.lang.reflect.Method;
  * @Author :  WudGaby
  * @Version :  1.0
  * @Date : 2020/4/30 20:56
- * @Desc :   TODO
+ * @Desc :
  */
 public interface RateLimiterService {
     boolean isAllowed(RateLimiter rateLimiter, Method method, Object[] args);

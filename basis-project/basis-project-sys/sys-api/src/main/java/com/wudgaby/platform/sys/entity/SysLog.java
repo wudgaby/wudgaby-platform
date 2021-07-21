@@ -8,6 +8,8 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 
+import java.util.Date;
+
 /**
  * <p>
  * 访问日志表
@@ -49,17 +51,29 @@ public class SysLog extends BaseEntity {
     @ApiModelProperty(value = "请求参数")
     private String reqParam;
 
+    @ApiModelProperty(value = "请求头")
+    private String reqHeaders;
+
     @ApiModelProperty(value = "请求ip")
-    private String clientIp;
+    private String reqIp;
+
+    @ApiModelProperty(value = "请求区域")
+    private String reqRegion;
 
     @ApiModelProperty(value = "服务器ip")
     private String serverAddr;
 
     @ApiModelProperty(value = "异常信息")
-    private String exceptionInfo;
+    private String error;
+
+    @ApiModelProperty(value = "请求时间")
+    private Date reqTime;
+
+    @ApiModelProperty(value = "响应时间")
+    private Date respTime;
 
     @ApiModelProperty(value = "执行时间ms")
-    private Integer executeTime;
+    private Integer runTime;
 
     @ApiModelProperty(value = "日志类型SYSTEM")
     private String type;
@@ -76,6 +90,9 @@ public class SysLog extends BaseEntity {
 
     @ApiModelProperty(value = "返回消息")
     private String response;
+
+    @ApiModelProperty(value = "响应状态")
+    private String httpStatus;
 
 
 }

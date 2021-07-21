@@ -5,7 +5,7 @@ package com.wudgaby.platform.security.core;
  * @Author :  WudGaby
  * @Version :  1.0
  * @Date : 2020/2/29 9:48
- * @Desc :   TODO
+ * @Desc :   
  */
 
 import lombok.experimental.UtilityClass;
@@ -21,7 +21,7 @@ import java.util.Optional;
  * @Author :  WudGaby
  * @Version :  1.0
  * @Date : 2020/2/7 17:31
- * @Desc :   TODO
+ * @Desc :   
  */
 @Slf4j
 @UtilityClass

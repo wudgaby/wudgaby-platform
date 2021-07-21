@@ -8,7 +8,7 @@ import java.sql.Statement;
  * @Author :  WudGaby
  * @Version :  1.0
  * @Date : 2020/11/13 10:00
- * @Desc :   TODO
+ * @Desc :   
  */
 public class ODBCTest {
     public static void main(String[] args) throws ClassNotFoundException, SQLException {

@@ -14,7 +14,7 @@ import sample.vo.Order;
  * @Author :  WudGaby
  * @Version :  1.0
  * @Date : 2020/6/20 1:45
- * @Desc :   TODO
+ * @Desc :
  */
 @Slf4j
 @SpringBootApplication(scanBasePackages = {"com.wudgaby", "sample"})

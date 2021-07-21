@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Configuration;
  * @Author :  WudGaby
  * @Version :  1.0
  * @Date : 2020/4/3 11:04
- * @Desc :   TODO
+ * @Desc :   
  */
 @Configuration
 @ComponentScan(basePackages = {"com.wudgaby.flowable.module.web"})

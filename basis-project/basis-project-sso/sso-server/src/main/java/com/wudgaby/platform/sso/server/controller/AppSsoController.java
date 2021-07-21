@@ -27,7 +27,7 @@ import java.util.List;
  * @Author :  WudGaby
  * @Version :  1.0
  * @Date : 2020/6/1 18:40
- * @Desc :   TODO
+ * @Desc :
  */
 @Api(tags = "app单点")
 @AllArgsConstructor

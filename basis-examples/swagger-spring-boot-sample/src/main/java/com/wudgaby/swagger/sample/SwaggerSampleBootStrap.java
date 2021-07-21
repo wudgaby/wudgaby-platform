@@ -9,10 +9,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @Author :  WudGaby
  * @Version :  1.0
  * @Date : 2020/5/9 15:17
- * @Desc :   TODO
+ * @Desc :   
  */
 @EnableOwnFrame(scanBasePackageClasses = {SwaggerSampleBootStrap.class})
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = "com.wudgaby.platform")
 public class SwaggerSampleBootStrap {
     public static void main(String[] args) {
         SpringApplication.run(SwaggerSampleBootStrap.class, args);

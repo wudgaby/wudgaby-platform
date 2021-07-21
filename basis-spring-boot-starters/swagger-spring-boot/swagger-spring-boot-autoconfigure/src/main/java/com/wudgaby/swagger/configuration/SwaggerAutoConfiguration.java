@@ -1,5 +1,6 @@
 package com.wudgaby.swagger.configuration;
 
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 
@@ -8,9 +9,10 @@ import org.springframework.context.annotation.Import;
  * Create date：2017/8/7.
  * My blog： http://blog.didispace.com
  */
+@ConditionalOnProperty(name = "swagger.enabled", havingValue = "true", matchIfMissing = true)
 @Configuration
 @Import({
-    SwaggerConfiguration.class, DefaultSwaggerConfiguration.class
+    DefaultSwaggerConfiguration.class, SwaggerConfiguration.class
 })
 public class SwaggerAutoConfiguration {
 

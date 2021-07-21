@@ -12,7 +12,7 @@ import java.util.Map;
  * @Author :  WudGaby
  * @Version :  1.0
  * @Date : 2020/6/4 12:14
- * @Desc :   TODO
+ * @Desc :
  */
 @Data
 @Accessors(chain = true)
@@ -99,4 +99,9 @@ public class AccessLoggerInfo {
      * 异常信息,请求对应方法抛出的异常
      */
     private Throwable exception;
+
+    /**
+     * 响应http状态码
+     */
+    private String httpStatus;
 }

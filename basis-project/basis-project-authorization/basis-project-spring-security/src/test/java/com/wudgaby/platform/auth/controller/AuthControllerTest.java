@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.*;
  * @Author :  WudGaby
  * @Version :  1.0
  * @Date : 2020/4/23 9:16
- * @Desc :   TODO
+ * @Desc :
  */
 class AuthControllerTest {
 

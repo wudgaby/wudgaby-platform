@@ -26,7 +26,7 @@ import java.util.concurrent.TimeUnit;
  * @Author :  WudGaby
  * @Version :  1.0
  * @Date : 2020/4/30 23:48
- * @Desc :   TODO
+ * @Desc :
  */
 @Slf4j
 public class GuavaRateLimiterService implements RateLimiterService{

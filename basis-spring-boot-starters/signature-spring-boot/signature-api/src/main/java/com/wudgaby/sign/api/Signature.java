@@ -11,7 +11,7 @@ import java.lang.annotation.Target;
  * @Author :  WudGaby
  * @Version :  1.0
  * @Date : 2020/6/17 0:37
- * @Desc :   TODO
+ * @Desc :   
  */
 @Target({ElementType.TYPE, ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)

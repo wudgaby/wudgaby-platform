@@ -11,7 +11,7 @@ import java.util.Collection;
  * @Author :  WudGaby
  * @Version :  1.0
  * @Date : 2020/2/3 19:41
- * @Desc :   TODO
+ * @Desc :
  */
 public class EmailAuthenticationToken extends AbstractAuthenticationToken{
     private static final long serialVersionUID = SpringSecurityCoreVersion.SERIAL_VERSION_UID;

@@ -5,7 +5,7 @@ package com.wudgaby.platform.data.auth.annotation;
  * @Author :  WudGaby
  * @Version :  1.0
  * @Date : 2020/7/7 16:06
- * @Desc :   TODO
+ * @Desc :
  */
 
 import java.lang.annotation.*;

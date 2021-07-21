@@ -23,7 +23,7 @@ import java.security.SecureRandom;
  * @Author :  WudGaby
  * @Version :  1.0
  * @Date : 2020/12/9 17:08
- * @Desc :   TODO
+ * @Desc :   
  */
 public class GoogleAuthenticator {
     public static String getRandomSecretKey() {

@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
  * @Author :  WudGaby
  * @Version :  1.0
  * @Date : 2021/3/14 0:46
- * @Desc :   TODO
+ * @Desc :
  */
 @SpringBootApplication(exclude={
         RedisAutoConfiguration.class

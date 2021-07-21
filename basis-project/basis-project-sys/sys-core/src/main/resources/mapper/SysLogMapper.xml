@@ -4,11 +4,11 @@
 
     <!-- 通用查询映射结果 -->
     <resultMap id="BaseResultMap" type="com.wudgaby.platform.sys.entity.SysLog">
-    <result column="id" property="id" />
-    <result column="create_time" property="createTime" />
-    <result column="update_time" property="updateTime" />
-    <result column="create_by" property="createBy" />
-    <result column="update_by" property="updateBy" />
+        <id column="id" property="id" />
+        <result column="create_time" property="createTime" />
+        <result column="update_time" property="updateTime" />
+        <result column="create_by" property="createBy" />
+        <result column="update_by" property="updateBy" />
         <result column="user_id" property="userId" />
         <result column="user_name" property="userName" />
         <result column="action" property="action" />
@@ -17,25 +17,25 @@
         <result column="req_url" property="reqUrl" />
         <result column="req_method" property="reqMethod" />
         <result column="req_param" property="reqParam" />
-        <result column="client_ip" property="clientIp" />
+        <result column="req_headers" property="reqHeaders" />
+        <result column="req_time" property="reqTime" />
+        <result column="resp_time" property="respTime" />
+        <result column="req_ip" property="reqIp" />
+        <result column="req_region" property="reqRegion" />
         <result column="server_addr" property="serverAddr" />
-        <result column="exception_info" property="exceptionInfo" />
-        <result column="execute_time" property="executeTime" />
+        <result column="error" property="error" />
+        <result column="run_time" property="runTime" />
         <result column="type" property="type" />
         <result column="os" property="os" />
         <result column="browser" property="browser" />
         <result column="is_succeed" property="succeed" />
         <result column="response" property="response" />
+        <result column="http_status" property="httpStatus" />
     </resultMap>
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        id,
-        create_time,
-        update_time,
-        create_by,
-        update_by,
-        user_id, user_name, action, desc, user_agent, req_url, req_method, req_param, client_ip, server_addr, exception_info, execute_time, type, os, browser, is_succeed, response
+        id, create_time, update_time, create_by, update_by, user_id, user_name, action, desc, user_agent, req_url, req_method, req_param, req_headers, req_time, resp_time, req_ip, req_region, server_addr, error, run_time, type, os, browser, is_succeed, response, http_status
     </sql>
 
 </mapper>

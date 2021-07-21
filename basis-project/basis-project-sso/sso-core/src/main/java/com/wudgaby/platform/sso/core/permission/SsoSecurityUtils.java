@@ -12,7 +12,7 @@ import java.util.Optional;
  * @Author :  WudGaby
  * @Version :  1.0
  * @Date : 2019/7/4 18:44
- * @Desc :   TODO
+ * @Desc :
  */
 public class SsoSecurityUtils {
     private static TransmittableThreadLocal<Map<String, Object>> ttl = new TransmittableThreadLocal();

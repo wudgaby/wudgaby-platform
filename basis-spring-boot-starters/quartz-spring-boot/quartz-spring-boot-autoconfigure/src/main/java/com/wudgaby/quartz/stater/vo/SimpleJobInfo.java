@@ -11,7 +11,7 @@ import java.util.Map;
  * @author wudgaby
  * @version V1.0
  * @ClassName: SimpleJobInfo
- * @Description: TODO
+ * @description: 
  * @date 2018/9/20 09:31
  */
 @Data

@@ -5,7 +5,7 @@ package com.wudgaby.platform.sso.core.constant;
  * @Author :  WudGaby
  * @Version :  1.0
  * @Date : 2020/6/1 17:47
- * @Desc :   TODO
+ * @Desc :
  */
 public interface SsoConst {
     String SSO_LOGIN_URL = "/sso/login";

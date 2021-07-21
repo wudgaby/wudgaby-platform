@@ -34,7 +34,7 @@ import javax.servlet.http.HttpServletRequest;
  * @Author :  WudGaby
  * @Version :  1.0
  * @Date : 2020/2/3 13:48
- * @Desc :   TODO
+ * @Desc :
  */
 @Slf4j
 @Api(tags = "认证")

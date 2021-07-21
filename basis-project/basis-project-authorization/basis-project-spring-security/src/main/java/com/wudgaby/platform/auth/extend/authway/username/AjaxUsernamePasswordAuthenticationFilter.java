@@ -20,7 +20,7 @@ import java.io.InputStream;
  * @Author :  WudGaby
  * @Version :  1.0
  * @Date : 2020/2/14 14:48
- * @Desc :   TODO
+ * @Desc :
  */
 public class AjaxUsernamePasswordAuthenticationFilter extends AbstractAuthenticationProcessingFilter {
     public AjaxUsernamePasswordAuthenticationFilter() {

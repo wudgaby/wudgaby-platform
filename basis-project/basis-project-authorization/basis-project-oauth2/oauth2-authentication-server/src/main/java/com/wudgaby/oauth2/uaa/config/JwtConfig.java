@@ -19,7 +19,7 @@ import java.util.Map;
  * @Author :  WudGaby
  * @Version :  1.0
  * @Date : 2019/9/23 18:42
- * @Desc :   TODO
+ * @Desc :   
  */
 @Configuration
 public class JwtConfig {

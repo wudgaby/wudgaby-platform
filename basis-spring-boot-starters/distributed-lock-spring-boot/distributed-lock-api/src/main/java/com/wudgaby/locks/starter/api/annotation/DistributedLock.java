@@ -10,7 +10,7 @@ import java.util.concurrent.TimeUnit;
  * @Author :  WudGaby
  * @Version :  1.0
  * @Date : 2019/7/25 15:08
- * @Desc :   TODO
+ * @Desc :   
  */
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)

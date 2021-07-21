@@ -11,7 +11,7 @@ import java.util.HashMap;
  * @Author :  WudGaby
  * @Version :  1.0
  * @Date : 2020/4/9 10:27
- * @Desc :   TODO
+ * @Desc :   
  */
 public class CheckFileFormatUtil {
     // 缓存文件头信息-文件头信息

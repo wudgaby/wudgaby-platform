@@ -12,7 +12,7 @@ import java.util.LinkedHashMap;
  * @Author :  WudGaby
  * @Version :  1.0
  * @Date : 2020/2/11 12:29
- * @Desc :   TODO
+ * @Desc :
  */
 public interface SecurityConfigAttributeLoader {
     LinkedHashMap<RequestMatcher, Collection<ConfigAttribute>> loadConfigAttribute(HttpServletRequest request);

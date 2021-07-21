@@ -27,5 +27,10 @@
             <artifactId>logger-spring-boot-starter</artifactId>
             <version>${starter.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.lionsoul</groupId>
+            <artifactId>ip2region</artifactId>
+            <version>1.7.2</version>
+        </dependency>
     </dependencies>
 </project>

@@ -58,7 +58,7 @@ import java.util.concurrent.TimeUnit;
  * @Author :  WudGaby
  * @Version :  1.0
  * @Date : 2019/9/23 17:40
- * @Desc :   TODO
+ * @Desc :
  */
 @Configuration
 @EnableAuthorizationServer

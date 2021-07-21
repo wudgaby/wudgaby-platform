@@ -8,7 +8,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @Author :  WudGaby
  * @Version :  1.0
  * @Date : 2020/6/25 17:38
- * @Desc :   TODO
+ * @Desc :
  */
 //@ServletComponentScan
 @SpringBootApplication

@@ -12,7 +12,7 @@ import javax.mail.PasswordAuthentication;
  * @Author :  WudGaby
  * @Version :  1.0
  * @Date : 2020/4/1 12:46
- * @Desc :   TODO
+ * @Desc :
  */
 @Data
 @EqualsAndHashCode(callSuper = false)

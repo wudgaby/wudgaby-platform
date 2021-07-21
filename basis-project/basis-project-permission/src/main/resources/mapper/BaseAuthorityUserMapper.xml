@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wudgaby.platform.permission.mapper.BaseAuthorityUserMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.wudgaby.platform.permission.entity.BaseAuthorityUser">
+        <result column="authority_id" property="authorityId" />
+        <result column="user_id" property="userId" />
+        <result column="expire_time" property="expireTime" />
+        <result column="create_time" property="createTime" />
+        <result column="update_time" property="updateTime" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        authority_id, user_id, expire_time, create_time, update_time
+    </sql>
+
+    <resultMap id="UserAuthorityMenu" type="com.wudgaby.platform.permission.dto.AuthorityMenu"
+                extends="com.wudgaby.platform.permission.mapper.BaseMenuMapper.BaseResultMap">
+        <result column="authority_id" jdbcType="BIGINT" property="authorityId"/>
+        <result column="authority" jdbcType="VARCHAR" property="authority"/>
+        <collection property="actionList" column="{menuId=menu_id,userId=user_id}"
+                    select="com.wudgaby.platform.permission.mapper.BaseAuthorityMapper.selectAuthorityAction"/>
+    </resultMap>
+
+    <select id="selectAuthorityByUser"
+            resultMap="com.wudgaby.platform.permission.mapper.BaseAuthorityMapper.Authority">
+        SELECT
+            a.authority_id,
+            a.authority,
+            up.expire_time,
+            'user' as owner
+        FROM
+            base_authority_user AS up
+                INNER JOIN base_authority AS a ON up.authority_id = a.authority_id
+        WHERE
+            up.user_id = #{userId}
+          and  a.status = 1
+    </select>
+
+    <select id="selectAuthorityMenuByUser"
+            resultMap="UserAuthorityMenu">
+        SELECT
+            a.authority_id,
+            a.authority,
+            a.`status`,
+            m.*,
+            ua.user_id,
+            ua.expire_time
+        FROM
+            base_authority_user AS ua
+                INNER JOIN base_authority AS a ON ua.authority_id = a.authority_id
+                INNER JOIN base_menu AS m ON a.menu_id = m.menu_id
+        WHERE
+            ua.user_id = #{userId}
+          and a.status = 1
+    </select>
+
+</mapper>

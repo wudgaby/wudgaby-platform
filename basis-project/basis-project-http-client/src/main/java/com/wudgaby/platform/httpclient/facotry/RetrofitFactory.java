@@ -10,7 +10,7 @@ import retrofit2.Retrofit;
  * @Author :  WudGaby
  * @Version :  1.0
  * @Date : 2018/11/15/015 18:43
- * @Desc :   TODO
+ * @Desc :
  */
 @UtilityClass
 public class RetrofitFactory {
