@@ -6,11 +6,11 @@ import com.baomidou.mybatisplus.annotation.DbType;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.generator.AutoGenerator;
 import com.baomidou.mybatisplus.generator.InjectionConfig;
-import com.baomidou.mybatisplus.generator.config.DataSourceConfig;
-import com.baomidou.mybatisplus.generator.config.GlobalConfig;
-import com.baomidou.mybatisplus.generator.config.PackageConfig;
-import com.baomidou.mybatisplus.generator.config.StrategyConfig;
+import com.baomidou.mybatisplus.generator.config.*;
+import com.baomidou.mybatisplus.generator.config.converts.MySqlTypeConvert;
 import com.baomidou.mybatisplus.generator.config.rules.DateType;
+import com.baomidou.mybatisplus.generator.config.rules.DbColumnType;
+import com.baomidou.mybatisplus.generator.config.rules.IColumnType;
 import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
 import com.baomidou.mybatisplus.generator.engine.FreemarkerTemplateEngine;
 import com.wudgaby.codegen.ui.config.CodeGenProperties;
@@ -80,7 +80,9 @@ public class GeneratorCodeService {
                 .setUrl(url)
                 .setUsername(username)
                 .setPassword(password)
-                .setDriverName(dataSourceProperties.getDriverClassName());
+                .setDriverName(dataSourceProperties.getDriverClassName())
+                //.setTypeConvert(new MySqlTypeConvertCustom())
+        ;
 
         // 策略配置
         StrategyConfig strategy = new StrategyConfig();
@@ -183,5 +185,20 @@ public class GeneratorCodeService {
                 .setPackageInfo(packageConfig);
 
         autoGenerator.execute();
+    }
+
+
+    /**
+     * 自定义类型转换
+     */
+    class MySqlTypeConvertCustom extends MySqlTypeConvert implements ITypeConvert {
+        @Override
+        public IColumnType processTypeConvert(GlobalConfig globalConfig, String fieldType) {
+            String t = fieldType.toLowerCase();
+            if (t.contains("tinyint(1)")) {
+                return DbColumnType.INTEGER;
+            }
+            return super.processTypeConvert(globalConfig, fieldType);
+        }
     }
 }

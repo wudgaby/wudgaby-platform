@@ -22,6 +22,7 @@ import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Collection;
 import java.util.Date;
@@ -38,6 +39,7 @@ import java.util.List;
  */
 @Service
 @RequiredArgsConstructor
+@Transactional(rollbackFor = Exception.class)
 public class BaseAuthorityServiceImpl extends ServiceImpl<BaseAuthorityMapper, BaseAuthority> implements BaseAuthorityService {
     private final BaseAuthorityActionService baseAuthorityActionService;
     private final BaseAuthorityAppService baseAuthorityAppService;
@@ -339,7 +341,7 @@ public class BaseAuthorityServiceImpl extends ServiceImpl<BaseAuthorityMapper, B
         List<String> invalidApiIds = baseApiService.listObjs(new QueryWrapper<BaseApi>()
                 .select("api_id")
                 .eq(StringUtils.isNotBlank(serviceId),"service_id", serviceId)
-                .notIn(codes!=null && !codes.isEmpty(),"api_code", codes), e -> e.toString());
+                .notIn(CollectionUtils.isNotEmpty(codes),"api_code", codes), e -> e.toString());
 
         if (CollectionUtils.isNotEmpty(invalidApiIds)) {
             // 防止删除默认api

@@ -51,10 +51,10 @@ public class BaseApiController {
     @GetMapping("/checkCode")
     public ApiResult<Boolean> page(@RequestParam String apiCode){
         boolean exist = baseApiService.count(Wrappers.<BaseApi>lambdaQuery().eq(BaseApi::getApiCode, apiCode)) > 0;
-        return ApiResult.success(exist).message("接口编码已存在.");
+        return exist ? ApiResult.success(true).message("接口编码已存在.") : ApiResult.success(false);
     }
 
-    @ApiOperation("查看详情")
+    @ApiOperation("查看API详情")
     @GetMapping("/{apiId}")
     public ApiResult<BaseApi> detail(@PathVariable Long apiId){
         return ApiResult.success(baseApiService.getById(apiId));

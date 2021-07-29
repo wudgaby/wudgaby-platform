@@ -1,21 +1,18 @@
 package com.wudgaby.platform.permission.service.impl;
 
-import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.wudgaby.platform.core.util.AssertUtil;
 import com.wudgaby.platform.permission.consts.AuthorityConst;
 import com.wudgaby.platform.permission.entity.BaseApi;
 import com.wudgaby.platform.permission.enums.ResourceType;
 import com.wudgaby.platform.permission.mapper.BaseApiMapper;
 import com.wudgaby.platform.permission.service.BaseApiService;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.wudgaby.platform.permission.service.BaseAuthorityService;
-import com.wudgaby.platform.permission.vo.ApiForm;
 import lombok.AllArgsConstructor;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
-
-import java.sql.Wrapper;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * <p>
@@ -27,13 +24,15 @@ import java.sql.Wrapper;
  */
 @Service
 @AllArgsConstructor
+@Transactional(rollbackFor = Exception.class)
 public class BaseApiServiceImpl extends ServiceImpl<BaseApiMapper, BaseApi> implements BaseApiService {
     private final BaseAuthorityService baseAuthorityService;
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public Long addApi(BaseApi baseApi) {
         boolean isExist = this.count(Wrappers.<BaseApi>lambdaQuery().eq(BaseApi::getApiCode, baseApi.getApiCode())) > 0;
-        AssertUtil.isFalse(isExist, "接口编码已存在.请换一个");
+        AssertUtil.isFalse(isExist, "接口编码已存在.");
 
         if (StringUtils.isBlank(baseApi.getApiCategory())) {
             baseApi.setApiCategory(AuthorityConst.DEFAULT_API_CATEGORY);
@@ -58,7 +57,8 @@ public class BaseApiServiceImpl extends ServiceImpl<BaseApiMapper, BaseApi> impl
     public void updateApi(BaseApi baseApi) {
         BaseApi dbBaseApi = this.getById(baseApi.getApiId());
         AssertUtil.notNull(dbBaseApi, "不存在该接口资源");
-        AssertUtil.isFalse(dbBaseApi.getApiCode().equals(baseApi.getApiCode()), "接口编码已存在.");
+        boolean isExist = dbBaseApi.getApiCode().equals(baseApi.getApiCode()) && !dbBaseApi.getApiId().equals(dbBaseApi.getApiId());
+        AssertUtil.isFalse(isExist, "该接口编码已存在.");
 
         if (StringUtils.isBlank(baseApi.getApiCategory())) {
             baseApi.setApiCategory(AuthorityConst.DEFAULT_API_CATEGORY);

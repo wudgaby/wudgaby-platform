@@ -8,8 +8,7 @@ package com.wudgaby.apiautomatic.enums;
  * @Desc :   注册类型
  */
 public enum RegisterType {
-    /**redis*/
-    REDIS,
-    /**mq*/
-    MQ;
+    /** redis set*/REDIS,
+    /** redis 发布订阅模式 */REDIS_PUB_SUB,
+    /**mq*/MQ;
 }

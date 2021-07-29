@@ -6,6 +6,7 @@ package com.wudgaby.apiautomatic.consts;
  * @Date :  2021/5/2 14:35
  * @Desc :
  */
-public interface ApiRegisterConst {
-    String REDIS_API_LIST = "redis:api:list";
+public interface ApiSystemConst {
+    String REDIS_API_SET = "REDIS:APIS:";
+    String REDIS_API_CHANNEL = "API_CHANNEL";
 }

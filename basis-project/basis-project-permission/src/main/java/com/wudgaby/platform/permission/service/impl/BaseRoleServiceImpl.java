@@ -11,6 +11,7 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.wudgaby.platform.permission.service.BaseRoleUserService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -24,6 +25,7 @@ import java.util.List;
  */
 @Service
 @AllArgsConstructor
+@Transactional(rollbackFor = Exception.class)
 public class BaseRoleServiceImpl extends ServiceImpl<BaseRoleMapper, BaseRole> implements BaseRoleService {
     private final BaseRoleUserService baseRoleUserService;
     private final BaseRoleUserMapper baseRoleUserMapper;
@@ -41,7 +43,8 @@ public class BaseRoleServiceImpl extends ServiceImpl<BaseRoleMapper, BaseRole> i
     public void updateRole(BaseRole baseRole) {
         BaseRole dbBaseRole = this.getById(baseRole.getRoleId());
         AssertUtil.notNull(dbBaseRole, "该角色不存在");
-        AssertUtil.isFalse(dbBaseRole.getRoleCode().equals(baseRole.getRoleCode()), "该编码已存在");
+        boolean isExist = dbBaseRole.getRoleCode().equals(baseRole.getRoleCode()) && !dbBaseRole.getRoleId().equals(baseRole.getRoleId());
+        AssertUtil.isFalse(isExist, "该编码已存在");
 
         this.updateById(baseRole);
     }

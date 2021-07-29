@@ -10,6 +10,7 @@ import com.wudgaby.platform.permission.service.BaseUserService;
 import com.wudgaby.platform.utils.encryption.MD5Util;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * <p>
@@ -21,6 +22,7 @@ import org.springframework.stereotype.Service;
  */
 @Service
 @AllArgsConstructor
+@Transactional(rollbackFor = Exception.class)
 public class BaseUserServiceImpl extends ServiceImpl<BaseUserMapper, BaseUser> implements BaseUserService {
     private final BaseRoleUserService baseRoleUserService;
 

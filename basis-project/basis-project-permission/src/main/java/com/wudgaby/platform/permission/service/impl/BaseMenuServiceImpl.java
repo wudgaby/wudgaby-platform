@@ -14,6 +14,7 @@ import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * <p>
@@ -25,6 +26,7 @@ import org.springframework.stereotype.Service;
  */
 @Service
 @RequiredArgsConstructor
+@Transactional(rollbackFor = Exception.class)
 public class BaseMenuServiceImpl extends ServiceImpl<BaseMenuMapper, BaseMenu> implements BaseMenuService {
     @Autowired
     private BaseActionService baseActionService;
@@ -45,9 +47,10 @@ public class BaseMenuServiceImpl extends ServiceImpl<BaseMenuMapper, BaseMenu> i
     public void updateMenu(BaseMenu baseMenu) {
         BaseMenu dbBaseMenu = this.getById(baseMenu.getMenuId());
         AssertUtil.notNull(dbBaseMenu, "该菜单不存在");
-        AssertUtil.isFalse(dbBaseMenu.getMenuCode().equals(baseMenu.getMenuCode()), "该编码已存在");
+        boolean isExist = dbBaseMenu.getMenuCode().equals(baseMenu.getMenuCode()) && !dbBaseMenu.getMenuId().equals(baseMenu.getMenuId());
+        AssertUtil.isFalse(isExist, "该编码已存在");
 
-        this.updateMenu(baseMenu);
+        this.updateById(baseMenu);
         //同步权限表
         baseAuthorityService.saveOrUpdateAuthority(baseMenu.getMenuId(), ResourceType.MENU);
     }

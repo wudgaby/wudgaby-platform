@@ -5,6 +5,7 @@ import com.wudgaby.platform.permission.mapper.BaseAuthorityActionMapper;
 import com.wudgaby.platform.permission.service.BaseAuthorityActionService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * <p>
@@ -15,6 +16,7 @@ import org.springframework.stereotype.Service;
  * @since 2021-07-15
  */
 @Service
+@Transactional(rollbackFor = Exception.class)
 public class BaseAuthorityActionServiceImpl extends ServiceImpl<BaseAuthorityActionMapper, BaseAuthorityAction> implements BaseAuthorityActionService {
 
 }

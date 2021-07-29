@@ -58,10 +58,10 @@ public class BaseRoleController {
     @GetMapping("/checkCode")
     public ApiResult<Boolean> page(@RequestParam String roleCode){
         boolean exist = baseRoleService.count(Wrappers.<BaseRole>lambdaQuery().eq(BaseRole::getRoleCode, roleCode)) > 0;
-        return ApiResult.success(exist).message("角色编码已存在.");
+        return exist ? ApiResult.success(true).message("角色编码已存在.") : ApiResult.success(false);
     }
 
-    @ApiOperation("查看详情")
+    @ApiOperation("查看角色详情")
     @GetMapping("/{roleId}")
     public ApiResult<BaseRole> detail(@PathVariable Long roleId){
         return ApiResult.success(baseRoleService.getById(roleId));

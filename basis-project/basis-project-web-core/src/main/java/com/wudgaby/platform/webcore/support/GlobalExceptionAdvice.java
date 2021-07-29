@@ -8,6 +8,7 @@ import com.wudgaby.platform.core.result.enums.SystemResultCode;
 import com.wudgaby.platform.core.support.FormValidator;
 import com.wudgaby.platform.limiter.core.LimitException;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication;
@@ -165,7 +166,7 @@ public class GlobalExceptionAdvice {
     @ExceptionHandler(ValidatorFormException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public ApiResult paramException(ValidatorFormException ex){
-        return ApiResult.failure(SystemResultCode.PARAM_IS_INVALID).data(ex.getData());
+        return ApiResult.failure(SystemResultCode.PARAM_IS_INVALID).message(String.valueOf(ex.getData()));
     }
 
     /**
@@ -188,7 +189,7 @@ public class GlobalExceptionAdvice {
             return ApiResult.failure(SystemResultCode.PARAM_IS_INVALID);
         }
         ValidationErrorDTO validationErrorDTO = formValidator.processFieldErrors(bindResult.getFieldErrors());
-        return ApiResult.failure(SystemResultCode.PARAM_IS_INVALID).data(validationErrorDTO.getFirstErrorMsg());
+        return ApiResult.failure(SystemResultCode.PARAM_IS_INVALID).message(validationErrorDTO.getFirstErrorMsg());
     }
 
     @ExceptionHandler({Exception.class})

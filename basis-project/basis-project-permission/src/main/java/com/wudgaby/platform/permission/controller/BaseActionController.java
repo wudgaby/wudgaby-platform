@@ -49,10 +49,10 @@ public class BaseActionController {
     @GetMapping("/checkCode")
     public ApiResult<Boolean> page(@RequestParam String actionCode){
         boolean exist = baseActionService.count(Wrappers.<BaseAction>lambdaQuery().eq(BaseAction::getActionCode, actionCode)) > 0;
-        return ApiResult.success(exist).message("功能按钮编码已存在.");
+        return exist ? ApiResult.success(true).message("功能按钮编码已存在.") : ApiResult.success(false);
     }
 
-    @ApiOperation("查看详情")
+    @ApiOperation("查看功能按钮详情")
     @GetMapping("/{actionId}")
     public ApiResult<BaseAction> detail(@PathVariable Long actionId){
         return ApiResult.success(baseActionService.getById(actionId));

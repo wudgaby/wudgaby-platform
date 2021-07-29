@@ -4,6 +4,7 @@ package com.wudgaby.platform.permission.controller;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.github.pagehelper.PageHelper;
 import com.google.common.collect.Lists;
 import com.wudgaby.platform.core.model.form.PageForm;
 import com.wudgaby.platform.core.result.ApiPageResult;
@@ -70,10 +71,10 @@ public class BaseUserController {
     @GetMapping("/checkUserName")
     public ApiResult<Boolean> page(@RequestParam String userName){
         boolean exist = baseUserService.count(Wrappers.<BaseUser>lambdaQuery().eq(BaseUser::getUserName, userName)) > 0;
-        return ApiResult.success(exist).message("该用户名已存在.");
+        return exist ? ApiResult.success(true).message("该用户名已存在") : ApiResult.success(false);
     }
 
-    @ApiOperation("查看详情")
+    @ApiOperation("查看用户详情")
     @GetMapping("/{userId}")
     public ApiResult<BaseUser> detail(@PathVariable Long userId){
         return ApiResult.success(baseUserService.getById(userId));
@@ -85,6 +86,7 @@ public class BaseUserController {
         BaseUser baseUser = new BaseUser();
         baseUser.setUserName(userForm.getUserName());
         baseUser.setNickName(userForm.getNickName());
+        baseUser.setPassword(userForm.getPassword());
         baseUser.setAvatar(userForm.getAvatar());
         baseUser.setEmail(userForm.getEmail());
         baseUser.setMobile(userForm.getMobile());
@@ -101,6 +103,7 @@ public class BaseUserController {
         baseUser.setUserId(userId);
         baseUser.setUserName(userForm.getUserName());
         baseUser.setNickName(userForm.getNickName());
+        baseUser.setPassword(userForm.getPassword());
         baseUser.setAvatar(userForm.getAvatar());
         baseUser.setEmail(userForm.getEmail());
         baseUser.setMobile(userForm.getMobile());

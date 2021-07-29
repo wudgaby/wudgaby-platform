@@ -723,4 +723,14 @@ public class RedisSupport {
         });
         return keys;
     }
+
+    /**
+     * 发布
+     * @param channel 通道
+     * @param message 内容
+     * @return
+     */
+    public void convertAndSend(String channel, Object message) {
+        redisTemplate.convertAndSend(channel, message);
+    }
 }

@@ -2,11 +2,13 @@ package com.wudgaby.platform.permission.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.wudgaby.platform.permission.entity.BaseAction;
+import lombok.Data;
 
 /**
  * 功能权限
  * @author liuyadu
  */
+@Data
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class AuthorityAction extends BaseAction {
     /**

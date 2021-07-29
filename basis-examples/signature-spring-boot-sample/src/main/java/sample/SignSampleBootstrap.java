@@ -8,6 +8,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.*;
 import sample.vo.Order;
+import springfox.documentation.swagger2.annotations.EnableSwagger2WebMvc;
 
 /**
  * @ClassName : SignSampleBootstrap
@@ -20,6 +21,7 @@ import sample.vo.Order;
 @SpringBootApplication(scanBasePackages = {"com.wudgaby", "sample"})
 @RestController
 @EnableKnife4j
+@EnableSwagger2WebMvc
 @MapperScan(value = {"sample.mapper"})
 public class SignSampleBootstrap {
     public static void main(String[] args) {

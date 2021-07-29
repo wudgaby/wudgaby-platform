@@ -7,7 +7,9 @@ import com.wudgaby.platform.permission.mapper.BaseAppMapper;
 import com.wudgaby.platform.permission.service.BaseAppService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.wudgaby.platform.permission.vo.AppForm;
+import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * <p>
@@ -18,13 +20,14 @@ import org.springframework.stereotype.Service;
  * @since 2021-07-15
  */
 @Service
+@Transactional(rollbackFor = Exception.class)
 public class BaseAppServiceImpl extends ServiceImpl<BaseAppMapper, BaseApp> implements BaseAppService {
 
     @Override
     public Long addApp(AppForm appForm) {
         BaseApp baseApp = new BaseApp();
-        baseApp.setApiKey(RandomUtil.randomString(15));
-        baseApp.setSecretKey(RandomUtil.randomString(30));
+        baseApp.setApiKey(RandomStringUtils.randomAlphabetic(15));
+        baseApp.setSecretKey(RandomStringUtils.randomAlphabetic(30));
         baseApp.setAppName(appForm.getAppName());
         baseApp.setAppNameEn(appForm.getAppNameEn());
         baseApp.setAppIcon(appForm.getAppIcon());
@@ -70,7 +73,7 @@ public class BaseAppServiceImpl extends ServiceImpl<BaseAppMapper, BaseApp> impl
 
         BaseApp baseApp = new BaseApp();
         baseApp.setAppId(appId);
-        baseApp.setSecretKey(RandomUtil.randomString(30));
+        baseApp.setSecretKey(RandomStringUtils.randomAlphabetic(30));
         this.updateById(baseApp);
 
         return baseApp.getSecretKey();

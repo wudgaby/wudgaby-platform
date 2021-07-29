@@ -30,7 +30,6 @@ public class AppForm {
     private String appNameEn;
 
     @ApiModelProperty(value = "app图标")
-    @NotBlank(message = "请选择app图标")
     private String appIcon;
 
     @ApiModelProperty(value = "app类型: server-服务应用 app-手机应用 pc-PC网页应用 wap-手机网页应用")

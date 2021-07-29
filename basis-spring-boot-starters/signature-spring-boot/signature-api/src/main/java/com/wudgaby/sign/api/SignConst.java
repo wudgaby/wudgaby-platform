@@ -12,6 +12,6 @@ import java.util.concurrent.TimeUnit;
 public interface SignConst {
     String RESUBMIT_KEY = "sign:resubmit:nonce:";
     String DEFAULT_SECRET = "default_secret";
-    Long EXPIRE_TIME = TimeUnit.MINUTES.toMillis(2);
+    Long EXPIRE_TIME = TimeUnit.MINUTES.toMillis(5);
     Long RESUBMIT_DURATION = TimeUnit.MINUTES.toSeconds(5);
 }

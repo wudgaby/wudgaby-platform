@@ -16,4 +16,8 @@ V20180317.14.59__V1.2_Add_SomeTables.sql
 4. 多个系统公用要 DB schema 
 很多时候多个系统公用一个 DB schema , 这时候使用 spring.flyway.table 为不同的系统设置不同的 metadata 表, 缺省为 flyway_schema_history
 
+
+1.多服务时,flyway放在单独一个服务统一管理.
+2.初始1.0的sql. 拿现有环境完整的ddl,dml.
+3.后期db版本管理,再使用以上实践方式.
  

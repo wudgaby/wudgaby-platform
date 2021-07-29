@@ -1,5 +1,7 @@
 package com.wudgaby.platform.permission.dto;
 
+import lombok.Data;
+
 import java.io.Serializable;
 
 /**
@@ -7,6 +9,7 @@ import java.io.Serializable;
  *
  * @author liuyadu
  */
+@Data
 public class AuthorityResource implements Serializable {
     /**
      * 访问路径

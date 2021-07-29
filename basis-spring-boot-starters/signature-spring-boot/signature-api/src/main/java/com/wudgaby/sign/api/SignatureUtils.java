@@ -1,6 +1,10 @@
 package com.wudgaby.sign.api;
 
+import cn.hutool.core.bean.copier.provider.BeanValueProvider;
+import cn.hutool.core.date.DateUtil;
 import cn.hutool.crypto.digest.MD5;
+import com.wudgaby.platform.utils.BeanUtils;
+import com.wudgaby.platform.utils.ValidatorUtils;
 import com.wudgaby.sign.supoort.BufferedHttpServletRequest;
 import lombok.SneakyThrows;
 import lombok.experimental.UtilityClass;
@@ -10,6 +14,7 @@ import org.apache.commons.codec.digest.HmacUtils;
 import org.apache.commons.collections4.MapUtils;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.util.Assert;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.UnsupportedEncodingException;
@@ -18,6 +23,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 import java.util.Base64;
 import java.util.Map;
+import java.util.Optional;
 
 /**
  * @ClassName : SignatureUtils
@@ -29,6 +35,38 @@ import java.util.Map;
 @Slf4j
 @UtilityClass
 public class SignatureUtils {
+    public static void checkSignatureHeader(SignatureHeaders signatureHeaders){
+        Optional<String> result = ValidatorUtils.validateEntity(signatureHeaders);
+        if (result.isPresent()) {
+            throw new SignatureException(result.get());
+        }
+        /*Assert.hasText(signatureHeaders.getAppKey(), "签名验证失败:APP_ID不能为空");
+        Assert.hasText(signatureHeaders.getNonce(), "签名验证失败:NONCE不能为空");
+        Assert.hasText(signatureHeaders.getTimestamp(), "签名验证失败:TIMESTAMP不能为空");
+        Assert.hasText(signatureHeaders.getSignatureMethod(), "签名验证失败:SIGN_TYPE不能为空");
+        Assert.hasText(signatureHeaders.getSignature(), "签名验证失败:SIGN不能为空");*/
+        if (SignatureHeaders.SignMethodType.valueOf(SignatureHeaders.HEADER_SIGNATURE_METHOD) == null) {
+            throw new IllegalArgumentException(String.format("签名验证失败:SIGN_TYPE必须为:%s,%s",
+                    SignatureHeaders.SignMethodType.MD5, SignatureHeaders.SignMethodType.SHA256));
+        }
+
+        if (StringUtils.isBlank(signatureHeaders.getAppSecret())) {
+            log.error("未找到appKey对应的appSecret, appKey= {}", signatureHeaders.getAppKey());
+            throw new SignatureException("无效的appKey");
+        }
+
+        //其他合法性校验
+        long now = System.currentTimeMillis();
+        long requestTimestamp = Long.parseLong(signatureHeaders.getTimestamp());
+        if ((now - requestTimestamp) > SignConst.EXPIRE_TIME) {
+            String errMsg = "无效请求,请求时间超过规定范围.";
+            log.error(errMsg);
+            throw new SignatureException(errMsg);
+        }
+
+
+    }
+
     /**
      * 参考阿里云网关 使用摘要签名认证方式调用API
      * https://help.aliyun.com/document_detail/29475.html?spm=a2c4g.11186623.6.583.6e3e6280Yur1Hg
@@ -53,10 +91,12 @@ public class SignatureUtils {
      */
     public static String sign(SignatureVo signatureVo) {
         final StringBuilder sb = new StringBuilder();
+        //构建http头
         sb.append(StringUtils.upperCase(StringUtils.trimToEmpty(signatureVo.getHttpMethod()))).append("\n");
         sb.append(StringUtils.trimToEmpty(signatureVo.getContentType())).append("\n");
         sb.append(StringUtils.trimToEmpty(signatureVo.getContentMD5())).append("\n");
 
+        //构建ca请求头
         Map<String, String> signatureMap = signatureVo.getSignatureHeaders().toSignatureMap();
         signatureMap.entrySet()
                 .stream()
@@ -69,6 +109,7 @@ public class SignatureUtils {
                     sb.append("\n");
                 });
 
+        //构建url
         sb.append(signatureVo.getPath());
         if (MapUtils.isNotEmpty(signatureVo.getParams())) {
             sb.append("?");
@@ -92,9 +133,30 @@ public class SignatureUtils {
         }else{
             finalContent = sb.toString();
         }
-        String md5Result = new HmacUtils(HmacAlgorithms.HMAC_SHA_256, signatureVo.getSecret()).hmacHex(finalContent);
-        log.info("{} - {}", finalContent, md5Result);
-        return Base64.getEncoder().encodeToString(md5Result.getBytes(StandardCharsets.UTF_8));
+
+        //加密方式
+        SignatureHeaders.SignMethodType signMethodType = null;
+        if (StringUtils.isNotBlank(signatureVo.getSignatureHeaders().getSignatureMethod())) {
+            signMethodType = SignatureHeaders.SignMethodType.valueOf(signatureVo.getSignatureHeaders().getSignatureMethod());
+        }
+        //默认MD5
+        if (signMethodType == null) {
+            signMethodType = SignatureHeaders.SignMethodType.MD5;
+        }
+
+        String signStr = "";
+        switch (signMethodType) {
+            case MD5:
+                signStr = new HmacUtils(HmacAlgorithms.HMAC_MD5, signatureVo.getSecret()).hmacHex(finalContent);
+                break;
+            case SHA256:
+                signStr = new HmacUtils(HmacAlgorithms.HMAC_SHA_256, signatureVo.getSecret()).hmacHex(finalContent);
+                break;
+            default:
+                break;
+        }
+        log.info("{} - {}", finalContent, signStr);
+        return Base64.getEncoder().encodeToString(signStr.getBytes(StandardCharsets.UTF_8));
     }
 
     @SneakyThrows

@@ -6,13 +6,10 @@ import com.wudgaby.platform.utils.FastJsonUtil;
 import com.wudgaby.redis.api.RedisSupport;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections.CollectionUtils;
-import org.apache.commons.collections.ListUtils;
-import org.apache.commons.lang3.ArrayUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Collection;
 import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * @ClassName : ResourceService
@@ -22,14 +19,14 @@ import java.util.stream.Collectors;
  * @Desc :
  */
 @Slf4j
-public class RedisApiRegisterService implements ApiRegisterService{
+public class RedisApiPubService implements ApiRegisterService{
     @Autowired
     private RedisSupport redisSupport;
 
     @Override
     public void register(ApiDTO apiDTO) {
-        log.info("注册API -- {}", apiDTO);
-        redisSupport.sSetAndTime(ApiSystemConst.REDIS_API_SET, 3600, FastJsonUtil.collectToString(apiDTO));
+        log.info("发布注册API -- {}", apiDTO);
+        redisSupport.convertAndSend(ApiSystemConst.REDIS_API_CHANNEL, apiDTO);
     }
 
     @Override
@@ -37,8 +34,7 @@ public class RedisApiRegisterService implements ApiRegisterService{
         if(CollectionUtils.isEmpty(apiDTOList)){
             return;
         }
-        log.info("批量注册API -- {}个", apiDTOList.size());
-        List<String> apiList = apiDTOList.stream().map(apiDTO -> FastJsonUtil.collectToString(apiDTO)).collect(Collectors.toList());
-        redisSupport.sSet(ApiSystemConst.REDIS_API_SET, 3600, apiList.toArray(new String[apiList.size()]));
+        log.info("批量发布注册API -- {}个", apiDTOList.size());
+        redisSupport.convertAndSend(ApiSystemConst.REDIS_API_CHANNEL, apiDTOList);
     }
 }

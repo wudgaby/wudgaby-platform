@@ -56,3 +56,8 @@ knife4j:
     enable: false
     username: swagger
     password: swagger
+
+api:
+  register:
+    enabled: true
+    type: REDIS_PUB_SUB

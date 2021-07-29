@@ -219,12 +219,6 @@ public class SignatureHelper {
         Binder binder = new Binder(sources);
         // 绑定属性
         SignatureHeaders signatureHeaders = binder.bind(SignatureHeaders.SIGNATURE_HEADERS_PREFIX.replaceAll("-", "."), Bindable.of(SignatureHeaders.class)).get();
-
-        Optional<String> result = ValidatorUtils.validateEntity(signatureHeaders);
-        if (result.isPresent()) {
-            throw new SignatureException(result.get());
-        }
-
         return signatureHeaders;
     }
 

@@ -60,10 +60,10 @@ public class BaseMenuController {
     @GetMapping("/checkCode")
     public ApiResult<Boolean> page(@RequestParam String menuCode){
         boolean exist = baseMenuService.count(Wrappers.<BaseMenu>lambdaQuery().eq(BaseMenu::getMenuCode, menuCode)) > 0;
-        return ApiResult.success(exist).message("菜单编码已存在.");
+        return exist ? ApiResult.success(true).message("菜单编码已存在.") : ApiResult.success(false);
     }
 
-    @ApiOperation("查看详情")
+    @ApiOperation("查看菜单详情")
     @GetMapping("/{menuId}")
     public ApiResult<BaseMenu> detail(@PathVariable Long menuId){
         return ApiResult.success(baseMenuService.getById(menuId));

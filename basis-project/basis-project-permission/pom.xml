@@ -55,5 +55,11 @@
             <artifactId>logger-spring-boot-starter</artifactId>
             <version>${starter.version}</version>
         </dependency>
+
+        <dependency>
+            <groupId>com.wudgaby.platform</groupId>
+            <artifactId>api-automatic-spring-boot-starter</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+        </dependency>
     </dependencies>
 </project>

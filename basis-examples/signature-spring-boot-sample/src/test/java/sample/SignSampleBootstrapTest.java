@@ -37,7 +37,7 @@ import java.util.UUID;
  * @Desc :
  */
 @RunWith(SpringRunner.class)
-@SpringBootTest
+@SpringBootTest(classes = SignSampleBootstrap.class)
 @AutoConfigureMockMvc
 class SignSampleBootstrapTest {
     @Autowired
@@ -63,17 +63,18 @@ class SignSampleBootstrapTest {
         headers.set(SignatureHeaders.HEADER_NONCE, nonce);
         headers.set(SignatureHeaders.HEADER_TIMESTAMP, tm);
         headers.setContentType(MediaType.APPLICATION_JSON);
+        headers.set(SignatureHeaders.HEADER_SIGNATURE_METHOD, "MD5");
 
         SignatureHeaders signatureHeaders = new SignatureHeaders();
         signatureHeaders.setAppKey("appKey-demo");
         signatureHeaders.setNonce(nonce);
         signatureHeaders.setTimestamp(tm);
+        signatureHeaders.setSignatureMethod("MD5");
 
         signatureVo.setSignatureHeaders(signatureHeaders);
         signatureVo.setSecret(SignConst.DEFAULT_SECRET);
 
         String sign = SignatureUtils.sign(signatureVo);
-        System.out.println(sign);
         headers.set(SignatureHeaders.HEADER_SIGNATURE, sign);
         return headers;
     }

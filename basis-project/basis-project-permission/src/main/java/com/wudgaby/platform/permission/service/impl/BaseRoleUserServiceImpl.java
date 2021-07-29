@@ -9,6 +9,7 @@ import com.wudgaby.platform.permission.service.BaseRoleUserService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.apache.commons.collections.CollectionUtils;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -21,6 +22,7 @@ import java.util.List;
  * @since 2021-07-17
  */
 @Service
+@Transactional(rollbackFor = Exception.class)
 public class BaseRoleUserServiceImpl extends ServiceImpl<BaseRoleUserMapper, BaseRoleUser> implements BaseRoleUserService {
     @Override
     public void addRoleUsers(Long roleId, List<Long> userIds) {

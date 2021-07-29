@@ -6,6 +6,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.Message;
 import org.springframework.messaging.support.MessageBuilder;
+
+import java.util.Collection;
 import java.util.List;
 
 /**
@@ -22,13 +24,14 @@ public class MqApiRegisterService implements ApiRegisterService {
 
     @Override
     public void register(ApiDTO apiDTO) {
+        log.info("注册API -- {}", apiDTO);
         Message message = MessageBuilder.withPayload(apiDTO).build();
         resourceSource.resourceChannel().send(message);
-        log.info("注册资源: {}", apiDTO);
     }
 
     @Override
-    public void batchRegister(List<ApiDTO> apiDTOList) {
+    public void batchRegister(Collection<ApiDTO> apiDTOList) {
+        log.info("批量注册API -- {}个", apiDTOList.size());
         Message message = MessageBuilder.withPayload(apiDTOList).build();
         resourceSource.resourceChannel().send(message);
     }

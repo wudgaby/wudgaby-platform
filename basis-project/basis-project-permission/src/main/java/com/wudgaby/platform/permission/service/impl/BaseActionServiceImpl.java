@@ -1,21 +1,20 @@
 package com.wudgaby.platform.permission.service.impl;
 
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.wudgaby.platform.core.util.AssertUtil;
 import com.wudgaby.platform.permission.entity.BaseAction;
-import com.wudgaby.platform.permission.entity.BaseApi;
 import com.wudgaby.platform.permission.entity.BaseAuthorityAction;
 import com.wudgaby.platform.permission.enums.ResourceType;
 import com.wudgaby.platform.permission.mapper.BaseActionMapper;
 import com.wudgaby.platform.permission.service.BaseActionService;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.wudgaby.platform.permission.service.BaseAuthorityActionService;
 import com.wudgaby.platform.permission.service.BaseAuthorityService;
 import com.wudgaby.platform.permission.vo.ActionForm;
-import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -29,6 +28,7 @@ import java.util.List;
  */
 @Service
 @RequiredArgsConstructor
+@Transactional(rollbackFor = Exception.class)
 public class BaseActionServiceImpl extends ServiceImpl<BaseActionMapper, BaseAction> implements BaseActionService {
     @Autowired
     private BaseAuthorityService baseAuthorityService;
@@ -37,7 +37,7 @@ public class BaseActionServiceImpl extends ServiceImpl<BaseActionMapper, BaseAct
     @Override
     public Long addAction(ActionForm actionForm) {
         boolean exist = this.count(Wrappers.<BaseAction>lambdaQuery().eq(BaseAction::getActionCode, actionForm.getActionCode())) > 0;
-        AssertUtil.isFalse(exist, "资源编码已存在.请换一个");
+        AssertUtil.isFalse(exist, "功能编码已存在.");
 
         BaseAction baseAction = new BaseAction();
         baseAction.setActionCode(actionForm.getActionCode());
@@ -56,13 +56,13 @@ public class BaseActionServiceImpl extends ServiceImpl<BaseActionMapper, BaseAct
     @Override
     public void updateAction(ActionForm actionForm) {
         BaseAction dbBaseAction = this.getById(actionForm.getActionId());
-        AssertUtil.notNull(dbBaseAction, "不存在该功能按钮资源");
+        AssertUtil.notNull(dbBaseAction, "不存在该功能");
 
         boolean exist = this.count(Wrappers.<BaseAction>lambdaQuery()
                 .eq(BaseAction::getActionId, actionForm.getActionId())
                 .ne(BaseAction::getActionCode, actionForm.getActionCode())
         ) > 0;
-        AssertUtil.isFalse(exist, "资源编码已存在.");
+        AssertUtil.isFalse(exist, "该功能编码已存在.");
 
         BaseAction baseAction = new BaseAction();
         baseAction.setActionId(actionForm.getActionId());
@@ -81,7 +81,7 @@ public class BaseActionServiceImpl extends ServiceImpl<BaseActionMapper, BaseAct
     @Override
     public void delAction(Long actionId) {
         BaseAction dbBaseAction = this.getById(actionId);
-        AssertUtil.notNull(dbBaseAction, "不存在该功能按钮资源");
+        AssertUtil.notNull(dbBaseAction, "不存在该功能");
         AssertUtil.isTrue(dbBaseAction.getIsPersist() == 0, "保留数据,该项不允许删除");
 
         //删除功能按钮权限

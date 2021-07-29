@@ -9,14 +9,14 @@ spring:
             bindings:
               resource-output:
                 producer:
-                  group: api-res-producer-group
+                  group: api-producer-group
                   sync: false
       bindings:
         resource-output:
-          destination: api-res-register-topic
+          destination: api-register-topic
           content-type: application/json
 
         resource-input:
-          destination: api-res-register-topic
+          destination: api-register-topic
           content-type: application/json
-          group: api-res-consumer-group
+          group: api-consumer-group

@@ -31,6 +31,14 @@ public class ApiDTO {
      */
     private String method;
     /**
+     * 接口方法 className 类名
+     */
+    private String className;
+    /**
+     * 接口方法 methodName 方法名
+     */
+    private String methodName;
+    /**
      * 接口地址 @RequestMapping中的value()
      */
     private String uri;
@@ -39,11 +47,15 @@ public class ApiDTO {
      */
     private String type;
     /**
-     * 是否公开 缺省false
+     * 是否开放 缺省false
      */
-    private boolean isPublic;
+    private Boolean open;
     /**
-     * 是否公开 缺省false
+     * 是否需要验证 缺省false
+     */
+    private Boolean auth;
+    /**
+     * status api状态
      */
     private ApiStatus status;
     /**

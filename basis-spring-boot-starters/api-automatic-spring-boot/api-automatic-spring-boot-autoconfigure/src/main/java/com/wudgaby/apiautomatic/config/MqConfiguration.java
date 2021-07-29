@@ -13,7 +13,7 @@ import org.springframework.context.annotation.Bean;
  * @Date : 2019/9/2 14:37
  * @Desc :
  */
-@ConditionalOnProperty(value = "api.register.type", havingValue = "mq")
+@ConditionalOnProperty(value = "api.register.type", havingValue = "MQ")
 @EnableBinding({ResourceSource.class})
 public class MqConfiguration {
     @Bean

@@ -1,6 +1,8 @@
 package com.wudgaby.apiautomatic.listeners;
 
 import cn.hutool.crypto.digest.MD5;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
 import com.wudgaby.apiautomatic.annotation.ApiRegisterIgnore;
 import com.wudgaby.apiautomatic.dto.ApiDTO;
 import com.wudgaby.apiautomatic.enums.ApiStatus;
@@ -11,7 +13,9 @@ import org.apache.commons.lang3.RegExUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.boot.web.context.WebServerInitializedEvent;
+import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.EventListener;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.AnnotationUtils;
@@ -24,36 +28,32 @@ import org.springframework.web.servlet.mvc.method.RequestMappingInfo;
 import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping;
 import springfox.documentation.annotations.ApiIgnore;
 
-import java.io.BufferedReader;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.util.Map;
 import java.util.Optional;
+import java.util.Set;
 
 /**
- * @ClassName : ContextRefreshedListener
+ * @ClassName : RequestMappingScanListener
  * @Author :  WudGaby
  * @Version :  1.0
  * @Date : 2019/8/29 15:30
- * @Desc :  使用redis订阅模式时 无法订阅.
- * 使用 RequestMappingScanListener
+ * @Desc :   
  */
 @Slf4j
-@Deprecated
-public class WebServerStartedListener {
+public class RequestMappingScanListener implements ApplicationListener<ApplicationReadyEvent> {
     @Autowired
     private ApiRegisterService apiRegisterService;
 
     @Value("${spring.application.name:UNKNOWN_APP_NAME}")
     public String serviceName;
 
-    @Order(Ordered.HIGHEST_PRECEDENCE)
-    @EventListener(WebServerInitializedEvent.class)
-    public void afterStart(WebServerInitializedEvent event) {
+    @Override
+    public void onApplicationEvent(ApplicationReadyEvent event) {
         log.info("扫描注册API资源");
         RequestMappingHandlerMapping bean = event.getApplicationContext().getBean("requestMappingHandlerMapping", RequestMappingHandlerMapping.class);
         Map<RequestMappingInfo, HandlerMethod> handlerMethods = bean.getHandlerMethods();
 
+        Set<ApiDTO> apiDTOList = Sets.newHashSet();
         for (Map.Entry<RequestMappingInfo, HandlerMethod> m : handlerMethods.entrySet()) {
             RequestMappingInfo requestMappingInfo = m.getKey();
             HandlerMethod method = m.getValue();
@@ -79,7 +79,6 @@ public class WebServerStartedListener {
                     }
             );
 
-            //List<ApiDTO> apiDTOList = Lists.newArrayList();
             for (String url : p.getPatterns()) {
                 String urlPattern = RegExUtils.replacePattern(url, "\\{\\w+\\}", "{*}");
                 for (RequestMethod requestMethod : methodsRequestCondition.getMethods()) {
@@ -96,11 +95,11 @@ public class WebServerStartedListener {
                             .setClassName(method.getBeanType().getName())
                             .setMethodName(method.getMethod().getName())
                             .setDesc(Optional.ofNullable(apiOperation).map(ap -> ap.notes()).orElse(StringUtils.EMPTY));
-                    apiRegisterService.register(apiDTO);
-                    //apiDTOList.add(apiDTO);
+                    //apiRegisterService.register(apiDTO);
+                    apiDTOList.add(apiDTO);
                 }
-                //apiRegisterService.batchRegister(apiDTOList);
             }
         }
+        apiRegisterService.batchRegister(apiDTOList);
     }
 }
