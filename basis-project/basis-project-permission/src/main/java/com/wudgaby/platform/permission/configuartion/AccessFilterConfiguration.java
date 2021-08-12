@@ -14,6 +14,8 @@ import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
 
+import javax.servlet.Filter;
+
 /**
  * @ClassName : WebMvcConfiguration
  * @Author :  WudGaby
@@ -25,11 +27,17 @@ import org.springframework.web.filter.CorsFilter;
 public class AccessFilterConfiguration {
 
     @Bean
-    public FilterRegistrationBean accessFilter(){
+    public FilterRegistrationBean accessFilterBean(){
         FilterRegistrationBean registrationBean = new FilterRegistrationBean();
-        registrationBean.setFilter(new AccessFilter());
+        registrationBean.setFilter(accessFilter());
         registrationBean.addUrlPatterns("/*");
         registrationBean.setOrder(1);
         return registrationBean;
     }
+
+    @Bean
+    public Filter accessFilter(){
+        return new AccessFilter();
+    }
+
 }

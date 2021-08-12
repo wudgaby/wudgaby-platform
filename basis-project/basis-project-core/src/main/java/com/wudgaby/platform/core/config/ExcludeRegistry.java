@@ -39,6 +39,12 @@ public class ExcludeRegistry {
         this.defaultExcludePatterns.add("/codeGen/**");
     }
 
+    public static ExcludeRegistry ofStaticResource(){
+        ExcludeRegistry excludeRegistry = new ExcludeRegistry();
+        excludeRegistry.excludeStaticResource();
+        return excludeRegistry;
+    }
+
     public void excludeStaticResource(){
         this.defaultExcludePatterns.add("/**/*.ico");
         this.defaultExcludePatterns.add("/**/*.js");
@@ -52,6 +58,7 @@ public class ExcludeRegistry {
         this.defaultExcludePatterns.add("/**/*.jpeg");
         this.defaultExcludePatterns.add("/**/*.gif");
         this.defaultExcludePatterns.add("/**/*.bmp");
+        this.defaultExcludePatterns.add("/favicon.ico");
     }
 
     /**

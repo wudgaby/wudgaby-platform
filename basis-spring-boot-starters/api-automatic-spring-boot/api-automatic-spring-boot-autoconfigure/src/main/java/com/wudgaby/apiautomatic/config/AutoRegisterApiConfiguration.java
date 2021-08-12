@@ -31,7 +31,7 @@ public class AutoRegisterApiConfiguration {
     }
 
     /**
-     * redis 发布定于模式
+     * redis 发布订阅模式
      * @return
      */
     @Bean

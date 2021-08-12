@@ -9,4 +9,6 @@ package com.wudgaby.apiautomatic.consts;
 public interface ApiSystemConst {
     String REDIS_API_SET = "REDIS:APIS:";
     String REDIS_API_CHANNEL = "API_CHANNEL";
+
+    String RES_TYPE = "API";
 }

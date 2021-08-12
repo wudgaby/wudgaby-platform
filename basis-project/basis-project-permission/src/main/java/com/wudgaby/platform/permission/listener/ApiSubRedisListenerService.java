@@ -42,7 +42,7 @@ public class ApiSubRedisListenerService implements ISubscriberRedisListenerServi
 
     @Override
     public void receiveMessage(String message) {
-        log.info("订阅API注册信息: {}", message);
+        log.info("订阅API注册信息");
         Set<ApiDTO> apiSet = Sets.newHashSet(FastJsonUtil.toList(message, ApiDTO.class));
         if(CollectionUtils.isEmpty(apiSet)) {
             return;

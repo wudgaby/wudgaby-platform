@@ -16,6 +16,7 @@
 
     <resultMap id="AuthorityResource" type="com.wudgaby.platform.permission.dto.AuthorityResource">
         <result column="path" jdbcType="VARCHAR" property="path"/>
+        <result column="method" jdbcType="VARCHAR" property="method"/>
         <result column="authority" jdbcType="VARCHAR" property="authority"/>
         <result column="service_id" jdbcType="VARCHAR" property="serviceId"/>
         <result column="is_auth" jdbcType="INTEGER" property="isAuth"/>
@@ -147,6 +148,7 @@
             a.authority_id,
             a.authority,
             menu.path,
+            "" as method,
             menu.service_id,
             '1' AS is_auth,
             '1' AS is_open,
@@ -162,6 +164,7 @@
             a.authority_id,
             a.authority,
             api.path,
+            api.request_method as method,
             api.service_id,
             api.is_auth,
             api.is_open,
@@ -175,6 +178,7 @@
             a.authority_id,
             a.authority,
             api.path,
+            api.request_method as method,
             api.service_id,
             api.is_auth,
             api.is_open,

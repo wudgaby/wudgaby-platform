@@ -38,8 +38,7 @@ public class RunLogFilter implements Filter {
     @Override
     public void init(FilterConfig filterConfig){
         log.info("初始化排除地址列表");
-        excludeRegistry = new ExcludeRegistry();
-        excludeRegistry.excludeStaticResource();
+        excludeRegistry = ExcludeRegistry.ofStaticResource();
     }
 
     @Override

@@ -15,6 +15,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Optional;
+import java.util.function.Supplier;
 
 /**
  * @ClassName : SecurityUtils
@@ -66,4 +67,10 @@ public class SecurityUtils {
     public UserInfo getSafeCurrentUser() {
         return getCurrentUser().orElseGet(() -> new UserInfo().setId(0L).setUsername("anonymous"));
     }
+
+    public UserInfo getCurrentUser(Supplier<? extends UserInfo> other) {
+        return getCurrentUser().orElseGet(other);
+    }
+
+
 }

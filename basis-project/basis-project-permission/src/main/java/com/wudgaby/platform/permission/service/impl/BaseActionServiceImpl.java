@@ -56,7 +56,7 @@ public class BaseActionServiceImpl extends ServiceImpl<BaseActionMapper, BaseAct
     @Override
     public void updateAction(ActionForm actionForm) {
         BaseAction dbBaseAction = this.getById(actionForm.getActionId());
-        AssertUtil.notNull(dbBaseAction, "不存在该功能");
+        AssertUtil.notNull(dbBaseAction, "不存在该功能资源");
 
         boolean exist = this.count(Wrappers.<BaseAction>lambdaQuery()
                 .eq(BaseAction::getActionId, actionForm.getActionId())
@@ -81,7 +81,7 @@ public class BaseActionServiceImpl extends ServiceImpl<BaseActionMapper, BaseAct
     @Override
     public void delAction(Long actionId) {
         BaseAction dbBaseAction = this.getById(actionId);
-        AssertUtil.notNull(dbBaseAction, "不存在该功能");
+        AssertUtil.notNull(dbBaseAction, "不存在该功能资源");
         AssertUtil.isTrue(dbBaseAction.getIsPersist() == 0, "保留数据,该项不允许删除");
 
         //删除功能按钮权限

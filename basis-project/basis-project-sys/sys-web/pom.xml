@@ -13,8 +13,8 @@
 
     <properties>
         <docker.image.prefix>wudgaby</docker.image.prefix>
-        <docker.registryUrl>182.92.203.94:5000</docker.registryUrl>
-        <docker.host>http://182.92.203.94:2375</docker.host>
+        <docker.registryUrl>wudgaby.com:5000</docker.registryUrl>
+        <docker.host>http://wudgaby.com:2375</docker.host>
         <spring.boot.version>2.3.1.RELEASE</spring.boot.version>
         <!--表示该模块 不会进行install-->
         <maven.install.skip>true</maven.install.skip>

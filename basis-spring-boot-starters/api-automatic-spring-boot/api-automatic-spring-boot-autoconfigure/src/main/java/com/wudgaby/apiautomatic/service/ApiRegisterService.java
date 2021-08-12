@@ -24,4 +24,5 @@ public interface ApiRegisterService {
      * @param apiDTOList
      */
     void batchRegister(Collection<ApiDTO> apiDTOList);
+
 }

@@ -1,4 +1,4 @@
-package com.wudgaby.platform.webcore.support;
+package com.wudgaby.platform.webcore.configuration;
 
 import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.alibaba.fastjson.serializer.ValueFilter;
@@ -7,6 +7,7 @@ import com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter;
 import com.alibaba.fastjson.util.TypeUtils;
 import com.wudgaby.platform.core.result.ApiResult;
 import com.wudgaby.platform.utils.LocalDateTimeUtil;
+import com.wudgaby.platform.webcore.support.MySensitiveContextValueFilter;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.http.HttpMessageConverters;
 import org.springframework.context.annotation.Bean;
@@ -31,7 +32,7 @@ import java.util.*;
 @Configuration
 @ConditionalOnClass(FastJsonHttpMessageConverter.class)
 @ComponentScan(value = {"com.alibaba.fastjson.support.spring"})
-public class FastJsonConverter {
+public class FastJsonAutoConfiguration {
     private static final SerializerFeature[] FEATURES = new SerializerFeature[]{
             //SerializerFeature.WriteNullBooleanAsFalse,
             //SerializerFeature.WriteNullNumberAsZero,

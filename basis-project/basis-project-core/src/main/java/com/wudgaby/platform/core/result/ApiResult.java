@@ -1,5 +1,6 @@
 package com.wudgaby.platform.core.result;
 
+import com.google.common.collect.Maps;
 import com.wudgaby.platform.core.result.enums.ApiResultCode;
 import com.wudgaby.platform.core.result.enums.SystemResultCode;
 import io.swagger.annotations.ApiModel;
@@ -8,6 +9,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.annotation.Nonnull;
+import java.util.Map;
 import java.util.Optional;
 
 /**
@@ -34,6 +36,18 @@ public class ApiResult<T> implements Result {
 
     @ApiModelProperty(value = "是否成功", required = true)
     private Boolean success;
+
+    @ApiModelProperty(value = "附加数据")
+    private Map<String, Object> extra;
+
+    @ApiModelProperty(value = "响应时间")
+    private long timestamp = System.currentTimeMillis();
+
+    /*@ApiModelProperty(value = "请求路径")
+    private String path;
+
+    @ApiModelProperty(value = "http状态码")
+    private int httpStatus;*/
 
     /*@ApiModelProperty(value = "数据总数")
     private Long total;*/
@@ -117,6 +131,22 @@ public class ApiResult<T> implements Result {
      */
     public static boolean isFailure(@Nonnull ApiResult<?> apiResult) {
         return !isSuccess(apiResult);
+    }
+
+    public ApiResult<T> put(String key, Object value) {
+        if (this.extra == null) {
+            this.extra = Maps.newHashMap();
+        }
+        this.extra.put(key, value);
+        return this;
+    }
+
+    public ApiResult<T> remove(String key) {
+        if (this.extra == null) {
+            return this;
+        }
+        this.extra.remove(key);
+        return this;
     }
 
 }

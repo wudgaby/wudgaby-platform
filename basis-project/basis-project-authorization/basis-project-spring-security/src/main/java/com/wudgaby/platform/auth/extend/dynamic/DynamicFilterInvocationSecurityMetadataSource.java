@@ -60,6 +60,7 @@ public class DynamicFilterInvocationSecurityMetadataSource implements FilterInvo
     private Collection<ConfigAttribute> role(HttpServletRequest request){
         String reqUrl = request.getMethod() + " " + request.getRequestURI();
         // 这里可以放一个抽象接口来获取  request 配置的 ant pattern
+        //获取所有button类型资源 转换成 RequestMatcher
         Set<RequestMatcher> requestMatchers = requestMatcherCreator.convertToRequestMatcher(metaResourceService.queryPatternsAndMethods());
         // 拿到其中一个  没有就算非法访问
         RequestMatcher reqMatcher = requestMatchers.stream().filter(requestMatcher -> requestMatcher.matches(request)).findAny()

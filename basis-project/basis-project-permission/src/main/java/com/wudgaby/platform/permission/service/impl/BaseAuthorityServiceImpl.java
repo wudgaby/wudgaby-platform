@@ -49,7 +49,8 @@ public class BaseAuthorityServiceImpl extends ServiceImpl<BaseAuthorityMapper, B
     private final BaseRoleService baseRoleService;
     @Autowired
     private BaseMenuService baseMenuService;
-    private final BaseActionService baseActionService;
+    @Autowired
+    private BaseActionService baseActionService;
     @Autowired
     private BaseApiService baseApiService;
     private final BaseUserService baseUserService;

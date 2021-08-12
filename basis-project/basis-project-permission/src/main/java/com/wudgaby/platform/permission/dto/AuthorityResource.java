@@ -17,6 +17,11 @@ public class AuthorityResource implements Serializable {
     private String path;
 
     /**
+     * 访问方法
+     */
+    private String method;
+
+    /**
      * 权限标识
      */
     private String authority;
