@@ -38,6 +38,8 @@ import org.springframework.security.web.access.intercept.FilterInvocationSecurit
 import org.springframework.security.web.access.intercept.FilterSecurityInterceptor;
 import org.springframework.security.web.authentication.RememberMeServices;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.security.web.authentication.rememberme.JdbcTokenRepositoryImpl;
+import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
 import org.springframework.security.web.firewall.DefaultHttpFirewall;
 import org.springframework.security.web.firewall.HttpFirewall;
 import org.springframework.security.web.session.HttpSessionEventPublisher;
@@ -78,6 +80,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired private PasswordEncoder passwordEncoder;
     @Autowired private ApplicationContext applicationContext;
     @Autowired private CorsFilter corsFilter;
+    @Autowired private PersistentTokenRepository persistentTokenRepository;
 
     @Resource(name = "accountUserService")
     private UserDetailsService userDetailsService;
@@ -262,6 +265,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                     .rememberMe()
                     .rememberMeServices(rememberMeServices)
+                    //.tokenRepository(persistentTokenRepository)
+                    //.tokenValiditySeconds(3600)
                 .and()
                     .addFilterBefore(corsFilter, UsernamePasswordAuthenticationFilter.class)
                     .headers()
@@ -299,4 +304,5 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     public HttpSessionEventPublisher httpSessionEventPublisher() {
         return new HttpSessionEventPublisher();
     }
+
 }
