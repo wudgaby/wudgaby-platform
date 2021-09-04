@@ -426,7 +426,7 @@ CREATE TABLE `sys_user_org`  (
 -- ----------------------------
 -- Table structure for sys_user_post
 -- ----------------------------
-DROP TABLE IF EXISTS `sys_user_position`;
+DROP TABLE IF EXISTS `sys_user_post`;
 CREATE TABLE `sys_user_post`  (
   `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '主键',
   `create_time` datetime(0) NOT NULL COMMENT '创建时间',

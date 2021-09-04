@@ -12,6 +12,9 @@ spring:
   lifecycle:
     timeout-per-shutdown-phase: 30S
 
+  redis:
+    password: redis-pwd
+
   datasource:
     url: jdbc:mysql://localhost:3306/wudgaby_sys?useSSL=false&useUnicode=true&characterEncoding=UTF-8&serverTimezone=GMT%2B8&useSSL=false&allowMultiQueries=true&nullCatalogMeansCurrent=true
     username: root

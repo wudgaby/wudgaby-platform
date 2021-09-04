@@ -130,3 +130,26 @@ CREATE TABLE `base_app`
     `is_persist`   tinyint(3) NOT NULL DEFAULT '0' COMMENT '保留数据0-否 1-是 不允许删除',
     PRIMARY KEY (`app_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT COMMENT='系统应用-基础信息';
+
+
+DROP TABLE IF EXISTS `base_menu`;
+CREATE TABLE `base_menu` (
+     `menu_id` bigint(20) NOT NULL COMMENT '菜单Id',
+     `parent_id` bigint(20) DEFAULT NULL COMMENT '父级菜单',
+     `menu_code` varchar(100) COLLATE utf8_bin NOT NULL COMMENT '菜单编码',
+     `menu_name` varchar(100) COLLATE utf8_bin NOT NULL COMMENT '菜单名称',
+     `menu_desc` varchar(100) COLLATE utf8_bin DEFAULT NULL COMMENT '描述',
+     `scheme` varchar(20) COLLATE utf8_bin NOT NULL COMMENT '路径前缀',
+     `path` varchar(255) COLLATE utf8_bin DEFAULT NULL COMMENT '请求路径',
+     `icon` varchar(255) COLLATE utf8_bin DEFAULT '' COMMENT '菜单标题',
+     `target` varchar(20) COLLATE utf8_bin NOT NULL DEFAULT '_self' COMMENT '打开方式:_self窗口内,_blank新窗口',
+     `priority` bigint(20) NOT NULL DEFAULT '0' COMMENT '优先级 越小越靠前',
+     `status` tinyint(3) NOT NULL DEFAULT '1' COMMENT '状态:0-无效 1-有效',
+     `create_time` datetime NOT NULL COMMENT '创建时间',
+     `update_time` datetime DEFAULT NULL COMMENT '更新时间',
+     `is_persist` tinyint(3) NOT NULL DEFAULT '0' COMMENT '保留数据0-否 1-是 不允许删除',
+     `service_id` varchar(100) COLLATE utf8_bin NOT NULL COMMENT '服务名',
+     PRIMARY KEY (`menu_id`),
+     UNIQUE KEY `menu_code` (`menu_code`),
+     KEY `service_id` (`service_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin ROW_FORMAT=COMPACT COMMENT='系统资源-菜单信息';
