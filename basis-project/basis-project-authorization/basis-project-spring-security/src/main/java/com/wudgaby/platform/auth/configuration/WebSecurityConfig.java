@@ -230,6 +230,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 //        "/webjars/**").permitAll()
                 //.antMatchers("/auth/**", "/social.html").permitAll()
                 //.antMatchers(HttpMethod.OPTIONS).permitAll()
+
+                /*.anyRequest().access("@roleAccessChecker.check(authentication, request)")
+                .antMatchers("/foo/{id}/**")
+                .access("@roleAccessChecker.check(authentication,#id)")*/
+
                 .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
                 .requestMatchers(CorsUtils::isPreFlightRequest).permitAll()
                 .anyRequest().authenticated()
