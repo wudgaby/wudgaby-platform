@@ -12,7 +12,7 @@ swagger:
     url: http://xx.xx.com
   description: Starter for swagger 2.x
   enabled: true
-  exclude-path: /error, /ops/**
+  exclude-path: /error, /ops/*
   global-response-message:
     get:
       - code: 401
@@ -43,27 +43,35 @@ swagger:
 
 #分组
   docket:
-    aaa:
-      groupName: 组1
+    all:
+      groupName: controller组
       basePackage: com.wudgaby.swagger.sample.controller
       contact:
-        email: xx@xx.com
-        name: xx
+        email: aa@xx.com
+        name: aa
         url: http://spring4all.com/
       description: Starter for swagger 2.x
-      excludePath: /ops/**
+      #excludePath: /ops/*
       globalOperationParameters:
         - description: some description three override
           modelRef: string
           name: name three
           parameterType: header
       termsOfServiceUrl: https://gitee.com
-      title: group-a
+      title: group-all
       version: 1.3.0.RELEASE
+    aaa:
+      groupName: 组1
+      basePackage: com.wudgaby.swagger.sample.controller1
+      title: group-a
     bbb:
       groupName: 组2
       basePackage: com.wudgaby.swagger.sample.controller2
       title: group-bbb
+    ccc:
+      groupName: 组3
+      basePackage: com.wudgaby.swagger.sample.controller3
+      title: group-ccc
 
 #Authorization 鉴权配置
   authorization:

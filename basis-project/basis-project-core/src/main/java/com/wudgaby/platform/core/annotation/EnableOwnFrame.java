@@ -23,6 +23,11 @@ import java.lang.annotation.*;
         excludeFilters = { @ComponentScan.Filter(type = FilterType.CUSTOM, classes = TypeExcludeFilter.class),
                             @ComponentScan.Filter(type = FilterType.CUSTOM, classes = AutoConfigurationExcludeFilter.class) })
 public @interface EnableOwnFrame {
+    String BASE_PACKAGE = "com.wudgaby.platform";
+
+    @AliasFor(annotation = ComponentScan.class, attribute = "basePackages")
+    String[] scanBasePackages() default { BASE_PACKAGE };
+
     @AliasFor(annotation = ComponentScan.class, attribute = "basePackageClasses")
     Class<?>[] scanBasePackageClasses() default {};
 }

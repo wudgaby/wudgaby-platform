@@ -1,6 +1,5 @@
 package com.wudgaby.swagger.sample;
 
-import com.wudgaby.platform.core.annotation.EnableOwnFrame;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -11,8 +10,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @Date : 2020/5/9 15:17
  * @Desc :   
  */
-@EnableOwnFrame(scanBasePackageClasses = {SwaggerSampleBootStrap.class})
-@SpringBootApplication(scanBasePackages = "com.wudgaby.platform")
+@SpringBootApplication(scanBasePackages = "com.wudgaby")
 public class SwaggerSampleBootStrap {
     public static void main(String[] args) {
         SpringApplication.run(SwaggerSampleBootStrap.class, args);

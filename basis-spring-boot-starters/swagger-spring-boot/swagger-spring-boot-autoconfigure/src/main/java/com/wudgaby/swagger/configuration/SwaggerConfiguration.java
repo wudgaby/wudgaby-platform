@@ -1,5 +1,6 @@
 package com.wudgaby.swagger.configuration;
 
+import cn.hutool.core.util.RandomUtil;
 import com.google.common.collect.Lists;
 import lombok.AllArgsConstructor;
 import org.apache.commons.lang3.StringUtils;
@@ -131,6 +132,7 @@ public class SwaggerConfiguration implements BeanFactoryAware {
 
             Docket docketForBuilder = new Docket(DocumentationType.SWAGGER_2)
                     .host(swaggerProperties.getHost())
+                    .groupName(groupName)
                     .apiInfo(apiInfo)
                     .securityContexts(Collections.singletonList(securityContext()))
                     .globalOperationParameters(assemblyGlobalOperationParameters(swaggerProperties.getGlobalOperationParameters(),
@@ -148,20 +150,20 @@ public class SwaggerConfiguration implements BeanFactoryAware {
             }
 
             ApiSelectorBuilder apiSelectorBuilder = docketForBuilder.select()
-                    .apis(RequestHandlerSelectors.basePackage(swaggerProperties.getBasePackage()));
+                    .apis(RequestHandlerSelectors.basePackage(docketInfo.getBasePackage()));
 
             // base-path处理
             // 当没有配置任何path的时候，解析/**
-            if (swaggerProperties.getBasePath().isEmpty()) {
-                swaggerProperties.getBasePath().add("/**");
-            }
-            for (String path : swaggerProperties.getBasePath()) {
+            /*if (docketInfo.getBasePath().isEmpty()) {
+                docketInfo.getBasePath().add("/**");
+            }*/
+            for (String path : docketInfo.getBasePath()) {
                 apiSelectorBuilder.paths(PathSelectors.ant(path));
             }
 
             //exclude-path处理
-            for (String path : swaggerProperties.getExcludePath()) {
-                apiSelectorBuilder.paths(PathSelectors.regex("^" +path));
+            for (String path : docketInfo.getExcludePath()) {
+                apiSelectorBuilder.paths(PathSelectors.regex("^" + path));
             }
 
             Docket docket = apiSelectorBuilder.build();
@@ -171,7 +173,8 @@ public class SwaggerConfiguration implements BeanFactoryAware {
             Class<?>[] ignoredParameterTypes = docketInfo.getIgnoredParameterTypes().toArray(array);
             docket.ignoredParameterTypes(ignoredParameterTypes);
 
-            configurableBeanFactory.registerSingleton(groupName, docket);
+            String beanName = "docketBeanName" + key;
+            configurableBeanFactory.registerSingleton(beanName, docket);
             docketList.add(docket);
         }
         return docketList;
