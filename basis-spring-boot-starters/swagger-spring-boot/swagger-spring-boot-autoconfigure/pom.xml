@@ -16,7 +16,7 @@
     </properties>
 
     <dependencies>
-        <!--<dependency>
+        <dependency>
             <groupId>io.springfox</groupId>
             <artifactId>springfox-swagger2</artifactId>
             <version>${springfox.swagger.version}</version>
@@ -25,12 +25,12 @@
             <groupId>io.springfox</groupId>
             <artifactId>springfox-swagger-ui</artifactId>
             <version>${springfox.swagger.version}</version>
-        </dependency>-->
-        <!--<dependency>
+        </dependency>
+        <dependency>
             <groupId>io.swagger</groupId>
             <artifactId>swagger-models</artifactId>
             <version>1.6.0</version>
-        </dependency>-->
+        </dependency>
 
         <dependency>
             <groupId>com.github.xiaoymin</groupId>
@@ -39,12 +39,14 @@
             <!--<optional>true</optional>-->
         </dependency>
 
-        <dependency>
+        <!--老版本-->
+        <!--<dependency>
             <groupId>com.github.xiaoymin</groupId>
             <artifactId>swagger-bootstrap-ui</artifactId>
             <version>1.9.6</version>
             <optional>true</optional>
-        </dependency>
+        </dependency>-->
+
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-web</artifactId>
