@@ -38,5 +38,6 @@
         <module>sso-sample</module>
         <module>swagger-aggregation</module>
         <module>swagger3-sample</module>
+        <module>security-sample</module>
     </modules>
 </project>
