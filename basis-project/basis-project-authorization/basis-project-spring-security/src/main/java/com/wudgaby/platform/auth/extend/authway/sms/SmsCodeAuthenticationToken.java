@@ -18,23 +18,26 @@ public class SmsCodeAuthenticationToken extends AbstractAuthenticationToken{
     private static final long serialVersionUID = SpringSecurityCoreVersion.SERIAL_VERSION_UID;
 
     private final Object principal;
+    private String captcha;
 
-    public SmsCodeAuthenticationToken(Object mobile){
+    public SmsCodeAuthenticationToken(Object mobile, String captcha){
         super(null);
         this.principal = mobile;
+        this.captcha = captcha;
         setAuthenticated(false);
     }
 
-    public SmsCodeAuthenticationToken(Object mobile,
+    public SmsCodeAuthenticationToken(Object mobile, String captcha,
                                       Collection<? extends GrantedAuthority> authorities) {
         super(authorities);
         this.principal = mobile;
+        this.captcha = captcha;
         super.setAuthenticated(true);
     }
 
     @Override
     public Object getCredentials() {
-        return null;
+        return captcha;
     }
 
     @Override

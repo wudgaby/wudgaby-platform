@@ -25,8 +25,10 @@ import java.io.IOException;
 @EqualsAndHashCode(callSuper = false)
 public class SmsCodeAuthenticationProcessingFilter extends AbstractAuthenticationProcessingFilter{
     public static final String SPRING_SECURITY_FORM_MOBILE_KEY = "mobile";
+    public static final String SPRING_SECURITY_FORM_CAPTCHA_KEY = "captcha";
 
     private String mobileParameter = SPRING_SECURITY_FORM_MOBILE_KEY;
+    private String captchaParameter = SPRING_SECURITY_FORM_CAPTCHA_KEY;
     private boolean postOnly = true;
 
     public SmsCodeAuthenticationProcessingFilter() {
@@ -41,14 +43,20 @@ public class SmsCodeAuthenticationProcessingFilter extends AbstractAuthenticatio
         }
 
         String mobile = obtainMobile(request);
+        String captcha = obtainCaptcha(request);
 
         if (mobile == null) {
             mobile = "";
         }
 
-        mobile = mobile.trim();
+        if (captcha == null) {
+            captcha = "";
+        }
 
-        SmsCodeAuthenticationToken authRequest = new SmsCodeAuthenticationToken(mobile);
+        mobile = mobile.trim();
+        captcha = captcha.trim();
+
+        SmsCodeAuthenticationToken authRequest = new SmsCodeAuthenticationToken(mobile, captcha);
 
         setDetails(request, authRequest);
 
@@ -57,6 +65,10 @@ public class SmsCodeAuthenticationProcessingFilter extends AbstractAuthenticatio
 
     protected String obtainMobile(HttpServletRequest request) {
         return request.getParameter(mobileParameter);
+    }
+
+    protected String obtainCaptcha(HttpServletRequest request) {
+        return request.getParameter(captchaParameter);
     }
 
     protected void setDetails(HttpServletRequest request,

@@ -2,6 +2,7 @@ package com.wudgaby.platform.auth.extend.authway.sms;
 
 import lombok.Data;
 import org.springframework.security.authentication.AuthenticationProvider;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.InternalAuthenticationServiceException;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
@@ -18,18 +19,24 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 @Data
 public class SmsCodeAuthenticationProvider implements AuthenticationProvider {
     private UserDetailsService userDetailsService;
+    private CaptchaService captchaService;
 
     @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
-        SmsCodeAuthenticationToken authenticationToken = (SmsCodeAuthenticationToken) authentication;
-        UserDetails loadUser = userDetailsService.loadUserByUsername((String)authenticationToken.getPrincipal());
+        SmsCodeAuthenticationToken smsCodeAuthenticationToken = (SmsCodeAuthenticationToken) authentication;
 
+        // 验证码校验
+        if (!captchaService.verifyCaptchaCode((String)smsCodeAuthenticationToken.getPrincipal(), (String)smsCodeAuthenticationToken.getCredentials())) {
+            throw new BadCredentialsException("验证码不匹配");
+        }
+
+        UserDetails loadUser = userDetailsService.loadUserByUsername((String)smsCodeAuthenticationToken.getPrincipal());
         if(loadUser == null){
             throw new InternalAuthenticationServiceException("获取用户信息失败.");
         }
 
-        SmsCodeAuthenticationToken authenticationResult = new SmsCodeAuthenticationToken(loadUser, loadUser.getAuthorities());
-        authenticationResult.setDetails(authenticationToken.getDetails());
+        SmsCodeAuthenticationToken authenticationResult = new SmsCodeAuthenticationToken(loadUser, (String)smsCodeAuthenticationToken.getCredentials(), loadUser.getAuthorities());
+        authenticationResult.setDetails(smsCodeAuthenticationToken.getDetails());
         return authenticationResult;
     }
 

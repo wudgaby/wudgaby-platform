@@ -36,6 +36,9 @@ public class SmsCodeAuthenticationSecurityConfig extends SecurityConfigurerAdapt
     @Autowired
     private SmsValidateCodeFilter smsValidateCodeFilter;
 
+    @Autowired
+    private CaptchaService captchaService;
+
     @Override
     public void configure(HttpSecurity http) throws Exception {
         SmsCodeAuthenticationProcessingFilter authenticationProcessingFilter = new SmsCodeAuthenticationProcessingFilter();
@@ -45,8 +48,11 @@ public class SmsCodeAuthenticationSecurityConfig extends SecurityConfigurerAdapt
 
         SmsCodeAuthenticationProvider authenticationProvider = new SmsCodeAuthenticationProvider();
         authenticationProvider.setUserDetailsService(userDetailsService);
+        //使用Provider内部校验验证码方式.
+        authenticationProvider.setCaptchaService(captchaService);
         http.authenticationProvider(authenticationProvider)
                 .addFilterAfter(authenticationProcessingFilter, UsernamePasswordAuthenticationFilter.class)
+                //使用增加filter链校验验证码方式
                 .addFilterBefore(smsValidateCodeFilter, SmsCodeAuthenticationProcessingFilter.class);
     }
 }
