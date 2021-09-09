@@ -41,15 +41,8 @@
         <module>basis-project-security-core</module>
         <module>basis-project-common</module>
         <module>basis-project-web-core</module>
-        <module>basis-project-data-auth</module>
         <module>basis-project-http-client</module>
-
         <module>basis-project-ops</module>
-        <module>basis-project-sso</module>
-        <module>basis-project-sys</module>
-        <module>basis-project-authorization</module>
-        <module>basis-project-socket</module>
-        <module>basis-project-permission</module>
     </modules>
 
     <properties>
@@ -112,6 +105,7 @@
         <guava.version>28.0-jre</guava.version>
         <email.version>1.4</email.version>
         <common-lang.version>3.8.1</common-lang.version>
+        <commons-lang3.version>3.8.1</commons-lang3.version>
         <common-math.version>3.6.1</common-math.version>
         <common-collections.version>4.1</common-collections.version>
         <commons-beanutils.version>1.9.3</commons-beanutils.version>

@@ -4,7 +4,6 @@ import com.google.common.collect.Lists;
 import com.wudgaby.platform.core.config.ExcludeRegistry;
 import com.wudgaby.platform.sso.core.config.SsoProperties;
 import com.wudgaby.platform.sso.core.helper.SsoRemoteHelper;
-import com.wudgaby.platform.sso.core.helper.SsoTokenHelper;
 import com.wudgaby.platform.sso.core.helper.SsoWebHelper;
 import com.wudgaby.platform.sso.core.interceptor.SsoWebInterceptor;
 import org.springframework.beans.factory.annotation.Autowired;
