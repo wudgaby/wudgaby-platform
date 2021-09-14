@@ -11,9 +11,9 @@
 <div class="modal-dialog" style="margin-top: 10%; ">
     <div class="modal-content">
         <div class="modal-header">
-            <h4 class="modal-title text-center" id="myModalLabel">平台单点登录</h4>
+            <h4 class="modal-title text-center" id="myModalLabel">单点登录</h4>
         </div>
-        <form id="loginForm" method="post" th:href="@{/sso/login}">
+        <form id="loginForm" method="post" th:action="@{'/sso/login/' + ${appCode}}">
             <div class="modal-body" id = "model-body">
                 <div class="form-group">
                     <input type="text" class="form-control" id="account" name="account" placeholder="用户名" required autofocus="autofocus"/>
@@ -23,7 +23,7 @@
                 </div>
                 <div class="form-group">
                     <label style="display:inline;color: red;" th:text="${errorMsg}"></label>
-                    <!--<input type="hidden" name="redirectUrl" th:value="${redirectUrl}"/>-->
+                    <input type="hidden" name="redirectUrl" th:value="${redirectUrl}"/>
                 </div>
             </div>
             <div class="modal-footer">
@@ -38,7 +38,7 @@
 
 <script src="https://cdn.bootcss.com/jquery/1.10.2/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-<script>
+<script th:inline="javascript">
     $(function(){
         //回车键事件
         $(document).keyup(function(){
@@ -46,6 +46,15 @@
                 $("#loginForm").submit();
             }
         });
+
+        var logoutUrlList = [[${logoutUrlList}]];
+        if(logoutUrlList) {
+            /*<![CDATA[*/
+            logoutUrlList.forEach(function(url) {
+                $.getJSON(url + "?callback=?");
+            });
+            /*]]>*/
+        }
     });
 </script>
 </body>

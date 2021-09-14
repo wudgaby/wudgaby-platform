@@ -1,12 +1,12 @@
 server:
   port: 9900
+  servlet:
+    encoding:
+      charset: utf-8
 
 spring:
   application:
     name: sso-server
-  http:
-    encoding:
-      charset: UTF-8
   mvc:
     throw-exception-if-no-handler-found: false
   datasource:
@@ -17,7 +17,7 @@ spring:
   redis:
     host: localhost
     port: 6379
-    password: redis-pwd
+    #password: redis-pwd
   thymeleaf:
     cache: false
 

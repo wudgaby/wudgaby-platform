@@ -1,5 +1,6 @@
 package com.wudgaby.platform.sso.sample;
 
+import com.wudgaby.platform.core.annotation.EnableOwnFrame;
 import com.wudgaby.platform.webcore.support.GlobalExceptionAdvice;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -13,9 +14,9 @@ import org.springframework.context.annotation.FilterType;
  * @Date : 2020/6/24 15:57
  * @Desc :
  */
-@SpringBootApplication
-@ComponentScan(value = "com.wudgaby.platform",
-        excludeFilters = @ComponentScan.Filter(type = FilterType.ASSIGNABLE_TYPE, classes = {GlobalExceptionAdvice.class}))
+@SpringBootApplication(scanBasePackages = "com.wudgaby.platform")
+/*@ComponentScan(value = "com.wudgaby.platform",
+        excludeFilters = @ComponentScan.Filter(type = FilterType.ASSIGNABLE_TYPE, classes = {GlobalExceptionAdvice.class}))*/
 public class SsoWebSampleBootstrap {
     public static void main(String[] args) {
         SpringApplication.run(SsoWebSampleBootstrap.class, args);

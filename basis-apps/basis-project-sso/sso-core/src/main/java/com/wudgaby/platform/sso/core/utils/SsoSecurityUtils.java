@@ -1,4 +1,4 @@
-package com.wudgaby.platform.sso.core.permission;
+package com.wudgaby.platform.sso.core.utils;
 
 import com.alibaba.ttl.TransmittableThreadLocal;
 import com.wudgaby.platform.sso.core.vo.SsoUserVo;
@@ -15,7 +15,7 @@ import java.util.Optional;
  * @Desc :
  */
 public class SsoSecurityUtils {
-    private static TransmittableThreadLocal<Map<String, Object>> ttl = new TransmittableThreadLocal();
+    private static final TransmittableThreadLocal<Map<String, Object>> ttl = new TransmittableThreadLocal();
 
     private static final String SECURITY_CONTEXT_ATTRIBUTES = "CONTEXT_AUTH_USER";
 

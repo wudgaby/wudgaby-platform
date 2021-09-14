@@ -38,22 +38,25 @@ import java.util.Optional;
 public class SsoRemoteHelper {
     @Autowired
     private SsoProperties ssoProperties;
+    @Autowired
+    private RestTemplate ssoServerHttpClient;
 
     @Bean
-    public RestTemplate restTemplate(){
+    public RestTemplate ssoServerHttpClient(){
         return new RestTemplate();
     }
 
-    @Retryable(value = {RetryException.class}, maxAttemptsExpression = "2", backoff = @Backoff(2000))
-    public SsoUserVo remoteCheck(String sessionId){
-        String checkUrl = UrlBuilder.of(ssoProperties.getServer() + "/app" + SsoConst.SSO_CHECK_URL, Charsets.UTF_8)
+    @Retryable(value = {RetryException.class}, maxAttempts = 3, backoff = @Backoff(2000))
+    public SsoUserVo remoteCheck(String token, boolean isWeb){
+        String checkUrl = UrlBuilder.of(ssoProperties.getServer() + (isWeb ? "" : "/app") + SsoConst.SSO_CHECK_URL, Charsets.UTF_8)
+                .addQuery(SsoConst.TOKEN, token)
                 .build();
 
         HttpHeaders headers = new HttpHeaders();
-        headers.add(SsoConst.SSO_HEADER_X_TOKEN, sessionId);
-        headers.add("cookie", SsoConst.SSO_SESSION_ID + "=" +sessionId);
+        headers.add(SsoConst.SSO_HEADER_X_TOKEN, token);
+        //headers.add("cookie", SsoConst.SSO_SESSION_ID + "=" +token);
         try{
-            ResponseEntity<ApiResult> response = restTemplate().exchange(
+            ResponseEntity<ApiResult> response = ssoServerHttpClient.exchange(
                     checkUrl,
                     HttpMethod.GET,
                     new HttpEntity<String>(headers),
@@ -72,7 +75,25 @@ public class SsoRemoteHelper {
         return null;
     }
 
-    @Retryable(value = {RetryException.class}, maxAttemptsExpression = "2", backoff = @Backoff(2000))
+    @Retryable(value = {RestClientException.class}, maxAttempts = 3, backoff = @Backoff(2000))
+    public ApiResult codeExToken(String code, String sign, String appSecret){
+        String getTokenUrl = UrlBuilder.of(ssoProperties.getServer() + "/app" + SsoConst.SSO_TOKEN_URL, Charsets.UTF_8)
+                .addQuery("code", code)
+                .addQuery("secret", appSecret)
+                .addQuery("sign", sign)
+                .build();
+
+        HttpHeaders headers = new HttpHeaders();
+        ResponseEntity<ApiResult> response = ssoServerHttpClient.exchange(
+                getTokenUrl,
+                HttpMethod.GET,
+                new HttpEntity<String>(headers),
+                ApiResult.class);
+
+        return response.getBody();
+    }
+
+    @Retryable(value = {RetryException.class}, maxAttempts = 3, backoff = @Backoff(2000))
     public List<PermissionVo> getUserResource(String sessionId, String userId, String sysCode){
         String checkUrl = UrlBuilder.of(ssoProperties.getServer() + SsoConst.SSO_USER_RESOURCE_URL, Charsets.UTF_8)
                 .addQuery("sysCode", sysCode)
@@ -81,7 +102,7 @@ public class SsoRemoteHelper {
         HttpHeaders headers = new HttpHeaders();
         headers.add(SsoConst.SSO_HEADER_X_TOKEN, sessionId);
         try{
-            ResponseEntity<ApiResult> response = restTemplate().exchange(
+            ResponseEntity<ApiResult> response = ssoServerHttpClient.exchange(
                     checkUrl,
                     HttpMethod.GET,
                     new HttpEntity<String>(headers),

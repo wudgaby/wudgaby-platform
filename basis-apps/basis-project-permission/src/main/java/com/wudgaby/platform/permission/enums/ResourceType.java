@@ -7,8 +7,9 @@ package com.wudgaby.platform.permission.enums;
  * @Desc :  资源类型
  */
 public enum ResourceType {
-    /**菜单*/MENU,
-    /**操作,按钮*/ACTION,
-    /**接口*/API,
+    /**菜单*/ MENU,
+    /**目录*/ CATALOG,
+    /**操作,按钮*/ ACTION,
+    /**接口*/ API,
     ;
 }

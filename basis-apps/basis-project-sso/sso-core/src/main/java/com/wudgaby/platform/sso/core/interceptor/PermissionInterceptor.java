@@ -1,10 +1,13 @@
-package com.wudgaby.platform.sso.core.permission;
+package com.wudgaby.platform.sso.core.interceptor;
 
 import com.google.common.base.Charsets;
 import com.wudgaby.platform.core.result.ApiResult;
+import com.wudgaby.platform.sso.core.annotations.AnonymousAccess;
+import com.wudgaby.platform.sso.core.annotations.AuthPermit;
 import com.wudgaby.platform.sso.core.config.SsoProperties;
 import com.wudgaby.platform.sso.core.constant.SsoConst;
 import com.wudgaby.platform.sso.core.helper.SsoRemoteHelper;
+import com.wudgaby.platform.sso.core.utils.SsoSecurityUtils;
 import com.wudgaby.platform.sso.core.vo.PermissionVo;
 import com.wudgaby.platform.sso.core.vo.SsoUserVo;
 import com.wudgaby.platform.utils.FastJsonUtil;
@@ -59,7 +62,7 @@ public class PermissionInterceptor implements HandlerInterceptor {
         // 当前用户所有权限
         //List<PermissionVo> userPermissionList = ssoRemoteHelper.getUserResource(headerSessionId, ssoProperties.getSysCode());
 
-        List<PermissionVo> userPermissionList = ssoRemoteHelper.getUserResource(headerSessionId, ssoUserVo.getUserId(), ssoProperties.getSysCode());
+        List<PermissionVo> userPermissionList = ssoRemoteHelper.getUserResource(headerSessionId, ssoUserVo.getUserId(), ssoProperties.getAppCode());
 
         // 过滤后的权限
         List<PermissionVo> filtered = filterPermissionList(request.getRequestURI(), request.getMethod(), userPermissionList);

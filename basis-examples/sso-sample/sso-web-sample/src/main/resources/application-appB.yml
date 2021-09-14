@@ -1,0 +1,8 @@
+server:
+  port: 9922
+
+sso:
+  app-code: app2
+  app-key: bMqAImeeov
+  app-secret: zpzqqlVJeajWlxZaxEMQIzlZRsQCzd
+  #target-url: http://app2.com:${server.port}

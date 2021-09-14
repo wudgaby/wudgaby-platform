@@ -1,0 +1,8 @@
+server:
+  port: 9923
+
+sso:
+  app-code: app3
+  app-key: zfdREleBvl
+  app-secret: TzdeKIJwlLitqAumpKinhIovvdvyFP
+  #target-url: http://app3.com:${server.port}

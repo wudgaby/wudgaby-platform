@@ -1,4 +1,4 @@
-package com.wudgaby.platform.sso.sample;
+package com.wudgaby.platform.sso.server.config;
 
 import com.google.common.collect.Lists;
 import com.wudgaby.platform.core.config.ExcludeRegistry;
@@ -10,7 +10,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.PathMatchConfigurer;
-import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.util.UrlPathHelper;
 
@@ -23,24 +22,17 @@ import org.springframework.web.util.UrlPathHelper;
  */
 @Configuration
 public class WebMvcConfig implements WebMvcConfigurer {
-    @Autowired private SsoProperties ssoProperties;
-    @Autowired private SsoRemoteHelper ssoRemoteHelper;
-
     @Bean
     public ExcludeRegistry secureRegistry() {
         ExcludeRegistry excludeRegistry = new ExcludeRegistry();
-        excludeRegistry.excludePathPatterns(ssoProperties.getExcludedPaths());
+        excludeRegistry.excludePathPatterns("/sso/login/**", "/sso/check","/mh");
+        excludeRegistry.excludePathPatterns("/app/sso/login/**", "/app/codeExToken", "/app/sso/token", "/app/sso/check", "/app/sign");
         return excludeRegistry;
-    }
-
-    @Bean
-    public SsoWebInterceptor ssoWebInterceptor(){
-        return new SsoWebInterceptor(ssoProperties, ssoRemoteHelper);
     }
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(ssoWebInterceptor())
+        registry.addInterceptor(new AuthInterceptor())
             .addPathPatterns("/**")
             .excludePathPatterns(Lists.newArrayList(secureRegistry().getDefaultExcludePatterns()))
             .excludePathPatterns(Lists.newArrayList(secureRegistry().getExcludePatterns()))
@@ -53,10 +45,5 @@ public class WebMvcConfig implements WebMvcConfigurer {
         UrlPathHelper urlPathHelper = new UrlPathHelper();
         urlPathHelper.setUrlDecode(false);
         configurer.setUrlPathHelper(urlPathHelper);
-    }
-
-    @Override
-    public void addViewControllers(ViewControllerRegistry registry) {
-        registry.addViewController(ssoProperties.getLogoutPath());
     }
 }

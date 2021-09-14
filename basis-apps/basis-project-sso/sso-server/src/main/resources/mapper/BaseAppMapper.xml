@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wudgaby.platform.sso.server.mapper.BaseAppMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.wudgaby.platform.sso.server.entity.BaseApp">
+        <id column="app_id" property="appId" />
+        <result column="api_key" property="apiKey" />
+        <result column="secret_key" property="secretKey" />
+        <result column="app_name" property="appName" />
+        <result column="app_name_en" property="appNameEn" />
+        <result column="app_icon" property="appIcon" />
+        <result column="app_type" property="appType" />
+        <result column="app_desc" property="appDesc" />
+        <result column="app_os" property="appOs" />
+        <result column="website" property="website" />
+        <result column="developer_id" property="developerId" />
+        <result column="create_time" property="createTime" />
+        <result column="update_time" property="updateTime" />
+        <result column="status" property="status" />
+        <result column="is_persist" property="isPersist" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        app_id, api_key, secret_key, app_name, app_name_en, app_icon, app_type, app_desc, app_os, website, developer_id, create_time, update_time, status, is_persist
+    </sql>
+
+</mapper>

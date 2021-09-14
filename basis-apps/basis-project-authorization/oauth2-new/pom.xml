@@ -5,12 +5,15 @@
     <parent>
         <artifactId>basis-project-authorization</artifactId>
         <groupId>com.wudgaby.platform</groupId>
-        <version>${revision}</version>
+        <version>1.0.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>basis-project-auth-core</artifactId>
-    <description>权限认证核心包</description>
+    <artifactId>oauth2-new</artifactId>
 
+    <properties>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
+    </properties>
 
 </project>

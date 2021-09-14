@@ -1,24 +1,29 @@
 package com.wudgaby.platform.sso.server.controller;
 
 import cn.hutool.core.bean.BeanUtil;
+import com.baomidou.mybatisplus.core.toolkit.Wrappers;
+import com.google.common.collect.Lists;
 import com.wudgaby.platform.core.exception.BusinessException;
 import com.wudgaby.platform.core.result.ApiResult;
+import com.wudgaby.platform.security.core.SecurityUtils;
 import com.wudgaby.platform.sso.core.constant.SsoConst;
-import com.wudgaby.platform.sso.core.helper.SsoTokenHelper;
+import com.wudgaby.platform.sso.core.utils.SsoSecurityUtils;
 import com.wudgaby.platform.sso.core.vo.PermissionVo;
 import com.wudgaby.platform.sso.core.vo.SsoUserVo;
 import com.wudgaby.platform.sso.server.entity.Resource;
 import com.wudgaby.platform.sso.server.entity.User;
+import com.wudgaby.platform.sso.server.entity.UserApp;
+import com.wudgaby.platform.sso.server.form.ChangePwdForm;
 import com.wudgaby.platform.sso.server.service.ResourceService;
 import com.wudgaby.platform.sso.server.service.RoleService;
+import com.wudgaby.platform.sso.server.service.UserAppService;
 import com.wudgaby.platform.sso.server.service.UserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.AllArgsConstructor;
 import org.apache.commons.lang3.math.NumberUtils;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 import springfox.documentation.annotations.ApiIgnore;
@@ -41,10 +46,60 @@ public class UserController {
     private final UserService userService;
     private final RoleService roleService;
     private final ResourceService resourceService;
-    private final SsoTokenHelper ssoTokenHelper;
+    private final UserAppService userAppService;
+    private final PasswordEncoder passwordEncoder;
+
+    @ApiOperation("修改密码")
+    @PostMapping("/user/changePwd")
+    public ApiResult changePwd(@RequestBody ChangePwdForm changePwdForm){
+        String userId = SsoSecurityUtils.getUserInfo().getUserId();
+        User user = userService.getById(userId);
+        if(user == null) {
+            return ApiResult.failure().message("未登录用户");
+        }
+
+        if(!user.getPassword().equals(changePwdForm.getOldPwd())){
+            return ApiResult.failure().message("密码不正确");
+        }
+
+        user.setPassword(changePwdForm.getNewPwd());
+        userService.updateById(user);
+        return ApiResult.success();
+    }
+
+    @ApiOperation("用户列表")
+    @GetMapping("/users")
+    public ApiResult<List<User>> userList(){
+        List<User> userList = userService.list();
+        return ApiResult.<List<User>>success().data(userList);
+    }
+
+    @ApiOperation("获取用户已分配应用")
+    @GetMapping("/{userId}/apps")
+    public ApiResult<List<UserApp>> userApps(@PathVariable Long userId){
+        List<UserApp> userAppList = userAppService.list(Wrappers.<UserApp>lambdaQuery().eq(UserApp::getUserId, userId));
+        return ApiResult.<List<UserApp>>success().data(userAppList);
+    }
+
+    @ApiOperation(value = "分配用户应用")
+    @PostMapping("/app/grant")
+    public ApiResult grantAuthorityApp(
+            @RequestParam(value = "userId") Long userId,
+            @RequestParam(value = "appIds", required = false) List<Long> appIds) {
+        userAppService.remove(Wrappers.<UserApp>lambdaQuery().eq(UserApp::getUserId, userId));
+        List<UserApp> userAppList = Lists.newArrayList();
+        appIds.forEach(appId -> {
+            UserApp userApp = new UserApp();
+            userApp.setUserId(userId);
+            userApp.setAppId(appId);
+            userAppList.add(userApp);
+        });
+        userAppService.saveBatch(userAppList);
+        return ApiResult.success();
+    }
 
     @ApiOperation("用户信息")
-    @GetMapping("/sso/user/me")
+    @GetMapping("/user/me")
     @ApiIgnore
     public ApiResult<SsoUserVo> me(@RequestParam(required = false) String sessionId,
                                    @RequestParam(required = false) String userId){
@@ -75,7 +130,7 @@ public class UserController {
     }
 
     @ApiOperation("用户资源")
-    @GetMapping("/sso/user/resource")
+    @GetMapping("/user/resource")
     @ApiIgnore
     public ApiResult<List<PermissionVo>> me(@RequestParam(required = false) String sessionId,
                                             @RequestParam(required = false) String userId,

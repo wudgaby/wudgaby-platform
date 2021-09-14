@@ -1,6 +1,5 @@
 package com.wudgaby.platform.sso.core.config;
 
-import com.google.common.collect.Lists;
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
@@ -40,9 +39,21 @@ public class SsoProperties {
      */
     private List<AuthorizedExcludeResource> authorizedExcludePaths;
     /**
-     * 系统标识
+     * 应用标识
      */
-    private String sysCode;
+    private String appCode;
+    /**
+     * 应用key
+     */
+    private String appKey;
+    /**
+     * 应用秘钥
+     */
+    private String appSecret;
+    /**
+     * 回调后跳转地址
+     */
+    private String targetUrl;
 
     @Data
     public static class AuthorizedExcludeResource{

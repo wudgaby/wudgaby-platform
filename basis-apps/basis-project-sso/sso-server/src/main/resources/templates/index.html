@@ -2,13 +2,42 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>index</title>
+    <title>首页</title>
 </head>
 <body>
 <h2>首页</h2>
-<p th:text="|欢迎您:${ssoUserVo.username}|"></p>
 <div>
+    <p th:text="|欢迎您:${session.sso_user.username}|"></p>
     <a th:href="@{/sso/logout}">退出</a>
 </div>
+<div>
+    密码修改:<br/>
+    当前密码: <input type="password" name="oldPwd"/>
+    新密码: <input type="password" name="newPwd"/>
+    <input type="button" id="btnChangePwd" value="修改密码"/>
+</div>
+
+<script src="https://cdn.bootcss.com/jquery/1.10.2/jquery.min.js"></script>
+<script>
+    $(function(){
+        $("#btnChangePwd").on("click", function() {
+            $.ajax(
+                {
+                    url: '/user/changePwd',
+                    'data': JSON.stringify({
+                        "oldPwd": $("input[name='oldPwd']").val(),
+                        "newPwd": $("input[name='newPwd']").val()
+                    }),
+                    'type': 'POST',
+                    'processData': false,
+                    'contentType': 'application/json',
+                    success: function (data) {
+                        alert(data.message);
+                    }
+                }
+            );
+        });
+    });
+</script>
 </body>
 </html>

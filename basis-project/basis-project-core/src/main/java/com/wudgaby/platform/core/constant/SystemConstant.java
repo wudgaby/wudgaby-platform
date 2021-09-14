@@ -8,8 +8,6 @@ package com.wudgaby.platform.core.constant;
  * @Desc :   系统级别共享常量
  */
 public interface SystemConstant {
-    String OWN_FRAME_PACKAGE = "com.wudgaby.platform";
-
     String SUCCESS = "success";
     String FAILURE = "failure";
 

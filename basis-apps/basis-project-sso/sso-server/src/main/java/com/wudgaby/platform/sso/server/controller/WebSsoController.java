@@ -1,127 +1,218 @@
 package com.wudgaby.platform.sso.server.controller;
 
-import cn.hutool.core.lang.UUID;
 import cn.hutool.core.net.url.UrlBuilder;
+import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.google.common.base.Charsets;
 import com.wudgaby.platform.core.exception.BusinessException;
+import com.wudgaby.platform.core.result.ApiResult;
 import com.wudgaby.platform.sso.core.config.SsoProperties;
 import com.wudgaby.platform.sso.core.constant.SsoConst;
-import com.wudgaby.platform.sso.core.helper.SsoSessionIdHelper;
-import com.wudgaby.platform.sso.core.helper.SsoWebHelper;
 import com.wudgaby.platform.sso.core.vo.SsoUserVo;
+import com.wudgaby.platform.sso.server.entity.BaseApp;
 import com.wudgaby.platform.sso.server.entity.User;
+import com.wudgaby.platform.sso.server.service.BaseAppService;
 import com.wudgaby.platform.sso.server.service.UserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.AllArgsConstructor;
+import org.apache.commons.lang3.BooleanUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.session.FindByIndexNameSessionRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 /**
  * @ClassName : AppSsoController
  * @Author :  WudGaby
  * @Version :  1.0
  * @Date : 2020/6/1 18:40
- * @Desc :
+ * @Desc :   TODO
  */
 @Api(tags = "web单点")
 @AllArgsConstructor
 @Controller
 public class WebSsoController {
     private final UserService userService;
-    private final SsoWebHelper ssoWebHelper;
+    private final BaseAppService baseAppService;
     private final SsoProperties ssoProperties;
+    private final FindByIndexNameSessionRepository findByIndexNameSessionRepository;
+
+    @ApiOperation("门户")
+    @GetMapping("/mh")
+    public String index(Model model){
+        List<BaseApp> baseAppList = baseAppService.list();
+        model.addAttribute("appList", baseAppList);
+        return "mh";
+    }
 
     @ApiOperation("首页")
     @GetMapping("/")
     public String index(Model model, HttpServletRequest request, HttpServletResponse response){
-        //SsoUserVo ssoUserVo = ssoWebHelper.loginCheck(request, response, true);
         SsoUserVo ssoUserVo = (SsoUserVo) request.getSession().getAttribute(SsoConst.SSO_USER);
         if(ssoUserVo == null){
             return "redirect:" + SsoConst.SSO_LOGIN_URL;
         }
-
         model.addAttribute("ssoUserVo", ssoUserVo);
         return "index";
     }
 
     @ApiOperation("进入登录页")
-    @GetMapping(SsoConst.SSO_LOGIN_URL)
-    public String login(Model model, HttpServletRequest request, HttpServletResponse response,
+    @GetMapping(value = {SsoConst.SSO_LOGIN_URL + "/{" + SsoConst.APP_ID + "}", SsoConst.SSO_LOGIN_URL})
+    public String login(HttpServletRequest request, HttpServletResponse response,
+                        RedirectAttributes redirectAttributes,
+                        Model model,
+                        @PathVariable(name = SsoConst.APP_ID, required = false) String appId,
                         @RequestParam(name = SsoConst.REDIRECT_URL, required = false) String redirectUrl){
-        //SsoUserVo ssoUserVo = ssoWebHelper.loginCheck(request, response, true);
-        SsoUserVo ssoUserVo = (SsoUserVo) request.getSession().getAttribute(SsoConst.SSO_USER);
-        if(ssoUserVo == null){
-            model.addAttribute(SsoConst.ERROR_MESSAGE, request.getParameter(SsoConst.ERROR_MESSAGE));
-            model.addAttribute(SsoConst.REDIRECT_URL, redirectUrl);
-            return "login";
-        }
 
-        if(StringUtils.isNotBlank(redirectUrl)){
-            //String sessionId = ssoWebHelper.getSessionIdByCookie(request);
-            String callbackUrl = UrlBuilder.of(redirectUrl, Charsets.UTF_8)
-                    .addQuery(SsoConst.SSO_SESSION_ID, request.getSession().getId())
+        appId = StringUtils.defaultIfEmpty(appId, "");
+        model.addAttribute(SsoConst.APP_ID, appId);
+
+        //appId不为空时. 先校验appId. 再校验会话.
+        //appId为空时,校验会话
+        if(StringUtils.isNotBlank(appId)){
+            BaseApp baseApp = baseAppService.getOne(Wrappers.<BaseApp>lambdaQuery().eq(BaseApp::getAppCode, appId));
+            if(baseApp == null){
+                request.setAttribute(SsoConst.ERROR_MESSAGE, "未知应用");
+                request.setAttribute(SsoConst.REDIRECT_URL, redirectUrl);
+                return "login";
+            }
+            if(baseApp.getStatus() == 0){
+                request.setAttribute(SsoConst.ERROR_MESSAGE, "该应用未开启");
+                request.setAttribute(SsoConst.REDIRECT_URL, redirectUrl);
+                return "login";
+            }
+
+            SsoUserVo ssoUserVo = (SsoUserVo) request.getSession().getAttribute(SsoConst.SSO_USER);
+            if(ssoUserVo == null){
+                String errorMsg = Optional.ofNullable(redirectAttributes.getFlashAttributes())
+                        .map(m -> Objects.toString(m.get(SsoConst.ERROR_MESSAGE), null))
+                        .orElse(request.getParameter(SsoConst.ERROR_MESSAGE));
+                request.setAttribute(SsoConst.ERROR_MESSAGE, errorMsg);
+                request.setAttribute(SsoConst.REDIRECT_URL, redirectUrl);
+                return "login";
+            }
+
+            request.getSession().setAttribute(SsoConst.SSO_USER, ssoUserVo);
+            request.getSession().setAttribute(FindByIndexNameSessionRepository.PRINCIPAL_NAME_INDEX_NAME, ssoUserVo.getAccount());
+            String callbackUrl = UrlBuilder.of(StringUtils.isBlank(baseApp.getWebsite()) ? SsoConst.DEFAULT_REDIRECT_URL : baseApp.getWebsite(), Charsets.UTF_8)
+                    .addQuery(SsoConst.ACCESS_TOKEN, request.getSession().getId())
+                    .addQuery(SsoConst.REDIRECT_URL, redirectUrl)
                     .build();
             return "redirect:" + callbackUrl;
+        } else {
+            SsoUserVo ssoUserVo = (SsoUserVo) request.getSession().getAttribute(SsoConst.SSO_USER);
+            if(ssoUserVo == null){
+                String errorMsg = Optional.ofNullable(redirectAttributes.getFlashAttributes())
+                        .map(m -> Objects.toString(m.get(SsoConst.ERROR_MESSAGE), null))
+                        .orElse(request.getParameter(SsoConst.ERROR_MESSAGE));
+                request.setAttribute(SsoConst.ERROR_MESSAGE, errorMsg);
+                request.setAttribute(SsoConst.REDIRECT_URL, redirectUrl);
+                return "login";
+            }
         }
         return "redirect:/";
     }
 
     @ApiOperation("登录")
-    @PostMapping(SsoConst.SSO_LOGIN_URL)
+    @PostMapping(value = {SsoConst.SSO_LOGIN_URL + "/{" + SsoConst.APP_ID + "}", SsoConst.SSO_LOGIN_URL})
     public String login(@RequestParam String account, @RequestParam String password,
+                        @PathVariable(name = SsoConst.APP_ID, required = false) String appId,
                         @RequestParam(name = SsoConst.REDIRECT_URL, required = false) String redirectUrl,
                         RedirectAttributes redirectAttributes,
-                        HttpServletRequest request,
-                        HttpServletResponse response){
+                        HttpServletRequest request, HttpServletResponse response){
 
-        //String redirectUrl = request.getParameter(SsoConst.REDIRECT_URL);
+        appId = StringUtils.defaultIfEmpty(appId, "");
+
         User user;
         try{
             user = userService.login(account, password);
         }catch (BusinessException be){
-            request.setAttribute(SsoConst.ERROR_MESSAGE, be.getMessage());
-            redirectAttributes.addAttribute(SsoConst.REDIRECT_URL, redirectUrl);
-            return "redirect:" + SsoConst.SSO_LOGIN_URL;
+            redirectAttributes.addFlashAttribute(SsoConst.ERROR_MESSAGE, be.getMessage());
+            if(StringUtils.isNotBlank(redirectUrl)) {
+                redirectAttributes.addAttribute(SsoConst.REDIRECT_URL, redirectUrl);
+            }
+            return "redirect:" + SsoConst.SSO_LOGIN_URL + "/" + appId;
         }
 
         SsoUserVo ssoUserVo = new SsoUserVo()
                 .setUserId(String.valueOf(user.getId()))
-                .setVersion(UUID.fastUUID().toString(true))
                 .setUsername(user.getUserName())
-                .setExpireMin(ssoProperties.getSessionTimeout())
-                .setExpireFreshTime(System.currentTimeMillis());
+                .setAccount(user.getAccount())
+                .setUserTel(user.getPhone())
+                .setUserEmail(user.getEmail())
+                .setUserPortrait(user.getAvatar())
+                ;
 
-        String sessionId = SsoSessionIdHelper.buildSessionId(ssoUserVo);
-        ssoUserVo.setToken(sessionId);
+        if(StringUtils.isNotBlank(appId)){
+            BaseApp baseApp = baseAppService.getOne(Wrappers.<BaseApp>lambdaQuery().eq(BaseApp::getAppCode, appId));
+            if(baseApp == null){
+                redirectAttributes.addFlashAttribute(SsoConst.ERROR_MESSAGE, "未知应用");
+                if(StringUtils.isNotBlank(redirectUrl)) {
+                    redirectAttributes.addAttribute(SsoConst.REDIRECT_URL, redirectUrl);
+                }
+                return "redirect:" + SsoConst.SSO_LOGIN_URL + "/" + appId ;
+            }
+            if(baseApp.getStatus() == 0){
+                redirectAttributes.addFlashAttribute(SsoConst.ERROR_MESSAGE, "该应用未开启");
+                if(StringUtils.isNotBlank(redirectUrl)) {
+                    redirectAttributes.addAttribute(SsoConst.REDIRECT_URL, redirectUrl);
+                }
+                return "redirect:" + SsoConst.SSO_LOGIN_URL + "/" + appId;
+            }
 
-        //ssoWebHelper.login(response, ssoUserVo);
-        request.getSession().setAttribute(SsoConst.SSO_USER, ssoUserVo);
-
-        if(StringUtils.isNotBlank(redirectUrl)){
-            String callbackUrl = UrlBuilder.of(redirectUrl, Charsets.UTF_8)
-                    .addQuery(SsoConst.SSO_SESSION_ID, request.getSession().getId())
+            request.getSession().setAttribute(SsoConst.SSO_USER, ssoUserVo);
+            request.getSession().setAttribute(FindByIndexNameSessionRepository.PRINCIPAL_NAME_INDEX_NAME, ssoUserVo.getAccount());
+            String callbackUrl = UrlBuilder.of(StringUtils.isBlank(baseApp.getWebsite()) ? SsoConst.DEFAULT_REDIRECT_URL : baseApp.getWebsite(), Charsets.UTF_8)
+                    .addQuery(SsoConst.ACCESS_TOKEN, request.getSession().getId())
+                    .addQuery(SsoConst.REDIRECT_URL, redirectUrl)
                     .build();
             return "redirect:" + callbackUrl;
         }
-        return "redirect:/";
+
+        request.getSession().setAttribute(SsoConst.SSO_USER, ssoUserVo);
+        request.getSession().setAttribute(FindByIndexNameSessionRepository.PRINCIPAL_NAME_INDEX_NAME, ssoUserVo.getAccount());
+        if(StringUtils.isBlank(redirectUrl)){
+            return "index";
+        }
+        return "redirect:" + redirectUrl;
     }
 
-    @ApiOperation("登出")
-    @GetMapping(SsoConst.SSO_LOGOUT_URL)
-    public String logout(HttpServletRequest request, HttpServletResponse response, RedirectAttributes redirectAttributes,
-                         @RequestParam(name = SsoConst.REDIRECT_URL, required = false) String redirectUrl){
-        //ssoWebHelper.logout(request, response);
+    @ApiOperation("单点登出")
+    @GetMapping(value = {SsoConst.SSO_LOGOUT_URL + "/{" + SsoConst.APP_ID + "}", SsoConst.SSO_LOGOUT_URL})
+    public ModelAndView logout(HttpServletRequest request, HttpServletResponse response, RedirectAttributes redirectAttributes,
+                               @PathVariable(name = SsoConst.APP_ID, required = false) String appId,
+                                @RequestParam(name = SsoConst.REDIRECT_URL, required = false) String redirectUrl){
         request.getSession().invalidate();
-        redirectAttributes.addAttribute(SsoConst.REDIRECT_URL, redirectUrl);
-        return "redirect:" + SsoConst.SSO_LOGIN_URL;
+        //ModelAndView modelAndView = new ModelAndView("login");
+        ModelAndView modelAndView = new ModelAndView("redirect:" + SsoConst.SSO_LOGIN_URL + "/" + StringUtils.trimToEmpty(appId));
+        List<String> logoutUrlList = baseAppService.list(Wrappers.<BaseApp>lambdaQuery().isNotNull(BaseApp::getWebsite))
+                                            .stream().map(BaseApp::getWebsite)
+                                            .map(site -> site + SsoConst.SSO_LOGOUT_URL)
+                                            .collect(Collectors.toList());
+        //modelAndView.addObject("logoutUrlList", logoutUrlList);
+        redirectAttributes.addFlashAttribute("logoutUrlList", logoutUrlList);
+        redirectAttributes.addFlashAttribute(SsoConst.ERROR_MESSAGE, "登出成功!");
+        return modelAndView;
+    }
+
+    @ApiOperation("检查状态")
+    @GetMapping(SsoConst.SSO_CHECK_URL)
+    @ResponseBody
+    public ApiResult check(HttpServletRequest request){
+        SsoUserVo ssoUserVo = (SsoUserVo) request.getSession().getAttribute(SsoConst.SSO_USER);
+        if(ssoUserVo == null) {
+            return ApiResult.failure();
+        }
+        return ApiResult.success().data(ssoUserVo);
     }
 }

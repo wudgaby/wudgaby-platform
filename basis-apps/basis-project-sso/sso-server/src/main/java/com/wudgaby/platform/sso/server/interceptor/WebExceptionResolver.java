@@ -34,7 +34,6 @@ public class WebExceptionResolver implements HandlerExceptionResolver {
         log.error(ex.getMessage(), ex);
 
         HandlerMethod method = (HandlerMethod)handler;
-
         boolean isJson = method.getMethodAnnotation(ResponseBody.class) != null
                             || method.getBeanType().getAnnotation(RestController.class) != null;
 

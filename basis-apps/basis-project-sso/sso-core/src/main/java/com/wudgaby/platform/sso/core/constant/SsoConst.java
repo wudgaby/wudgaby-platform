@@ -18,12 +18,16 @@ public interface SsoConst {
 
     String SSO_USER_RESOURCE_URL = "/sso/user/resource";
 
+    String CODE_EX_TOKEN_URL = "/codeExToken";
+
+    String SSO_TOKEN_URL = "/sso/token";
+
     /**
      * 因用了spring session 与 server.servlet.cookie.name相同
      */
     String SSO_SESSION_ID = "SESSION";
 
-    String SSO_HEADER_X_TOKEN = "x-auth-token";
+    String SSO_HEADER_X_TOKEN = "X-AUTH-TOKEN";
 
     String REDIRECT_URL = "redirectUrl";
 
@@ -35,4 +39,14 @@ public interface SsoConst {
 
     String COOKIE_PATH = "/";
 
+    String APP_ID = "appCode";
+
+    String TOKEN = "token";
+
+    String DEFAULT_REDIRECT_URL = "http://www.baidu.com";
+
+
+    String PART_SESSION_TOKEN_ATTR = "tokenAttr";
+    String ACCESS_TOKEN = "access-token";
+    //String TARGET_URL = "target_url";
 }

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>门户</title>
+</head>
+<body>
+<div>
+    <ul>
+        <li th:each="app:${appList}" ><a th:href="${app.website}" th:text="${app.appName}"></a></li>
+    </ul>
+</div>
+
+<script src="https://cdn.bootcss.com/jquery/1.10.2/jquery.min.js"></script>
+</body>
+</html>

@@ -18,5 +18,9 @@ logging:
   config: classpath:logback-spring.xml
 
 sso:
-  logout-path: /logout
+  logout-path: /sso/logout
   server: http://localhost:9900
+  app-code: app1
+  app-key: QZkstbHXhM
+  app-secret: UpIHyEcvoRQXGfBNipVnQzvdhodgvs
+  #target-url: http://app1.com:${server.port}

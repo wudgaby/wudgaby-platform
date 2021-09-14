@@ -9,6 +9,7 @@ import lombok.experimental.Accessors;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.io.Serializable;
 import java.util.Collection;
 
 /**
@@ -26,7 +27,7 @@ import java.util.Collection;
 public class UserInfo implements UserDetails {
 
     @ApiModelProperty(value = "主键id")
-    private Object id;
+    private Serializable id;
 
     @ApiModelProperty(value = "账号")
     private String account;
