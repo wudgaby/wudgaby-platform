@@ -3,6 +3,11 @@ server:
   servlet:
     encoding:
       charset: utf-8
+    #默认键名为 JSESSIONID
+    #当使用spring session redis的时候,默认键名为 SESSION
+    session:
+      cookie:
+        name: SID
 
 spring:
   application:
@@ -20,6 +25,9 @@ spring:
     #password: redis-pwd
   thymeleaf:
     cache: false
+  session:
+    store-type: REDIS
+    timeout: 1d
 
 logging:
   config: classpath:logback-spring.xml

@@ -30,6 +30,12 @@ public class IndexController {
         return "index";
     }
 
+    @GetMapping("/logout")
+    public String logout(HttpServletRequest request) {
+        request.getSession().invalidate();
+        return "redirect:" + ssoProperties.getServer() + "/mh";
+    }
+
     @GetMapping("/json")
     @ResponseBody
     public ApiResult<SsoUserVo> json(HttpServletRequest request) {

@@ -2,6 +2,8 @@ package com.wudgaby.platform.sso.server.config;
 
 import com.wudgaby.platform.sso.core.constant.SsoConst;
 import com.wudgaby.platform.sso.server.support.HeaderCookieHttpSessionIdResolver;
+import org.apache.tomcat.util.http.SameSiteCookies;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.core.session.SessionRegistry;
@@ -26,12 +28,13 @@ public class HttpSessionConfiguration {
     }
 
     @Bean("httpSessionIdResolver")
-    public HeaderCookieHttpSessionIdResolver httpSessionIdResolver() {
+    public HeaderCookieHttpSessionIdResolver httpSessionIdResolver(@Value("${server.servlet.session.cookie.name:SESSION}") String cookieName) {
         HeaderCookieHttpSessionIdResolver headerCookieHttpSessionIdResolver = new HeaderCookieHttpSessionIdResolver(SsoConst.SSO_HEADER_X_TOKEN);
         DefaultCookieSerializer cookieSerializer = new DefaultCookieSerializer();
-        // 取消仅限同一站点设置
-        cookieSerializer.setSameSite(null);
+        cookieSerializer.setSameSite(SameSiteCookies.LAX.getValue());
+        cookieSerializer.setUseSecureCookie(false);
         cookieSerializer.setUseBase64Encoding(false);
+        cookieSerializer.setCookieName(cookieName);
         headerCookieHttpSessionIdResolver.setCookieSerializer(cookieSerializer);
         return headerCookieHttpSessionIdResolver;
     }

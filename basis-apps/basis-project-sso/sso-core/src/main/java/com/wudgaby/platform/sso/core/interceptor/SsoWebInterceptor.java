@@ -69,7 +69,7 @@ public class SsoWebInterceptor implements HandlerInterceptor {
             return true;
         }
 
-        log.info("校验AccessToken");
+        log.info("{} 校验AccessToken", servletPath);
         String accessToken = Optional.ofNullable(request.getHeader(SsoConst.ACCESS_TOKEN)).orElse(request.getParameter(SsoConst.ACCESS_TOKEN));
         boolean isSuccess = check(accessToken, request, response);
 

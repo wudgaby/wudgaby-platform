@@ -9,7 +9,8 @@ import org.springframework.context.annotation.Configuration;
  * @Date : 2020/4/29 16:56
  * @Desc :
  */
-@Configuration
+@Deprecated
+//@Configuration
 public class TomcatConfiguration {
 
     /*@Bean

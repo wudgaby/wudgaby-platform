@@ -1,8 +1,8 @@
 server:
   port: 9100
   servlet:
-    #当不使用redis的时候,键名为 JSESSIONID
-    #当使用redis的时候,键名为 SESSION
+    #默认键名为 JSESSIONID
+    #当使用spring session redis的时候,默认键名为 SESSION
     session:
       cookie:
         name: JSESSIONID

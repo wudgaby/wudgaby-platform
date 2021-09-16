@@ -26,7 +26,7 @@ public class FilterConfiguration {
     public FilterRegistrationBean filterRegistrationBean(){
         FilterRegistrationBean registrationBean = new FilterRegistrationBean();
         registrationBean.setFilter(new RunLogFilter());
-        registrationBean.addUrlPatterns("/*");
+        registrationBean.addUrlPatterns("/**");
         registrationBean.setOrder(Integer.MIN_VALUE);
         return registrationBean;
     }
@@ -34,7 +34,7 @@ public class FilterConfiguration {
     @Bean
     public FilterRegistrationBean corsFilterBean(CorsFilter globalCorsFilter){
         FilterRegistrationBean registrationBean = new FilterRegistrationBean(globalCorsFilter);
-        registrationBean.addUrlPatterns("/*");
+        registrationBean.addUrlPatterns("/**");
         registrationBean.setOrder(Integer.MIN_VALUE);
         return registrationBean;
     }

@@ -1,5 +1,11 @@
 server:
   port: 9921
+  ssl:
+    enabled: true
+    key-store: classpath:server.keystore
+    key-alias: tomcat
+    key-store-password: 123456
+    key-store-type: JKS
 
 sso:
   app-code: app1

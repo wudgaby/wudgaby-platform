@@ -1,5 +1,6 @@
 package com.wudgaby.platform.sso.core.utils;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.security.web.savedrequest.SavedRequest;
 
 import javax.servlet.http.HttpServletRequest;
@@ -22,7 +23,7 @@ public class WebUtil {
     }
 
     public static boolean isContentTypeJson(HttpServletRequest request) {
-        return request.getContentType().contains(CONTENT_TYPE_JSON);
+        return StringUtils.trimToEmpty(request.getContentType()).contains(CONTENT_TYPE_JSON);
     }
 
     public static boolean isAjax(SavedRequest request) {
