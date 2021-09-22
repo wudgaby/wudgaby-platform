@@ -79,3 +79,8 @@ swagger:
     key-name: token
     name: Authorization
     type: ApiKey
+
+
+vail:
+  name: hkbird
+  age: 20
