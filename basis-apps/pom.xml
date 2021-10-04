@@ -572,12 +572,6 @@
                 <artifactId>minio</artifactId>
                 <version>${minio.version}</version>
             </dependency>
-
-            <dependency>
-                <groupId>com.alicp.jetcache</groupId>
-                <artifactId>jetcache-starter-redis</artifactId>
-                <version>${jetcache.version}</version>
-            </dependency>
         </dependencies>
     </dependencyManagement>
 

@@ -1,11 +1,7 @@
 package com.wudgaby.platform.sso.sample;
 
-import com.wudgaby.platform.core.annotation.EnableOwnFrame;
-import com.wudgaby.platform.webcore.support.GlobalExceptionAdvice;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.FilterType;
 
 /**
  * @ClassName : SsoWebSampleBootstrap

@@ -34,9 +34,10 @@ import static com.wudgaby.platform.sso.core.constant.SsoConst.PART_SESSION_TOKEN
  * @Author :  WudGaby
  * @Version :  1.0
  * @Date : 2020/6/1 18:21
- * @Desc :
+ * @Desc : 设计不对
  */
 @Slf4j
+@Deprecated
 @RequiredArgsConstructor
 public class SsoTokenInterceptor implements HandlerInterceptor {
     private final SsoProperties ssoProperties;

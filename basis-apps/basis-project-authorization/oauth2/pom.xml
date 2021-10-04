@@ -8,12 +8,20 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
+    <packaging>pom</packaging>
 
-    <artifactId>oauth2-new</artifactId>
+    <artifactId>oauth2</artifactId>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
     </properties>
+
+    <modules>
+        <module>oauth2-sso</module>
+        <module>oauth2-login-new</module>
+        <module>oauth2-server-new</module>
+        <module>oauth2-resource-server-new</module>
+    </modules>
 
 </project>

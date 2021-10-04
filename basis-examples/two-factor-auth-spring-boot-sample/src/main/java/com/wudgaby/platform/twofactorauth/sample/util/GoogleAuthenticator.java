@@ -73,7 +73,8 @@ public class GoogleAuthenticator {
         }
     }
 
-    static int window_size = 3; // default 3 - max 17 (from google docs)最多可偏移的时间
+    // default 3 - max 17 (from google docs)最多可偏移的时间
+    static int window_size = 3;
 
     /**
      * set the windows size. This is an integer value representing the number of

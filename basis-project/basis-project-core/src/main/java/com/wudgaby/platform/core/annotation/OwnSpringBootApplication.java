@@ -1,6 +1,8 @@
 package com.wudgaby.platform.core.annotation;
 
+import org.springframework.boot.SpringBootConfiguration;
 import org.springframework.boot.autoconfigure.AutoConfigurationExcludeFilter;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.context.TypeExcludeFilter;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.FilterType;
@@ -18,10 +20,13 @@ import java.lang.annotation.*;
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
 @Documented
-@ComponentScan(value = EnableOwnFrame.BASE_PACKAGE,
+@Inherited
+@SpringBootConfiguration
+@EnableAutoConfiguration
+@ComponentScan(value = OwnSpringBootApplication.BASE_PACKAGE,
         excludeFilters = { @ComponentScan.Filter(type = FilterType.CUSTOM, classes = TypeExcludeFilter.class),
-                            @ComponentScan.Filter(type = FilterType.CUSTOM, classes = AutoConfigurationExcludeFilter.class) })
-public @interface EnableOwnFrame {
+                @ComponentScan.Filter(type = FilterType.CUSTOM, classes = AutoConfigurationExcludeFilter.class) })
+public @interface OwnSpringBootApplication {
     String BASE_PACKAGE = "com.wudgaby.platform";
 
     @AliasFor(annotation = ComponentScan.class, attribute = "basePackages")

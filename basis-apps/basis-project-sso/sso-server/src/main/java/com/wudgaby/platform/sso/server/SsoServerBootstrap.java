@@ -1,6 +1,6 @@
 package com.wudgaby.platform.sso.server;
 
-import com.wudgaby.platform.core.annotation.EnableOwnFrame;
+import com.wudgaby.platform.core.annotation.OwnSpringBootApplication;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -12,7 +12,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @Desc :  #todo role, resource表未实现.
  */
 @SpringBootApplication(scanBasePackages = "com.wudgaby.platform")
-@EnableOwnFrame
+@OwnSpringBootApplication
 /*@ComponentScan(value = "com.wudgaby.platform",
         excludeFilters = @ComponentScan.Filter(type = FilterType.ASSIGNABLE_TYPE, classes = {GlobalExceptionAdvice.class}))*/
 public class SsoServerBootstrap {

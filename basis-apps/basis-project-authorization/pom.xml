@@ -17,7 +17,6 @@
     <modules>
         <module>basis-project-spring-security</module>
         <module>basis-project-oauth2</module>
-        <module>oauth2-sso</module>
-        <module>oauth2-new</module>
+        <module>oauth2</module>
     </modules>
 </project>
