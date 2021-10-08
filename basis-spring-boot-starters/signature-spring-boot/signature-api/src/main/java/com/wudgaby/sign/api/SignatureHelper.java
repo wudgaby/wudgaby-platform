@@ -2,7 +2,6 @@ package com.wudgaby.sign.api;
 
 import cn.hutool.http.body.RequestBody;
 import com.google.common.collect.Lists;
-import com.wudgaby.platform.utils.ValidatorUtils;
 import lombok.experimental.UtilityClass;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
@@ -27,15 +26,7 @@ import java.lang.annotation.Annotation;
 import java.lang.reflect.Array;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.TreeMap;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /**
@@ -48,8 +39,8 @@ import java.util.stream.Collectors;
 @Slf4j
 @UtilityClass
 public class SignatureHelper {
-    private static String DELIMETER = ",";
-    private static String NOT_FOUND = "NOT_FOUND";
+    private final static String DELIMETER = ",";
+    private final static String NOT_FOUND = "NOT_FOUND";
 
     /** * 生成所有注有 SignatureField属性 key=value的 拼接 */
     public static String toSplice(Object object) {
