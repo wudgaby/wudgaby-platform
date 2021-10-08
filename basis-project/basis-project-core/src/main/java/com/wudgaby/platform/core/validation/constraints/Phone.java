@@ -1,6 +1,6 @@
-package com.wudgaby.platform.core.validation;
+package com.wudgaby.platform.core.validation.constraints;
 
-import com.wudgaby.platform.core.validation.constraints.UrlAndIpValidator;
+import com.wudgaby.platform.core.validation.constraints.PhoneValidator;
 
 import javax.validation.Constraint;
 import javax.validation.Payload;
@@ -21,14 +21,14 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
  * @Author :  WudGaby
  * @Version :  1.0
  * @Date : 2018/9/24/024 2:01
- * @Desc :   
+ * @Desc :
  */
 @Documented
 @Target({ METHOD, FIELD, ANNOTATION_TYPE, CONSTRUCTOR, PARAMETER, TYPE_USE })
 @Retention(RUNTIME)
-@Constraint(validatedBy = { UrlAndIpValidator.class })
-public @interface URLAndIP {
-    String message() default "格式不正确";
+@Constraint(validatedBy = { PhoneValidator.class })
+public @interface Phone {
+    String message() default "手机格式不正确";
 
     Class<?>[] groups() default { };
 

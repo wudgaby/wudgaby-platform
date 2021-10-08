@@ -1,7 +1,6 @@
 package com.wudgaby.platform.sys;
 
 import com.github.xiaoymin.knife4j.spring.annotations.EnableKnife4j;
-import com.wudgaby.platform.core.annotation.OwnSpringBootApplication;
 import com.wudgaby.starter.logger.aop.EnableAccessLogger;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
@@ -21,7 +20,6 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2WebMvc;
 @EnableSwagger2WebMvc
 @EnableKnife4j
 @EnableAccessLogger
-@OwnSpringBootApplication
 @EnableAsync
 public class SysBootstrap {
     public static void main(String[] args) {

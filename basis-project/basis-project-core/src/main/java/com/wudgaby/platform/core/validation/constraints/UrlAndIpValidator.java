@@ -1,6 +1,5 @@
 package com.wudgaby.platform.core.validation.constraints;
 
-import com.wudgaby.platform.core.validation.URLAndIP;
 import com.wudgaby.platform.utils.RegexUtil;
 import lombok.extern.slf4j.Slf4j;
 

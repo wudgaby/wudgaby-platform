@@ -1,7 +1,5 @@
 package com.wudgaby.platform.core.validation.constraints;
 
-import com.wudgaby.platform.core.validation.Coords;
-
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 

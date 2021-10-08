@@ -1,4 +1,4 @@
-package com.wudgaby.platform.core.validation;
+package com.wudgaby.platform.core.validation.constraints;
 
 import com.wudgaby.platform.core.validation.constraints.PhoneValidator;
 
@@ -17,18 +17,18 @@ import static java.lang.annotation.ElementType.TYPE_USE;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
 /**
- * @ClassName : Phone
+ * @ClassName : Telephone
  * @Author :  WudGaby
  * @Version :  1.0
- * @Date : 2018/9/24/024 2:01
- * @Desc :
+ * @Date : 2019/12/6 14:14
+ * @Desc :   固定电话
  */
 @Documented
 @Target({ METHOD, FIELD, ANNOTATION_TYPE, CONSTRUCTOR, PARAMETER, TYPE_USE })
 @Retention(RUNTIME)
 @Constraint(validatedBy = { PhoneValidator.class })
-public @interface Phone {
-    String message() default "手机格式不正确";
+public @interface Telephone {
+    String message() default "固话格式不正确";
 
     Class<?>[] groups() default { };
 

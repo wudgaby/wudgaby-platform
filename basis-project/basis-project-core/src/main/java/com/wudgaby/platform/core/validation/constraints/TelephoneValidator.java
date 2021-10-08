@@ -1,6 +1,5 @@
 package com.wudgaby.platform.core.validation.constraints;
 
-import com.wudgaby.platform.core.validation.Telephone;
 import com.wudgaby.platform.utils.RegexUtil;
 
 import javax.validation.ConstraintValidator;

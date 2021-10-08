@@ -1,6 +1,6 @@
 package com.wudgaby.platform.message.api.form;
 
-import com.wudgaby.platform.core.validation.Phone;
+import com.wudgaby.platform.core.validation.constraints.Phone;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;

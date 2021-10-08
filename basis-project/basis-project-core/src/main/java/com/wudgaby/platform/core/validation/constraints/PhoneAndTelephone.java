@@ -1,4 +1,4 @@
-package com.wudgaby.platform.core.validation;
+package com.wudgaby.platform.core.validation.constraints;
 
 import com.wudgaby.platform.core.validation.constraints.PhoneAndTelephoneValidator;
 
