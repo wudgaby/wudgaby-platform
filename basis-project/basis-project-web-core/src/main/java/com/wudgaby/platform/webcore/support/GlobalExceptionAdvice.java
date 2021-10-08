@@ -35,6 +35,7 @@ import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
 import java.sql.SQLException;
 import java.util.Iterator;
+import java.util.stream.Collectors;
 
 /**
  * @ClassName : GlobalExceptionAdvice
@@ -189,7 +190,12 @@ public class GlobalExceptionAdvice {
             return ApiResult.failure(SystemResultCode.PARAM_IS_INVALID);
         }
         ValidationErrorDTO validationErrorDTO = formValidator.processFieldErrors(bindResult.getFieldErrors());
-        return ApiResult.failure(SystemResultCode.PARAM_IS_INVALID).message(validationErrorDTO.getFirstErrorMsg());
+        return ApiResult.failure(SystemResultCode.PARAM_IS_INVALID)
+                .message(validationErrorDTO.getFirstErrorMsg())
+                .data(validationErrorDTO.getFieldErrors().stream()
+                        .map(dto -> dto.getMessage())
+                        .collect(Collectors.toSet()))
+                ;
     }
 
     @ExceptionHandler({Exception.class})
