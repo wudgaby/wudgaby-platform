@@ -6,6 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.FilterType;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 /**
  * @ClassName : FlowableModelSampleBootStrap
@@ -15,6 +16,7 @@ import org.springframework.context.annotation.FilterType;
  * @Desc :   
  */
 @SpringBootApplication(exclude = {SecurityAutoConfiguration.class})
+@EnableTransactionManagement
 @ComponentScan(excludeFilters = @ComponentScan.Filter(type = FilterType.ASSIGNABLE_TYPE, classes = FastJsonAutoConfiguration.class))
 public class FlowableModelSampleBootStrap {
     public static void main(String[] args) {
