@@ -4,7 +4,6 @@ package com.wudgaby.platform.openapi.aop;
 import com.wudgaby.platform.core.aop.MethodInterceptorHolder;
 import com.wudgaby.platform.core.exception.BusinessException;
 import com.wudgaby.platform.openapi.annotations.AccessTokenVerifier;
-import com.wudgaby.platform.webcore.support.RequestContextHolderSupport;
 import com.wudgaby.redis.api.RedisSupport;
 import org.aopalliance.aop.Advice;
 import org.aopalliance.intercept.MethodInterceptor;
@@ -13,7 +12,10 @@ import org.springframework.aop.support.StaticMethodMatcherPointcutAdvisor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.annotation.AnnotationUtils;
 import org.springframework.stereotype.Component;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
+import javax.servlet.http.HttpServletRequest;
 import java.lang.reflect.Method;
 
 @Component
@@ -47,8 +49,8 @@ public class StaticAccessTokenAdvisor extends StaticMethodMatcherPointcutAdvisor
             //校验accessToken
             //String accessToken = String.valueOf(methodInterceptorHolder.getArgs().get("accessToken"));
 
-            String paramAccessToken = RequestContextHolderSupport.getRequest().getParameter(ACCESS_TOKEN);
-            String headerAccessToken = RequestContextHolderSupport.getRequest().getHeader(ACCESS_TOKEN);
+            String paramAccessToken = getRequest().getParameter(ACCESS_TOKEN);
+            String headerAccessToken = getRequest().getHeader(ACCESS_TOKEN);
 
             String accessToken = StringUtils.isBlank(paramAccessToken) ? headerAccessToken : paramAccessToken;
             if(StringUtils.isBlank(accessToken)){
@@ -62,5 +64,13 @@ public class StaticAccessTokenAdvisor extends StaticMethodMatcherPointcutAdvisor
             Object response = methodInvocation.proceed();
             return response;
         };
+    }
+
+    public static HttpServletRequest getRequest() {
+        return getRequestAttributes().getRequest();
+    }
+
+    public static ServletRequestAttributes getRequestAttributes() {
+        return ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes());
     }
 }

@@ -14,5 +14,6 @@
         <module>basis-examples</module>
         <module>basis-apps</module>
         <module>basis-project-dependency</module>
+        <module>basis-parent</module>
     </modules>
 </project>

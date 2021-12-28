@@ -24,10 +24,8 @@
             <scope>compile</scope>
         </dependency>
         <dependency>
-            <groupId>com.wudgaby.platform</groupId>
-            <artifactId>basis-project-web-core</artifactId>
-            <version>${basis-project.version}</version>
-            <scope>compile</scope>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
     </dependencies>
 </project>
