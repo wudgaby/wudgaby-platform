@@ -1,8 +1,10 @@
 package com.wudgaby.platform.webcore.rest;
 
+import com.wudgaby.platform.core.constant.SystemConstant;
 import com.wudgaby.platform.core.result.ApiResult;
 import com.wudgaby.platform.core.result.enums.SystemResultCode;
 import lombok.extern.slf4j.Slf4j;
+import org.slf4j.MDC;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication;
 import org.springframework.boot.web.error.ErrorAttributeOptions;
 import org.springframework.boot.web.servlet.error.ErrorAttributes;
@@ -45,7 +47,9 @@ public class NotFoundController implements ErrorController {
         String message = MessageFormat.format("[{0}] {1} 未找到该接口!", request.getMethod(), attr.get("path"));
         log.error("{}", message);
 
-        return ApiResult.failure(SystemResultCode.NOT_FOUND).message(message);
+        ApiResult apiResult = ApiResult.failure(SystemResultCode.NOT_FOUND).message(message);
+        apiResult.requestId(MDC.get(SystemConstant.MDC_REQUEST_ID));
+        return apiResult;
     }
 
     @Override

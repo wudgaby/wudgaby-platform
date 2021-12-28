@@ -1,10 +1,6 @@
 package com.wudgaby.plugin.resubmit;
 
-import java.lang.annotation.Documented;
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
+import java.lang.annotation.*;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -23,9 +19,9 @@ public @interface RepeatSubmit {
      * @return
      */
     String value();
+
     /**
-     * 重复提交间隔时间
-     *
+     * 重复提交间隔时间. 只支持redis. 不支持guava cache
      * @return
      */
     int expires() default 2;

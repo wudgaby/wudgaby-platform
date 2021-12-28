@@ -41,13 +41,16 @@ public class ApiResult<T> implements Result {
     private Map<String, Object> extra;
 
     @ApiModelProperty(value = "响应时间")
-    private long timestamp = System.currentTimeMillis();
+    private Long timestamp;
 
-    /*@ApiModelProperty(value = "请求路径")
+    @ApiModelProperty(value = "请求标识")
+    private String requestId;
+
+    @ApiModelProperty(value = "路径")
     private String path;
 
     @ApiModelProperty(value = "http状态码")
-    private int httpStatus;*/
+    private Integer httpStatus;
 
     /*@ApiModelProperty(value = "数据总数")
     private Long total;*/
@@ -69,6 +72,7 @@ public class ApiResult<T> implements Result {
         this.message = message;
         this.data = data;
         this.success = (code != null && code.equals(SystemResultCode.SUCCESS.getCode()));
+        this.timestamp = System.currentTimeMillis();
     }
 
     public static <T> ApiResult<T> success(){
@@ -110,6 +114,21 @@ public class ApiResult<T> implements Result {
 
     public ApiResult<T> data(T data){
         this.setData(data);
+        return this;
+    }
+
+    public ApiResult<T> requestId(String requestId){
+        this.setRequestId(requestId);
+        return this;
+    }
+
+    public ApiResult<T> path(String path){
+        this.setPath(path);
+        return this;
+    }
+
+    public ApiResult<T> httpStatus(Integer httpStatus){
+        this.setHttpStatus(httpStatus);
         return this;
     }
 

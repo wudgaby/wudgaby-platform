@@ -47,6 +47,8 @@ public class RepeatSubmitAspect {
 
     private final RedisSupport redisSupport;
 
+    private final LoginUserService loginUserService;
+
     private static final Cache<String, String> cache = CacheBuilder.newBuilder()
             .expireAfterWrite(REPEAT_SUBMIT_EXPIRE_SEC, TimeUnit.SECONDS)
             .maximumSize(99_999)
@@ -71,6 +73,11 @@ public class RepeatSubmitAspect {
             return;
         }
 
+        RepeatSubmit repeatSubmit = method.getAnnotation(RepeatSubmit.class);
+        String message = Optional.ofNullable(repeatSubmit).map(RepeatSubmit::value).orElse("请勿重复提交.");
+        long expires = Optional.ofNullable(repeatSubmit).map(r -> r.timeUnit().toSeconds(r.expires())).orElse(REPEAT_SUBMIT_EXPIRE_SEC);
+        long expiresSec = Math.max(expires, 1);
+
         ServletRequestAttributes requestAttributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
         HttpServletRequest request = requestAttributes.getRequest();
         Assert.notNull(request, "request can not null");
@@ -78,47 +85,44 @@ public class RepeatSubmitAspect {
 
         log.info("重复提交监测. key = [{}]", key);
         if(redisSupport != null){
-            redisReSubmit(key);
+            redisReSubmit(key, message, expiresSec);
         }else{
-            guavaReSubmit(key);
+            guavaReSubmit(key, message);
         }
     }
 
-    private void redisReSubmit(String key){
+    private void redisReSubmit(String key, String message, long expiresSec){
         Object val = redisSupport.get(key);
         if (val == null) {
-            redisSupport.set(key, key, REPEAT_SUBMIT_EXPIRE_SEC);
+            redisSupport.set(key, key, expiresSec);
         } else {
             log.warn("重复提交. key = [{}]", key);
-            throw new ResubmitException();
+            throw new ResubmitException(message);
         }
     }
 
-    private void guavaReSubmit(String key){
+    private void guavaReSubmit(String key, String message){
         String val = cache.getIfPresent(key);
         if (val == null) {
             cache.put(key, key);
         } else {
             log.warn("重复提交. key = [{}]", key);
-            throw new ResubmitException();
+            throw new ResubmitException(message);
         }
     }
 
     private String getKey(HttpServletRequest request, JoinPoint joinPoint) {
         //String account = SecurityUtils.getCurrentUser().map(u -> u.getAccount()).orElse("guest");
-        String userId = "";
+        String userId = Optional.ofNullable(loginUserService).map(service -> service.getLoginedUserId()).orElse("anyone");
         String path = request.getServletPath();
-        //String url = request.getRequestURL().toString();
-        //String argString = Arrays.asList(joinPoint.getArgs()).toString();
         String timestamp = Optional.ofNullable(request.getParameter(PARAM_TIMESTAMP)).orElse("0");
 
         String ipBase64 = Base64.getEncoder().encodeToString(ServletUtil.getClientIP(request).getBytes());
         return new StringJoiner(":")
                 .add(KEY_REPEAT)
-                .add(ipBase64)
                 .add(userId)
+                .add(ipBase64)
                 .add(path)
-                //.add(argString)
                 .add(timestamp)
                 .toString();
     }

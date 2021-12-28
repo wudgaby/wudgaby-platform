@@ -11,4 +11,8 @@ public class ResubmitException extends RuntimeException {
     public ResubmitException(){
         super("重复提交");
     }
+
+    public ResubmitException(String message){
+        super(message);
+    }
 }

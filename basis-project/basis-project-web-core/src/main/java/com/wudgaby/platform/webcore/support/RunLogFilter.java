@@ -1,8 +1,12 @@
 package com.wudgaby.platform.webcore.support;
 
+import cn.hutool.core.lang.UUID;
 import cn.hutool.extra.servlet.ServletUtil;
 import com.wudgaby.platform.core.config.ExcludeRegistry;
+import com.wudgaby.platform.core.constant.SystemConstant;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
+import org.slf4j.MDC;
 import org.springframework.util.AntPathMatcher;
 import org.springframework.util.PathMatcher;
 import org.springframework.util.StopWatch;
@@ -52,6 +56,10 @@ public class RunLogFilter implements Filter {
                 return;
             }
         }
+
+        //链路追踪
+        String headerRequestId = httpServletRequest.getHeader(SystemConstant.HEADER_X_REQUEST_ID);
+        MDC.put(SystemConstant.MDC_REQUEST_ID, StringUtils.isBlank(headerRequestId) ? UUID.fastUUID().toString(true) : headerRequestId);
 
         log.info("请求开始. 请求IP: <{}> <{}> <{}>", ServletUtil.getClientIP(httpServletRequest), httpServletRequest.getMethod(), httpServletRequest.getRequestURI());
         StopWatch stopWatch = new StopWatch();

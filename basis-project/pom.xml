@@ -144,6 +144,7 @@
         <user-agent-utils.version>1.21</user-agent-utils.version>
         <assertj.version>3.17.2</assertj.version>
         <minio.version>8.0.3</minio.version>
+        <shedlock.version>4.30.0</shedlock.version>
     </properties>
 
     <dependencies>
@@ -591,6 +592,27 @@
                 <groupId>io.minio</groupId>
                 <artifactId>minio</artifactId>
                 <version>${minio.version}</version>
+            </dependency>
+
+            <!--轻量级分布式定时任务-->
+            <dependency>
+                <groupId>net.javacrumbs.shedlock</groupId>
+                <artifactId>shedlock-spring</artifactId>
+                <version>${shedlock.version}</version>
+            </dependency>
+
+            <!--轻量级分布式定时任务 redis实现-->
+            <dependency>
+                <groupId>net.javacrumbs.shedlock</groupId>
+                <artifactId>shedlock-provider-redis-spring</artifactId>
+                <version>${shedlock.version}</version>
+            </dependency>
+
+            <!--轻量级分布式定时任务 jdbc实现-->
+            <dependency>
+                <groupId>net.javacrumbs.shedlock</groupId>
+                <artifactId>shedlock-provider-jdbc-template</artifactId>
+                <version>${shedlock.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
