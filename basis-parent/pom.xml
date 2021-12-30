@@ -135,6 +135,7 @@
         <assertj.version>3.17.2</assertj.version>
         <minio.version>8.0.3</minio.version>
         <shedlock.version>4.30.0</shedlock.version>
+        <poi-tl.version>1.11.0</poi-tl.version>
     </properties>
 
     <dependencies>
@@ -603,6 +604,13 @@
                 <groupId>net.javacrumbs.shedlock</groupId>
                 <artifactId>shedlock-provider-jdbc-template</artifactId>
                 <version>${shedlock.version}</version>
+            </dependency>
+
+            <!-- Word模板引擎 -->
+            <dependency>
+                <groupId>com.deepoove</groupId>
+                <artifactId>poi-tl</artifactId>
+                <version>${poi-tl.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

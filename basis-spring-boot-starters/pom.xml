@@ -80,16 +80,13 @@
         <module>distributed-lock-spring-boot</module>
         <module>code-generator-spring-boot</module>
         <module>api-automatic-spring-boot</module>
-        <module>two-factor-auth-spring-boot</module>
 
         <module>pdf-spring-boot-starter</module>
         <module>quartz-spring-boot</module>
         <module>flowable-module-spring-boot</module>
         <module>flowable-helper-spring-boot</module>
         <module>zxing-spring-boot</module>
-        <module>social-spring-boot</module>
-        <module>pay-spring-boot</module>
-        <module>minio-spring-boot</module>
+        <module>office-spring-boot</module>
     </modules>
 
     <dependencyManagement>
