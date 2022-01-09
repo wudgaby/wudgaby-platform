@@ -87,6 +87,7 @@
         <module>flowable-helper-spring-boot</module>
         <module>zxing-spring-boot</module>
         <module>office-spring-boot</module>
+        <module>simple-security-spring-boot</module>
     </modules>
 
     <dependencyManagement>
