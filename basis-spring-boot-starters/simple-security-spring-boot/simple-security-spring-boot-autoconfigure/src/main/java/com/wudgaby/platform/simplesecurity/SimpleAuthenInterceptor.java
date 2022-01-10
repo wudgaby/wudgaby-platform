@@ -72,7 +72,6 @@ public class SimpleAuthenInterceptor implements HandlerInterceptor {
             return true;
         }
 
-
         AnonymousAccess anonymousAccessType = AnnotationUtils.getAnnotation(hm.getBeanType(), AnonymousAccess.class);
         AnonymousAccess anonymousAccessMethod = AnnotationUtils.getAnnotation(hm.getMethod(), AnonymousAccess.class);
         //匿名访问 放行
