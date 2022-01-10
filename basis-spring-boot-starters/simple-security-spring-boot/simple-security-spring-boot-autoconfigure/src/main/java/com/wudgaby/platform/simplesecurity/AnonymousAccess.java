@@ -3,7 +3,6 @@ package com.wudgaby.platform.simplesecurity;
 import java.lang.annotation.*;
 
 /**
- * @author jacky
  *  用于标记匿名访问方法
  */
 @Target({ElementType.METHOD, ElementType.TYPE})

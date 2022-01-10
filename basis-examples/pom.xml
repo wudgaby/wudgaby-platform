@@ -39,5 +39,6 @@
         <module>swagger-aggregation</module>
         <module>swagger3-sample</module>
         <module>security-sample</module>
+        <module>simple-security-spring-boot-sample</module>
     </modules>
 </project>

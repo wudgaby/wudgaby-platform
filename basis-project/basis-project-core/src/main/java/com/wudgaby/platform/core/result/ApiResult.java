@@ -1,12 +1,14 @@
 package com.wudgaby.platform.core.result;
 
 import com.google.common.collect.Maps;
+import com.wudgaby.platform.core.constant.SystemConstant;
 import com.wudgaby.platform.core.result.enums.ApiResultCode;
 import com.wudgaby.platform.core.result.enums.SystemResultCode;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.slf4j.MDC;
 
 import javax.annotation.Nonnull;
 import java.util.Map;
@@ -73,6 +75,7 @@ public class ApiResult<T> implements Result {
         this.data = data;
         this.success = (code != null && code.equals(SystemResultCode.SUCCESS.getCode()));
         this.timestamp = System.currentTimeMillis();
+        this.requestId = MDC.get(SystemConstant.MDC_REQUEST_ID);
     }
 
     public static <T> ApiResult<T> success(){

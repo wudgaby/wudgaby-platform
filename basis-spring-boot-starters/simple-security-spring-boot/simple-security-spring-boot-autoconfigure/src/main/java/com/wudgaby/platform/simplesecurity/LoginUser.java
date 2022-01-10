@@ -47,10 +47,13 @@ public class LoginUser {
     @ApiModelProperty(value = "状态 0:停用, 1:正常 ")
     private Integer status;
 
-    @ApiModelProperty("权限信息")
+    @ApiModelProperty("权限")
     private Collection<String> authorities;
 
-    @ApiModelProperty("管理员")
+    @ApiModelProperty("角色")
+    private Collection<String> roles;
+
+    @ApiModelProperty("是否管理员")
     private Boolean admin;
 
     public LoginUser verifyAdmin(String[] adminRoleCodes) {
