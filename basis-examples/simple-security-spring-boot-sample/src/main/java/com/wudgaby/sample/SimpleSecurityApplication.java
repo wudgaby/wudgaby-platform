@@ -9,7 +9,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @Date :  2022/1/10 0010 17:30
  * @Desc :
  */
-@SpringBootApplication(scanBasePackages = "com.wudgaby")
+@SpringBootApplication
 public class SimpleSecurityApplication {
     public static void main(String[] args) {
         SpringApplication.run(SimpleSecurityApplication.class, args);

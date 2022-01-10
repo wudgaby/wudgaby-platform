@@ -65,7 +65,7 @@ spring:
 #配置日志地址
 logging:
   path: /var/log/${spring.application.name}
-  config: classpath:log/logback-spring.xml
+  config: log/logback-spring.xml
 
 # mybatis
 mybatis-plus:
