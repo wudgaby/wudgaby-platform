@@ -31,9 +31,9 @@
         </developer>
     </developers>
     <scm>
-        <url>https://gitee.com/wudgaby1122/basis-project</url>
-        <connection>scm:git:https://gitee.com/wudgaby1122/basis-project.git</connection>
-        <developerConnection>scm:git:https://gitee.com/wudgaby1122/basis-project.git</developerConnection>
+        <url>https://gitee.com/wudgaby1122/wudgaby-platform</url>
+        <connection>scm:git:https://gitee.com/wudgaby1122/wudgaby-platform.git</connection>
+        <developerConnection>scm:git:https://gitee.com/wudgaby1122/wudgaby-platform.git</developerConnection>
         <tag>v${project.version}</tag>
     </scm>
 
@@ -64,6 +64,7 @@
         <apache-rat-plugin.version>0.12</apache-rat-plugin.version>
         <maven-release-plugin.version>2.5.3</maven-release-plugin.version>
         <maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>
+        <archetype-packaging.version>3.1.2</archetype-packaging.version>
 
         <spring.version>5.2.7.RELEASE</spring.version>
         <spring-boot.version>2.3.1.RELEASE</spring-boot.version>
@@ -684,8 +685,8 @@
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>versions-maven-plugin</artifactId>
-                <version>2.7</version>
             </plugin>
+
             <!--打包跳过测试类-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -774,6 +775,15 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-release-plugin</artifactId>
                 <version>${maven-release-plugin.version}</version>
+                <configuration>
+                    <autoVersionSubmodules>true</autoVersionSubmodules>
+                    <tagNameFormat>v@{project.version}</tagNameFormat>
+                    <generateReleasePoms>false</generateReleasePoms>
+                    <arguments>-DskipTests</arguments>
+                    <!--<username>git账号</username>
+                    <password>git密码</password>
+                    <goals>-f pom.xml deploy</goals>-->
+                </configuration>
             </plugin>
         </plugins>
 
@@ -781,7 +791,7 @@
             <extension>
                 <groupId>org.apache.maven.archetype</groupId>
                 <artifactId>archetype-packaging</artifactId>
-                <version>3.1.2</version>
+                <version>${archetype-packaging.version}</version>
             </extension>
         </extensions>
 

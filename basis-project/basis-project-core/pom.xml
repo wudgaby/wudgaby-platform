@@ -62,6 +62,7 @@
             <groupId>com.wudgaby.platform</groupId>
             <artifactId>basis-project-security-core</artifactId>
             <version>${project.version}</version>
+            <optional>true</optional>
         </dependency>
         <dependency>
             <groupId>com.wudgaby.platform</groupId>

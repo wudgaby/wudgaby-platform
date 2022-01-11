@@ -8,11 +8,10 @@
         <gpg.passphrase>your password</gpg.passphrase>
       </properties>
     </profile>
-  </profiles>
-  <activeProfiles>
-    <activeProfile>gpg</activeProfile>
-  </activeProfiles>
 </profiles>
+<activeProfiles>
+<activeProfile>gpg</activeProfile>
+</activeProfiles>
 
 <servers>
     <server>
@@ -28,4 +27,4 @@
 </servers>
 ``
 
-mvn clean deploy -P release-sonatype -DskipTests=true       
+mvn clean deploy -P release-sonatype -DskipTests=true
