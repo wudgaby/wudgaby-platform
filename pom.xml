@@ -19,6 +19,5 @@
 
     <properties>
         <java.version>1.8</java.version>
-        <revision>1.0.0</revision>
     </properties>
 </project>
