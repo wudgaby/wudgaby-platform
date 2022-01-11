@@ -36,3 +36,13 @@
 成功后构件自动删除，一小段时间（约1-2个小时）后即可同步到maven的中央仓库。届时会有邮件通知。
 
 至此，发布到Maven中央仓库完成。`
+
+
+
+snapshot版本需引入
+<repositories>
+    <repository>
+      <id>snapshots-repo</id>
+      <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+    </repository>
+  </repositories>
