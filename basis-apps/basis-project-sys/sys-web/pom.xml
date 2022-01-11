@@ -150,19 +150,19 @@
                     </execution>
                 </executions>
             </plugin>
-            <plugin>
+            <!--<plugin>
                 <groupId>com.spotify</groupId>
                 <artifactId>docker-maven-plugin</artifactId>
                 <version>1.2.2</version>
 
-                <!--registry外部访问 必须使用https 参考配置:https://segmentfault.com/a/1190000015108428-->
+                &lt;!&ndash;registry外部访问 必须使用https 参考配置:https://segmentfault.com/a/1190000015108428&ndash;&gt;
                 <configuration>
                     <dockerHost>${docker.host}</dockerHost>
-                    <!--这里要注意的是，imageName必须符合正则[a-z0-9-_.]，docker的imageName只能是小写字母，数字，点号，下划线-->
+                    &lt;!&ndash;这里要注意的是，imageName必须符合正则[a-z0-9-_.]，docker的imageName只能是小写字母，数字，点号，下划线&ndash;&gt;
                     <imageName>${docker.registryUrl}/${docker.image.prefix}/${project.artifactId}</imageName>
                     <dockerDirectory>${project.basedir}/src/main/docker</dockerDirectory>
-                    <!--<serverId>myDocker</serverId>-->
-                    <!--<registryUrl>http://182.92.203.94:5000</registryUrl>-->
+                    &lt;!&ndash;<serverId>myDocker</serverId>&ndash;&gt;
+                    &lt;!&ndash;<registryUrl>http://182.92.203.94:5000</registryUrl>&ndash;&gt;
                     <forceTags>true</forceTags>
                     <resources>
                         <resource>
@@ -172,19 +172,19 @@
                         </resource>
                     </resources>
                     <imageTags>
-                        <!--<imageTag>${project.version}</imageTag>-->
+                        &lt;!&ndash;<imageTag>${project.version}</imageTag>&ndash;&gt;
                         <imageTag>latest</imageTag>
                     </imageTags>
                 </configuration>
                 <executions>
-                    <!--<execution>
+                    &lt;!&ndash;<execution>
                         <id>build-image</id>
                         <phase>package</phase>
                         <goals>
                             <goal>build</goal>
                         </goals>
-                    </execution>-->
-                    <!--<execution>
+                    </execution>&ndash;&gt;
+                    &lt;!&ndash;<execution>
                         <id>tag-image</id>
                         <phase>package</phase>
                         <goals>
@@ -194,7 +194,7 @@
                             <image>${docker.image.prefix}/${project.artifactId}</image>
                             <newName>${docker.image.prefix}/${project.artifactId}:1.0.0</newName>
                         </configuration>
-                    </execution>-->
+                    </execution>&ndash;&gt;
                     <execution>
                         <id>push-image</id>
                         <phase>deploy</phase>
@@ -206,7 +206,7 @@
                         </configuration>
                     </execution>
                 </executions>
-            </plugin>
+            </plugin>-->
 
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
