@@ -34,7 +34,7 @@
         <url>https://gitee.com/wudgaby1122/wudgaby-platform</url>
         <connection>scm:git:https://gitee.com/wudgaby1122/wudgaby-platform.git</connection>
         <developerConnection>scm:git:https://gitee.com/wudgaby1122/wudgaby-platform.git</developerConnection>
-        <tag>v${project.version}</tag>
+        <tag>HEAD</tag>
     </scm>
 
     <properties>
@@ -43,8 +43,9 @@
         <java.source.version>1.8</java.source.version>
         <java.target.version>1.8</java.target.version>
 
-        <revision>1.0.0-SNAPSHOT</revision>
-        <starter.version>1.0.0-SNAPSHOT</starter.version>
+        <!-- Project revision -->
+        <revision>1.0.0</revision>
+        <starter.version>1.0.0</starter.version>
 
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -55,7 +56,7 @@
         </argline>
         <arguments/>
 
-        <!-- Maven plugins -->
+        <!-- Maven Plugin Versions -->
         <maven-jar-plugin.version>3.0.2</maven-jar-plugin.version>
         <maven-compiler-plugin.version>3.6.0</maven-compiler-plugin.version>
         <maven-source-plugin.version>3.0.1</maven-source-plugin.version>
