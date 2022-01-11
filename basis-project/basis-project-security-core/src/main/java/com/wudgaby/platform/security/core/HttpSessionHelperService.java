@@ -28,7 +28,7 @@ public class HttpSessionHelperService {
 
     /**
      * 踢出系统
-     * @param accountSet
+     * @param accountSet 账号列表
      */
     public void invalidateSession(Set<String> accountSet){
         if(CollectionUtils.isEmpty(accountSet)){
@@ -47,6 +47,8 @@ public class HttpSessionHelperService {
 
     /**
      * 重置用户权限
+     * @param userId 用户id
+     * @param authorities 权限列表
      */
     public void resetAuthorities(Long userId, List<GrantedAuthority> authorities){
         UsernamePasswordAuthenticationToken newToken = new UsernamePasswordAuthenticationToken(userId, null, authorities);

@@ -28,7 +28,7 @@
         <dependency>
             <groupId>com.wudgaby.platform</groupId>
             <artifactId>flowable-helper-spring-boot-autoconfigure</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
+            <version>1.0.0</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -54,12 +54,12 @@
         <dependency>
             <groupId>com.wudgaby.platform</groupId>
             <artifactId>basis-project-web-core</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
+            <version>1.0.0</version>
         </dependency>
         <dependency>
             <groupId>com.wudgaby.platform</groupId>
             <artifactId>swagger-spring-boot-starter</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
+            <version>1.0.0</version>
         </dependency>
 
         <dependency>
