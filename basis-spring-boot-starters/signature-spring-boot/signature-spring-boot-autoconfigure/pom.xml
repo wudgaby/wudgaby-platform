@@ -14,7 +14,7 @@
         <dependency>
             <groupId>com.wudgaby.platform</groupId>
             <artifactId>signature-api</artifactId>
-            <version>${project.version}</version>
+            <version>${revision}</version>
         </dependency>
         <dependency>
             <groupId>commons-codec</groupId>
@@ -35,7 +35,7 @@
         <dependency>
             <groupId>com.wudgaby.platform</groupId>
             <artifactId>redis-spring-boot-starter</artifactId>
-            <version>${project.version}</version>
+            <version>${revision}</version>
         </dependency>
     </dependencies>
 </project>

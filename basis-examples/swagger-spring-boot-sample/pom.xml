@@ -5,13 +5,12 @@
     <parent>
         <artifactId>basis-examples</artifactId>
         <groupId>com.wudgaby.platform</groupId>
-        <version>1.0.0</version>
+        <version>${revision}</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>swagger-spring-boot-sample</artifactId>
-    <version>1.0.0</version>
 
     <properties>
         <maven.deploy.skip>true</maven.deploy.skip>
@@ -23,7 +22,7 @@
         <dependency>
             <groupId>com.wudgaby.platform</groupId>
             <artifactId>basis-project-core</artifactId>
-            <version>1.0.0</version>
+            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -32,7 +31,7 @@
         <dependency>
             <groupId>com.wudgaby.platform</groupId>
             <artifactId>swagger-spring-boot-starter</artifactId>
-            <version>1.0.0</version>
+            <version>${project.version}</version>
         </dependency>
 
         <dependency>

@@ -6,7 +6,6 @@
         <artifactId>basis-spring-boot-starters</artifactId>
         <groupId>com.wudgaby.platform</groupId>
         <version>${revision}</version>
-        <relativePath/>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 

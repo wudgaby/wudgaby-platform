@@ -5,14 +5,12 @@
     <parent>
         <artifactId>basis-examples</artifactId>
         <groupId>com.wudgaby.platform</groupId>
-        <version>1.0.0</version>
+        <version>${revision}</version>
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.wudgaby.platform</groupId>
     <artifactId>security-sample</artifactId>
     <packaging>pom</packaging>
-    <version>1.0.0</version>
     <description>安全框架示例</description>
 
     <properties>

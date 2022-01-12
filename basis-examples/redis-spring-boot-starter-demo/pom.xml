@@ -5,7 +5,7 @@
     <parent>
         <artifactId>basis-examples</artifactId>
         <groupId>com.wudgaby.platform</groupId>
-        <version>1.0.0</version>
+        <version>${revision}</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
     <modelVersion>4.0.0</modelVersion>
@@ -31,7 +31,7 @@
         <dependency>
             <groupId>com.wudgaby.platform</groupId>
             <artifactId>redis-spring-boot-starter</artifactId>
-            <version>1.0.0</version>
+            <version>${project.version}</version>
         </dependency>
     </dependencies>
 

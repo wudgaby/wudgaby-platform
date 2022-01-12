@@ -15,7 +15,7 @@
         <dependency>
             <groupId>com.wudgaby.platform</groupId>
             <artifactId>rate-limiter-spring-boot-autoconfigure</artifactId>
-            <version>${project.version}</version>
+            <version>${revision}</version>
         </dependency>
     </dependencies>
 </project>

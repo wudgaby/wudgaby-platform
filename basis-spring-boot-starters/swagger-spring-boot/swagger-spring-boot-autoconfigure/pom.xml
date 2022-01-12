@@ -38,15 +38,6 @@
             <version>2.0.9</version>
             <!--<optional>true</optional>-->
         </dependency>
-
-        <!--老版本-->
-        <!--<dependency>
-            <groupId>com.github.xiaoymin</groupId>
-            <artifactId>swagger-bootstrap-ui</artifactId>
-            <version>1.9.6</version>
-            <optional>true</optional>
-        </dependency>-->
-
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-web</artifactId>

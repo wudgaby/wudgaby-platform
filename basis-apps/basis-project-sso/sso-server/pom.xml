@@ -17,12 +17,12 @@
         <dependency>
             <groupId>com.wudgaby.platform</groupId>
             <artifactId>sso-core</artifactId>
-            <version>${project.version}</version>
+            <version>${revision}</version>
         </dependency>
         <dependency>
             <groupId>com.wudgaby.platform</groupId>
             <artifactId>basis-project-web-core</artifactId>
-            <version>${project.version}</version>
+            <version>${revision}</version>
         </dependency>
         <dependency>
             <groupId>com.baomidou</groupId>

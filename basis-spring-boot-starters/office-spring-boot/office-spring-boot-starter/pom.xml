@@ -20,7 +20,7 @@
         <dependency>
             <groupId>com.wudgaby.platform</groupId>
             <artifactId>office-spring-boot-autoconfigure</artifactId>
-            <version>${project.version}</version>
+            <version>${revision}</version>
         </dependency>
     </dependencies>
 </project>

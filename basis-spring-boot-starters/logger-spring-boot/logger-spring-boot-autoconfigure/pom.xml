@@ -15,7 +15,7 @@
         <dependency>
             <groupId>com.wudgaby.platform</groupId>
             <artifactId>logger-api</artifactId>
-            <version>${project.version}</version>
+            <version>${revision}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>

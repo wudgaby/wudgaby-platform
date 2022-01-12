@@ -20,7 +20,7 @@
         <dependency>
             <groupId>com.wudgaby.platform</groupId>
             <artifactId>basis-project-core</artifactId>
-            <version>${project.version}</version>
+            <version>${revision}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.tomcat.embed</groupId>

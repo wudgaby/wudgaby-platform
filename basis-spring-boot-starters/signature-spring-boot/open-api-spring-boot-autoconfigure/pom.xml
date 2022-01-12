@@ -15,12 +15,12 @@
         <dependency>
             <groupId>com.wudgaby.platform</groupId>
             <artifactId>redis-spring-boot-starter</artifactId>
-            <version>${project.version}</version>
+            <version>${revision}</version>
         </dependency>
         <dependency>
             <groupId>com.wudgaby.platform</groupId>
             <artifactId>basis-project-core</artifactId>
-            <version>${project.version}</version>
+            <version>${revision}</version>
             <scope>compile</scope>
         </dependency>
         <dependency>

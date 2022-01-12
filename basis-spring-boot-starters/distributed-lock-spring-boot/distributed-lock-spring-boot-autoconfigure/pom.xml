@@ -48,7 +48,7 @@
         <dependency>
             <groupId>com.wudgaby.platform</groupId>
             <artifactId>distributed-lock-api</artifactId>
-            <version>${project.version}</version>
+            <version>${revision}</version>
         </dependency>
     </dependencies>
 </project>

@@ -17,21 +17,11 @@
         <dependency>
             <groupId>com.wudgaby.platform</groupId>
             <artifactId>basis-project-core</artifactId>
-            <version>${project.version}</version>
+            <version>${revision}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-        <!--<dependency>
-            <groupId>com.wudgaby.platform</groupId>
-            <artifactId>redis-api</artifactId>
-            <version>${revision}</version>
-        </dependency>-->
-        <dependency>
-            <groupId>com.wudgaby.platform</groupId>
-            <artifactId>redis-spring-boot-starter</artifactId>
-            <version>${starter.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
@@ -62,11 +52,6 @@
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-core</artifactId>
         </dependency>
-        <dependency>
-            <groupId>com.wudgaby.platform</groupId>
-            <artifactId>rate-limiter-core</artifactId>
-            <version>${starter.version}</version>
-        </dependency>
         <!--<dependency>
             <groupId>io.springfox</groupId>
             <artifactId>springfox-swagger2</artifactId>
@@ -77,14 +62,24 @@
         </dependency>
         <dependency>
             <groupId>com.wudgaby.platform</groupId>
+            <artifactId>redis-spring-boot-starter</artifactId>
+            <version>${revision}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.wudgaby.platform</groupId>
             <artifactId>swagger-spring-boot-starter</artifactId>
-            <version>${starter.version}</version>
+            <version>${revision}</version>
             <optional>true</optional>
         </dependency>
         <dependency>
             <groupId>com.wudgaby.platform</groupId>
             <artifactId>resubmit-spring-boot-starter</artifactId>
-            <version>${starter.version}</version>
+            <version>${revision}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.wudgaby.platform</groupId>
+            <artifactId>rate-limiter-core</artifactId>
+            <version>${revision}</version>
         </dependency>
     </dependencies>
 </project>

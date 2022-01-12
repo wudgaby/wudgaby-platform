@@ -24,13 +24,13 @@
         <dependency>
             <groupId>com.wudgaby.platform</groupId>
             <artifactId>mail-spring-boot-starter</artifactId>
-            <version>${starter.version}</version>
+            <version>${revision}</version>
         </dependency>
 
         <dependency>
             <groupId>com.wudgaby.platform</groupId>
             <artifactId>message-api</artifactId>
-            <version>${project.version}</version>
+            <version>${revision}</version>
         </dependency>
 
         <dependency>
@@ -72,7 +72,7 @@
         <dependency>
             <groupId>com.wudgaby.platform</groupId>
             <artifactId>resubmit-spring-boot-starter</artifactId>
-            <version>${starter.version}</version>
+            <version>${revision}</version>
         </dependency>
     </dependencies>
 

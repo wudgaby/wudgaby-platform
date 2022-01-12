@@ -5,11 +5,10 @@
     <parent>
         <artifactId>basis-examples</artifactId>
         <groupId>com.wudgaby.platform</groupId>
-        <version>1.0.0</version>
+        <version>${revision}</version>
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.wudgaby.platform</groupId>
     <artifactId>sso-sample</artifactId>
     <packaging>pom</packaging>
     <description>单点登录示例</description>

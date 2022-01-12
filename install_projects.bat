@@ -1,14 +1,15 @@
 @echo off
 
 echo "===================================execute flatten BEGIN==================================================="
-call  mvn flatten:clean flatten:flatten -f ./basis-parent
-call  mvn flatten:clean flatten:flatten -f ./basis-project
-call  mvn flatten:clean flatten:flatten -f ./basis-spring-boot-starters
-call  mvn flatten:clean flatten:flatten -f ./basis-apps
+call  mvn flatten:clean flatten:flatten
+call  mvn flatten:clean flatten:flatten -f ./basis-project-dependencies
+@REM call  mvn flatten:clean flatten:flatten -f ./basis-project -pl ./basis-project-core -am
+@REM call  mvn flatten:clean flatten:flatten -f ./basis-spring-boot-starters
+@REM call  mvn flatten:clean flatten:flatten -f ./basis-apps
 echo "===================================execute flatten END==================================================="
 
 echo "===================================execute install BEGIN==================================================="
-: call mvn clean install -DskipTests=true -f ./basis-parent
+call mvn clean install -DskipTests=true -N
 call mvn clean install -DskipTests=true -f ./basis-project -pl ./basis-project-core -am
 call mvn clean install -DskipTests=true -f ./basis-spring-boot-starters -pl ^
 ./redis-spring-boot/redis-spring-boot-starter,^
@@ -20,4 +21,5 @@ call mvn clean install -DskipTests=true -f ./basis-spring-boot-starters -pl ^
 call mvn clean install -DskipTests=true -f ./basis-project
 call mvn clean install -DskipTests=true -f ./basis-spring-boot-starters
 call mvn clean install -DskipTests=true -f ./basis-apps
+call mvn clean install -DskipTests=true -f ./basis-project-dependencies
 echo "===================================execute install END==================================================="

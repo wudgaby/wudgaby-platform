@@ -28,13 +28,13 @@
         <dependency>
             <groupId>com.wudgaby.platform</groupId>
             <artifactId>sys-core</artifactId>
-            <version>${project.version}</version>
+            <version>${revision}</version>
         </dependency>
 
         <dependency>
             <groupId>com.wudgaby.platform</groupId>
             <artifactId>basis-project-web-core</artifactId>
-            <version>${project.version}</version>
+            <version>${revision}</version>
         </dependency>
 
         <dependency>
@@ -172,7 +172,7 @@
                         </resource>
                     </resources>
                     <imageTags>
-                        &lt;!&ndash;<imageTag>${project.version}</imageTag>&ndash;&gt;
+                        &lt;!&ndash;<imageTag>${revision}</imageTag>&ndash;&gt;
                         <imageTag>latest</imageTag>
                     </imageTags>
                 </configuration>

@@ -5,9 +5,9 @@
 
     <parent>
         <groupId>com.wudgaby.platform</groupId>
-        <artifactId>basis-parent</artifactId>
+        <artifactId>wudgaby-platform</artifactId>
         <version>${revision}</version>
-        <relativePath>../basis-parent/pom.xml</relativePath>
+        <relativePath>../pom.xml</relativePath>
     </parent>
 
     <modelVersion>4.0.0</modelVersion>

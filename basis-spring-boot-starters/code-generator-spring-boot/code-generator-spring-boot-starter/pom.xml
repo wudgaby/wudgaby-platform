@@ -15,13 +15,13 @@
         <dependency>
             <groupId>com.wudgaby.platform</groupId>
             <artifactId>code-generator-spring-boot-autoconfigure</artifactId>
-            <version>${project.version}</version>
+            <version>${revision}</version>
         </dependency>
 
         <dependency>
             <groupId>com.wudgaby.platform</groupId>
             <artifactId>code-generator-ui</artifactId>
-            <version>${project.version}</version>
+            <version>${revision}</version>
         </dependency>
     </dependencies>
 </project>

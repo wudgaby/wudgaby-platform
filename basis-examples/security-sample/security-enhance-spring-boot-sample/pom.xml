@@ -5,7 +5,7 @@
     <parent>
         <artifactId>security-sample</artifactId>
         <groupId>com.wudgaby.platform</groupId>
-        <version>1.0.0</version>
+        <version>${revision}</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
     <artifactId>security-enhance-spring-boot-sample</artifactId>
