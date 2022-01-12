@@ -8,5 +8,6 @@ CREATE TABLE `default_schema` (
   `version` int(11) NOT NULL DEFAULT '0' COMMENT '乐观锁',
   `deleted` tinyint(1) NOT NULL DEFAULT '0' COMMENT '逻辑删除 0:存在 1:删除',
   `sort` int(11) NOT NULL DEFAULT '0' COMMENT '排序',
+  `tenant_id` varchar(50) DEFAULT '' COMMENT '租户id',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;

@@ -25,11 +25,11 @@
             <scope>test</scope>
         </dependency>
 
-        <dependency>
+        <!--<dependency>
             <groupId>cn.felord.security</groupId>
             <artifactId>security-enhance-spring-boot-starter</artifactId>
             <version>1.0.0.RELEASE</version>
-        </dependency>
+        </dependency>-->
     </dependencies>
 
     <dependencyManagement>
