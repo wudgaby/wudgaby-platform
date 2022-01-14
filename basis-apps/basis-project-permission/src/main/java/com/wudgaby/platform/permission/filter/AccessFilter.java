@@ -117,7 +117,7 @@ public class AccessFilter implements Filter{
      * @return
      */
     private boolean checkAuthorities(HttpServletRequest request){
-        UserInfo userInfo = SecurityUtils.getCurrentUser(() -> new UserInfo().setId(1418126524618072065L).setUsername("test"));
+        UserInfo userInfo = SecurityUtils.getOptionalUser().orElseGet(() -> new UserInfo().setId(1418126524618072065L).setUsername("test"));
         if (AuthorityConst.ADMIN.equals(userInfo.getAccount())) {
             // 默认超级管理员账号,直接放行
             return true;

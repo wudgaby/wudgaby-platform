@@ -14,8 +14,8 @@
     <groupId>com.wudgaby.platform</groupId>
     <artifactId>basis-project-dependencies</artifactId>
     <version>${revision}</version>
-    <name>basis project Dependencies</name>
-    <description>basis project Dependencies</description>
+    <name>basis project dependencies</name>
+    <description>basis project dependencies</description>
 
     <properties>
         <revision>1.0.1-SNAPSHOT</revision>

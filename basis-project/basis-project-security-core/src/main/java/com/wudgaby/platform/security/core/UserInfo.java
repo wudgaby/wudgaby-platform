@@ -6,8 +6,8 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
+import org.apache.commons.collections4.CollectionUtils;
+import org.apache.commons.lang3.ArrayUtils;
 
 import java.io.Serializable;
 import java.util.Collection;
@@ -24,7 +24,7 @@ import java.util.Collection;
 @Accessors(chain = true)
 @ApiModel("用户信息")
 @NoArgsConstructor
-public class UserInfo implements UserDetails {
+public class UserInfo implements Serializable {
 
     @ApiModelProperty(value = "主键id")
     private Serializable id;
@@ -55,64 +55,24 @@ public class UserInfo implements UserDetails {
     private Integer status;
 
     @ApiModelProperty("权限信息")
-    private Collection<? extends GrantedAuthority> authorities;
+    private Collection<String> authorities;
+
+    @ApiModelProperty("角色")
+    private Collection<String> roles;
 
     @ApiModelProperty("管理员")
     private Boolean admin;
 
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        return authorities;
-    }
 
-    @Override
-    public String getPassword() {
-        return password;
-    }
-
-    @Override
-    public String getUsername() {
-        return account;
-    }
-
-    public String getName() {
-        return username;
-    }
-
-    @JSONField(serialize = false)
-    @Override
-    public boolean isAccountNonExpired() {
-        return true;
-    }
-
-    @JSONField(serialize = false)
-    @Override
-    public boolean isAccountNonLocked() {
-        return true;
-    }
-
-    @JSONField(serialize = false)
-    @Override
-    public boolean isCredentialsNonExpired() {
-        return true;
-    }
-
-    @JSONField(serialize = false)
-    @Override
-    public boolean isEnabled() {
-        return status == 1;
-    }
-
-    public UserInfo verifyAdmin(String... adminRoleCodes) {
-        if(adminRoleCodes == null || adminRoleCodes.length == 0){
+    public UserInfo verifyAdmin(String[] adminRoleCodes) {
+        if(ArrayUtils.isEmpty(adminRoleCodes) || CollectionUtils.isEmpty(roles)){
             admin = false;
             return this;
         }
 
-
-        for (GrantedAuthority grantedAuthority : getAuthorities()) {
+        for (String authority : roles) {
             for(String roleCode : adminRoleCodes){
-                if (grantedAuthority.getAuthority().equals(roleCode)) {
+                if (authority.equals(roleCode)) {
                     admin = true;
                     return this;
                 }

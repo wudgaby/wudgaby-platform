@@ -60,7 +60,7 @@ public class FlowableTaskController {
     @ApiOperation("待办任务")
     public ApiResult applying(@RequestParam(required = false) String userId){
         if(StringUtils.isBlank(userId)){
-            userId = String.valueOf(SecurityUtils.getCurrentUser().get().getId());
+            userId = String.valueOf(SecurityUtils.getCurrentUser().getId());
         }
 
         TaskQueryVo params = new TaskQueryVo();
@@ -78,7 +78,7 @@ public class FlowableTaskController {
     @ApiOperation("已办任务")
     public ApiResult applied(@RequestParam(required = false) String userId){
         if(StringUtils.isBlank(userId)){
-            userId = String.valueOf(SecurityUtils.getCurrentUser().get().getId());
+            userId = String.valueOf(SecurityUtils.getCurrentUser().getId());
         }
 
         TaskQueryVo params = new TaskQueryVo();

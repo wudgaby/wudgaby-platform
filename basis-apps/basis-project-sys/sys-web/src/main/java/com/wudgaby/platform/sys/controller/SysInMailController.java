@@ -53,7 +53,7 @@ public class SysInMailController {
     @ApiOperation("我的通知列表")
     @GetMapping("/myInMailList")
     public ApiPageResult<SysInMail> myList(InMailQueryForm queryForm) {
-        long userId = (long) SecurityUtils.getSafeCurrentUser().getId();
+        long userId = (long) SecurityUtils.getCurrentUser().getId();
         queryForm.setUserId(userId);
         return ApiPageResult.success(sysInMailService.pageList(queryForm));
     }
@@ -61,7 +61,7 @@ public class SysInMailController {
     @ApiOperation("消息中心")
     @GetMapping("/inMailCenter")
     public ApiResult<List<InMailTypeStDTO>> inMailCenter() {
-        long userId = (long)SecurityUtils.getSafeCurrentUser().getId();
+        long userId = (long)SecurityUtils.getCurrentUser().getId();
         List<InMailTypeStDTO> list = ((SysInMailMapper)sysInMailService.getBaseMapper()).listUnReadCountGroupByNoticeType(userId);
 
         if(CollectionUtils.isEmpty(list)){
@@ -81,7 +81,7 @@ public class SysInMailController {
     @ApiOperation("查看我的通知")
     @GetMapping("/my/{id}")
     public ApiResult<InMailDTO> myInfo(@PathVariable("id") Long id) {
-        long userId = (long)SecurityUtils.getSafeCurrentUser().getId();
+        long userId = (long)SecurityUtils.getCurrentUser().getId();
         InMailDTO noticeDTO = ((SysInMailMapper)sysInMailService.getBaseMapper()).queryByIdAndUserId(id, userId);
         Assert.notNull(noticeDTO, "无该条通知");
 

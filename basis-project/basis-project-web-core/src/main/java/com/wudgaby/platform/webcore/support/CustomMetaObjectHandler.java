@@ -1,4 +1,4 @@
-package com.wudgaby.platform.core.support;
+package com.wudgaby.platform.webcore.support;
 
 import com.baomidou.mybatisplus.core.handlers.MetaObjectHandler;
 import com.wudgaby.platform.core.constant.SystemConstant;
@@ -9,6 +9,7 @@ import org.apache.ibatis.reflection.MetaObject;
 import org.springframework.stereotype.Component;
 
 import java.util.Date;
+import java.util.Optional;
 
 /**
  * mybatis-plus 的自动填充功能
@@ -30,7 +31,7 @@ public class CustomMetaObjectHandler implements MetaObjectHandler {
     public void insertFill(MetaObject metaObject) {
         this.strictInsertFill(metaObject, CREATE_TIME_VALUE, Date.class, new Date());
 
-        String account = SecurityUtils.getCurrentUser().map(UserInfo::getAccount).orElse(SystemConstant.SYSTEM);
+        String account = Optional.ofNullable(SecurityUtils.getCurrentUser()).map(UserInfo::getUsername).orElse(SystemConstant.SYSTEM);
         this.strictInsertFill(metaObject, CREATE_BY_VALUE, String.class, account);
     }
 
@@ -38,7 +39,7 @@ public class CustomMetaObjectHandler implements MetaObjectHandler {
     public void updateFill(MetaObject metaObject) {
         this.strictUpdateFill(metaObject, UPDATE_TIME_VALUE, Date.class, new Date());
 
-        String account = SecurityUtils.getCurrentUser().map(UserInfo::getAccount).orElse(SystemConstant.SYSTEM);
+        String account = Optional.ofNullable(SecurityUtils.getCurrentUser()).map(UserInfo::getUsername).orElse(SystemConstant.SYSTEM);
         this.strictUpdateFill(metaObject, UPDATE_BY_VALUE, String.class, account);
     }
 }

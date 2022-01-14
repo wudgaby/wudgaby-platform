@@ -6,7 +6,6 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.google.common.collect.Lists;
 import com.wudgaby.platform.core.entity.BaseEntity;
-import com.wudgaby.platform.security.core.UserInfo;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -15,6 +14,7 @@ import lombok.experimental.Accessors;
 import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 import java.util.List;
@@ -32,7 +32,7 @@ import java.util.List;
 @Accessors(chain = true)
 @TableName("sys_user")
 @ApiModel(value="User对象", description="用户表")
-public class User extends BaseEntity{
+public class User extends BaseEntity implements UserDetails {
 
     private static final long serialVersionUID = 1L;
 
@@ -75,6 +75,32 @@ public class User extends BaseEntity{
     @TableField(exist = false)
     private List<Resource> permissions;
 
+    @Override
+    public String getUsername() {
+        return this.userName;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return false;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return false;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return false;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return false;
+    }
+
+    @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         List<GrantedAuthority> grantedAuthorities = Lists.newArrayList();
         //加载角色
@@ -93,19 +119,5 @@ public class User extends BaseEntity{
         }
 
         return grantedAuthorities;
-    }
-
-    public UserInfo convert(){
-        return new UserInfo()
-                .setAccount(this.account)
-                .setAvatar(this.avatar)
-                .setEmail(this.email)
-                .setAuthorities(this.getAuthorities())
-                .setPassword(this.password)
-                .setPhone(this.phone)
-                .setSex(this.sex)
-                .setStatus(this.status)
-                .setUsername(this.userName)
-                ;
     }
 }

@@ -37,6 +37,6 @@ public class AccountUserService implements UserDetailsService {
         if(user == null){
             throw new UsernameNotFoundException(username + " 不存在.");
         }
-        return user.convert();
+        return user;
     }
 }

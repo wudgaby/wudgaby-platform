@@ -33,5 +33,10 @@
             <artifactId>ip2region</artifactId>
             <version>1.7.2</version>
         </dependency>
+        <dependency>
+            <groupId>com.wudgaby.platform</groupId>
+            <artifactId>basis-project-web-core</artifactId>
+            <version>${revision}</version>
+        </dependency>
     </dependencies>
 </project>

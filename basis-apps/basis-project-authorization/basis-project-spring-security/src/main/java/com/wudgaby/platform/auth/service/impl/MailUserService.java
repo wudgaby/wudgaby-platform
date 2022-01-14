@@ -26,6 +26,6 @@ public class MailUserService implements UserDetailsService {
         if(user == null){
             throw new UsernameNotFoundException(mail + " 不存在.");
         }
-        return user.convert();
+        return user;
     }
 }

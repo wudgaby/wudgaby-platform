@@ -5,6 +5,8 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
+import org.apache.commons.collections4.CollectionUtils;
+import org.apache.commons.lang3.ArrayUtils;
 
 import java.io.Serializable;
 import java.util.Collection;
@@ -57,13 +59,12 @@ public class LoginUser {
     private Boolean admin;
 
     public LoginUser verifyAdmin(String[] adminRoleCodes) {
-        if(adminRoleCodes == null || adminRoleCodes.length == 0){
+        if(ArrayUtils.isEmpty(adminRoleCodes) || CollectionUtils.isEmpty(roles)){
             admin = false;
             return this;
         }
 
-
-        for (String authority : getAuthorities()) {
+        for (String authority : roles) {
             for(String roleCode : adminRoleCodes){
                 if (authority.equals(roleCode)) {
                     admin = true;

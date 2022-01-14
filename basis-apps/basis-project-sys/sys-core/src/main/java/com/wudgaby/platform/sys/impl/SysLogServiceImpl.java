@@ -44,10 +44,10 @@ public class SysLogServiceImpl extends ServiceImpl<SysLogMapper, SysLog> impleme
     public void accessLoggerAfterEvent(AccessLoggerAfterEvent event) {
         AccessLoggerInfo loggerInfo = event.getAccessLogInfoVo();
 
-        UserInfo userInfo = SecurityUtils.getSafeCurrentUser();
+        UserInfo userInfo = SecurityUtils.getCurrentUser();
         SysLog sysLog = new SysLog();
         sysLog.setUserId((long)userInfo.getId());
-        sysLog.setUserName(userInfo.getName());
+        sysLog.setUserName(userInfo.getUsername());
         sysLog.setAction(loggerInfo.getAction());
         sysLog.setDesc(loggerInfo.getDescribe());
         sysLog.setUserAgent(loggerInfo.getUserAgent());

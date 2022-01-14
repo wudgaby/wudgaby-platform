@@ -29,6 +29,6 @@ public class UserController {
     @GetMapping("/me")
     public ApiResult<UserInfo> me(@CurrentSecurityContext(expression = "authentication") Authentication authentication){
         System.out.println(authentication.getName());
-        return ApiResult.<UserInfo>success().data(SecurityUtils.getCurrentUser().orElseThrow(() -> new CredentialsExpiredException("未登录")));
+        return ApiResult.<UserInfo>success().data(SecurityUtils.getOptionalUser().orElseThrow(() -> new CredentialsExpiredException("未登录")));
     }
 }

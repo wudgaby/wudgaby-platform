@@ -8,14 +8,13 @@ package com.wudgaby.platform.security.core;
  * @Desc :   
  */
 
+import com.alibaba.ttl.TransmittableThreadLocal;
 import lombok.experimental.UtilityClass;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Optional;
-import java.util.function.Supplier;
 
 /**
  * @ClassName : SecurityUtils
@@ -27,50 +26,39 @@ import java.util.function.Supplier;
 @Slf4j
 @UtilityClass
 public class SecurityUtils {
-    public Optional<String> getCurrentUsername() {
-        final Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+    private static TransmittableThreadLocal<Map<String, Object>> ttl = new TransmittableThreadLocal();
 
-        if (authentication == null) {
-            log.debug("no authentication in security context found");
-            return Optional.empty();
-        }
+    private static final String SECURITY_CONTEXT_ATTRIBUTES = "CONTEXT_AUTH_USER";
 
-        String username = null;
-        if (authentication.getPrincipal() instanceof UserDetails) {
-            UserDetails springSecurityUser = (UserDetails) authentication.getPrincipal();
-            username = springSecurityUser.getUsername();
-        } else if (authentication.getPrincipal() instanceof String) {
-            username = (String) authentication.getPrincipal();
+    private static void initMap() {
+        if(ttl.get() == null){
+            Map<String, Object> map = new HashMap<>(8);
+            ttl.set(map);
         }
-        log.debug("found username '{}' in security context", username);
-        return Optional.ofNullable(username);
     }
 
-    public Optional<UserInfo> getCurrentUser() {
-        final Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-
-        if (authentication == null) {
-            log.debug("no authentication in security context found");
-            return Optional.empty();
-        }
-
-        if (authentication.getPrincipal() instanceof UserDetails) {
-            UserInfo user = (UserInfo) authentication.getPrincipal();
-            return Optional.ofNullable(user);
-        } else if (authentication.getPrincipal() instanceof String) {
-            UserInfo user = new UserInfo().setAccount((String) authentication.getPrincipal());
-            return Optional.ofNullable(user);
-        }
-        return Optional.empty();
+    private static void set(String key, Object value) {
+        initMap();
+        ttl.get().put(key, value);
     }
 
-    public UserInfo getSafeCurrentUser() {
-        return getCurrentUser().orElseGet(() -> new UserInfo().setId(0L).setUsername("anonymous"));
+    private static Object get(String key){
+        return Optional.ofNullable(ttl.get()).map(map -> map.get(key)).orElse(null);
     }
 
-    public UserInfo getCurrentUser(Supplier<? extends UserInfo> other) {
-        return getCurrentUser().orElseGet(other);
+    public static void setCurrentUser(UserInfo loginUser) {
+        set(SECURITY_CONTEXT_ATTRIBUTES, loginUser);
     }
 
+    public static UserInfo getCurrentUser() {
+        return Optional.ofNullable(get(SECURITY_CONTEXT_ATTRIBUTES)).map(obj -> (UserInfo)obj).orElse(null);
+    }
 
+    public static Optional<UserInfo> getOptionalUser() {
+        return Optional.ofNullable((UserInfo)get(SECURITY_CONTEXT_ATTRIBUTES));
+    }
+
+    public static void clear(){
+        ttl.remove();
+    }
 }

@@ -55,7 +55,7 @@ public class AjaxAuthenticationProvider implements AuthenticationProvider {
         
         List<GrantedAuthority> authorities = (List)user.getAuthorities();
         
-        UserContext userContext = UserContext.create(user.getUserName(), authorities);
+        UserContext userContext = UserContext.create(user.getUsername(), authorities);
         
         return new UsernamePasswordAuthenticationToken(userContext, null, userContext.getAuthorities());
     }

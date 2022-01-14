@@ -21,6 +21,6 @@ public class UserServiceDetail implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return userMapper.findByUserName(username).convert();
+        return userMapper.findByUserName(username);
     }
 }

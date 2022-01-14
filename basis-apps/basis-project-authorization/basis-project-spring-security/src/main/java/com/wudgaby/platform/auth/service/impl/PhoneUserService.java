@@ -26,6 +26,6 @@ public class PhoneUserService implements UserDetailsService {
         if(user == null){
             throw new UsernameNotFoundException(phone + " 不存在.");
         }
-        return user.convert();
+        return user;
     }
 }

@@ -19,7 +19,7 @@ import lombok.experimental.Accessors;
 @Accessors(chain = true)
 @EqualsAndHashCode(callSuper = false)
 public class MyEntity extends BaseEntity {
-    @ApiModelProperty(value = "状态 0:正常, 1:异常")
+    @ApiModelProperty(value = "状态 1:正常, 0:异常")
     private Integer status;
 
     @ApiModelProperty(value = "排序")
@@ -30,7 +30,7 @@ public class MyEntity extends BaseEntity {
     @Version
     private Integer version;
 
-    @ApiModelProperty(value = "逻辑删除 0:存在 1:删除")
+    @ApiModelProperty(value = "逻辑删除 0:存在 1:已删除")
     @JSONField(serialize = false)
     @TableLogic
     private Boolean deleted;

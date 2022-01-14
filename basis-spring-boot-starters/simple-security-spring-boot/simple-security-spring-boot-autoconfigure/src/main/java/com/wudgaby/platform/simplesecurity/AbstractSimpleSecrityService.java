@@ -19,18 +19,21 @@ public abstract class AbstractSimpleSecrityService implements SimpleSecurityServ
      * @param password
      * @return
      */
+    @Override
     abstract public LoginUser getLoginUser(String account, String password);
 
     /**
      * 设置管理员的role标识
      * @return
      */
+    @Override
     abstract public String[] getAdminRoleCodes();
 
     /**
      * 获取用户权限值. 可重写
      * @return
      */
+    @Override
     public Collection<String> getPermissionList(){
         LoginUser loginUser = (LoginUser) RequestContextHolderSupport.getRequest().getSession().getAttribute(SecurityConst.SESSION_LOGINED_USER);
         return loginUser.getAuthorities();
@@ -40,6 +43,7 @@ public abstract class AbstractSimpleSecrityService implements SimpleSecurityServ
      * 获取用户角色值. 可重写
      * @return
      */
+    @Override
     public Collection<String> getRoleList(){
         LoginUser loginUser = (LoginUser) RequestContextHolderSupport.getRequest().getSession().getAttribute(SecurityConst.SESSION_LOGINED_USER);
         return loginUser.getRoles();
@@ -49,6 +53,7 @@ public abstract class AbstractSimpleSecrityService implements SimpleSecurityServ
      * 判断是否是管理员. 可重写
      * @return
      */
+    @Override
     public boolean checkAdmin(){
         LoginUser loginUser = (LoginUser) RequestContextHolderSupport.getRequest().getSession().getAttribute(SecurityConst.SESSION_LOGINED_USER);
         return loginUser.getAdmin();
@@ -59,6 +64,7 @@ public abstract class AbstractSimpleSecrityService implements SimpleSecurityServ
      * @param requiredPermList
      * @return
      */
+    @Override
     public boolean hasPermission(String[] requiredPermList){
         Collection<String> userPermList = getPermissionList();
         return CollectionUtils.intersection(userPermList, Arrays.asList(requiredPermList)).size() > 0;
@@ -69,6 +75,7 @@ public abstract class AbstractSimpleSecrityService implements SimpleSecurityServ
      * @param requiredRoleList
      * @return
      */
+    @Override
     public boolean hasRole(String[] requiredRoleList){
         Collection<String> userRoleList = getRoleList();
         return CollectionUtils.intersection(userRoleList, Arrays.asList(requiredRoleList)).size() > 0;
@@ -79,6 +86,7 @@ public abstract class AbstractSimpleSecrityService implements SimpleSecurityServ
      * @param account
      * @param password
      */
+    @Override
     public void login(String account, String password){
         LoginUser loginUser = getLoginUser(account, password);
         AssertUtil.notNull(loginUser, "账号密码错误");

@@ -21,6 +21,6 @@ public class MobileUserServiceDetail implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String mobile) throws UsernameNotFoundException {
-        return userMapper.findByPhone(mobile).convert();
+        return userMapper.findByPhone(mobile);
     }
 }

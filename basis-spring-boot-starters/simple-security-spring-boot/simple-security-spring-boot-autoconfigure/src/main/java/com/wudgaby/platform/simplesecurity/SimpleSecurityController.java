@@ -30,4 +30,12 @@ public class SimpleSecurityController {
         simpleSecurityService.login(account, password);
         return ApiResult.success("登录成功");
     }
+
+    @ApiOperation("登出")
+    @PostMapping("/ss/logout")
+    @AnonymousAccess
+    public ApiResult logout(){
+        RequestContextHolderSupport.getSession().removeAttribute(SecurityConst.SESSION_LOGINED_USER);
+        return ApiResult.success().message("已登出");
+    }
 }

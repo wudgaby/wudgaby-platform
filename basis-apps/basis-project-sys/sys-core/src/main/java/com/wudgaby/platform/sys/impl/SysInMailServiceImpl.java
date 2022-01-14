@@ -61,8 +61,8 @@ public class SysInMailServiceImpl extends ServiceImpl<SysInMailMapper, SysInMail
             sysInMail.setSenderId(0L);
             sysInMail.setCreateBy("系统");
         }else{
-            sysInMail.setSenderId((long)SecurityUtils.getSafeCurrentUser().getId());
-            sysInMail.setCreateBy(SecurityUtils.getSafeCurrentUser().getName());
+            sysInMail.setSenderId((long)SecurityUtils.getCurrentUser().getId());
+            sysInMail.setCreateBy(SecurityUtils.getCurrentUser().getUsername());
         }
         sysInMail.setCreateTime(now);
         sysInMail.setSendAll(noticeForm.getSendAll());

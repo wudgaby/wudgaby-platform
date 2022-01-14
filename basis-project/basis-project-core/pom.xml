@@ -60,11 +60,6 @@
         </dependency>
         <dependency>
             <groupId>com.wudgaby.platform</groupId>
-            <artifactId>basis-project-security-core</artifactId>
-            <version>${revision}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.wudgaby.platform</groupId>
             <artifactId>basis-project-utils</artifactId>
             <version>${revision}</version>
         </dependency>

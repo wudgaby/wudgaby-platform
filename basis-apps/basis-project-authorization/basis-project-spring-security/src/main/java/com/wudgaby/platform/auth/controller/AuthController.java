@@ -88,7 +88,7 @@ public class AuthController {
     @ApiIgnore
     @PostMapping("/success")
     public String loginSuccess(){
-        return SecurityUtils.getCurrentUsername() + " 登录成功!";
+        return SecurityUtils.getCurrentUser().getUsername() + " 登录成功!";
     }
 
     @ApiOperation("登出")

@@ -1,14 +1,13 @@
-package com.wudgaby.platform.security.core;
+package com.wudgaby.platform.auth.utils;
 
+import lombok.AllArgsConstructor;
 import org.apache.commons.collections4.CollectionUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextImpl;
 import org.springframework.security.web.context.HttpSessionSecurityContextRepository;
 import org.springframework.session.FindByIndexNameSessionRepository;
 import org.springframework.session.Session;
-import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Map;
@@ -21,9 +20,8 @@ import java.util.Set;
  * @Date : 2020/7/1 18:03
  * @Desc :   
  */
-@Component
-public class HttpSessionHelperService {
-    @Autowired(required = false)
+@AllArgsConstructor
+public class HttpSessionHelper {
     private FindByIndexNameSessionRepository sessionRepository;
 
     /**
