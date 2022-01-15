@@ -2,7 +2,7 @@
 
 echo "===================================execute flatten BEGIN==================================================="
 call  mvn flatten:clean flatten:flatten
-call  mvn flatten:clean flatten:flatten -f ./basis-project-dependencies
+@REM call  mvn flatten:clean flatten:flatten -f ./basis-project-dependencies
 @REM call  mvn flatten:clean flatten:flatten -f ./basis-project -pl ./basis-project-core -am
 @REM call  mvn flatten:clean flatten:flatten -f ./basis-spring-boot-starters
 @REM call  mvn flatten:clean flatten:flatten -f ./basis-apps

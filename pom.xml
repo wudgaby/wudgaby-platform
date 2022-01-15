@@ -140,6 +140,7 @@
         <minio.version>8.0.3</minio.version>
         <shedlock.version>4.30.0</shedlock.version>
         <poi-tl.version>1.11.0</poi-tl.version>
+        <common-random.version>1.0.11</common-random.version>
     </properties>
 
     <modules>
@@ -623,6 +624,13 @@
                 <groupId>com.deepoove</groupId>
                 <artifactId>poi-tl</artifactId>
                 <version>${poi-tl.version}</version>
+            </dependency>
+
+            <!--随机数据生成器-->
+            <dependency>
+                <groupId>com.apifan.common</groupId>
+                <artifactId>common-random</artifactId>
+                <version>${common-random.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

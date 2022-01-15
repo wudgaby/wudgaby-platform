@@ -15,7 +15,6 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @ConfigurationProperties(prefix = "alarm")
 public class AlarmProperties {
-    private String ddWebhook;
     private boolean sendMail;
     private String[] sendTo;
 }

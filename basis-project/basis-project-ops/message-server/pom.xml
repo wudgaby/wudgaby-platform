@@ -18,6 +18,7 @@
         <jpush-client.version>3.4.2</jpush-client.version>
         <aliyun-push.version>3.13.0</aliyun-push.version>
         <aliyun-sdk-core.version>4.4.9</aliyun-sdk-core.version>
+        <dinger.version>1.2.1</dinger.version>
     </properties>
 
     <dependencies>
@@ -44,14 +45,13 @@
             <artifactId>qcloudsms</artifactId>
             <version>${qq-sms.version}</version>
         </dependency>
-        <!-- 钉钉 sdk-->
+        <!--SpringBoot集成钉钉/企业微信群机器人实现消息通知中间件-->
         <dependency>
-            <groupId>com.taobao.top</groupId>
-            <artifactId>top-api-sdk-dev</artifactId>
-            <version>${dingding-sdk.version}</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/libs/top-api-sdk-dev-upload-1.0.jar</systemPath>
+            <groupId>com.github.answerail</groupId>
+            <artifactId>dinger-spring-boot-starter</artifactId>
+            <version>${dinger.version}</version>
         </dependency>
+
         <!--极光推送-->
         <dependency>
             <groupId>cn.jpush.api</groupId>

@@ -1,11 +1,8 @@
 package com.wudgaby.platform.message.service;
 
-import com.dingtalk.api.DefaultDingTalkClient;
-import com.dingtalk.api.DingTalkClient;
-import com.dingtalk.api.request.OapiRobotSendRequest;
-import com.taobao.api.ApiException;
-import com.wudgaby.platform.core.exception.BusinessException;
-import com.wudgaby.platform.core.result.ApiResult;
+import com.github.jaemon.dinger.DingerSender;
+import com.github.jaemon.dinger.core.entity.DingerRequest;
+import com.github.jaemon.dinger.core.entity.enums.MessageSubType;
 import com.wudgaby.platform.message.api.form.AlarmForm;
 import com.wudgaby.platform.message.api.form.NormalMailForm;
 import com.wudgaby.platform.message.config.properties.AlarmProperties;
@@ -32,24 +29,16 @@ import java.util.Optional;
 public class AlarmService {
     private final AlarmProperties alarmConfiguration;
     private final MailSendService mailSendService;
+    private final DingerSender dingerSender;
 
     @Async
     public void sendAlarmInfo(AlarmForm alarmForm) {
-        DingTalkClient client = new DefaultDingTalkClient(alarmConfiguration.getDdWebhook());
-        OapiRobotSendRequest request = new OapiRobotSendRequest();
-        request.setMsgtype("markdown");
-        OapiRobotSendRequest.Markdown markdown = new OapiRobotSendRequest.Markdown();
-        markdown.setTitle(alarmForm.getTitle());
-        //内容
         String alarmContent = getAlarmContent(alarmForm);
-        markdown.setText(alarmContent);
-        request.setMarkdown(markdown);
-        try {
-            client.execute(request);
-            log.info("send to dingding success.");
-        } catch (ApiException e) {
-            throw new BusinessException(ApiResult.failure().getCode(), e.getMessage());
-        }
+        // 发送markdown类型消息
+        dingerSender.send(
+                MessageSubType.MARKDOWN,
+                DingerRequest.request(alarmContent, alarmForm.getTitle())
+        );
 
         //是否发送到邮件
         if (alarmConfiguration.isSendMail()) {
@@ -57,7 +46,6 @@ public class AlarmService {
             normalMailForm.setSubject(alarmForm.getTitle());
             normalMailForm.setSendTo(alarmConfiguration.getSendTo());
             normalMailForm.setContent(alarmContent);
-
             mailSendService.sendHTMLMail(normalMailForm);
         }
     }

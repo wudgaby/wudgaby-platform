@@ -7,13 +7,20 @@ spring:
     time-zone: GMT+8
     default-property-inclusion: non_null
 
+  dinger:
+    project-id: ${spring.application.name}
+    dingers:
+      # 使用钉钉机器人, 请根据自己机器人配置信息进行修改
+      dingtalk:
+        token-id: 4ae0756d9a933aea542a906593310e9396f2ad22cf9777444e8c16b2d82852ff
+        secret: xx
+
 sms:
   app-id: 1400168812
   app-key: 82f16ac557da5cce8a26816a7b485fd0
   sign: 安络科技
 
 alarm:
-  dd-webhook: https://oapi.dingtalk.com/robot/send?access_token=4ae0756d9a933aea542a906593310e9396f2ad22cf9777444e8c16b2d82852ff
   send-mail: false
   sendTo:
     - non-existent@cnns.com
