@@ -10,7 +10,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @Date : 2020/4/3 18:36
  * @Desc :
  */
-@SpringBootApplication(scanBasePackages = "com.wudgaby")
+@SpringBootApplication
 public class CodeGenBootstrap {
     public static void main(String[] args) {
         SpringApplication.run(CodeGenBootstrap.class, args);

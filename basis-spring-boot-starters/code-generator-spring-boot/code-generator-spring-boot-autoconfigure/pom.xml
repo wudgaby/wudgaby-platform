@@ -11,4 +11,10 @@
 
     <artifactId>code-generator-spring-boot-autoconfigure</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-jdbc</artifactId>
+        </dependency>
+    </dependencies>
 </project>
