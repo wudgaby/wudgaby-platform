@@ -13,6 +13,7 @@ import org.springframework.util.StopWatch;
 
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
@@ -48,6 +49,7 @@ public class RunLogFilter implements Filter {
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
         HttpServletRequest httpServletRequest = (HttpServletRequest) request;
+        HttpServletResponse httpServletResponse = (HttpServletResponse) response;
 
         String reqURI = httpServletRequest.getRequestURI();
         for(String excludeUrl : excludeRegistry.getAllExcludePatterns()){
@@ -59,13 +61,16 @@ public class RunLogFilter implements Filter {
 
         //链路追踪
         String headerRequestId = httpServletRequest.getHeader(SystemConstant.HEADER_X_REQUEST_ID);
-        MDC.put(SystemConstant.MDC_REQUEST_ID, StringUtils.isBlank(headerRequestId) ? UUID.fastUUID().toString(true) : headerRequestId);
+        String traceId = StringUtils.isBlank(headerRequestId) ? UUID.fastUUID().toString(true) : headerRequestId;
+        MDC.put(SystemConstant.MDC_TRACE_ID, traceId);
 
         log.info("请求开始. 请求IP: <{}> <{}> <{}>", ServletUtil.getClientIP(httpServletRequest), httpServletRequest.getMethod(), httpServletRequest.getRequestURI());
         StopWatch stopWatch = new StopWatch();
         stopWatch.start();
 
         chain.doFilter(request,response);
+
+        httpServletResponse.setHeader(SystemConstant.HEADER_X_RESP_ID, traceId);
 
         stopWatch.stop();
         String tip = "";

@@ -7,6 +7,7 @@ import io.swagger.annotations.ApiOperation;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.concurrent.TimeUnit;
@@ -27,6 +28,13 @@ public class RateLimiterController {
     @GetMapping("limit")
     @ApiOperation("限流")
     public ApiResult limiterDemo(){
+        return ApiResult.success();
+    }
+
+    @RateLimiter(key = "${#username+'login'}", permits = 10, timeout = 5, timeUnit = TimeUnit.SECONDS, acquire = 2)
+    @GetMapping("limit2")
+    @ApiOperation("限流")
+    public ApiResult limit(@RequestParam(required = false) String username){
         return ApiResult.success();
     }
 

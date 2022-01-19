@@ -12,8 +12,8 @@
 
     <artifactId>redis-spring-boot</artifactId>
     <packaging>pom</packaging>
-    <name>redis缓存-启动器 - DONE</name>
-
+    <name>Redis Spring Boot</name>
+    <description>redis缓存-启动器 - DONE</description>
     <modules>
         <module>redis-spring-boot-autoconfigure</module>
         <module>redis-spring-boot-starter</module>

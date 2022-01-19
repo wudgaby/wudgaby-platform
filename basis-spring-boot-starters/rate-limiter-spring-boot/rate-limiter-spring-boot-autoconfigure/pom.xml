@@ -13,16 +13,20 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.wudgaby.platform</groupId>
-            <artifactId>redis-spring-boot-starter</artifactId>
-            <scope>provided</scope>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
             <optional>true</optional>
-            <version>${revision}</version>
         </dependency>
 
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.hswebframework</groupId>
+            <artifactId>hsweb-expands-script</artifactId>
+            <version>3.0.2</version>
         </dependency>
 
         <dependency>
@@ -42,5 +46,7 @@
             <artifactId>basis-project-core</artifactId>
             <version>${revision}</version>
         </dependency>
+
+
     </dependencies>
 </project>

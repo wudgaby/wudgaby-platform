@@ -30,12 +30,16 @@
         <dependency>
             <groupId>com.wudgaby.platform</groupId>
             <artifactId>redis-spring-boot-starter</artifactId>
-            <version>${starter.version}</version>
+            <version>${basis-starters.version}</version>
         </dependency>
         <dependency>
             <groupId>com.wudgaby.platform</groupId>
             <artifactId>basis-project-utils</artifactId>
             <version>${revision}</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-codec</groupId>
+            <artifactId>commons-codec</artifactId>
         </dependency>
     </dependencies>
 </project>

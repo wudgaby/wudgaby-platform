@@ -12,7 +12,8 @@
 
     <artifactId>logger-spring-boot</artifactId>
     <packaging>pom</packaging>
-    <name>操作日志-启动器 - DONE</name>
+    <name>Logger Spring Boot</name>
+    <description>操作日志-启动器 - DONE</description>
     <modules>
         <module>logger-spring-boot-autoconfigure</module>
         <module>logger-spring-boot-starter</module>

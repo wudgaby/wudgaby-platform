@@ -11,7 +11,8 @@
 
     <artifactId>mail-spring-boot</artifactId>
     <packaging>pom</packaging>
-    <name>邮件收发-启动器 - DONE</name>
+    <name>Mail Spring Boot</name>
+    <description>邮件收发-启动器 - DONE</description>
 
     <modules>
         <module>mail-spring-boot-autoconfigure</module>

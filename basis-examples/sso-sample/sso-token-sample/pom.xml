@@ -31,7 +31,7 @@
         <!--<dependency>
             <groupId>com.wudgaby.platform</groupId>
             <artifactId>swagger-spring-boot-starter</artifactId>
-            <version>${starter.version}</version>
+            <version>${basis-starters.version}</version>
         </dependency>-->
     </dependencies>
 

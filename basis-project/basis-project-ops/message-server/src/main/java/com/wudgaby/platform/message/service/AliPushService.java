@@ -230,7 +230,7 @@ public class AliPushService {
         //推送类型为消息时设备不在线，则这条推送会使用辅助弹窗功能。默认值为False，仅当PushType=MESSAGE时生效。
         pushRequest.setAndroidRemind(true);
         //设置该参数后启动小米托管弹窗功能, 此处指定通知点击后跳转的Activity（托管弹窗的前提条件：1. 集成小米辅助通道；2. StoreOffline参数设为true）
-        pushRequest.setAndroidPopupActivity("net.cnns.policecooperation.push.AliPushActivity");
+        pushRequest.setAndroidPopupActivity("x.xx.push.AliPushActivity");
         pushRequest.setAndroidPopupTitle(aliPushForm.getTitle());
         pushRequest.setAndroidPopupBody(aliPushForm.getContent());
         //设定通知的扩展属性。(注意 : 该参数要以 json map 的格式传入,否则会解析出错)

@@ -5,8 +5,6 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 
 import java.time.Duration;
-import java.util.Arrays;
-import java.util.List;
 
 /**
  * @ClassName : CorsProperties
@@ -19,13 +17,11 @@ import java.util.List;
 @Configuration
 @ConfigurationProperties(prefix = "cors")
 public class CorsProperties {
-    private static final List<String> ALL = Arrays.asList("*");
-
     private String antPath = "/**";
     private boolean allowCredentials = true;
     private Duration maxAge = Duration.ofDays(1);
 
-    private List<String> allowedOrigins = ALL;
-    private List<String> allowedHeaders = ALL;
-    private List<String> allowedMethods = ALL;
+    private String allowedOrigins = "*";
+    private String allowedHeaders = "*";
+    private String allowedMethods = "*";
 }

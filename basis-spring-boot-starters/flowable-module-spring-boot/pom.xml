@@ -12,7 +12,8 @@
 
     <artifactId>flowable-module-spring-boot</artifactId>
     <packaging>pom</packaging>
-    <name>flowable工作流设计器-启动器 - DONE</name>
+    <name>Flowable Module Spring Boot</name>
+    <description>flowable工作流设计器-启动器 - DONE</description>
     <modules>
         <module>flowable-module-ui</module>
         <module>flowable-module-spring-boot-autoconfigure</module>

@@ -41,8 +41,8 @@ spring:
 # Mybatis-Plus 配置
 mybatis-plus:
   mapper-locations: classpath*:/mapper/**/*.xml
-  type-aliases-package: net.cnns.caseoa.server.entity
-  type-enums-package: net.cnns.caseoa.server.enums
+  type-aliases-package: com.wudgaby.platform.server.entity
+  type-enums-package: com.wudgaby.platform.server.enums
 
   global-config:
     db-config:

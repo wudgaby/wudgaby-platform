@@ -338,7 +338,7 @@ public class GlobalExceptionAdvice {
     }
 
     public void process(ApiResult apiResult, Exception ex){
-        apiResult.requestId(MDC.get(SystemConstant.MDC_REQUEST_ID));
+        apiResult.requestId(MDC.get(SystemConstant.MDC_TRACE_ID));
         apiResult.path(RequestContextHolderSupport.getRequest().getRequestURI());
 
         if(apiDebug) {

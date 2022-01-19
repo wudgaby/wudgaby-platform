@@ -12,7 +12,8 @@
 
     <artifactId>api-automatic-spring-boot</artifactId>
     <packaging>pom</packaging>
-    <name>api自动注冊-启动器 - OPTIMIZE</name>
+    <name>Api Automatic Spring Boot</name>
+    <description>api自动注冊-启动器 - OPTIMIZE</description>
     <modules>
         <module>api-automatic-spring-boot-autoconfigure</module>
         <module>api-automatic-spring-boot-starter</module>

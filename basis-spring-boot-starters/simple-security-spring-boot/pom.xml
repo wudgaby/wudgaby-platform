@@ -10,6 +10,8 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>simple-security-spring-boot</artifactId>
+    <name>Simple Security Spring Boot</name>
+    <description>简单认证</description>
     <packaging>pom</packaging>
     <modules>
         <module>simple-security-spring-boot-starter</module>

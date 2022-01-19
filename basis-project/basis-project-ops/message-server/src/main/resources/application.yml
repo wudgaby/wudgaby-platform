@@ -23,7 +23,7 @@ sms:
 alarm:
   send-mail: false
   sendTo:
-    - non-existent@cnns.com
+    - non-existent@domain.com
 
 #极光账号
 jpush:

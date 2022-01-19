@@ -48,7 +48,7 @@ public class NotFoundController implements ErrorController {
         log.error("{}", message);
 
         ApiResult apiResult = ApiResult.failure(SystemResultCode.NOT_FOUND).message(message);
-        apiResult.requestId(MDC.get(SystemConstant.MDC_REQUEST_ID));
+        apiResult.requestId(MDC.get(SystemConstant.MDC_TRACE_ID));
         return apiResult;
     }
 

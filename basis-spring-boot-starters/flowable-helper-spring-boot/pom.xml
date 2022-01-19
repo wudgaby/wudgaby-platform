@@ -12,7 +12,8 @@
 
     <artifactId>flowable-helper-spring-boot</artifactId>
     <packaging>pom</packaging>
-    <name>flowable工作流助手-启动器 - TODO</name>
+    <name>Flowable Helper Spring Boot</name>
+    <description>flowable工作流助手-启动器 - TODO</description>
     <modules>
         <module>flowable-helper-spring-boot-starter</module>
         <module>flowable-helper-spring-boot-autoconfigure</module>

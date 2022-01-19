@@ -1,26 +1,18 @@
 package com.wudgaby.platform.limiter.service;
 
-import cn.hutool.extra.servlet.ServletUtil;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.wudgaby.platform.core.util.ExpressionUtils;
-import com.wudgaby.platform.limiter.core.LimitType;
 import com.wudgaby.platform.limiter.core.annotation.RateLimiter;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.core.LocalVariableTableParameterNameDiscoverer;
-import org.springframework.core.ParameterNameDiscoverer;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.script.RedisScript;
 import org.springframework.lang.NonNull;
-import org.springframework.web.context.request.RequestContextHolder;
-import org.springframework.web.context.request.ServletRequestAttributes;
 
-import javax.servlet.http.HttpServletRequest;
 import java.lang.reflect.Method;
 import java.time.Instant;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -32,47 +24,16 @@ import java.util.concurrent.TimeUnit;
  */
 @Slf4j
 @RequiredArgsConstructor
-public class RedisRateLimiterService implements RateLimiterService{
-    private static final ParameterNameDiscoverer nameDiscoverer = new LocalVariableTableParameterNameDiscoverer();
+public class RedisRateLimiterService extends RateLimiterService{
     private final RedisTemplate redisTemplate;
     private final RedisScript<List<Long>> script;
 
     @SneakyThrows
     @Override
     public boolean isAllowed(@NonNull RateLimiter rateLimiter, Method method, Object[] args){
-        List<String> keyExpressionList;
-        LimitType limitType = rateLimiter.limitType();
-        if(limitType == LimitType.IP){
-            HttpServletRequest httpServletRequest = ((ServletRequestAttributes) Objects.requireNonNull(RequestContextHolder.getRequestAttributes())).getRequest();
-            keyExpressionList = Lists.newArrayList(ServletUtil.getClientIP(httpServletRequest));
-        }else{
-            keyExpressionList = Lists.newArrayList(rateLimiter.key());
-            if (keyExpressionList.isEmpty()) {
-                keyExpressionList.add("GLOBAL");
-            }
-        }
-
-        String[] names = new String[0];
-        if(method != null){
-            names = nameDiscoverer.getParameterNames(method);
-        }
-
-        for(String keyExpress : keyExpressionList){
-            if (keyExpress.contains("${")) {
-                Map<String, Object> params = Maps.newHashMapWithExpectedSize(8);
-                //params.put("user", Authentication.current().map(Authentication::getUser).orElse(null));
-                for (int i = 0; i < args.length; i++) {
-                    params.put(names.length > i ? names[i] : "arg" + i, args[i]);
-                    params.put("arg" + i, args[i]);
-
-                }
-                keyExpress = ExpressionUtils.analytical(keyExpress, params, "spel");
-            }
-            if(log.isDebugEnabled()){
-                log.debug("do rate limiter:[{}]. ", keyExpress);
-            }
-
-            List<String> redisKeys = getRedisKeys(keyExpress);
+        List<String> evalResultList = getKeyExpressionResultList(rateLimiter, method, args);
+        for(String evalResult : evalResultList) {
+            List<String> redisKeys = getRedisKeys(evalResult);
 
             // How many requests per second do you want a user to be allowed to do?
             //令牌桶每秒填充平均速率。
@@ -86,7 +47,7 @@ public class RedisRateLimiterService implements RateLimiterService{
             ArrayList<Long> results = (ArrayList<Long>)this.redisTemplate.execute(this.script, redisKeys, scriptArgs.toArray());
             boolean allowed = results.get(0) == 1L;
             Long tokensLeft = results.get(1);
-            log.info("redis : {}, {}, {}, {}, {}", keyExpress, rateLimiter.permits(), rateLimiter.acquire(), tokensLeft, allowed);
+            log.info("redis : {}, {}, {}, {}, {}", evalResult, rateLimiter.permits(), rateLimiter.acquire(), tokensLeft, allowed);
 
             if(!allowed){
                 return false;

@@ -12,7 +12,8 @@
 
     <artifactId>zxing-spring-boot</artifactId>
     <packaging>pom</packaging>
-    <name>zxing二维码生成解析 - DONE</name>
+    <name>Zxing Spring Boot</name>
+    <description>zxing二维码生成解析 - DONE</description>
     <modules>
         <module>zxing-spring-boot-starter</module>
         <module>zxing-spring-boot-autoconfigure</module>

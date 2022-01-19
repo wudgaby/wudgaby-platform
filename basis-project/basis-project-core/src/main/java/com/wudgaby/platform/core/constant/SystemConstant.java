@@ -20,9 +20,13 @@ public interface SystemConstant {
     /**
      * log MDC
      */
-    String MDC_REQUEST_ID = "x-requestId";
+    String MDC_TRACE_ID = "x-trace-id";
     /**
      * 前端请求头 - 用于链路跟踪
      */
     String HEADER_X_REQUEST_ID = "X-REQUEST-ID";
+    /**
+     * 响应头 - 用于链路跟踪
+     */
+    String HEADER_X_RESP_ID = "X-RESP-ID";
 }

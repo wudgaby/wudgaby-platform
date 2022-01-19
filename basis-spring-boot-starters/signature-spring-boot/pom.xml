@@ -12,7 +12,8 @@
 
     <artifactId>signature-spring-boot</artifactId>
     <packaging>pom</packaging>
-    <name>摘要签名认证 - DONE</name>
+    <name>Signature Spring Boot</name>
+    <description>摘要签名认证 - DONE</description>
     <modules>
         <module>signature-spring-boot-autoconfigure</module>
         <module>signature-spring-boot-starter</module>

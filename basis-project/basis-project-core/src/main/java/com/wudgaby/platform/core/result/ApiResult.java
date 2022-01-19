@@ -75,7 +75,7 @@ public class ApiResult<T> implements Result {
         this.data = data;
         this.success = (code != null && code.equals(SystemResultCode.SUCCESS.getCode()));
         this.timestamp = System.currentTimeMillis();
-        this.requestId = MDC.get(SystemConstant.MDC_REQUEST_ID);
+        this.requestId = MDC.get(SystemConstant.MDC_TRACE_ID);
     }
 
     public static <T> ApiResult<T> success(){

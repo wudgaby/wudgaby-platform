@@ -13,6 +13,8 @@ server:
     key-store-type: pkcs12
 
 spring:
+  profiles:
+    active: @profile.active@
   application:
     name: admin-sys
   lifecycle:

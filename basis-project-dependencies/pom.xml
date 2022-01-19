@@ -9,13 +9,13 @@
     <artifactId>basis-project-dependencies</artifactId>
     <version>${revision}</version>
     <packaging>pom</packaging>
-    <name>basis project dependencies</name>
+    <name>Basis Project Dependencies</name>
     <description>basis project dependencies</description>
 
     <properties>
         <revision>1.0.1-SNAPSHOT</revision>
-        <basis-project.version>1.0.1-SNAPSHOT</basis-project.version>
-        <basis-starters.version>1.0.1-SNAPSHOT</basis-starters.version>
+        <basis-project.version>${revision}</basis-project.version>
+        <basis-starters.version>${revision}</basis-starters.version>
 
         <!-- Maven Plugin Versions -->
         <maven-source-plugin.version>2.2.1</maven-source-plugin.version>

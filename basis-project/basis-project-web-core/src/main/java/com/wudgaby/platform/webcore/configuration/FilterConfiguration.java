@@ -32,16 +32,11 @@ public class FilterConfiguration {
     }
 
     @Bean
-    public FilterRegistrationBean corsFilterBean(CorsFilter globalCorsFilter){
-        FilterRegistrationBean registrationBean = new FilterRegistrationBean(globalCorsFilter);
+    public FilterRegistrationBean corsFilterBean(CorsProperties corsProperties){
+        FilterRegistrationBean registrationBean = new FilterRegistrationBean(new CorsFilter(corsConfigurationSource(corsProperties)));
         registrationBean.addUrlPatterns("/**");
         registrationBean.setOrder(Integer.MIN_VALUE);
         return registrationBean;
-    }
-
-    @Bean
-    public CorsFilter globalCorsFilter(CorsConfigurationSource corsConfigurationSource){
-        return new CorsFilter(corsConfigurationSource);
     }
 
     @Bean
@@ -51,9 +46,9 @@ public class FilterConfiguration {
 
         config.setAllowCredentials(corsProperties.isAllowCredentials());
         config.setMaxAge(corsProperties.getMaxAge().getSeconds());
-        config.setAllowedOrigins(corsProperties.getAllowedOrigins());
-        config.setAllowedHeaders(corsProperties.getAllowedHeaders());
-        config.setAllowedMethods(corsProperties.getAllowedMethods());
+        config.addAllowedOrigin(corsProperties.getAllowedOrigins());
+        config.addAllowedHeader(corsProperties.getAllowedHeaders());
+        config.addAllowedMethod(corsProperties.getAllowedMethods());
         source.registerCorsConfiguration(corsProperties.getAntPath(), config);
         return source;
     }

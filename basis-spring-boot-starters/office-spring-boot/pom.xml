@@ -10,6 +10,8 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>office-spring-boot</artifactId>
+    <name>Office Spring Boot</name>
+    <description>word,pdf,jpg生成</description>
     <packaging>pom</packaging>
     <modules>
         <module>office-spring-boot-starter</module>

@@ -12,7 +12,8 @@
 
     <artifactId>resubmit-spring-boot</artifactId>
     <packaging>pom</packaging>
-    <name>重复提交监测 - DONE</name>
+    <name>Resubmit Spring Boot</name>
+    <description>重复提交监测 - DONE</description>
     <modules>
         <module>resubmit-spring-boot-autoconfigure</module>
         <module>resubmit-spring-boot-starter</module>

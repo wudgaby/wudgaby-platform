@@ -12,7 +12,7 @@
 
     <artifactId>basis-spring-boot-starters</artifactId>
     <packaging>pom</packaging>
-    <name>basis spring boot starters</name>
+    <name>Basis Spring Boot Starters</name>
     <description>basis spring boot starters</description>
 
     <properties>
@@ -33,7 +33,6 @@
         <module>code-generator-spring-boot</module>
         <module>api-automatic-spring-boot</module>
 
-        <module>pdf-spring-boot-starter</module>
         <module>quartz-spring-boot</module>
         <module>flowable-module-spring-boot</module>
         <module>flowable-helper-spring-boot</module>

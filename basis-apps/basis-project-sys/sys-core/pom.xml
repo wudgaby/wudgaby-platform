@@ -26,7 +26,7 @@
         <dependency>
             <groupId>com.wudgaby.platform</groupId>
             <artifactId>logger-spring-boot-starter</artifactId>
-            <version>${starter.version}</version>
+            <version>${basis-starters.version}</version>
         </dependency>
         <dependency>
             <groupId>org.lionsoul</groupId>
@@ -37,6 +37,11 @@
             <groupId>com.wudgaby.platform</groupId>
             <artifactId>basis-project-web-core</artifactId>
             <version>${revision}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>dynamic-datasource-spring-boot-starter</artifactId>
+            <version>3.5.0</version>
         </dependency>
     </dependencies>
 </project>

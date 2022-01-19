@@ -19,26 +19,8 @@
     <dependencies>
         <dependency>
             <groupId>com.wudgaby.platform</groupId>
-            <artifactId>basis-project-core</artifactId>
+            <artifactId>basis-project-web-core</artifactId>
             <version>${revision}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.tomcat.embed</groupId>
-            <artifactId>tomcat-embed-core</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-aop</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>io.swagger</groupId>
-            <artifactId>swagger-annotations</artifactId>
-            <version>1.6.0</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-webmvc</artifactId>
-            <version>5.3.14</version>
         </dependency>
     </dependencies>
 </project>

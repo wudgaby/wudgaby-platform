@@ -43,7 +43,7 @@
         <dependency>
             <groupId>com.wudgaby.platform</groupId>
             <artifactId>swagger-spring-boot-starter</artifactId>
-            <version>${starter.version}</version>
+            <version>${basis-starters.version}</version>
         </dependency>
 
         <dependency>
@@ -54,13 +54,13 @@
         <dependency>
             <groupId>com.wudgaby.platform</groupId>
             <artifactId>logger-spring-boot-starter</artifactId>
-            <version>${starter.version}</version>
+            <version>${basis-starters.version}</version>
         </dependency>
 
         <dependency>
             <groupId>com.wudgaby.platform</groupId>
             <artifactId>api-automatic-spring-boot-starter</artifactId>
-            <version>${starter.version}</version>
+            <version>${basis-starters.version}</version>
         </dependency>
     </dependencies>
 </project>

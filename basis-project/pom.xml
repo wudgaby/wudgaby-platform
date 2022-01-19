@@ -13,6 +13,7 @@
     <groupId>com.wudgaby.platform</groupId>
     <artifactId>basis-project</artifactId>
     <packaging>pom</packaging>
+    <name>Basis Project</name>
 
     <modules>
         <module>basis-project-core</module>
@@ -23,4 +24,8 @@
         <module>basis-project-http-client</module>
         <module>basis-project-ops</module>
     </modules>
+
+    <properties>
+        <flatten-maven-plugin.version>1.1.0</flatten-maven-plugin.version>
+    </properties>
 </project>
