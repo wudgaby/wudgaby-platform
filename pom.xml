@@ -640,32 +640,11 @@
                     <artifactId>flyway-maven-plugin</artifactId>
                     <version>${flyway.version}</version>
                 </plugin>
-
-                <plugin>
-                    <!-- GPG -->
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-gpg-plugin</artifactId>
-                    <version>${maven-gpg-plugin.version}</version>
-                    <executions>
-                        <execution>
-                            <id>sign-artifacts</id>
-                            <phase>verify</phase>
-                            <goals>
-                                <goal>sign</goal>
-                            </goals>
-                        </execution>
-                    </executions>
-                </plugin>
             </plugins>
         </pluginManagement>
 
         <finalName>${project.artifactId}</finalName>
         <plugins>
-            <!--不可开放,starter打包方式不同-->
-            <!--<plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -775,29 +754,6 @@
                 <version>${archetype-packaging.version}</version>
             </extension>
         </extensions>
-
-        <resources>
-            <!--<resource>
-                <directory>${project.basedir}/src/main/resources</directory>
-                &lt;!&ndash;打包时先排除掉&ndash;&gt;
-                <excludes>
-                    <exclude>configs/**</exclude>
-                    <exclude>application-*</exclude>
-                    <exclude>db/**</exclude>
-                </excludes>
-                <filtering>true</filtering>
-            </resource>-->
-
-            <!--<resource>
-                &lt;!&ndash;这里是关键！ 根据不同的环境，把对应文件夹里的配置文件打包&ndash;&gt;
-                <directory>${project.basedir}/src/main/resources</directory>
-                <includes>
-                    <include>application-${profile.active}.yml</include>
-                    <include>db/${profile.active}/**/*.sql</include>
-                </includes>
-                <filtering>true</filtering>
-            </resource>-->
-        </resources>
     </build>
 
     <profiles>

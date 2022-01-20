@@ -20,7 +20,11 @@ public interface SystemConstant {
     /**
      * log MDC
      */
-    String MDC_TRACE_ID = "x-trace-id";
+    String MDC_TRACE_ID = "X-TRACE-ID";
+    /**
+     *
+     */
+    String MDC_REQ_PATH = "X-REQ-PATH";
     /**
      * 前端请求头 - 用于链路跟踪
      */

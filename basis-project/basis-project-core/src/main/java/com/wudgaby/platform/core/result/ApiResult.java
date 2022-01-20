@@ -51,12 +51,6 @@ public class ApiResult<T> implements Result {
     @ApiModelProperty(value = "路径")
     private String path;
 
-    @ApiModelProperty(value = "http状态码")
-    private Integer httpStatus;
-
-    /*@ApiModelProperty(value = "数据总数")
-    private Long total;*/
-
     protected ApiResult(Integer code, String message){
         this(code, message, null);
     }
@@ -76,6 +70,7 @@ public class ApiResult<T> implements Result {
         this.success = (code != null && code.equals(SystemResultCode.SUCCESS.getCode()));
         this.timestamp = System.currentTimeMillis();
         this.requestId = MDC.get(SystemConstant.MDC_TRACE_ID);
+        this.path = MDC.get(SystemConstant.MDC_REQ_PATH);
     }
 
     public static <T> ApiResult<T> success(){
@@ -127,11 +122,6 @@ public class ApiResult<T> implements Result {
 
     public ApiResult<T> path(String path){
         this.setPath(path);
-        return this;
-    }
-
-    public ApiResult<T> httpStatus(Integer httpStatus){
-        this.setHttpStatus(httpStatus);
         return this;
     }
 

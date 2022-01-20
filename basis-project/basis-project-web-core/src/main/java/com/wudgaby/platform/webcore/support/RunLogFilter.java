@@ -6,6 +6,7 @@ import com.wudgaby.platform.core.config.ExcludeRegistry;
 import com.wudgaby.platform.core.constant.SystemConstant;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.tomcat.util.http.fileupload.RequestContext;
 import org.slf4j.MDC;
 import org.springframework.util.AntPathMatcher;
 import org.springframework.util.PathMatcher;
@@ -63,6 +64,7 @@ public class RunLogFilter implements Filter {
         String headerRequestId = httpServletRequest.getHeader(SystemConstant.HEADER_X_REQUEST_ID);
         String traceId = StringUtils.isBlank(headerRequestId) ? UUID.fastUUID().toString(true) : headerRequestId;
         MDC.put(SystemConstant.MDC_TRACE_ID, traceId);
+        MDC.put(SystemConstant.MDC_REQ_PATH, httpServletRequest.getRequestURI());
 
         log.info("请求开始. 请求IP: <{}> <{}> <{}>", ServletUtil.getClientIP(httpServletRequest), httpServletRequest.getMethod(), httpServletRequest.getRequestURI());
         StopWatch stopWatch = new StopWatch();
