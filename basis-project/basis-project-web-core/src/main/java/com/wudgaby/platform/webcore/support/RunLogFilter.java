@@ -1,6 +1,7 @@
 package com.wudgaby.platform.webcore.support;
 
 import cn.hutool.core.lang.UUID;
+import cn.hutool.core.util.IdUtil;
 import cn.hutool.extra.servlet.ServletUtil;
 import com.wudgaby.platform.core.config.ExcludeRegistry;
 import com.wudgaby.platform.core.constant.SystemConstant;
@@ -62,7 +63,7 @@ public class RunLogFilter implements Filter {
 
         //链路追踪
         String headerRequestId = httpServletRequest.getHeader(SystemConstant.HEADER_X_REQUEST_ID);
-        String traceId = StringUtils.isBlank(headerRequestId) ? UUID.fastUUID().toString(true) : headerRequestId;
+        String traceId = StringUtils.isBlank(headerRequestId) ? IdUtil.fastSimpleUUID() : headerRequestId;
         MDC.put(SystemConstant.MDC_TRACE_ID, traceId);
         MDC.put(SystemConstant.MDC_REQ_PATH, httpServletRequest.getRequestURI());
 
