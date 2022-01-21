@@ -73,7 +73,7 @@ public class GlobalExceptionAdvice {
     public ApiResult<String> notFountHandler(NoHandlerFoundException ex){
         String message = String.format("[%s] %s 未找到该接口!", ex.getHttpMethod(), ex.getRequestURL());
         log.error("{}", message);
-        return ApiResult.failure(SystemResultCode.NOT_FOUND);
+        return ApiResult.<String>failure(SystemResultCode.NOT_FOUND).message(message);
     }
 
     /**
