@@ -1,9 +1,11 @@
 package com.wudgaby.sample;
 
-import com.google.common.collect.Lists;
-import com.wudgaby.platform.simplesecurity.AbstractSimpleSecrityService;
+import cn.hutool.core.collection.CollUtil;
+import com.google.common.collect.Sets;
+import com.wudgaby.platform.simplesecurity.AbstractSimpleSecurityService;
 import com.wudgaby.platform.simplesecurity.LoginUser;
-import com.wudgaby.platform.simplesecurity.SimpleSecurityService;
+import com.wudgaby.platform.simplesecurity.ext.MetaResource;
+import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
@@ -16,12 +18,16 @@ import java.util.Arrays;
  */
 
 @Service
-public class MySimpleSecurityImpl extends AbstractSimpleSecrityService{
+public class MySimpleSecurityImpl extends AbstractSimpleSecurityService {
     @Override
     public LoginUser getLoginUser(String account, String password) {
         return new LoginUser().setId(1).setAccount(account).setAdmin(false)
                 .setRoles(Arrays.asList("role1"))
                 .setAuthorities(Arrays.asList("sys:user:add", "sys:user:del"))
+                .setMetaResources(CollUtil.set(false,
+                        new MetaResource( "/req1", HttpMethod.GET.name()),
+                        new MetaResource( "/req2", "POST")
+                ))
                 ;
     }
 

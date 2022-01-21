@@ -1,5 +1,6 @@
 package com.wudgaby.platform.simplesecurity;
 
+import com.wudgaby.platform.simplesecurity.ext.MetaResource;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -10,6 +11,7 @@ import org.apache.commons.lang3.ArrayUtils;
 
 import java.io.Serializable;
 import java.util.Collection;
+import java.util.Set;
 
 /**
  * @ClassName : LoginUser
@@ -54,6 +56,9 @@ public class LoginUser {
 
     @ApiModelProperty("角色")
     private Collection<String> roles;
+
+    @ApiModelProperty("请求资源")
+    private Set<MetaResource> metaResources;
 
     @ApiModelProperty("是否管理员")
     private Boolean admin;

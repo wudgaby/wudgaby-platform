@@ -1,6 +1,9 @@
 package com.wudgaby.platform.simplesecurity;
 
+import com.wudgaby.platform.simplesecurity.ext.MetaResource;
+
 import java.util.Collection;
+import java.util.Set;
 
 public interface SimpleSecurityService {
     /**
@@ -26,6 +29,12 @@ public interface SimpleSecurityService {
     Collection<String> getRoleList();
 
     /**
+     * 获取用户资源
+     * @return
+     */
+    Set<MetaResource> getMetaResourceList();
+
+    /**
      * 判断是否是管理员. 可重写
      * @return
      */
@@ -36,14 +45,28 @@ public interface SimpleSecurityService {
      * @param requiredPermList
      * @return
      */
-    boolean hasPermission(String[] requiredPermList);
+    boolean hasAnyPermission(String[] requiredPermList);
 
     /**
      * 判断用户是否有角色
      * @param requiredRoleList
      * @return
      */
-    boolean hasRole(String[] requiredRoleList);
+    boolean hasAnyRole(String[] requiredRoleList);
+
+    /**
+     * 判断用户是否有权限
+     * @param requiredPermList
+     * @return
+     */
+    boolean hasAllPermission(String[] requiredPermList);
+
+    /**
+     * 判断用户是否有角色
+     * @param requiredRoleList
+     * @return
+     */
+    boolean hasAllRole(String[] requiredRoleList);
 
     /**
      * 登录逻辑

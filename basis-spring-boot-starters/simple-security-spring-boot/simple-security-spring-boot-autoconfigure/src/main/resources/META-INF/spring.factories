@@ -1,2 +1,2 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-  com.wudgaby.platform.simplesecurity.SimpleSecurityConfiguration
+  com.wudgaby.platform.simplesecurity.config.SimpleSecurityConfiguration

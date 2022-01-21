@@ -6,7 +6,7 @@ package com.wudgaby.platform.simplesecurity;
  * @Date :  2022/1/10 0010 15:20
  * @Desc :  默认实现
  */
-public class DefaultSimpleSecurityServiceImpl extends AbstractSimpleSecrityService{
+public class DefaultSimpleSecurityServiceImpl extends AbstractSimpleSecurityService {
     @Override
     public LoginUser getLoginUser(String account, String password) {
         if("default".equals(account) && "default".equals(password)) {

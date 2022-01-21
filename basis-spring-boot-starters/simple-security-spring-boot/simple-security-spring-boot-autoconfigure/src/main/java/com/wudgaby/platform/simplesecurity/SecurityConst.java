@@ -9,5 +9,5 @@ package com.wudgaby.platform.simplesecurity;
 public interface SecurityConst {
     String SESSION_LOGINED_USER = "session_logined_user";
 
-    String[] ADMIN_CODE_LIST = new String[]{"admin"};
+    String[] ADMIN_CODE_LIST = new String[]{"superAdmin", "admin"};
 }

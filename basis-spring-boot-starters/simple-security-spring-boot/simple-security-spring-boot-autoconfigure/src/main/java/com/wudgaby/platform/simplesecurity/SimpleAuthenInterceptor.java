@@ -1,6 +1,7 @@
 package com.wudgaby.platform.simplesecurity;
 
 import com.wudgaby.platform.core.result.ApiResult;
+import com.wudgaby.platform.simplesecurity.annotations.AnonymousAccess;
 import com.wudgaby.platform.utils.FastJsonUtil;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

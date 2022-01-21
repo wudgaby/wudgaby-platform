@@ -1,10 +1,11 @@
 package com.wudgaby.sample;
 
 import com.wudgaby.platform.core.result.ApiResult;
-import com.wudgaby.platform.simplesecurity.AnonymousAccess;
-import com.wudgaby.platform.simplesecurity.AuthPermit;
-import org.springframework.stereotype.Controller;
+import com.wudgaby.platform.simplesecurity.annotations.AnonymousAccess;
+import com.wudgaby.platform.simplesecurity.annotations.AuthPermit;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -54,5 +55,24 @@ public class AuthController {
     @AuthPermit(perms = "sys:user:del")
     public ApiResult del(){
         return ApiResult.success("del");
+    }
+
+
+    @GetMapping("/req1")
+    @AuthPermit
+    public ApiResult req1(){
+        return ApiResult.success("req1");
+    }
+
+    @PostMapping("/req2")
+    @AuthPermit
+    public ApiResult req2(){
+        return ApiResult.success("req2");
+    }
+
+    @DeleteMapping("/req3")
+    @AuthPermit
+    public ApiResult req3(){
+        return ApiResult.success("req3");
     }
 }

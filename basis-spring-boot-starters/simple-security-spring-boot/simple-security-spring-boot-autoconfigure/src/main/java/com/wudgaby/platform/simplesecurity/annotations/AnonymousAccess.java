@@ -1,4 +1,4 @@
-package com.wudgaby.platform.simplesecurity;
+package com.wudgaby.platform.simplesecurity.annotations;
 
 import java.lang.annotation.*;
 

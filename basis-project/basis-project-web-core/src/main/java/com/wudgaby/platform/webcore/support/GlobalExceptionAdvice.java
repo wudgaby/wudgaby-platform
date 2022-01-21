@@ -33,6 +33,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 import org.springframework.web.multipart.support.MissingServletRequestPartException;
+import org.springframework.web.servlet.NoHandlerFoundException;
 
 import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
@@ -67,13 +68,13 @@ public class GlobalExceptionAdvice {
      * @param ex  webflux不支持.
      * @return
      */
-    /*@ExceptionHandler(NoHandlerFoundException.class)
+    @ExceptionHandler(NoHandlerFoundException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
     public ApiResult<String> notFountHandler(NoHandlerFoundException ex){
         String message = String.format("[%s] %s 未找到该接口!", ex.getHttpMethod(), ex.getRequestURL());
         log.error("{}", message);
-        return ApiResult.<String>createInstance(SystemResultCode.NOT_FOUND).data(message);
-    }*/
+        return ApiResult.failure(SystemResultCode.NOT_FOUND);
+    }
 
     /**
      * 请求方法不支持
@@ -81,7 +82,7 @@ public class GlobalExceptionAdvice {
      * @return
      */
     @ExceptionHandler(HttpMessageNotReadableException.class)
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    //@ResponseStatus(HttpStatus.BAD_REQUEST)
     @ResponseBody
     public ApiResult<String> httpMessageNotReadableException(HttpMessageNotReadableException ex) {
         log.error(ex.getMessage(), ex);
@@ -96,7 +97,7 @@ public class GlobalExceptionAdvice {
      * @return
      */
     @ExceptionHandler(ServletRequestBindingException.class)
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    //@ResponseStatus(HttpStatus.BAD_REQUEST)
     @ResponseBody
     public ApiResult handleMethodArgumentNotValidException(ServletRequestBindingException ex) {
         log.error(ex.getMessage(), ex);
@@ -111,7 +112,7 @@ public class GlobalExceptionAdvice {
      * @return
      */
     @ExceptionHandler(HttpRequestMethodNotSupportedException.class)
-    @ResponseStatus(HttpStatus.METHOD_NOT_ALLOWED)
+    //@ResponseStatus(HttpStatus.METHOD_NOT_ALLOWED)
     @ResponseBody
     public ApiResult<String> handleMethodArgumentNotValidException(HttpRequestMethodNotSupportedException ex) {
         log.error(ex.getMessage(), ex);
@@ -126,7 +127,7 @@ public class GlobalExceptionAdvice {
      * @return
      */
     @ExceptionHandler(HttpMediaTypeNotSupportedException.class)
-    @ResponseStatus(HttpStatus.UNSUPPORTED_MEDIA_TYPE)
+    //@ResponseStatus(HttpStatus.UNSUPPORTED_MEDIA_TYPE)
     @ResponseBody
     public ApiResult<String> httpMediaTypeNotSupportedException(HttpMediaTypeNotSupportedException ex) {
         log.error(ex.getMessage(), ex);
@@ -140,7 +141,7 @@ public class GlobalExceptionAdvice {
      * 处理接口数据验证异常
      */
     @ExceptionHandler(ConstraintViolationException.class)
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    //@ResponseStatus(HttpStatus.BAD_REQUEST)
     @ResponseBody
     public ApiResult handleMethodArgumentNotValidException(ConstraintViolationException ex) {
         log.error(ex.getMessage(), ex);
@@ -159,7 +160,7 @@ public class GlobalExceptionAdvice {
      * 处理接口数据验证异常
      */
     @ExceptionHandler(MissingServletRequestPartException.class)
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    //@ResponseStatus(HttpStatus.BAD_REQUEST)
     @ResponseBody
     public ApiResult missingServletRequestPartException(MissingServletRequestPartException ex) {
         log.error(ex.getMessage(), ex);
@@ -174,7 +175,7 @@ public class GlobalExceptionAdvice {
      * @return
      */
     @ExceptionHandler({MethodArgumentTypeMismatchException.class})
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    //@ResponseStatus(HttpStatus.BAD_REQUEST)
     @ResponseBody
     public ApiResult methodArgumentTypeMismatchException(MethodArgumentTypeMismatchException ex) {
         ApiResult apiResult = ApiResult.failure(SystemResultCode.MISSING_REQ_DATA).message("缺少参数 " + ex.getName());
@@ -188,7 +189,7 @@ public class GlobalExceptionAdvice {
      * @return
      */
     @ExceptionHandler(ValidatorFormException.class)
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    //@ResponseStatus(HttpStatus.BAD_REQUEST)
     public ApiResult paramException(ValidatorFormException ex){
         ApiResult apiResult = ApiResult.failure(SystemResultCode.PARAM_IS_INVALID).message(String.valueOf(ex.getData()));
         process(apiResult, ex);
@@ -201,7 +202,7 @@ public class GlobalExceptionAdvice {
      * @return
      */
     @ExceptionHandler({MethodArgumentNotValidException.class, BindException.class})
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    //@ResponseStatus(HttpStatus.BAD_REQUEST)
     @ResponseBody
     public ApiResult processValidationError(Exception ex) {
         log.error(ex.getMessage());
@@ -231,7 +232,7 @@ public class GlobalExceptionAdvice {
     public ApiResult handleAllUnCatchException(Exception ex) {
         log.error(ex.getMessage(), ex);
         showStackTraceInfo(ex);
-        ApiResult apiResult = ApiResult.failure(SystemResultCode.SYSTEM_INNER_ERROR);
+        ApiResult apiResult = ApiResult.failure(SystemResultCode.SYSTEM_INNER_ERROR).code(HttpStatus.INTERNAL_SERVER_ERROR.value());
         process(apiResult, ex);
         return apiResult;
     }
@@ -242,7 +243,7 @@ public class GlobalExceptionAdvice {
     public ApiResult sqlException(SQLException ex) {
         log.error(ex.getMessage(), ex);
         showStackTraceInfo(ex);
-        ApiResult apiResult = ApiResult.failure(SystemResultCode.SYSTEM_INNER_ERROR).message("数据库异常." + ex.getMessage());
+        ApiResult apiResult = ApiResult.failure().code(HttpStatus.INTERNAL_SERVER_ERROR.value()).message("数据库异常." + ex.getMessage());
         process(apiResult, ex);
         return apiResult;
     }
@@ -286,10 +287,10 @@ public class GlobalExceptionAdvice {
      * @return
      */
     @ExceptionHandler(AuthenticationException.class)
-    @ResponseStatus(HttpStatus.FORBIDDEN)
+    //@ResponseStatus(HttpStatus.FORBIDDEN)
     public ApiResult authenticationException(AuthenticationException ex) {
         log.error(ex.getMessage(), ex);
-        ApiResult apiResult = ApiResult.failure(ex.getMessage());
+        ApiResult apiResult = ApiResult.failure(ex.getMessage()).code(HttpStatus.FORBIDDEN.value());
         process(apiResult, ex);
         return apiResult;
     }
@@ -300,16 +301,16 @@ public class GlobalExceptionAdvice {
      * @return
      */
     @ExceptionHandler(AccessDeniedException.class)
-    @ResponseStatus(HttpStatus.UNAUTHORIZED)
+    //@ResponseStatus(HttpStatus.UNAUTHORIZED)
     public ApiResult accessDeniedException(AccessDeniedException ex) {
         log.error(ex.getMessage(), ex);
-        ApiResult apiResult = ApiResult.<String>failure(ex.getMessage());
+        ApiResult apiResult = ApiResult.<String>failure(ex.getMessage()).code(HttpStatus.UNAUTHORIZED.value());
         process(apiResult, ex);
         return apiResult;
     }
 
     @ExceptionHandler(BadCredentialsException.class)
-    @ResponseStatus(HttpStatus.UNAUTHORIZED)
+    //@ResponseStatus(HttpStatus.UNAUTHORIZED)
     public ApiResult badCredentialsException(BadCredentialsException ex) {
         log.error(ex.getMessage(), ex);
         ApiResult apiResult = ApiResult.<String>failure("无效账号或密码");
@@ -318,9 +319,9 @@ public class GlobalExceptionAdvice {
     }
 
     @ExceptionHandler(LimitException.class)
-    @ResponseStatus(HttpStatus.FORBIDDEN)
+    //@ResponseStatus(HttpStatus.FORBIDDEN)
     public ApiResult limitException(LimitException ex) {
-        ApiResult apiResult = ApiResult.<String>failure("已限流,请慢点.");
+        ApiResult apiResult = ApiResult.<String>failure("已限流,请慢点.").code(HttpStatus.FORBIDDEN.value());
         process(apiResult, ex);
         return apiResult;
     }
