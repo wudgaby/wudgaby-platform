@@ -287,7 +287,7 @@ public class GlobalExceptionAdvice {
      * @return
      */
     @ExceptionHandler(AuthenticationException.class)
-    //@ResponseStatus(HttpStatus.FORBIDDEN)
+    @ResponseStatus(HttpStatus.FORBIDDEN)
     public ApiResult authenticationException(AuthenticationException ex) {
         log.error(ex.getMessage(), ex);
         ApiResult apiResult = ApiResult.failure(ex.getMessage()).code(HttpStatus.FORBIDDEN.value());
@@ -301,7 +301,7 @@ public class GlobalExceptionAdvice {
      * @return
      */
     @ExceptionHandler(AccessDeniedException.class)
-    //@ResponseStatus(HttpStatus.UNAUTHORIZED)
+    @ResponseStatus(HttpStatus.UNAUTHORIZED)
     public ApiResult accessDeniedException(AccessDeniedException ex) {
         log.error(ex.getMessage(), ex);
         ApiResult apiResult = ApiResult.<String>failure(ex.getMessage()).code(HttpStatus.UNAUTHORIZED.value());
@@ -310,7 +310,7 @@ public class GlobalExceptionAdvice {
     }
 
     @ExceptionHandler(BadCredentialsException.class)
-    //@ResponseStatus(HttpStatus.UNAUTHORIZED)
+    @ResponseStatus(HttpStatus.UNAUTHORIZED)
     public ApiResult badCredentialsException(BadCredentialsException ex) {
         log.error(ex.getMessage(), ex);
         ApiResult apiResult = ApiResult.<String>failure("无效账号或密码");
@@ -319,7 +319,7 @@ public class GlobalExceptionAdvice {
     }
 
     @ExceptionHandler(LimitException.class)
-    //@ResponseStatus(HttpStatus.FORBIDDEN)
+    @ResponseStatus(HttpStatus.FORBIDDEN)
     public ApiResult limitException(LimitException ex) {
         ApiResult apiResult = ApiResult.<String>failure("已限流,请慢点.").code(HttpStatus.FORBIDDEN.value());
         process(apiResult, ex);
