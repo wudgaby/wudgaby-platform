@@ -21,7 +21,7 @@ import java.util.List;
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
 @ApiModel("分页表单")
-public class PageForm extends BaseQueryForm{
+public class PageForm extends BaseParam{
     /**默认每页行数*/
     private static final long DEFAULT_PAGE_COUNT = 20L;
 
