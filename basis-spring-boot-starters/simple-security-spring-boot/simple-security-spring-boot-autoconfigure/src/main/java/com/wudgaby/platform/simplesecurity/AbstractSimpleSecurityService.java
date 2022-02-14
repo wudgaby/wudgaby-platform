@@ -1,13 +1,12 @@
 package com.wudgaby.platform.simplesecurity;
 
+import com.google.common.collect.Sets;
 import com.wudgaby.platform.core.util.AssertUtil;
 import com.wudgaby.platform.simplesecurity.ext.MetaResource;
 import com.wudgaby.platform.simplesecurity.ext.RequestContextHolderSupport;
 import org.apache.commons.collections4.CollectionUtils;
 
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Set;
+import java.util.*;
 
 /**
  * @Author :  wudgaby
@@ -24,7 +23,7 @@ public abstract class AbstractSimpleSecurityService implements SimpleSecuritySer
     @Override
     public Collection<String> getPermissionList() {
         LoginUser loginUser = (LoginUser) RequestContextHolderSupport.getRequest().getSession().getAttribute(SecurityConst.SESSION_LOGINED_USER);
-        return loginUser.getAuthorities();
+        return Optional.ofNullable(loginUser).map(u -> u.getAuthorities()).orElse(Collections.emptyList());
     }
 
     /**
@@ -34,13 +33,13 @@ public abstract class AbstractSimpleSecurityService implements SimpleSecuritySer
     @Override
     public Collection<String> getRoleList() {
         LoginUser loginUser = (LoginUser) RequestContextHolderSupport.getRequest().getSession().getAttribute(SecurityConst.SESSION_LOGINED_USER);
-        return loginUser.getRoles();
+        return Optional.ofNullable(loginUser).map(u -> u.getRoles()).orElse(Collections.emptyList());
     }
 
     @Override
     public Set<MetaResource> getMetaResourceList() {
         LoginUser loginUser = (LoginUser) RequestContextHolderSupport.getRequest().getSession().getAttribute(SecurityConst.SESSION_LOGINED_USER);
-        return loginUser.getMetaResources();
+        return Optional.ofNullable(loginUser).map(u -> u.getMetaResources()).orElse(Sets.newHashSet());
     }
 
     /**

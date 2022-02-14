@@ -1,4 +1,4 @@
-package com.wudgaby.platform.core.support;
+package com.wudgaby.platform.webcore.support;
 
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.core.JsonProcessingException;
