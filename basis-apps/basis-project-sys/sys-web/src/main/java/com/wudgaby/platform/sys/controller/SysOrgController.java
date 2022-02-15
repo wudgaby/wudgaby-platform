@@ -64,7 +64,7 @@ public class SysOrgController {
 
     @ApiOperation("获取机构信息")
     @GetMapping("/{orgId}")
-    public ApiResult<SysOrg> info(@PathVariable Long orgId){
+    public ApiResult<SysOrg> orgInfo(@PathVariable Long orgId){
         return ApiResult.<SysOrg>success().data(sysOrgService.getById(orgId));
     }
 

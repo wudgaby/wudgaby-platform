@@ -33,7 +33,7 @@ public class SysTenantController {
 
     @ApiOperation("租户分页列表")
     @GetMapping("/page")
-    public ApiPageResult<SysTenant> pageList(PageForm pageForm){
+    public ApiPageResult<SysTenant> tenantPageList(PageForm pageForm){
         return ApiPageResult.success(sysTenantService.page(
                 new Page<>(pageForm.getPageNum(), pageForm.getPageSize()),
                 Wrappers.<SysTenant>lambdaQuery().orderByDesc(SysTenant::getCreateTime)));
@@ -41,7 +41,7 @@ public class SysTenantController {
 
     @ApiOperation("租户列表")
     @GetMapping
-    public ApiResult<List<SysTenant>> list(){
+    public ApiResult<List<SysTenant>> tenantList(){
         return ApiResult.success(sysTenantService.list());
     }
 

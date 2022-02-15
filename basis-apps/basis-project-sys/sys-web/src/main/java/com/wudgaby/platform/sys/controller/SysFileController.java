@@ -57,7 +57,7 @@ public class SysFileController {
 
     @PostMapping("/uploads")
     @ApiOperation(value = "多文件上传")
-    public ApiResult<List<AttachmentDTO>> commonUpload(@RequestParam("files") MultipartFile[] uploadFiles) throws IOException {
+    public ApiResult<List<AttachmentDTO>> commonUploads(@RequestParam("files") MultipartFile[] uploadFiles) throws IOException {
         List<AttachmentDTO> list = Lists.newArrayList();
         for(MultipartFile uploadFile : uploadFiles){
             list.add(buildAttachment(uploadFile));
@@ -68,7 +68,7 @@ public class SysFileController {
 
     @PostMapping("/download")
     @ApiOperation(value = "文件下载", produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
-    public void commonUpload(@RequestParam String filePath) throws IOException {
+    public void commonDownload(@RequestParam String filePath) throws IOException {
         File downloadFile = new File(uploadPath + File.separator + filePath);
         String fileName = filePath.substring(filePath.lastIndexOf(File.separator) + 1);
 

@@ -34,7 +34,7 @@ public class SysDictTypeController {
 
     @ApiOperation("字典类型列表")
     @GetMapping
-    public ApiPageResult<SysDictType> list(PageForm pageForm){
+    public ApiPageResult<SysDictType> dictTypeList(PageForm pageForm){
         return ApiPageResult.success(sysDictTypeService.page(
                 new Page<>(pageForm.getPageNum(), pageForm.getPageSize()),
                 Wrappers.<SysDictType>lambdaQuery().orderByDesc(SysDictType::getCreateTime)));
@@ -42,21 +42,21 @@ public class SysDictTypeController {
 
     @ApiOperation("添加字典类型")
     @PostMapping
-    public ApiResult add(@Validated @RequestBody DictTypeForm dictTypeForm){
+    public ApiResult addDictType(@Validated @RequestBody DictTypeForm dictTypeForm){
         sysDictTypeService.addDictType(dictTypeForm);
         return ApiResult.success();
     }
 
     @ApiOperation("更新字典类型")
     @PutMapping
-    public ApiResult update(@Validated @RequestBody DictTypeForm dictTypeForm){
+    public ApiResult updateDictType(@Validated @RequestBody DictTypeForm dictTypeForm){
         sysDictTypeService.updateDictType(dictTypeForm);
         return ApiResult.success();
     }
 
     @ApiOperation("删除字典类型")
     @DeleteMapping
-    public ApiResult delete(@RequestBody List<Long> ids){
+    public ApiResult deleteDictType(@RequestBody List<Long> ids){
         sysDictTypeService.delDictType(ids);
         return ApiResult.success();
     }

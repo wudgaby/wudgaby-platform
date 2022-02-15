@@ -69,7 +69,7 @@ public class SysResourceController {
 
     @ApiOperation("获取资源信息")
     @GetMapping
-    public ApiResult<SysResource> info(@RequestParam Long resId){
+    public ApiResult<SysResource> regInfo(@RequestParam Long resId){
         return ApiResult.<SysResource>success().data(sysResourceService.getById(resId));
     }
 
@@ -104,7 +104,7 @@ public class SysResourceController {
 
     @ApiOperation("删除资源")
     @DeleteMapping
-    public ApiResult delRole(@RequestParam Long id){
+    public ApiResult delRes(@RequestParam Long id){
         int count = sysResourceService.count(Wrappers.<SysResource>lambdaQuery().eq(SysResource::getParentId, id));
         AssertUtil.isFalse(count > 0, "还有子资源,不能删除.");
         sysResourceService.removeById(id);

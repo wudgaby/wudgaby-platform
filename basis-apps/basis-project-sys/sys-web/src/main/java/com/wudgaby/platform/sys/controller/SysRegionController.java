@@ -35,7 +35,7 @@ public class SysRegionController {
 
     @ApiOperation("地区懒加载")
     @GetMapping("/children")
-    public ApiResult<List<RegionDTO>> getChildren(@RequestParam(required = false) Long pid){
+    public ApiResult<List<RegionDTO>> childrenList(@RequestParam(required = false) Long pid){
         Long regionPid = Optional.ofNullable(pid).orElse(0L);
         List<SysRegion> regionList = sysRegionService.list(Wrappers.<SysRegion>lambdaQuery()
                 .eq(SysRegion::getPid, regionPid)

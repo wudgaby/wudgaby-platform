@@ -30,13 +30,11 @@ public class StartedEventListener {
         log.info("\n------------------------------------\n{}------------------------------------", SystemUtil.getOsInfo());
         log.info("\n------------------------------------\n{}------------------------------------", SystemUtil.getUserInfo());
         log.info("\n------------------------------------\n{}------------------------------------", SystemUtil.getHostInfo());
-        log.info("\n------------------------------------\n{}------------------------------------", SystemUtil.getJvmSpecInfo());
-        log.info("\n------------------------------------\n{}------------------------------------", SystemUtil.getJvmInfo());
         log.info("\n------------------------------------\n{}------------------------------------", SystemUtil.getJavaInfo());
 
         Environment environment = event.getApplicationContext().getEnvironment();
         String appName = environment.getProperty("spring.application.name", "UNKNOWN_APP_NAME");
-        String contextPath = StringUtils.trimToEmpty(environment.getProperty("server.servlet.context-path", ""));
+        String contextPath = StringUtils.trimToEmpty(environment.getProperty("server.servlet.context-path", "/"));
         boolean sslEnabled = Boolean.valueOf(environment.getProperty("server.ssl.enabled"));
 
         String protocol = sslEnabled ? "https" : "http";

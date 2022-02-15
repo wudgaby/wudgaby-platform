@@ -5,28 +5,14 @@ server:
     threads:
       max: 500
     accept-count: 1000
-  ssl:
-    enabled: true
-    key-store-password: 123456
-    key-alias: server
-    key-store: classpath:server.p12
-    key-store-type: pkcs12
 
 spring:
-  #profiles:
-    #active: @profile.active@
+  profiles:
+    active: @profile.active@
   application:
     name: admin-sys
   lifecycle:
     timeout-per-shutdown-phase: 30S
-
-  datasource:
-    url: jdbc:mysql://localhost:3306/wudgaby_sys?useSSL=false&useUnicode=true&characterEncoding=UTF-8&serverTimezone=GMT%2B8&useSSL=false&allowMultiQueries=true&nullCatalogMeansCurrent=true
-    username: root
-    password: root
-    # 使用druid数据源
-    type: com.alibaba.druid.pool.DruidDataSource
-    driver-class-name: com.mysql.cj.jdbc.Driver
 
 mybatis-plus:
   mapper-locations: classpath*:mapper/**/*Mapper.xml
@@ -60,8 +46,3 @@ knife4j:
     enable: false
     username: swagger
     password: swagger
-
-upload:
-   path: D:\\upload
-
-demoEnv: true

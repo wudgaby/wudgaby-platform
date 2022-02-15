@@ -69,7 +69,7 @@ public class SysDeptController {
 
     @ApiOperation("获取部门信息")
     @GetMapping
-    public ApiResult<SysDept> info(@RequestParam Long depId){
+    public ApiResult<SysDept> infoDept(@RequestParam Long depId){
         return ApiResult.<SysDept>success().data(sysDeptService.getById(depId));
     }
 

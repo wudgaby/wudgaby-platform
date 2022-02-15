@@ -37,7 +37,7 @@ public class SysRoleController {
 
     @ApiOperation("角色分页列表")
     @GetMapping("/page")
-    public ApiPageResult<SysRole> pageList(PageForm pageForm){
+    public ApiPageResult<SysRole> rolePageList(PageForm pageForm){
         return ApiPageResult.success(roleService.page(
                 new Page<>(pageForm.getPageNum(), pageForm.getPageSize()),
                 Wrappers.<SysRole>lambdaQuery().orderByDesc(SysRole::getCreateTime)));
@@ -45,7 +45,7 @@ public class SysRoleController {
 
     @ApiOperation("角色列表")
     @GetMapping
-    public ApiResult<List<SysRole>> list(){
+    public ApiResult<List<SysRole>> roleList(){
         return ApiResult.success(roleService.list());
     }
 

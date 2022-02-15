@@ -32,7 +32,7 @@ public class SysLogController {
 
     @ApiOperation("日志列表")
     @GetMapping
-    public ApiPageResult<SysLog> list(PageForm pageForm){
+    public ApiPageResult<SysLog> logList(PageForm pageForm){
         return ApiPageResult.success(sysLogService.page(
                 new Page<>(pageForm.getPageNum(), pageForm.getPageSize()),
                 Wrappers.<SysLog>lambdaQuery().orderByDesc(SysLog::getCreateTime))

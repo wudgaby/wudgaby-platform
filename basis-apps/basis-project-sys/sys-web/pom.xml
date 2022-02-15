@@ -132,6 +132,7 @@
                 <!--引入所需环境的配置文件-->
                 <filtering>true</filtering>
                 <includes>
+                    <include>application.yml</include>
                     <include>application-${profile.active}.yml</include>
                 </includes>
             </resource>

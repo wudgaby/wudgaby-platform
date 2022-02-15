@@ -44,7 +44,7 @@ public class SysConfigController {
 
     @ApiOperation("系统配置列表")
     @GetMapping
-    public ApiPageResult<SysConfig> listSysConfig(PageForm pageForm){
+    public ApiPageResult<SysConfig> sysConfigList(PageForm pageForm){
         IPage<SysConfig> page = new Page<>(pageForm.getPageNum(), pageForm.getPageSize());
         sysConfigService.page(page);
         return ApiPageResult.success(page);
@@ -52,13 +52,13 @@ public class SysConfigController {
 
     @ApiOperation("通过id获取系统配置")
     @GetMapping("/{id}")
-    public ApiResult<SysConfig> sysConfig(@PathVariable Long id){
+    public ApiResult<SysConfig> getSysConfigById(@PathVariable Long id){
         return ApiResult.success(sysConfigService.getById(id));
     }
 
     @ApiOperation("通过key获取系统配置")
     @GetMapping("/{configKey}")
-    public ApiResult<SysConfig> sysConfig(@PathVariable String configKey){
+    public ApiResult<SysConfig> getSysConfigByKey(@PathVariable String configKey){
         return ApiResult.success(sysConfigService.getOne(Wrappers.<SysConfig>lambdaQuery().eq(SysConfig::getConfigKey, configKey)));
     }
 

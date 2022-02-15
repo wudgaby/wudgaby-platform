@@ -50,15 +50,15 @@ public class SysInMailController {
     private final SysInMailService sysInMailService;
     private final SysInMailReceiverService sysInMailReceiverService;
 
-    @ApiOperation("我的通知列表")
+    @ApiOperation("我的站内信列表")
     @GetMapping("/myInMailList")
-    public ApiPageResult<SysInMail> myList(InMailQueryForm queryForm) {
+    public ApiPageResult<SysInMail> myInMailList(InMailQueryForm queryForm) {
         long userId = (long) SecurityUtils.getCurrentUser().getId();
         queryForm.setUserId(userId);
         return ApiPageResult.success(sysInMailService.pageList(queryForm));
     }
 
-    @ApiOperation("消息中心")
+    @ApiOperation("站内信中心")
     @GetMapping("/inMailCenter")
     public ApiResult<List<InMailTypeStDTO>> inMailCenter() {
         long userId = (long)SecurityUtils.getCurrentUser().getId();
@@ -78,7 +78,7 @@ public class SysInMailController {
         return ApiResult.success(list);
     }
 
-    @ApiOperation("查看我的通知")
+    @ApiOperation("查看我的站内信")
     @GetMapping("/my/{id}")
     public ApiResult<InMailDTO> myInfo(@PathVariable("id") Long id) {
         long userId = (long)SecurityUtils.getCurrentUser().getId();
@@ -96,13 +96,13 @@ public class SysInMailController {
 
     @ApiOperation("列表")
     @GetMapping
-    public ApiPageResult<SysInMail> list(InMailQueryForm queryForm) {
+    public ApiPageResult<SysInMail> inMailList(InMailQueryForm queryForm) {
         return ApiPageResult.success(sysInMailService.pageList(queryForm));
     }
 
-    @ApiOperation("查看信息")
+    @ApiOperation("查看站内信")
     @GetMapping("/info/{id}")
-    public ApiResult<InMailDTO> info(@PathVariable("id") Long id) {
+    public ApiResult<InMailDTO> noticeInfo(@PathVariable("id") Long id) {
         InMailDTO noticeDTO = ((SysInMailMapper)sysInMailService.getBaseMapper()).queryById(id);
         return ApiResult.success(noticeDTO);
     }
@@ -116,7 +116,7 @@ public class SysInMailController {
 
     @ApiOperation("删除站内信")
     @DeleteMapping
-    public ApiResult delete(@RequestBody List<Long> ids) {
+    public ApiResult deleteInMail(@RequestBody List<Long> ids) {
         sysInMailService.delNotice(ids);
         return ApiResult.success();
     }

@@ -37,13 +37,13 @@ public class SysDictItemController {
 
     @ApiOperation("字典项列表")
     @GetMapping("/{type}")
-    public ApiResult<List<SysDictItem>> list(@PathVariable String type){
+    public ApiResult<List<SysDictItem>> dictItemList(@PathVariable String type){
         return ApiResult.success(sysDictItemService.getDictItemList(type));
     }
 
     @ApiOperation("字典项树")
     @GetMapping("/tree/{type}")
-    public ApiResult<List<Tree<Long>>> listItemTree(@PathVariable String type){
+    public ApiResult<List<Tree<Long>>> dictItemTree(@PathVariable String type){
         List<SysDictItem> sysDictItemList = sysDictItemService.getDictItemList(type);
 
         List<TreeNode<Long>> treeNodeList = Lists.newArrayList();
@@ -69,21 +69,21 @@ public class SysDictItemController {
 
     @ApiOperation("添加字典项")
     @PostMapping
-    public ApiResult add(@Validated @RequestBody DictItemForm dictItemForm){
+    public ApiResult addDictItem(@Validated @RequestBody DictItemForm dictItemForm){
         sysDictItemService.addDictItem(dictItemForm);
         return ApiResult.success();
     }
 
     @ApiOperation("更新字典项")
     @PutMapping
-    public ApiResult update(@Validated @RequestBody DictItemForm dictItemForm){
+    public ApiResult updateDictItem(@Validated @RequestBody DictItemForm dictItemForm){
         sysDictItemService.updateDictItem(dictItemForm);
         return ApiResult.success();
     }
 
     @ApiOperation("删除字典项")
     @DeleteMapping
-    public ApiResult delete(@RequestBody List<Long> ids){
+    public ApiResult deleteDictItem(@RequestBody List<Long> ids){
         sysDictItemService.delDictItems(ids);
         return ApiResult.success();
     }
