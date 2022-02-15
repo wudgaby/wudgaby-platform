@@ -3,6 +3,7 @@ package com.wudgaby.platform.webcore.support;
 import cn.hutool.core.util.StrUtil;
 import com.wudgaby.platform.core.constant.SystemConstant;
 import com.wudgaby.platform.core.exception.BusinessException;
+import com.wudgaby.platform.core.exception.DemoException;
 import com.wudgaby.platform.core.exception.ValidatorFormException;
 import com.wudgaby.platform.core.model.dto.ValidationErrorDTO;
 import com.wudgaby.platform.core.result.ApiResult;
@@ -11,6 +12,9 @@ import com.wudgaby.platform.core.support.FormValidator;
 import com.wudgaby.platform.limiter.core.LimitException;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.ibatis.exceptions.PersistenceException;
+import org.apache.tomcat.util.http.ResponseUtil;
+import org.mybatis.spring.MyBatisSystemException;
 import org.slf4j.MDC;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -248,6 +252,25 @@ public class GlobalExceptionAdvice {
         return apiResult;
     }
 
+    @ExceptionHandler({MyBatisSystemException.class})
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    @ResponseBody
+    public ApiResult myBatisSystemException(MyBatisSystemException ex) {
+        ApiResult apiResult = ApiResult.failure().code(HttpStatus.INTERNAL_SERVER_ERROR.value()).message("数据库异常." + ex.getMessage());
+
+        Throwable cause = ex.getCause();
+        if (cause instanceof PersistenceException) {
+            Throwable secondCause = cause.getCause();
+            if (secondCause instanceof DemoException) {
+                DemoException demoException = (DemoException) secondCause;
+                apiResult = ApiResult.failure().code(demoException.getErrorCode()).message(demoException.getMessage());
+            }
+        }
+        showStackTraceInfo(ex);
+        process(apiResult, ex);
+        return apiResult;
+    }
+
     @ExceptionHandler(DuplicateKeyException.class)
     public ApiResult duplicateKeyException(DuplicateKeyException ex){
         log.error(ex.getMessage(), ex);
@@ -287,7 +310,7 @@ public class GlobalExceptionAdvice {
      * @return
      */
     @ExceptionHandler(AuthenticationException.class)
-    @ResponseStatus(HttpStatus.FORBIDDEN)
+    //@ResponseStatus(HttpStatus.FORBIDDEN)
     public ApiResult authenticationException(AuthenticationException ex) {
         log.error(ex.getMessage(), ex);
         ApiResult apiResult = ApiResult.failure(ex.getMessage()).code(HttpStatus.FORBIDDEN.value());
@@ -301,7 +324,7 @@ public class GlobalExceptionAdvice {
      * @return
      */
     @ExceptionHandler(AccessDeniedException.class)
-    @ResponseStatus(HttpStatus.UNAUTHORIZED)
+    //@ResponseStatus(HttpStatus.UNAUTHORIZED)
     public ApiResult accessDeniedException(AccessDeniedException ex) {
         log.error(ex.getMessage(), ex);
         ApiResult apiResult = ApiResult.<String>failure(ex.getMessage()).code(HttpStatus.UNAUTHORIZED.value());
@@ -310,7 +333,7 @@ public class GlobalExceptionAdvice {
     }
 
     @ExceptionHandler(BadCredentialsException.class)
-    @ResponseStatus(HttpStatus.UNAUTHORIZED)
+    //@ResponseStatus(HttpStatus.UNAUTHORIZED)
     public ApiResult badCredentialsException(BadCredentialsException ex) {
         log.error(ex.getMessage(), ex);
         ApiResult apiResult = ApiResult.<String>failure("无效账号或密码");
@@ -319,7 +342,7 @@ public class GlobalExceptionAdvice {
     }
 
     @ExceptionHandler(LimitException.class)
-    @ResponseStatus(HttpStatus.FORBIDDEN)
+    //@ResponseStatus(HttpStatus.FORBIDDEN)
     public ApiResult limitException(LimitException ex) {
         ApiResult apiResult = ApiResult.<String>failure("已限流,请慢点.").code(HttpStatus.FORBIDDEN.value());
         process(apiResult, ex);

@@ -43,7 +43,7 @@ public class SysUserController {
     @GetMapping
     public ApiPageResult<SysUser> pageList(PageForm pageForm){
         return ApiPageResult.success(sysUserService.page(
-                new Page<>(pageForm.getPageNum(), pageForm.getPageCount()),
+                new Page<>(pageForm.getPageNum(), pageForm.getPageSize()),
                 Wrappers.<SysUser>lambdaQuery().orderByDesc(SysUser::getCreateTime)));
     }
 

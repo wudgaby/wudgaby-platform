@@ -35,7 +35,7 @@ public class SysTenantController {
     @GetMapping("/page")
     public ApiPageResult<SysTenant> pageList(PageForm pageForm){
         return ApiPageResult.success(sysTenantService.page(
-                new Page<>(pageForm.getPageNum(), pageForm.getPageCount()),
+                new Page<>(pageForm.getPageNum(), pageForm.getPageSize()),
                 Wrappers.<SysTenant>lambdaQuery().orderByDesc(SysTenant::getCreateTime)));
     }
 

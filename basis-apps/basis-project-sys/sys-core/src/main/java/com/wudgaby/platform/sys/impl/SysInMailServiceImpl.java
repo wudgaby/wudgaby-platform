@@ -47,7 +47,7 @@ public class SysInMailServiceImpl extends ServiceImpl<SysInMailMapper, SysInMail
 
     @Override
     public IPage pageList(InMailQueryForm pageForm) {
-        IPage page = new Page(pageForm.getPageNum(), pageForm.getPageCount());
+        IPage page = new Page(pageForm.getPageNum(), pageForm.getPageSize());
         this.baseMapper.listPage(page, pageForm);
         return page;
     }

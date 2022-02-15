@@ -25,10 +25,10 @@ public class PageVo<T> {
     private long totalPage;
 
     @ApiModelProperty(value = "数据总数")
-    private long totalData;
+    private long total;
 
     @ApiModelProperty(value = "每页行数")
-    private long pageCount;
+    private long pageSize;
 
     @ApiModelProperty(value = "数据")
     private List<T> dataList;

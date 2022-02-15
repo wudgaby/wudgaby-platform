@@ -38,10 +38,10 @@
             <artifactId>basis-project-web-core</artifactId>
             <version>${revision}</version>
         </dependency>
-        <dependency>
+        <!--<dependency>
             <groupId>com.baomidou</groupId>
             <artifactId>dynamic-datasource-spring-boot-starter</artifactId>
             <version>3.5.0</version>
-        </dependency>
+        </dependency>-->
     </dependencies>
 </project>

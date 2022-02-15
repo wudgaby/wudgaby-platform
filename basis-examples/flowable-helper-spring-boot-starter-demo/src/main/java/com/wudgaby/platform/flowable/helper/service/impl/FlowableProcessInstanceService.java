@@ -139,7 +139,7 @@ public class FlowableProcessInstanceService extends BaseProcessService implement
 
     @Override
     public IPage<ProcessInstanceVo> getProcessInstances(ProcessInstanceQueryVo queryForm) {
-        IPage<ProcessInstanceVo> page = flowableProcessInstanceDao.listPage(new Page(queryForm.getPageNum(), queryForm.getPageCount()), queryForm);
+        IPage<ProcessInstanceVo> page = flowableProcessInstanceDao.listPage(new Page(queryForm.getPageNum(), queryForm.getPageSize()), queryForm);
         page.getRecords().forEach(processInstanceVo -> {
             this.setStateApprover(processInstanceVo);
         });

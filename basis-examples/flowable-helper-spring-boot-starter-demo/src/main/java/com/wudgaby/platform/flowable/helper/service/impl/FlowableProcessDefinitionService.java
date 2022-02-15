@@ -43,7 +43,7 @@ public class FlowableProcessDefinitionService implements com.wudgaby.platform.fl
 
     @Override
     public IPage<ProcessDefinitionVo> getListByPage(ProcessDefinitionQueryForm queryForm) {
-        return flowableProcessDefinitionDao.findProcessDefList(new Page(queryForm.getPageNum(), queryForm.getPageCount()), queryForm);
+        return flowableProcessDefinitionDao.findProcessDefList(new Page(queryForm.getPageNum(), queryForm.getPageSize()), queryForm);
     }
 
     @Override

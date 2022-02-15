@@ -42,7 +42,7 @@ public class BaseActionController {
     @ApiOperation(value = "获取接口资源分页列表")
     @GetMapping("/page")
     public ApiPageResult<IPage<BaseAction>> page(PageForm pageForm){
-        return ApiPageResult.success(baseActionService.page(new Page(pageForm.getPageNum(), pageForm.getPageCount())));
+        return ApiPageResult.success(baseActionService.page(new Page(pageForm.getPageNum(), pageForm.getPageSize())));
     }
 
     @ApiOperation(value = "检查编码是否已存在")

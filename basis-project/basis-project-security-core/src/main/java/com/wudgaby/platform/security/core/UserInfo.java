@@ -11,6 +11,7 @@ import org.apache.commons.lang3.ArrayUtils;
 
 import java.io.Serializable;
 import java.util.Collection;
+import java.util.Set;
 
 /**
  * @ClassName : UserInfo
@@ -59,6 +60,9 @@ public class UserInfo implements Serializable {
 
     @ApiModelProperty("角色")
     private Collection<String> roles;
+
+    @ApiModelProperty("请求资源")
+    private Set<MetaResource> metaResources;
 
     @ApiModelProperty("管理员")
     private Boolean admin;

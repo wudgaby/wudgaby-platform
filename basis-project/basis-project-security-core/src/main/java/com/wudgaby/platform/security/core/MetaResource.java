@@ -1,4 +1,4 @@
-package com.wudgaby.platform.simplesecurity.ext;
+package com.wudgaby.platform.security.core;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

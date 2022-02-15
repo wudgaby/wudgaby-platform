@@ -34,7 +34,7 @@ public class SysLogController {
     @GetMapping
     public ApiPageResult<SysLog> list(PageForm pageForm){
         return ApiPageResult.success(sysLogService.page(
-                new Page<>(pageForm.getPageNum(), pageForm.getPageCount()),
+                new Page<>(pageForm.getPageNum(), pageForm.getPageSize()),
                 Wrappers.<SysLog>lambdaQuery().orderByDesc(SysLog::getCreateTime))
         );
     }

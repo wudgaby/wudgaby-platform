@@ -1,6 +1,7 @@
 package com.wudgaby.platform.simplesecurity;
 
-import com.wudgaby.platform.simplesecurity.ext.MetaResource;
+import com.wudgaby.platform.security.core.MetaResource;
+import com.wudgaby.platform.security.core.UserInfo;
 
 import java.util.Collection;
 import java.util.Set;
@@ -12,7 +13,7 @@ public interface SimpleSecurityService {
      * @param password
      * @return
      */
-    LoginUser getLoginUser(String account, String password);
+    UserInfo getLoginUser(String account, String password);
 
     /**
      * 设置管理员的role标识

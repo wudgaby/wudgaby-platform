@@ -1,6 +1,8 @@
 package com.wudgaby.platform.simplesecurity;
 
 import com.wudgaby.platform.core.result.ApiResult;
+import com.wudgaby.platform.security.core.SecurityUtils;
+import com.wudgaby.platform.security.core.UserInfo;
 import com.wudgaby.platform.simplesecurity.annotations.AnonymousAccess;
 import com.wudgaby.platform.utils.FastJsonUtil;
 import lombok.AllArgsConstructor;
@@ -33,7 +35,7 @@ public class SimpleAuthenInterceptor implements HandlerInterceptor {
         }
 
         HttpSession httpSession = request.getSession();
-        LoginUser loginUser = (LoginUser) httpSession.getAttribute(SecurityConst.SESSION_LOGINED_USER);
+        UserInfo loginUser = (UserInfo) httpSession.getAttribute(SecurityConst.SESSION_LOGINED_USER);
         if(loginUser == null) {
             //未登录
             response.setStatus(HttpStatus.UNAUTHORIZED.value());

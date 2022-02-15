@@ -46,8 +46,8 @@ public class SysLogServiceImpl extends ServiceImpl<SysLogMapper, SysLog> impleme
 
         UserInfo userInfo = SecurityUtils.getCurrentUser();
         SysLog sysLog = new SysLog();
-        sysLog.setUserId((long)userInfo.getId());
-        sysLog.setUserName(userInfo.getUsername());
+        sysLog.setUserId(Optional.ofNullable(userInfo).map(u -> (long)u.getId()).orElse(0L));
+        sysLog.setUserName(Optional.ofNullable(userInfo).map(UserInfo::getUsername).orElse(""));
         sysLog.setAction(loggerInfo.getAction());
         sysLog.setDesc(loggerInfo.getDescribe());
         sysLog.setUserAgent(loggerInfo.getUserAgent());
@@ -65,6 +65,7 @@ public class SysLogServiceImpl extends ServiceImpl<SysLogMapper, SysLog> impleme
         sysLog.setRespTime(new Date(loggerInfo.getResponseTime()));
         sysLog.setReqHeaders(FastJsonUtil.collectToString(loggerInfo.getHttpHeaders()));
         sysLog.setReqIp(loggerInfo.getIp());
+        sysLog.setHttpStatus(loggerInfo.getHttpStatus());
         if (sysLog.getReqIp() != null) {
             sysLog.setReqRegion(ipRegionService.getRegion(sysLog.getReqIp()));
         }

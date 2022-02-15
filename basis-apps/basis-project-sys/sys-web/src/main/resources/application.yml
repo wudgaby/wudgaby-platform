@@ -13,8 +13,8 @@ server:
     key-store-type: pkcs12
 
 spring:
-  profiles:
-    active: @profile.active@
+  #profiles:
+    #active: @profile.active@
   application:
     name: admin-sys
   lifecycle:
@@ -63,3 +63,5 @@ knife4j:
 
 upload:
    path: D:\\upload
+
+demoEnv: true

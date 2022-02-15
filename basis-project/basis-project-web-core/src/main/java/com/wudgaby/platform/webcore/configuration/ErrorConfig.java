@@ -1,6 +1,6 @@
 package com.wudgaby.platform.webcore.configuration;
 
-import com.wudgaby.platform.webcore.error.SnowyErrorAttributes;
+import com.wudgaby.platform.webcore.error.CustomErrorAttributes;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -17,7 +17,7 @@ public class ErrorConfig {
      * @return
      */
     @Bean
-    public SnowyErrorAttributes snowyErrorAttributes(){
-        return new SnowyErrorAttributes();
+    public CustomErrorAttributes customErrorAttributes(){
+        return new CustomErrorAttributes();
     }
 }

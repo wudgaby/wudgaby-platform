@@ -23,17 +23,17 @@ import java.util.List;
 @ApiModel("分页表单")
 public class PageForm extends BaseParam{
     /**默认每页行数*/
-    private static final long DEFAULT_PAGE_COUNT = 20L;
+    private static final long DEFAULT_PAGE_SIZE = 20L;
 
     @ApiModelProperty(value = "页数", example = "1")
-    @Min(value = 1L, message = "最小页数1")
-    @Max(value = 9999L, message = "最大页数9999")
+    @Min(value = 1, message = "最小页数1")
+    @Max(value = 1000, message = "最大页数1000")
     private Long pageNum = 1L;
 
     @ApiModelProperty(value = "每页行数", example = "20")
-    @Min(value = 1L, message = "最小行数1")
-    @Max(value = 9999L, message = "最大行数9999")
-    private Long pageCount = DEFAULT_PAGE_COUNT;
+    @Min(value = 1, message = "最小行数1")
+    @Max(value = 9999, message = "最大行数9999")
+    private Long pageSize = DEFAULT_PAGE_SIZE;
 
     @ApiModelProperty("排序参数")
     private List<SortItem> sortItems;
@@ -50,6 +50,6 @@ public class PageForm extends BaseParam{
 
     @ApiModelProperty(hidden = true)
     public Long getOffset() {
-        return pageNum > 0 ? (pageNum - 1) * pageCount : 0;
+        return pageNum > 0 ? (pageNum - 1) * pageSize : 0;
     }
 }

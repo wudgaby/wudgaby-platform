@@ -51,7 +51,7 @@ public class BaseUserController {
     @ApiOperation(value = "获取用户分页列表")
     @GetMapping("/page")
     public ApiPageResult<IPage<BaseUser>> page(PageForm pageForm){
-        return ApiPageResult.success(baseUserService.page(new Page(pageForm.getPageNum(), pageForm.getPageCount())));
+        return ApiPageResult.success(baseUserService.page(new Page(pageForm.getPageNum(), pageForm.getPageSize())));
     }
 
     @ApiOperation(value = "获取用户已分配角色")

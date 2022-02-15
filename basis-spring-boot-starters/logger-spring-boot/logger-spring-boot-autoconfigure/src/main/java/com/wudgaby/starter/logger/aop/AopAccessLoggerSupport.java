@@ -12,6 +12,7 @@ import com.wudgaby.logger.api.vo.LoggerDefine;
 import com.wudgaby.platform.core.aop.MethodInterceptorHolder;
 import org.aopalliance.aop.Advice;
 import org.aopalliance.intercept.MethodInterceptor;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.aop.support.StaticMethodMatcherPointcutAdvisor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
@@ -21,6 +22,7 @@ import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.lang.reflect.Method;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
@@ -73,28 +75,33 @@ public class AopAccessLoggerSupport extends StaticMethodMatcherPointcutAdvisor {
 
             //生成日志记录信息
             AccessLoggerInfo info = createLogger(methodInterceptorHolder);
-            Object response;
+            Object responseBody;
             try {
                 eventPublisher.publishEvent(new AccessLoggerBeforeEvent(info));
                 listeners.forEach(listener -> listener.onLogBefore(info));
-                response = methodInvocation.proceed();
-                info.setResponse(response);
+                responseBody = methodInvocation.proceed();
+                info.setResponse(responseBody);
             } catch (Throwable e) {
                 info.setException(e);
                 throw e;
             } finally {
                 info.setResponseTime(System.currentTimeMillis());
+                //设置响应状态
+                HttpServletResponse httpResponse = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getResponse();
+                if (null != httpResponse) {
+                    info.setHttpStatus(String.valueOf(httpResponse.getStatus()));
+                }
                 //触发监听
                 eventPublisher.publishEvent(new AccessLoggerAfterEvent(info));
                 listeners.forEach(listener -> listener.onLogger(info));
             }
-            return response;
+            return responseBody;
         };
     }
 
     protected AccessLoggerInfo createLogger(MethodInterceptorHolder holder) {
         AccessLoggerInfo info = new AccessLoggerInfo();
-        info.setId(MD5.create().digestHex(UUID.fastUUID().toString() + RandomUtil.randomString(5)));
+        info.setId(MD5.create().digestHex(UUID.fastUUID() + RandomUtil.randomString(5)));
         info.setRequestTime(System.currentTimeMillis());
 
         LoggerDefine define = loggerParsers.stream()

@@ -36,7 +36,7 @@ public class SysDictTypeController {
     @GetMapping
     public ApiPageResult<SysDictType> list(PageForm pageForm){
         return ApiPageResult.success(sysDictTypeService.page(
-                new Page<>(pageForm.getPageNum(), pageForm.getPageCount()),
+                new Page<>(pageForm.getPageNum(), pageForm.getPageSize()),
                 Wrappers.<SysDictType>lambdaQuery().orderByDesc(SysDictType::getCreateTime)));
     }
 

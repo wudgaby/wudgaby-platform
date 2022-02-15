@@ -66,7 +66,7 @@ public class ApiPageResult<T> extends ApiResult {
     }
 
     public static <T> ApiPageResult<T> success(PageVo<T> pageVo){
-        ApiPageResult<T> apiPageResult = new ApiPageResult<>(pageVo.getPageNum(), pageVo.getPageCount(), pageVo.getTotalData());
+        ApiPageResult<T> apiPageResult = new ApiPageResult<>(pageVo.getPageNum(), pageVo.getPageSize(), pageVo.getTotal());
         apiPageResult.data(pageVo.getDataList());
         if(pageVo.getTotalPage() != 0){
             apiPageResult.setTotalPage(pageVo.getTotalPage());

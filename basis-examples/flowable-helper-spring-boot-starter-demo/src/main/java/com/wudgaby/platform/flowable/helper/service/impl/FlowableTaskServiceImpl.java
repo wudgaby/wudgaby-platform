@@ -511,14 +511,14 @@ public class FlowableTaskServiceImpl extends BaseProcessService implements Flowa
 
     @Override
     public Page<TaskVo> getApplyingTasks(TaskQueryVo params, PageForm pageForm) {
-        PageHelper.startPage(pageForm.getPageNum().intValue(), pageForm.getPageCount().intValue());
+        PageHelper.startPage(pageForm.getPageNum().intValue(), pageForm.getPageSize().intValue());
         Page<TaskVo> applyingTasks = flowableTaskDao.getApplyingTasks(params);
         return applyingTasks;
     }
 
     @Override
     public Page<TaskVo> getApplyedTasks(TaskQueryVo params, PageForm pageForm) {
-        PageHelper.startPage(pageForm.getPageNum().intValue(), pageForm.getPageCount().intValue());
+        PageHelper.startPage(pageForm.getPageNum().intValue(), pageForm.getPageSize().intValue());
         Page<TaskVo> applyedTasks = flowableTaskDao.getApplyedTasks(params);
         return applyedTasks;
     }

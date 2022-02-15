@@ -50,6 +50,6 @@ public class SysNoticeServiceImpl extends ServiceImpl<SysNoticeMapper, SysNotice
 
     @Override
     public IPage pageList(PageForm pageForm) {
-        return this.page(new Page<>(pageForm.getPageNum(), pageForm.getPageCount()));
+        return this.page(new Page<>(pageForm.getPageNum(), pageForm.getPageSize()));
     }
 }

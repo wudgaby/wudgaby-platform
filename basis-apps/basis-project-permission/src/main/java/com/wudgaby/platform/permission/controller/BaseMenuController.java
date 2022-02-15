@@ -45,7 +45,7 @@ public class BaseMenuController {
     @ApiOperation(value = "获取菜单分页列表")
     @GetMapping("/page")
     public ApiPageResult<IPage<BaseMenu>> page(PageForm pageForm){
-        return ApiPageResult.success(baseMenuService.page(new Page(pageForm.getPageNum(), pageForm.getPageCount())));
+        return ApiPageResult.success(baseMenuService.page(new Page(pageForm.getPageNum(), pageForm.getPageSize())));
     }
 
     @ApiOperation(value = "获取菜单下所有操作")

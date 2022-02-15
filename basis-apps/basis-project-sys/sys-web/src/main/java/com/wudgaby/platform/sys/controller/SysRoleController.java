@@ -39,7 +39,7 @@ public class SysRoleController {
     @GetMapping("/page")
     public ApiPageResult<SysRole> pageList(PageForm pageForm){
         return ApiPageResult.success(roleService.page(
-                new Page<>(pageForm.getPageNum(), pageForm.getPageCount()),
+                new Page<>(pageForm.getPageNum(), pageForm.getPageSize()),
                 Wrappers.<SysRole>lambdaQuery().orderByDesc(SysRole::getCreateTime)));
     }
 

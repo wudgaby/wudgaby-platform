@@ -1,5 +1,7 @@
 package com.wudgaby.platform.simplesecurity;
 
+import com.wudgaby.platform.security.core.UserInfo;
+
 /**
  * @Author :  wudgaby
  * @Version :  since 1.0
@@ -8,9 +10,9 @@ package com.wudgaby.platform.simplesecurity;
  */
 public class DefaultSimpleSecurityServiceImpl extends AbstractSimpleSecurityService {
     @Override
-    public LoginUser getLoginUser(String account, String password) {
+    public UserInfo getLoginUser(String account, String password) {
         if("default".equals(account) && "default".equals(password)) {
-            return new LoginUser().setId(0).setAccount(account).setAdmin(false);
+            return new UserInfo().setId(0).setAccount(account).setAdmin(false);
         }
         return null;
     }

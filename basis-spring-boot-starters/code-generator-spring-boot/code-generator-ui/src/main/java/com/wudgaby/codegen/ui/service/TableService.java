@@ -58,7 +58,7 @@ public class TableService {
         sql += " ORDER BY create_time DESC, table_name ASC";
         sql += " LIMIT ?,?";
         param.add(tableQueryForm.getOffset());
-        param.add(tableQueryForm.getPageCount());
+        param.add(tableQueryForm.getPageSize());
         if(log.isDebugEnabled()){
             log.debug("{} {}", sql, param);
         }
@@ -67,8 +67,8 @@ public class TableService {
 
         PageVo<TableEntity> pageVo = new PageVo<TableEntity>()
                 .setPageNum(tableQueryForm.getPageNum())
-                .setPageCount(tableQueryForm.getPageCount())
-                .setTotalData(count)
+                .setPageSize(tableQueryForm.getPageSize())
+                .setTotal(count)
                 .setDataList(result)
                 ;
         return pageVo;

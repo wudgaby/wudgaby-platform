@@ -1,6 +1,7 @@
 package com.wudgaby.platform.webcore.support;
 
 import org.springframework.web.context.ContextLoader;
+import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
@@ -31,6 +32,10 @@ public class RequestContextHolderSupport {
 
     public static ServletRequestAttributes getRequestAttributes() {
         return ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes());
+    }
+
+    public static WebApplicationContext getWebContext() {
+        return ContextLoader.getCurrentWebApplicationContext();
     }
 
     public static ServletContext getServletContext() {

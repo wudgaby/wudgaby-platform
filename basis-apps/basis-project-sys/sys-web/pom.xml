@@ -359,7 +359,7 @@
         </plugins>
     </build>
 
-    <!--<profiles>
+    <profiles>
         <profile>
             <id>dev</id>
             <properties>
@@ -381,5 +381,5 @@
                 <profile.active>prod</profile.active>
             </properties>
         </profile>
-    </profiles>-->
+    </profiles>
 </project>

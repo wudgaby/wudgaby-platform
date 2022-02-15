@@ -67,7 +67,7 @@ public class FlowableTaskController {
         params.setUserCode(userId);
 
         PageForm pageForm = new PageForm();
-        pageForm.setPageCount(100L);
+        pageForm.setPageSize(100L);
         pageForm.setPageNum(1L);
 
         Page<TaskVo> page = flowableTaskService.getApplyingTasks(params, pageForm);
@@ -85,7 +85,7 @@ public class FlowableTaskController {
         params.setUserCode(userId);
 
         PageForm pageForm = new PageForm();
-        pageForm.setPageCount(100L);
+        pageForm.setPageSize(100L);
         pageForm.setPageNum(1L);
 
         Page<TaskVo> page = flowableTaskService.getApplyedTasks(params, pageForm);

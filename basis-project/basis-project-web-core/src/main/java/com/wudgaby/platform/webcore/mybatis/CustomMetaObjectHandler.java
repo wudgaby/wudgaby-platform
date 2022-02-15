@@ -1,5 +1,6 @@
-package com.wudgaby.platform.webcore.support;
+package com.wudgaby.platform.webcore.mybatis;
 
+import cn.hutool.core.util.ObjectUtil;
 import com.baomidou.mybatisplus.core.handlers.MetaObjectHandler;
 import com.wudgaby.platform.core.constant.SystemConstant;
 import com.wudgaby.platform.security.core.SecurityUtils;
@@ -19,7 +20,6 @@ import java.util.Optional;
  * @Date 2019/7/3 0003 12:08
  **/
 @Slf4j
-@Component
 public class CustomMetaObjectHandler implements MetaObjectHandler {
     private static final String CREATE_TIME_VALUE = "createTime";
     private static final String UPDATE_TIME_VALUE = "updateTime";
@@ -29,17 +29,24 @@ public class CustomMetaObjectHandler implements MetaObjectHandler {
 
     @Override
     public void insertFill(MetaObject metaObject) {
-        this.strictInsertFill(metaObject, CREATE_TIME_VALUE, Date.class, new Date());
+        Object createTime = metaObject.getValue(CREATE_TIME_VALUE);
+        if(ObjectUtil.isNull(createTime)) {
+            this.strictInsertFill(metaObject, CREATE_TIME_VALUE, Date.class, new Date());
+        }
 
-        String account = Optional.ofNullable(SecurityUtils.getCurrentUser()).map(UserInfo::getUsername).orElse(SystemConstant.SYSTEM);
-        this.strictInsertFill(metaObject, CREATE_BY_VALUE, String.class, account);
+        this.strictInsertFill(metaObject, CREATE_BY_VALUE, String.class, getLoginUsername());
     }
 
     @Override
     public void updateFill(MetaObject metaObject) {
         this.strictUpdateFill(metaObject, UPDATE_TIME_VALUE, Date.class, new Date());
+        this.strictUpdateFill(metaObject, UPDATE_BY_VALUE, String.class, getLoginUsername());
+    }
 
-        String account = Optional.ofNullable(SecurityUtils.getCurrentUser()).map(UserInfo::getUsername).orElse(SystemConstant.SYSTEM);
-        this.strictUpdateFill(metaObject, UPDATE_BY_VALUE, String.class, account);
+    /**
+     * 获取de
+     */
+    private String getLoginUsername() {
+        return Optional.ofNullable(SecurityUtils.getCurrentUser()).map(UserInfo::getUsername).orElse(SystemConstant.SYSTEM);
     }
 }

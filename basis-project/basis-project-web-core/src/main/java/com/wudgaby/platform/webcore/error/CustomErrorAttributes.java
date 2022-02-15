@@ -17,7 +17,7 @@ import java.util.Map;
  * @author yubaoshan
  * @date 2020/4/14 22:21
  */
-public class SnowyErrorAttributes extends DefaultErrorAttributes {
+public class CustomErrorAttributes extends DefaultErrorAttributes {
 
     @Override
     public Map<String, Object> getErrorAttributes(WebRequest webRequest, ErrorAttributeOptions attributeOptions) {

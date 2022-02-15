@@ -44,7 +44,7 @@ public class BaseRoleController {
     @ApiOperation(value = "获取角色分页列表")
     @GetMapping("/page")
     public ApiPageResult<IPage<BaseRole>> page(PageForm pageForm){
-        return ApiPageResult.success(baseRoleService.page(new Page(pageForm.getPageNum(), pageForm.getPageCount())));
+        return ApiPageResult.success(baseRoleService.page(new Page(pageForm.getPageNum(), pageForm.getPageSize())));
     }
 
     @ApiOperation(value = "获取角色下所有用户")

@@ -45,7 +45,7 @@ public class SysConfigController {
     @ApiOperation("系统配置列表")
     @GetMapping
     public ApiPageResult<SysConfig> listSysConfig(PageForm pageForm){
-        IPage<SysConfig> page = new Page<>(pageForm.getPageNum(), pageForm.getPageCount());
+        IPage<SysConfig> page = new Page<>(pageForm.getPageNum(), pageForm.getPageSize());
         sysConfigService.page(page);
         return ApiPageResult.success(page);
     }

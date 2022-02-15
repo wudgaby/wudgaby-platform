@@ -4,6 +4,7 @@ import com.wudgaby.platform.core.result.enums.ApiResultCode;
 import com.wudgaby.platform.core.result.enums.SystemResultCode;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.ToString;
 import lombok.experimental.Accessors;
 
 /**
@@ -16,6 +17,7 @@ import lombok.experimental.Accessors;
 @Data
 @Accessors(chain = true)
 @EqualsAndHashCode(callSuper = true)
+@ToString(callSuper = true)
 public class BusinessException extends RuntimeException {
     private static final ApiResultCode BIZ_FAILURE = SystemResultCode.BIZ_FAILURE;
     protected int errorCode = BIZ_FAILURE.getCode();

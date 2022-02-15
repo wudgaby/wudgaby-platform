@@ -2,8 +2,9 @@ package com.wudgaby.platform.simplesecurity;
 
 import com.google.common.collect.Sets;
 import com.wudgaby.platform.core.util.AssertUtil;
-import com.wudgaby.platform.simplesecurity.ext.MetaResource;
-import com.wudgaby.platform.simplesecurity.ext.RequestContextHolderSupport;
+import com.wudgaby.platform.security.core.MetaResource;
+import com.wudgaby.platform.security.core.UserInfo;
+import com.wudgaby.platform.webcore.support.RequestContextHolderSupport;
 import org.apache.commons.collections4.CollectionUtils;
 
 import java.util.*;
@@ -22,7 +23,7 @@ public abstract class AbstractSimpleSecurityService implements SimpleSecuritySer
      */
     @Override
     public Collection<String> getPermissionList() {
-        LoginUser loginUser = (LoginUser) RequestContextHolderSupport.getRequest().getSession().getAttribute(SecurityConst.SESSION_LOGINED_USER);
+        UserInfo loginUser = (UserInfo) RequestContextHolderSupport.getRequest().getSession().getAttribute(SecurityConst.SESSION_LOGINED_USER);
         return Optional.ofNullable(loginUser).map(u -> u.getAuthorities()).orElse(Collections.emptyList());
     }
 
@@ -32,13 +33,13 @@ public abstract class AbstractSimpleSecurityService implements SimpleSecuritySer
      */
     @Override
     public Collection<String> getRoleList() {
-        LoginUser loginUser = (LoginUser) RequestContextHolderSupport.getRequest().getSession().getAttribute(SecurityConst.SESSION_LOGINED_USER);
+        UserInfo loginUser = (UserInfo) RequestContextHolderSupport.getRequest().getSession().getAttribute(SecurityConst.SESSION_LOGINED_USER);
         return Optional.ofNullable(loginUser).map(u -> u.getRoles()).orElse(Collections.emptyList());
     }
 
     @Override
     public Set<MetaResource> getMetaResourceList() {
-        LoginUser loginUser = (LoginUser) RequestContextHolderSupport.getRequest().getSession().getAttribute(SecurityConst.SESSION_LOGINED_USER);
+        UserInfo loginUser = (UserInfo) RequestContextHolderSupport.getRequest().getSession().getAttribute(SecurityConst.SESSION_LOGINED_USER);
         return Optional.ofNullable(loginUser).map(u -> u.getMetaResources()).orElse(Sets.newHashSet());
     }
 
@@ -48,7 +49,7 @@ public abstract class AbstractSimpleSecurityService implements SimpleSecuritySer
      */
     @Override
     public boolean checkAdmin() {
-        LoginUser loginUser = (LoginUser) RequestContextHolderSupport.getRequest().getSession().getAttribute(SecurityConst.SESSION_LOGINED_USER);
+        UserInfo loginUser = (UserInfo) RequestContextHolderSupport.getRequest().getSession().getAttribute(SecurityConst.SESSION_LOGINED_USER);
         return loginUser.getAdmin();
     }
 
@@ -103,7 +104,7 @@ public abstract class AbstractSimpleSecurityService implements SimpleSecuritySer
      */
     @Override
     public void login(String account, String password) {
-        LoginUser loginUser = getLoginUser(account, password);
+        UserInfo loginUser = getLoginUser(account, password);
         AssertUtil.notNull(loginUser, "账号密码错误");
 
         loginUser.verifyAdmin(getAdminRoleCodes());
