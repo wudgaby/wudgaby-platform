@@ -13,7 +13,6 @@ import com.wudgaby.platform.limiter.core.LimitException;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.ibatis.exceptions.PersistenceException;
-import org.apache.tomcat.util.http.ResponseUtil;
 import org.mybatis.spring.MyBatisSystemException;
 import org.slf4j.MDC;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -253,7 +252,6 @@ public class GlobalExceptionAdvice {
     }
 
     @ExceptionHandler({MyBatisSystemException.class})
-    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     @ResponseBody
     public ApiResult myBatisSystemException(MyBatisSystemException ex) {
         ApiResult apiResult = ApiResult.failure().code(HttpStatus.INTERNAL_SERVER_ERROR.value()).message("数据库异常." + ex.getMessage());
@@ -366,8 +364,8 @@ public class GlobalExceptionAdvice {
         apiResult.path(RequestContextHolderSupport.getRequest().getRequestURI());
 
         if(apiDebug) {
-            apiResult.put("apiDebug.exMessage", ex.getMessage());
-            apiResult.put("apiDebug.details", getStackTraceInfo(ex));
+            apiResult.put("debug.exMessage", ex.getMessage());
+            apiResult.put("debug.details", getStackTraceInfo(ex));
         }
     }
 
