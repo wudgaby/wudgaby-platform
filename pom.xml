@@ -150,6 +150,7 @@
         <module>basis-examples</module>
         <module>basis-apps</module>
         <module>basis-project-dependencies</module>
+        <module>optimistic-lock-spring-boot-starter</module>
     </modules>
 
     <dependencies>
