@@ -19,7 +19,7 @@ public class BasicThreadPoolExecutor {
     /**
      * 核心线程数
      */
-    private static final int CORE_POOL_SIZE = 2;
+    private static final int CORE_POOL_SIZE = 0;
 
     /**
      * 最大线程数
@@ -27,7 +27,7 @@ public class BasicThreadPoolExecutor {
     private static final int MAX_MUM_POOL_SIZE = 1000;
 
     /**
-     * 线程数存活时间
+     * 线程数空闲存活时间
      */
     private static final long KEEP_ALIVE_TIME = 2;
     private static final TimeUnit UNIT = TimeUnit.MINUTES;
