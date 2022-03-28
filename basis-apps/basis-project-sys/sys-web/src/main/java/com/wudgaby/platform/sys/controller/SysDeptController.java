@@ -84,8 +84,8 @@ public class SysDeptController {
             SysDept parentSysDept = sysDeptService.getById(sysDept.getParentId());
             AssertUtil.notNull(parentSysDept, "未知的上级部门");
 
-            String parentIdPath = StringUtils.isBlank(parentSysDept.getParentIds()) ? SymbolConstant.L_SLASH : parentSysDept.getParentIds() + SymbolConstant.L_SLASH;
-            sysDept.setParentIds(parentIdPath + sysDept.getParentId() + SymbolConstant.L_SLASH);
+            String parentIdPath = StringUtils.isBlank(parentSysDept.getParentIds()) ? SymbolConstant.LEFT_DIVIDE : parentSysDept.getParentIds() + SymbolConstant.LEFT_DIVIDE;
+            sysDept.setParentIds(parentIdPath + sysDept.getParentId() + SymbolConstant.LEFT_DIVIDE);
             sysDept.setLevel(parentSysDept.getLevel() + 1);
         }
 

@@ -7,7 +7,7 @@ import com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter;
 import com.alibaba.fastjson.util.TypeUtils;
 import com.wudgaby.platform.core.result.ApiResult;
 import com.wudgaby.platform.utils.LocalDateTimeUtil;
-import com.wudgaby.platform.webcore.support.MySensitiveContextValueFilter;
+import com.wudgaby.platform.webcore.filter.MySensitiveContextValueFilter;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.http.HttpMessageConverters;
 import org.springframework.context.annotation.Bean;

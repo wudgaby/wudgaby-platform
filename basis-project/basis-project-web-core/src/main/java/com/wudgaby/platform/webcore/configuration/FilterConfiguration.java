@@ -1,8 +1,9 @@
 package com.wudgaby.platform.webcore.configuration;
 
+import com.wudgaby.platform.webcore.filter.RunLogFilter;
+import com.wudgaby.platform.webcore.filter.TraceFilter;
 import com.wudgaby.platform.webcore.security.CsrfFilter;
 import com.wudgaby.platform.webcore.security.xss.XssFilter;
-import com.wudgaby.platform.webcore.support.RunLogFilter;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
@@ -22,8 +23,12 @@ import org.springframework.web.filter.CorsFilter;
 @Configuration
 public class FilterConfiguration {
 
+    /**
+     * 请求路径/时长记录过滤器
+     * @return
+     */
     @Bean
-    public FilterRegistrationBean filterRegistrationBean(){
+    public FilterRegistrationBean runLogFilter(){
         FilterRegistrationBean registrationBean = new FilterRegistrationBean();
         registrationBean.setFilter(new RunLogFilter());
         registrationBean.addUrlPatterns("/*");
@@ -31,6 +36,24 @@ public class FilterConfiguration {
         return registrationBean;
     }
 
+    /**
+     * 请求跟踪id过滤器
+     * @return
+     */
+    @Bean
+    public FilterRegistrationBean traceFilter(){
+        FilterRegistrationBean registrationBean = new FilterRegistrationBean();
+        registrationBean.setFilter(new TraceFilter());
+        registrationBean.addUrlPatterns("/*");
+        registrationBean.setOrder(Integer.MIN_VALUE);
+        return registrationBean;
+    }
+
+    /**
+     * 跨域过滤器
+     * @param corsProperties
+     * @return
+     */
     @Bean
     public FilterRegistrationBean corsFilterBean(CorsProperties corsProperties){
         FilterRegistrationBean registrationBean = new FilterRegistrationBean(new CorsFilter(corsConfigurationSource(corsProperties)));
@@ -53,6 +76,10 @@ public class FilterConfiguration {
         return source;
     }
 
+    /**
+     * csrf攻击过滤器
+     * @return
+     */
     @Bean
     @ConditionalOnProperty(value = "csrf.enabled", havingValue = "true", matchIfMissing = true)
     public FilterRegistrationBean csrfFilterBean(){
@@ -63,6 +90,10 @@ public class FilterConfiguration {
         return registrationBean;
     }
 
+    /**
+     * xss攻击过滤器
+     * @return
+     */
     @Bean
     @ConditionalOnProperty(value = "xss.enabled", havingValue = "true", matchIfMissing = true)
     public FilterRegistrationBean xssFilter(){

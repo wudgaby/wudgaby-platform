@@ -40,5 +40,6 @@
         <module>office-spring-boot</module>
         <module>simple-security-spring-boot</module>
         <module>optimistic-lock-spring-boot</module>
+        <module>api-version-spring-boot</module>
     </modules>
 </project>

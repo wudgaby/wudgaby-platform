@@ -46,6 +46,7 @@
         <module>security-sample</module>
         <module>simple-security-spring-boot-sample</module>
         <module>cached-sample</module>
+        <module>api-version-sample</module>
     </modules>
 
     <build>

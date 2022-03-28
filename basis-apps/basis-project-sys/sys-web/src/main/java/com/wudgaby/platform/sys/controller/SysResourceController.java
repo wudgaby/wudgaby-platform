@@ -84,8 +84,8 @@ public class SysResourceController {
             SysResource parentSysRes = sysResourceService.getById(sysResource.getParentId());
             AssertUtil.notNull(parentSysRes, "未知的上级资源");
 
-            String parentIdPath = StringUtils.isBlank(parentSysRes.getParentIds()) ? SymbolConstant.L_SLASH : parentSysRes.getParentIds() + SymbolConstant.L_SLASH;
-            sysResource.setParentIds(parentIdPath + sysResource.getParentId() + SymbolConstant.L_SLASH);
+            String parentIdPath = StringUtils.isBlank(parentSysRes.getParentIds()) ? SymbolConstant.LEFT_DIVIDE : parentSysRes.getParentIds() + SymbolConstant.LEFT_DIVIDE;
+            sysResource.setParentIds(parentIdPath + sysResource.getParentId() + SymbolConstant.LEFT_DIVIDE);
             sysResource.setLevel(parentSysRes.getLevel() + 1);
         }
         sysResourceService.save(sysResource);

@@ -79,8 +79,8 @@ public class SysOrgController {
             SysOrg parentSysOrg = sysOrgService.getById(sysOrg.getParentId());
             AssertUtil.notNull(parentSysOrg, "未知的上级机构");
 
-            String parentIdPath = StringUtils.isBlank(parentSysOrg.getParentIds()) ? SymbolConstant.L_SLASH : parentSysOrg.getParentIds() + SymbolConstant.L_SLASH;
-            sysOrg.setParentIds(parentIdPath + sysOrg.getParentId() + SymbolConstant.L_SLASH);
+            String parentIdPath = StringUtils.isBlank(parentSysOrg.getParentIds()) ? SymbolConstant.LEFT_DIVIDE : parentSysOrg.getParentIds() + SymbolConstant.LEFT_DIVIDE;
+            sysOrg.setParentIds(parentIdPath + sysOrg.getParentId() + SymbolConstant.LEFT_DIVIDE);
             sysOrg.setLevel(parentSysOrg.getLevel() + 1);
         }
 

@@ -142,6 +142,7 @@
         <shedlock.version>4.30.0</shedlock.version>
         <poi-tl.version>1.11.0</poi-tl.version>
         <common-random.version>1.0.11</common-random.version>
+        <reflections.version>0.10.2</reflections.version>
     </properties>
 
     <modules>
@@ -150,7 +151,6 @@
         <module>basis-examples</module>
         <module>basis-apps</module>
         <module>basis-project-dependencies</module>
-        <module>optimistic-lock-spring-boot-starter</module>
     </modules>
 
     <dependencies>
@@ -241,6 +241,12 @@
             <groupId>commons-codec</groupId>
             <artifactId>commons-codec</artifactId>
             <version>${commons-codes.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.reflections</groupId>
+            <artifactId>reflections</artifactId>
+            <version>${reflections.version}</version>
         </dependency>
     </dependencies>
 

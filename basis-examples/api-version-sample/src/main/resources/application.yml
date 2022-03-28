@@ -1,0 +1,9 @@
+server:
+  servlet:
+    context-path: /aa
+
+api:
+  version:
+    type: uri
+    uri-location: begin
+    uri-prefix: /api
