@@ -1,7 +1,7 @@
 package com.wudgaby.platform.webcore.filter;
 
-import cn.hutool.extra.servlet.ServletUtil;
 import com.wudgaby.platform.core.config.ExcludeRegistry;
+import com.wudgaby.platform.utils.IpUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.util.AntPathMatcher;
 import org.springframework.util.PathMatcher;
@@ -55,7 +55,9 @@ public class RunLogFilter implements Filter {
             }
         }
 
-        log.info("请求开始. 请求IP: <{}> <{}> <{}>", ServletUtil.getClientIP(httpServletRequest), httpServletRequest.getMethod(), httpServletRequest.getRequestURI());
+        String reqIp = IpUtil.getIp(httpServletRequest);
+
+        log.info("请求开始. 请求IP: <{}> <{}> <{}>", reqIp, httpServletRequest.getMethod(), httpServletRequest.getRequestURI());
         StopWatch stopWatch = new StopWatch();
         stopWatch.start();
 
@@ -66,7 +68,7 @@ public class RunLogFilter implements Filter {
         if(stopWatch.getTotalTimeMillis() > MAX_RUNNING_MS){
             tip = " [优化] ";
         }
-        log.info("请求结束.{} 请求IP: <{}> <{}> <{}> 执行时间: {} MS", tip, ServletUtil.getClientIP(httpServletRequest), httpServletRequest.getMethod(), httpServletRequest.getRequestURI(), stopWatch.getTotalTimeMillis());
+        log.info("请求结束.{} 请求IP: <{}> <{}> <{}> 执行时间: {} MS", tip, reqIp, httpServletRequest.getMethod(), httpServletRequest.getRequestURI(), stopWatch.getTotalTimeMillis());
     }
 
     @Override

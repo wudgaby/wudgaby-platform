@@ -24,19 +24,6 @@ import org.springframework.web.filter.CorsFilter;
 public class FilterConfiguration {
 
     /**
-     * 请求路径/时长记录过滤器
-     * @return
-     */
-    @Bean
-    public FilterRegistrationBean runLogFilter(){
-        FilterRegistrationBean registrationBean = new FilterRegistrationBean();
-        registrationBean.setFilter(new RunLogFilter());
-        registrationBean.addUrlPatterns("/*");
-        registrationBean.setOrder(Integer.MIN_VALUE);
-        return registrationBean;
-    }
-
-    /**
      * 请求跟踪id过滤器
      * @return
      */
@@ -44,6 +31,19 @@ public class FilterConfiguration {
     public FilterRegistrationBean traceFilter(){
         FilterRegistrationBean registrationBean = new FilterRegistrationBean();
         registrationBean.setFilter(new TraceFilter());
+        registrationBean.addUrlPatterns("/*");
+        registrationBean.setOrder(Integer.MIN_VALUE);
+        return registrationBean;
+    }
+
+    /**
+     * 请求路径/时长记录过滤器
+     * @return
+     */
+    @Bean
+    public FilterRegistrationBean runLogFilter(){
+        FilterRegistrationBean registrationBean = new FilterRegistrationBean();
+        registrationBean.setFilter(new RunLogFilter());
         registrationBean.addUrlPatterns("/*");
         registrationBean.setOrder(Integer.MIN_VALUE);
         return registrationBean;
