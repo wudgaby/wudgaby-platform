@@ -40,7 +40,8 @@ public class VersionedRequestMappingHandlerMapping extends RequestMappingHandler
             return null;
         }
         ApiVersion apiVersion = AnnotationUtils.findAnnotation(target, ApiVersion.class);
-        if (apiVersion == null) {
+        IgnoreApiVersion ignoreApiVersion = AnnotationUtils.getAnnotation(target, IgnoreApiVersion.class);
+        if (apiVersion == null || ignoreApiVersion != null) {
             return null;
         }
         String version = apiVersion.value().trim();
@@ -53,9 +54,14 @@ public class VersionedRequestMappingHandlerMapping extends RequestMappingHandler
      */
     @Override
     protected RequestMappingInfo getMappingForMethod(Method method, Class<?> handlerType) {
-        RequestMappingInfo info = this.createRequestMappingInfo(method);
+        RequestCondition<?> condition = this.getCustomMethodCondition(method);
+        if(condition == null) {
+            condition = this.getCustomTypeCondition(handlerType);
+        }
+
+        RequestMappingInfo info = this.createRequestMappingInfo(method, condition);
         if (info != null) {
-            RequestMappingInfo typeInfo = this.createRequestMappingInfo(handlerType);
+            RequestMappingInfo typeInfo = this.createRequestMappingInfo(handlerType, condition);
             if (typeInfo != null) {
                 info = typeInfo.combine(info);
             }
@@ -63,10 +69,11 @@ public class VersionedRequestMappingHandlerMapping extends RequestMappingHandler
             // 指定URL前缀
             if (apiVersionProperties.getType() == ApiVersionProperties.Type.URI) {
                 ApiVersion apiVersion = AnnotationUtils.getAnnotation(method, ApiVersion.class);
+                IgnoreApiVersion ignoreApiVersion = AnnotationUtils.getAnnotation(method, IgnoreApiVersion.class);
                 if (apiVersion == null) {
                     apiVersion = AnnotationUtils.getAnnotation(handlerType, ApiVersion.class);
                 }
-                if (apiVersion != null) {
+                if (apiVersion != null && ignoreApiVersion == null) {
                     String version = apiVersion.value().trim();
                     InnerUtils.checkVersionNumber(version, method);
 
@@ -81,15 +88,21 @@ public class VersionedRequestMappingHandlerMapping extends RequestMappingHandler
                     }
                 }
             }
+            log.info("[API-VERSION] {}", info);
         }
 
         return info;
     }
 
-    private RequestMappingInfo createRequestMappingInfo(AnnotatedElement element) {
+    /*private RequestMappingInfo createRequestMappingInfo(AnnotatedElement element) {
         RequestMapping requestMapping = AnnotatedElementUtils.findMergedAnnotation(element, RequestMapping.class);
         RequestCondition<?> condition = element instanceof Class ? this.getCustomTypeCondition((Class) element) : this.getCustomMethodCondition((Method) element);
+        log.info("{}, {}, {}", element, requestMapping, condition);
+        return requestMapping != null ? this.createRequestMappingInfo(requestMapping, condition) : null;
+    }*/
+
+    private RequestMappingInfo createRequestMappingInfo(AnnotatedElement element, RequestCondition<?> condition) {
+        RequestMapping requestMapping = AnnotatedElementUtils.findMergedAnnotation(element, RequestMapping.class);
         return requestMapping != null ? this.createRequestMappingInfo(requestMapping, condition) : null;
     }
-
 }

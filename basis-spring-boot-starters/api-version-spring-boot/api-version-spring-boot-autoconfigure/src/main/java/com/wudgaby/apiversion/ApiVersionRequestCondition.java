@@ -1,11 +1,15 @@
 package com.wudgaby.apiversion;
 
+import cn.hutool.core.comparator.VersionComparator;
 import lombok.Getter;
 import lombok.NonNull;
+import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.web.servlet.mvc.condition.RequestCondition;
 
 import javax.servlet.http.HttpServletRequest;
 
+@Slf4j
 @Getter
 public class ApiVersionRequestCondition implements RequestCondition<ApiVersionRequestCondition> {
 
@@ -31,21 +35,27 @@ public class ApiVersionRequestCondition implements RequestCondition<ApiVersionRe
     @Override
     public ApiVersionRequestCondition getMatchingCondition(HttpServletRequest request) {
         ApiVersionProperties.Type type = apiVersionProperties.getType();
-        String version = null;
+        String reqVersion = null;
         switch (type) {
             case HEADER:
-                version = request.getHeader(apiVersionProperties.getHeader());
+                reqVersion = request.getHeader(apiVersionProperties.getHeader());
                 break;
             case PARAM:
-                version = request.getParameter(apiVersionProperties.getParam());
+                reqVersion = request.getParameter(apiVersionProperties.getParam());
                 break;
             default:
                 //nothing
                 break;
         }
-        boolean match = version != null && version.length() > 0 && version.trim().equals(apiVersion);
-        if (match) {
-            return this;
+
+        if(StringUtils.isNotBlank(reqVersion)) {
+            if(reqVersion.trim().equals(apiVersion)) {
+                return this;
+            }
+            //使用最新版本
+            if(VersionComparator.INSTANCE.compare(apiVersion, reqVersion) > 0) {
+                return this;
+            }
         }
         return null;
     }

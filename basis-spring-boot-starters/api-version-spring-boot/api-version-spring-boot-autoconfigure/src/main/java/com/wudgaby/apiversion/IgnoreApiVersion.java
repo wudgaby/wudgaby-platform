@@ -6,19 +6,10 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * 标示当前请求版本
+ * 忽略版本控制
  * @author
  */
-@Target({ElementType.TYPE, ElementType.METHOD})
+@Target({ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)
-public @interface ApiVersion {
-    /**
-     * 只支持语义化版本
-     * 1
-     * 1.1
-     * 1.1.1
-     * @return
-     */
-    String value();
-
+public @interface IgnoreApiVersion {
 }

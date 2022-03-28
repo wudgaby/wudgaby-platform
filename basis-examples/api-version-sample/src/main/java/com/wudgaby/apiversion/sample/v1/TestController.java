@@ -1,6 +1,7 @@
 package com.wudgaby.apiversion.sample.v1;
 
 import com.wudgaby.apiversion.ApiVersion;
+import com.wudgaby.apiversion.IgnoreApiVersion;
 import com.wudgaby.platform.core.result.ApiResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 @ApiVersion("1.0")
 @RestController
 public class TestController {
+
     @GetMapping("/hello")
     public ApiResult hello(){
         return ApiResult.success("hello1.0");
@@ -23,5 +25,11 @@ public class TestController {
     @GetMapping("/hello")
     public ApiResult hello11(){
         return ApiResult.success("hello1.1");
+    }
+
+    @IgnoreApiVersion
+    @GetMapping("/hello")
+    public ApiResult helloNone(){
+        return ApiResult.success("hello 无版本管理");
     }
 }

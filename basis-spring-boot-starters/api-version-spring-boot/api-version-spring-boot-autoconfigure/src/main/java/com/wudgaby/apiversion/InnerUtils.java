@@ -2,7 +2,7 @@ package com.wudgaby.apiversion;
 
 import java.util.regex.Pattern;
 
-class InnerUtils {
+public class InnerUtils {
 
     private final static Pattern VERSION_NUMBER_PATTERN = Pattern.compile("^\\d+(\\.\\d+){0,2}$");
 
