@@ -23,6 +23,7 @@ import org.springframework.context.annotation.AnnotationBeanNameGenerator;
 import org.springframework.util.StringUtils;
 
 /**
+ * 解决同名bean问题
  * @author White
  */
 public class SpringBeanNameGenerator extends AnnotationBeanNameGenerator {
