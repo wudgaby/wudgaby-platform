@@ -54,11 +54,7 @@ public class VersionedRequestMappingHandlerMapping extends RequestMappingHandler
      */
     @Override
     protected RequestMappingInfo getMappingForMethod(Method method, Class<?> handlerType) {
-        RequestCondition<?> condition = this.getCustomMethodCondition(method);
-        if(condition == null) {
-            condition = this.getCustomTypeCondition(handlerType);
-        }
-
+        RequestCondition<?> condition = getRequestCondition(method, handlerType);
         RequestMappingInfo info = this.createRequestMappingInfo(method, condition);
         if (info != null) {
             RequestMappingInfo typeInfo = this.createRequestMappingInfo(handlerType, condition);
@@ -94,12 +90,21 @@ public class VersionedRequestMappingHandlerMapping extends RequestMappingHandler
         return info;
     }
 
-    /*private RequestMappingInfo createRequestMappingInfo(AnnotatedElement element) {
+    private RequestMappingInfo createRequestMappingInfo(AnnotatedElement element) {
         RequestMapping requestMapping = AnnotatedElementUtils.findMergedAnnotation(element, RequestMapping.class);
         RequestCondition<?> condition = element instanceof Class ? this.getCustomTypeCondition((Class) element) : this.getCustomMethodCondition((Method) element);
         log.info("{}, {}, {}", element, requestMapping, condition);
         return requestMapping != null ? this.createRequestMappingInfo(requestMapping, condition) : null;
-    }*/
+    }
+
+    private RequestCondition<?> getRequestCondition(Method method, Class<?> handlerType){
+        RequestCondition<?> condition = this.getCustomMethodCondition(method);
+        IgnoreApiVersion ignoreApiVersion = AnnotationUtils.getAnnotation(method, IgnoreApiVersion.class);
+        if(condition == null && ignoreApiVersion == null) {
+            condition = this.getCustomTypeCondition(handlerType);
+        }
+        return condition;
+    }
 
     private RequestMappingInfo createRequestMappingInfo(AnnotatedElement element, RequestCondition<?> condition) {
         RequestMapping requestMapping = AnnotatedElementUtils.findMergedAnnotation(element, RequestMapping.class);

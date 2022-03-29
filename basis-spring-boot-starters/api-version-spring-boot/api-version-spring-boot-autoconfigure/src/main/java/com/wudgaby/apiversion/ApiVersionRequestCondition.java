@@ -29,7 +29,9 @@ public class ApiVersionRequestCondition implements RequestCondition<ApiVersionRe
 
     @Override
     public int compareTo(ApiVersionRequestCondition other, HttpServletRequest request) {
-        return other.getApiVersion().compareTo(getApiVersion());
+        //return other.getApiVersion().compareTo(getApiVersion());
+        //排序,选最大版本
+        return VersionComparator.INSTANCE.compare(other.apiVersion, getApiVersion());
     }
 
     @Override
@@ -52,8 +54,8 @@ public class ApiVersionRequestCondition implements RequestCondition<ApiVersionRe
             if(reqVersion.trim().equals(apiVersion)) {
                 return this;
             }
-            //使用最新版本
-            if(VersionComparator.INSTANCE.compare(apiVersion, reqVersion) > 0) {
+            //使用最新版本. 但是中间版本会选中最近版本. 如已存在1.1, 2.0 版本时. reqVersion=1.5. 匹配不到2.0版本.
+            if(VersionComparator.INSTANCE.compare(reqVersion, apiVersion) >= 0) {
                 return this;
             }
         }

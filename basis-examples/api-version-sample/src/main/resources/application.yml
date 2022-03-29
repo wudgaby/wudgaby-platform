@@ -4,6 +4,6 @@ server:
 
 api:
   version:
-    type: uri
+    type: param
     uri-location: begin
     uri-prefix: /api
