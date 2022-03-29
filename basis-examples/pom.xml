@@ -47,6 +47,7 @@
         <module>simple-security-spring-boot-sample</module>
         <module>cached-sample</module>
         <module>api-version-sample</module>
+        <module>redis-alone-spring-boot-sample</module>
     </modules>
 
     <build>

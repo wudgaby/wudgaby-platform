@@ -1,0 +1,19 @@
+spring:
+  redis:
+    alones:
+      write:
+        database: 1
+        host: 127.0.0.1
+        port: 6379
+        timeout: 10s
+        lettuce:
+          pool:
+            maxActive: 2
+      read:
+        database: 2
+        host: 127.0.0.1
+        port: 6379
+        timeout: 10s
+        lettuce:
+          pool:
+            maxActive: 2
