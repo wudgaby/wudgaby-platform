@@ -53,7 +53,7 @@ public class IpAccessFilter implements Filter {
             pass = isPass(reqIp);
         }
 
-        log.info("IP访问控制处理结束. 请求IP: <{}> <{}> 花费时间: {} MS", reqIp, pass, timer.interval());
+        log.info("IP访问控制处理结束. 请求IP: <{}> <{}> 花费时间: {} MS", reqIp, pass ? "通过" : "限制", timer.interval());
 
         if(pass) {
             chain.doFilter(request,response);
