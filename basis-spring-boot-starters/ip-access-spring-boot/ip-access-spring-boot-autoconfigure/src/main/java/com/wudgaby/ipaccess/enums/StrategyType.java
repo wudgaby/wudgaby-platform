@@ -7,7 +7,7 @@ package com.wudgaby.ipaccess.enums;
  * @desc : 限制策略
  */
 public enum StrategyType {
-    AUTHORITY_WHITE,
-    AUTHORITY_BLACK,
-    AUTHORITY_MIXTURE;
+    /**白名单*/AUTHORITY_WHITE,
+    /**黑名单*/AUTHORITY_BLACK,
+    /**混合模式*/AUTHORITY_MIXTURE;
 }
