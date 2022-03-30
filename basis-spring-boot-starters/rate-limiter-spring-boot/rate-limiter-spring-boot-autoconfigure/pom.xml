@@ -30,12 +30,6 @@
         </dependency>
 
         <dependency>
-            <groupId>org.apache.tomcat.embed</groupId>
-            <artifactId>tomcat-embed-core</artifactId>
-            <version>9.0.31</version>
-        </dependency>
-
-        <dependency>
             <groupId>com.wudgaby.platform</groupId>
             <artifactId>rate-limiter-core</artifactId>
             <version>${revision}</version>

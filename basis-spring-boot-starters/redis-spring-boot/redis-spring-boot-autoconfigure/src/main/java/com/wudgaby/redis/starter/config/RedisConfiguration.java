@@ -27,6 +27,7 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
 import org.springframework.data.redis.serializer.RedisSerializationContext;
+import org.springframework.data.redis.serializer.RedisSerializer;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
 
 import java.lang.reflect.Method;
@@ -45,7 +46,7 @@ import java.util.Map;
 @AutoConfigureOrder(Ordered.HIGHEST_PRECEDENCE)
 @AutoConfigureBefore(RedisAutoConfiguration.class)
 @ConditionalOnClass(value = {RedisAutoConfiguration.class})
-@EnableConfigurationProperties(RedisProperties.class)
+@EnableConfigurationProperties(RedisProp.class)
 public class RedisConfiguration {
     @Bean
     @ConditionalOnMissingBean(RedisSupport.class)
@@ -55,18 +56,17 @@ public class RedisConfiguration {
 
     @Bean
     @ConditionalOnMissingBean(name = "redisTemplate")
-    public RedisTemplate redisTemplate(RedisConnectionFactory factory, RedisProperties redisProperties) {
+    public RedisTemplate redisTemplate(RedisConnectionFactory factory, RedisProp redisProperties) {
         // 创建一个模板类
         RedisTemplate<String, Object> template = new RedisTemplate<>();
         // 将刚才的redis连接工厂设置到模板类中
         template.setConnectionFactory(factory);
 
         if (redisProperties.getKeyConvert() == RedisConvertType.STRING) {
-            StringRedisSerializer stringRedisSerializer = new StringRedisSerializer();
             // 设置key的序列化器
-            template.setKeySerializer(stringRedisSerializer);
+            template.setKeySerializer(RedisSerializer.string());
             // hash的key也采用String的序列化方式
-            template.setHashKeySerializer(stringRedisSerializer);
+            template.setHashKeySerializer(RedisSerializer.string());
         }
 
         if (redisProperties.getValueConvert() == RedisConvertType.JACKSON) {
@@ -89,9 +89,8 @@ public class RedisConfiguration {
             template.setValueSerializer(fastJsonRedisSerializer);
             template.setHashValueSerializer(fastJsonRedisSerializer);
         } else if (redisProperties.getValueConvert() == RedisConvertType.STRING) {
-            StringRedisSerializer stringRedisSerializer = new StringRedisSerializer();
-            template.setValueSerializer(stringRedisSerializer);
-            template.setHashValueSerializer(stringRedisSerializer);
+            template.setValueSerializer(RedisSerializer.string());
+            template.setHashValueSerializer(RedisSerializer.string());
         }
         template.afterPropertiesSet();
         return template;

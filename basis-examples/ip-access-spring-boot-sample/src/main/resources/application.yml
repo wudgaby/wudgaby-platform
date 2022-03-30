@@ -1,0 +1,8 @@
+ip:
+  access:
+    enabled: true
+    black-list:
+      - 192.168.50.1-192.168.50.254
+      - 192.168.1.1/24
+    white-list:
+      - 192.168.50.66
