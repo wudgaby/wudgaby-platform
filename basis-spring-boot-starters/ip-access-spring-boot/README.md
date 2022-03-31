@@ -16,3 +16,17 @@ snapshot版本需引入
     </repository>
 </repositories>
 ```
+
+yml文件
+```
+ip:
+  access:
+    enabled: true
+    black-list:
+      - 192.168.50.1-192.168.50.254
+      - 192.168.1.1/24
+      - 192.168.2.1
+    white-list:
+      - 192.168.50.66
+    strategy: AUTHORITY_MIXTURE
+```

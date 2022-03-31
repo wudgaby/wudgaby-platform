@@ -37,10 +37,7 @@ import org.springframework.data.redis.serializer.RedisSerializer;
  */
 @Slf4j
 @Configuration
-@AutoConfigureOrder(Ordered.HIGHEST_PRECEDENCE)
-@AutoConfigureBefore(RedisAutoConfiguration.class)
 @ConditionalOnClass(value = {RedisAutoConfiguration.class})
-@EnableConfigurationProperties
 public class RedisAloneConfiguration implements ApplicationContextAware {
 
     @Override
