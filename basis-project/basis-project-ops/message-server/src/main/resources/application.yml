@@ -12,13 +12,13 @@ spring:
     dingers:
       # 使用钉钉机器人, 请根据自己机器人配置信息进行修改
       dingtalk:
-        token-id: 4ae0756d9a933aea542a906593310e9396f2ad22cf9777444e8c16b2d82852ff
+        token-id: xx
         secret: xx
 
 sms:
-  app-id: 1400168812
-  app-key: 82f16ac557da5cce8a26816a7b485fd0
-  sign: 安络科技
+  app-id: xx
+  app-key: xx
+  sign: xx
 
 alarm:
   send-mail: false
@@ -27,17 +27,17 @@ alarm:
 
 #极光账号
 jpush:
-  app-key: 9ee1309cd2110d5d006d8d25
-  app-secure: 830e9ddf56873a31b850b11f
+  app-key: xx
+  app-secure: xx
 
 #阿里账号
 ali:
-  accessKeyId: LTAIRJ3Ab3nLv0Hw
-  accessKeySecret: yGdTOazedeJY1fsv7cmjxVQvFfP6B4
+  accessKeyId: xx
+  accessKeySecret: xx
 
 #阿里推送
 ali-push:
-  app-key: 29128818
-  app-secure: 727805900aa933db4df931e46a18f7f7
+  app-key: xx
+  app-secure: xx
   #ios才有
   apns-env: DEV
