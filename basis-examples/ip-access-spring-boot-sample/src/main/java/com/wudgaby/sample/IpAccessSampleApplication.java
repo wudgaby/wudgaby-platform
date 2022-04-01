@@ -1,9 +1,12 @@
 package com.wudgaby.sample;
 
+import cn.hutool.core.net.Ipv4Util;
+import com.wudgaby.ipaccess.IpManage;
+import com.wudgaby.ipaccess.enums.BwType;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @author :  wudgaby
@@ -19,8 +22,27 @@ public class IpAccessSampleApplication {
         application.run(args);
     }
 
+    @Autowired
+    private IpManage ipManage;
+
     @GetMapping()
     public String hi(){
         return "hi";
+    }
+
+    @PostMapping("/addIp")
+    public String addIp(@RequestParam String[] ips, @RequestParam BwType bwType){
+        for(String ip : ips) {
+            ipManage.batchAdd(Ipv4Util.list(ip, false), bwType);
+        }
+        return "success";
+    }
+
+    @DeleteMapping("delIp")
+    public String delIp(@RequestParam String[] ips, @RequestParam BwType bwType){
+        for(String ip : ips) {
+            ipManage.batchDel(Ipv4Util.list(ip, false), bwType);
+        }
+        return "success";
     }
 }

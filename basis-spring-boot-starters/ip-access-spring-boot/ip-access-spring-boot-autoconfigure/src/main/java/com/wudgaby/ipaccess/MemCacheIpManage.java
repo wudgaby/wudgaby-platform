@@ -31,6 +31,7 @@ public class MemCacheIpManage implements IpManage{
         if(type == null || StrUtil.isBlank(ip)) {
             return;
         }
+
         if(type == BwType.BLACK) {
             BLACK_CACHE.put(ip, ip);
         } else {
@@ -68,6 +69,17 @@ public class MemCacheIpManage implements IpManage{
     }
 
     @Override
+    public void batchDel(Collection<String> ipList, BwType type) {
+        if(type == null || CollectionUtil.isEmpty(ipList)) {
+            return;
+        }
+
+        ipList.forEach(ip -> {
+            del(ip, type);
+        });
+    }
+
+    @Override
     public Collection<String> list(BwType type) {
         if(type == null) {
             return Sets.newHashSet();
@@ -82,8 +94,16 @@ public class MemCacheIpManage implements IpManage{
 
     @Override
     public boolean containIp(String ip, BwType type) {
-        if(type == null || StrUtil.isBlank(ip)) {
+        if(type == null) {
             return false;
+        }
+
+        if(StrUtil.isBlank(ip)){
+            return true;
+        }
+
+        if(CollectionUtil.isEmpty(this.list(type))){
+            return true;
         }
 
         if(type == BwType.BLACK) {

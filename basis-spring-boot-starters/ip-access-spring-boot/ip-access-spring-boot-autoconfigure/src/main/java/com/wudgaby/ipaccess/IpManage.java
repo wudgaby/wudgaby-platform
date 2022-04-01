@@ -34,6 +34,13 @@ public interface IpManage {
     void del(@NonNull String ip, @NonNull BwType type);
 
     /**
+     * 删除名单
+     * @param ip
+     * @param type
+     */
+    void batchDel(@NonNull Collection<String> ipList, @NonNull BwType type);
+
+    /**
      * 获取名单列表
      * @param type
      */
