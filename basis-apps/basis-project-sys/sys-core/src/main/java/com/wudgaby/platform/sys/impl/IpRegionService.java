@@ -38,8 +38,6 @@ public class IpRegionService {
             FileUtils.copyInputStreamToFile(IpRegionService.class.getClassLoader().getResourceAsStream("data/ip2region.db"), file);
             config = new DbConfig();
             searcher = new DbSearcher(config, dbPath);
-            log.info("bean [{}]", config);
-            log.info("bean [{}]", searcher);
         } catch (Exception e) {
             log.error("init ip region error:{}", e);
         }
