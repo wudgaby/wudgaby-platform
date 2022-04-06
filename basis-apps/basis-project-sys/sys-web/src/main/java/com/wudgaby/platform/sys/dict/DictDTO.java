@@ -13,11 +13,11 @@ public class DictDTO {
     /**
      * 字典id
      */
-    private Integer id;
+    private Long id;
     /**
      * 字典父id
      */
-    private Integer pid;
+    private Long pid;
     /**
      * 字典标签
      */

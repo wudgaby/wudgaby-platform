@@ -11,7 +11,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.ApplicationListener;
 import org.springframework.core.env.ConfigurableEnvironment;
-import org.springframework.stereotype.Component;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -27,13 +26,17 @@ import java.util.stream.Collectors;
  * @desc : 字典初始化缓存至内存
  */
 @Slf4j
-@Component
+@Deprecated
 public class DictInitListener implements ApplicationListener<ApplicationReadyEvent>{
     private static final String DICT_TYPE_LIST_SQL = "select id, `name`,`type`, sort from sys_dict_type where status = 1 and deleted = 0 order by sort asc";
     private static final String DICT_ITEM_LIST_SQL = "select id, parent_id, dict_type,dict_name,dict_value,sort from sys_dict_item where status = 1 and deleted = 0 order by sort asc";
 
     @Override
     public void onApplicationEvent(ApplicationReadyEvent event) {
+        load(event);
+    }
+
+    public void load(ApplicationReadyEvent event){
         log.info("加载字典数据到内存.");
         TimeInterval interval = new TimeInterval();
         ConfigurableEnvironment environment = event.getApplicationContext().getEnvironment();
@@ -63,7 +66,7 @@ public class DictInitListener implements ApplicationListener<ApplicationReadyEve
             // 字典类型
             Map<String, DictDTO> dictTypeMap = dictTypeList.stream().map(entity -> {
                 DictDTO dictDTO = new DictDTO();
-                dictDTO.setId(entity.getInt("id"));
+                dictDTO.setId(entity.getLong("id"));
                 dictDTO.setLabel(entity.getStr("name"));
                 dictDTO.setValue(entity.getStr("type"));
                 dictDTO.setDictType(entity.getStr("type"));
@@ -73,8 +76,8 @@ public class DictInitListener implements ApplicationListener<ApplicationReadyEve
             // 字典类型分组
             Map<String, List<DictDTO>> dictParentMap = dictItemList.stream().map(entity -> {
                 DictDTO dictDTO = new DictDTO();
-                dictDTO.setId(entity.getInt("id"));
-                dictDTO.setPid(entity.getInt("parent_id"));
+                dictDTO.setId(entity.getLong("id"));
+                dictDTO.setPid(entity.getLong("parent_id"));
                 dictDTO.setLabel(entity.getStr("dict_name"));
                 dictDTO.setValue(entity.getStr("dict_value"));
                 dictDTO.setDictType(entity.getStr("dict_type"));
