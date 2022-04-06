@@ -43,5 +43,6 @@
         <module>api-version-spring-boot</module>
         <module>redis-alone-spring-boot</module>
         <module>ip-access-spring-boot</module>
+        <module>ip2region-spring-boot</module>
     </modules>
 </project>

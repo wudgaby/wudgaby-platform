@@ -1,8 +1,11 @@
 package com.wudgaby.platform.sys.impl;
 
+import cn.hutool.core.util.StrUtil;
 import cn.hutool.http.useragent.UserAgent;
 import cn.hutool.http.useragent.UserAgentUtil;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.wudgaby.ip2region.Ip2RegionHelper;
+import com.wudgaby.ip2region.RegionInfo;
 import com.wudgaby.logger.api.event.AccessLoggerAfterEvent;
 import com.wudgaby.logger.api.vo.AccessLoggerInfo;
 import com.wudgaby.platform.core.result.ApiResult;
@@ -37,7 +40,7 @@ import java.util.Optional;
 @Service
 @AllArgsConstructor
 public class SysLogServiceImpl extends ServiceImpl<SysLogMapper, SysLog> implements SysLogService {
-    private final IpRegionService ipRegionService;
+    private final Ip2RegionHelper ip2RegionHelper;
 
     @Async
     @EventListener
@@ -67,7 +70,8 @@ public class SysLogServiceImpl extends ServiceImpl<SysLogMapper, SysLog> impleme
         sysLog.setReqIp(loggerInfo.getIp());
         sysLog.setHttpStatus(loggerInfo.getHttpStatus());
         if (sysLog.getReqIp() != null) {
-            sysLog.setReqRegion(ipRegionService.getRegion(sysLog.getReqIp()));
+            String reqRegion = Optional.ofNullable(ip2RegionHelper.btreeSearch(sysLog.getReqIp())).map(RegionInfo::getAddressAndIsp).orElseGet(() -> RegionInfo.createNotMatchRegionInfo().getAddressAndIsp());
+            sysLog.setReqRegion(reqRegion);
         }
         try{
             sysLog.setServerAddr(InetAddress.getLocalHost().getHostAddress());
@@ -86,7 +90,13 @@ public class SysLogServiceImpl extends ServiceImpl<SysLogMapper, SysLog> impleme
         }else{
             sysLog.setSucceed(StringUtils.isBlank(sysLog.getError()));
         }
-        sysLog.setResponse(Optional.ofNullable(loggerInfo.getResponse()).map(resp -> FastJsonUtil.collectToString(resp)).orElse(null));
+        sysLog.setResponse(Optional.ofNullable(loggerInfo.getResponse()).map(resp -> {
+            String result = FastJsonUtil.collectToString(resp);
+            if(result.length() > 20000) {
+                return StrUtil.sub(result, 0, 20000);
+            }
+            return result;
+        }).orElse(null));
 
         UserAgent userAgent = UserAgentUtil.parse(loggerInfo.getUserAgent());
         if(userAgent != null){

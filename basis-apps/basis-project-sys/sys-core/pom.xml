@@ -29,11 +29,6 @@
             <version>${basis-starters.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.lionsoul</groupId>
-            <artifactId>ip2region</artifactId>
-            <version>1.7.2</version>
-        </dependency>
-        <dependency>
             <groupId>com.wudgaby.platform</groupId>
             <artifactId>basis-project-web-core</artifactId>
             <version>${revision}</version>
@@ -43,5 +38,10 @@
             <artifactId>dynamic-datasource-spring-boot-starter</artifactId>
             <version>3.5.0</version>
         </dependency>-->
+        <dependency>
+            <groupId>com.wudgaby.platform</groupId>
+            <artifactId>ip2region-spring-boot-starter</artifactId>
+            <version>${revision}</version>
+        </dependency>
     </dependencies>
 </project>

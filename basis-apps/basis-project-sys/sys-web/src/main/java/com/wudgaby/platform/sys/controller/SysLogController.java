@@ -3,6 +3,7 @@ package com.wudgaby.platform.sys.controller;
 
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.wudgaby.logger.api.annotation.AccessLogger;
 import com.wudgaby.platform.core.model.form.PageForm;
 import com.wudgaby.platform.core.result.ApiPageResult;
 import com.wudgaby.platform.sys.entity.SysLog;
@@ -30,7 +31,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class SysLogController {
     private final SysLogService sysLogService;
 
-    @ApiOperation("日志列表")
+    @AccessLogger(ignore = true)
+    @ApiOperation(value = "日志列表")
     @GetMapping
     public ApiPageResult<SysLog> logList(PageForm pageForm){
         return ApiPageResult.success(sysLogService.page(
