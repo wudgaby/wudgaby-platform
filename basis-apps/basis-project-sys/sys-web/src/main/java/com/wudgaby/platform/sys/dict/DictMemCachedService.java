@@ -1,6 +1,8 @@
 package com.wudgaby.platform.sys.dict;
 
 import cn.hutool.core.collection.CollectionUtil;
+import cn.hutool.core.lang.tree.Tree;
+import cn.hutool.core.lang.tree.TreeUtil;
 import cn.hutool.core.util.StrUtil;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.github.benmanes.caffeine.cache.Cache;
@@ -93,6 +95,7 @@ public class DictMemCachedService implements DictCachedService{
                 dictDTO.setLabel(dictType.getName());
                 dictDTO.setValue(dictType.getType());
                 dictDTO.setDictType(dictType.getType());
+                dictDTO.setSort(dictType.getSort());
                 return dictDTO;
             }).collect(Collectors.toMap(DictDTO::getDictType, dict -> dict));
             DICT_TYPE_CACHED.invalidateAll();
@@ -113,6 +116,7 @@ public class DictMemCachedService implements DictCachedService{
                 dictDTO.setLabel(dictItem.getDictName());
                 dictDTO.setValue(dictItem.getDictValue());
                 dictDTO.setDictType(dictItem.getDictType());
+                dictDTO.setSort(dictItem.getSort());
                 return dictDTO;
             }).collect(Collectors.groupingBy(DictDTO::getDictType));
             DICT_ITEM_CACHED.invalidateAll();
@@ -151,5 +155,24 @@ public class DictMemCachedService implements DictCachedService{
     @Override
     public List<DictDTO> listDictItems(String type) {
         return DICT_ITEM_CACHED.getIfPresent(type);
+    }
+
+    @Override
+    public List<Tree<Long>> treeDictItems(String type) {
+        List<DictDTO> listDictItems = this.listDictItems(type);
+        if(CollectionUtil.isEmpty(listDictItems)) {
+            return null;
+        }
+
+        return TreeUtil.build(listDictItems, 0L,
+                (treeNode, tree) -> {
+                    tree.setId(treeNode.getId());
+                    tree.setParentId(treeNode.getPid());
+                    tree.setWeight(treeNode.getSort());
+                    tree.setName(treeNode.getLabel());
+                    // 扩展属性 ...
+                    tree.putExtra("dictType", treeNode.getDictType());
+                    tree.putExtra("dictValue", treeNode.getValue());
+                });
     }
 }

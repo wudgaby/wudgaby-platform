@@ -1,10 +1,15 @@
+import cn.hutool.core.lang.tree.Tree;
+import cn.hutool.core.lang.tree.TreeNode;
 import com.wudgaby.platform.sys.SysBootstrap;
 import com.wudgaby.platform.sys.dict.DictHelper;
+import com.wudgaby.platform.utils.TreeUtil;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+
+import java.util.List;
 
 /**
  * @author :  wudgaby
@@ -37,6 +42,20 @@ public class DictTest {
     public void testItemsByType(){
         Assert.assertNotNull(DictHelper.listDictItems("alert"));
         System.out.println(DictHelper.listDictItems("alert"));
+    }
+
+    @Test
+    public void treeDictItems(){
+        Assert.assertNotNull(DictHelper.treeDictItems("alert"));
+
+        List<Tree<Long>> treeList = DictHelper.treeDictItems("alert");
+        System.out.println(treeList);
+
+        for(Tree<Long> tree : treeList) {
+            List<TreeNode> treeNodeList = TreeUtil.treeToList(tree);
+            treeNodeList.forEach(node -> System.out.println(node.getId() + " " + node.getName()));
+            System.out.println();
+        }
     }
 
 }

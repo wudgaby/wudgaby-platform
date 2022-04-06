@@ -1,5 +1,6 @@
 package com.wudgaby.platform.sys.dict;
 
+import cn.hutool.core.lang.tree.Tree;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.List;
@@ -33,5 +34,9 @@ public class DictHelper {
 
     public static List<DictDTO> listDictItems(String type) {
         return dictCachedService.listDictItems(type);
+    }
+
+    public static List<Tree<Long>> treeDictItems(String type) {
+        return dictCachedService.treeDictItems(type);
     }
 }

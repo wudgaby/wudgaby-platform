@@ -9,7 +9,7 @@ import lombok.Data;
  * @desc :
  */
 @Data
-public class DictDTO {
+public class DictDTO{
     /**
      * 字典id
      */
@@ -30,4 +30,8 @@ public class DictDTO {
      * 字典类型
      */
     private String dictType;
+    /**
+     * 排序
+     */
+    private Integer sort;
 }
