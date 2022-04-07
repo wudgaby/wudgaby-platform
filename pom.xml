@@ -151,7 +151,6 @@
         <module>basis-examples</module>
         <module>basis-apps</module>
         <module>basis-project-dependencies</module>
-        <module>basis-spring-boot-starters/oss-spring-boot/oss-spring-boot-autoconfigure</module>
     </modules>
 
     <dependencies>
