@@ -1,0 +1,3 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.wudgaby.starter.oss.OssAutoConfiguration,\
+  com.wudgaby.starter.oss.minio.MinioAutoConfiguration

@@ -44,5 +44,6 @@
         <module>redis-alone-spring-boot</module>
         <module>ip-access-spring-boot</module>
         <module>ip2region-spring-boot</module>
+        <module>oss-spring-boot</module>
     </modules>
 </project>

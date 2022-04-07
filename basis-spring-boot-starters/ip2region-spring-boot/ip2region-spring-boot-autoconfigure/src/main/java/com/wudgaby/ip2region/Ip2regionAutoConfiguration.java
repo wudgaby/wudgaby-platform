@@ -13,7 +13,7 @@ import org.springframework.core.io.ResourceLoader;
  */
 @Configuration(proxyBeanMethods = false)
 @EnableConfigurationProperties(Ip2regionProperties.class)
-public class Ip2regionConfiguration {
+public class Ip2regionAutoConfiguration {
     @Bean
     public Ip2RegionHelper ip2RegionHelper(ResourceLoader resourceLoader, Ip2regionProperties properties){
         return new Ip2RegionHelper(resourceLoader, properties);

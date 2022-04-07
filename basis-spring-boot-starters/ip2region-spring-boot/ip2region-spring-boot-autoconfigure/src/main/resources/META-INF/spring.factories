@@ -1,2 +1,2 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-  com.wudgaby.ip2region.Ip2regionConfiguration
+  com.wudgaby.ip2region.Ip2regionAutoConfiguration
