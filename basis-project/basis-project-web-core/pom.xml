@@ -52,14 +52,6 @@
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-core</artifactId>
         </dependency>
-        <!--<dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-swagger2</artifactId>
-        </dependency>-->
-        <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-spi</artifactId>
-        </dependency>
         <dependency>
             <groupId>com.wudgaby.platform</groupId>
             <artifactId>basis-project-security-core</artifactId>

@@ -1,7 +1,6 @@
-package com.wudgaby.platform.webcore.support;
+package com.wudgaby.swagger.configuration;
 
 import com.fasterxml.classmate.ResolvedType;
-import com.wudgaby.platform.core.annotation.SwaggerDisplayEnum;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;

@@ -1,7 +1,6 @@
 package com.wudgaby.platform.flowable.helper.enums;
 
 import com.baomidou.mybatisplus.annotation.EnumValue;
-import com.wudgaby.platform.core.annotation.SwaggerDisplayEnum;
 import com.wudgaby.platform.core.enums.ICode;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
