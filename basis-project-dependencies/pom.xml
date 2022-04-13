@@ -11,9 +11,30 @@
     <packaging>pom</packaging>
     <name>Basis Project Dependencies</name>
     <description>basis project dependencies</description>
+    <url>https://gitee.com/wudgaby1122/wudgaby-platform</url>
+    <licenses>
+        <license>
+            <name>The Apache License, Version 2.0</name>
+            <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+    <developers>
+        <developer>
+            <name>wudgaby</name>
+            <email>wudgaby@qq.com</email>
+            <url>https://gitee.com/wudgaby1122</url>
+        </developer>
+    </developers>
+    <scm>
+        <url>https://gitee.com/wudgaby1122/wudgaby-platform</url>
+        <connection>scm:git:https://gitee.com/wudgaby1122/wudgaby-platform.git</connection>
+        <developerConnection>scm:git:https://gitee.com/wudgaby1122/wudgaby-platform.git</developerConnection>
+        <tag>HEAD</tag>
+    </scm>
 
     <properties>
-        <revision>1.0.1-SNAPSHOT</revision>
+        <revision>1.0.2</revision>
         <basis-project.version>${revision}</basis-project.version>
         <basis-starters.version>${revision}</basis-starters.version>
 
@@ -26,19 +47,112 @@
 
     <dependencyManagement>
         <dependencies>
+            <!--工程基础包-->
             <dependency>
                 <groupId>com.wudgaby.platform</groupId>
                 <artifactId>basis-project-core</artifactId>
                 <version>${revision}</version>
             </dependency>
+            <!--web工程基础包-->
             <dependency>
                 <groupId>com.wudgaby.platform</groupId>
                 <artifactId>basis-project-web-core</artifactId>
                 <version>${revision}</version>
             </dependency>
+            <!--redis 工具包-->
             <dependency>
                 <groupId>com.wudgaby.platform</groupId>
                 <artifactId>redis-spring-boot-starter</artifactId>
+                <version>${revision}</version>
+            </dependency>
+            <!--接口扫描-->
+            <dependency>
+                <groupId>com.wudgaby.platform</groupId>
+                <artifactId>api-automatic-spring-boot-starter</artifactId>
+                <version>${revision}</version>
+            </dependency>
+            <!--接口版本-->
+            <dependency>
+                <groupId>com.wudgaby.platform</groupId>
+                <artifactId>api-version-spring-boot-starter</artifactId>
+                <version>${revision}</version>
+            </dependency>
+            <!--代码生成-->
+            <dependency>
+                <groupId>com.wudgaby.platform</groupId>
+                <artifactId>code-generator-spring-boot-starter</artifactId>
+                <version>${revision}</version>
+            </dependency>
+            <!--分布式锁-->
+            <dependency>
+                <groupId>com.wudgaby.platform</groupId>
+                <artifactId>distributed-lock-spring-boot-starter</artifactId>
+                <version>${revision}</version>
+            </dependency>
+            <!--ip转地址-->
+            <dependency>
+                <groupId>com.wudgaby.platform</groupId>
+                <artifactId>ip2region-spring-boot-starter</artifactId>
+                <version>${revision}</version>
+            </dependency>
+            <!--黑白名单-->
+            <dependency>
+                <groupId>com.wudgaby.platform</groupId>
+                <artifactId>ip-access-spring-boot-starter</artifactId>
+                <version>${revision}</version>
+            </dependency>
+            <!--日志记录-->
+            <dependency>
+                <groupId>com.wudgaby.platform</groupId>
+                <artifactId>logger-spring-boot-starter</artifactId>
+                <version>${revision}</version>
+            </dependency>
+            <!--邮箱工具-->
+            <dependency>
+                <groupId>com.wudgaby.platform</groupId>
+                <artifactId>mail-spring-boot-starter</artifactId>
+                <version>${revision}</version>
+            </dependency>
+            <!--s3标准oss-->
+            <dependency>
+                <groupId>com.wudgaby.platform</groupId>
+                <artifactId>oss-spring-boot-starter</artifactId>
+                <version>${revision}</version>
+            </dependency>
+            <!--限流-->
+            <dependency>
+                <groupId>com.wudgaby.platform</groupId>
+                <artifactId>rate-limiter-spring-boot-starter</artifactId>
+                <version>${revision}</version>
+            </dependency>
+            <!--支持redis多库工具-->
+            <dependency>
+                <groupId>com.wudgaby.platform</groupId>
+                <artifactId>redis-alone-spring-boot-starter</artifactId>
+                <version>${revision}</version>
+            </dependency>
+            <!--重复提交-->
+            <dependency>
+                <groupId>com.wudgaby.platform</groupId>
+                <artifactId>resubmit-spring-boot-starter</artifactId>
+                <version>${revision}</version>
+            </dependency>
+            <!--接口签名-->
+            <dependency>
+                <groupId>com.wudgaby.platform</groupId>
+                <artifactId>signature-spring-boot-starter</artifactId>
+                <version>${revision}</version>
+            </dependency>
+            <!--简单认证-->
+            <dependency>
+                <groupId>com.wudgaby.platform</groupId>
+                <artifactId>simple-security-spring-boot-starter</artifactId>
+                <version>${revision}</version>
+            </dependency>
+            <!--接口文档-->
+            <dependency>
+                <groupId>com.wudgaby.platform</groupId>
+                <artifactId>swagger-spring-boot-starter</artifactId>
                 <version>${revision}</version>
             </dependency>
         </dependencies>

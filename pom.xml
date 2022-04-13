@@ -17,11 +17,11 @@
     <name>WudGaby Platform</name>
     <packaging>pom</packaging>
     <description>simple spring boot project by 2020.03.21</description>
-
+    <url>https://gitee.com/wudgaby1122/wudgaby-platform</url>
     <licenses>
         <license>
             <name>The Apache License, Version 2.0</name>
-            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
             <distribution>repo</distribution>
         </license>
     </licenses>
@@ -46,7 +46,7 @@
         <java.target.version>1.8</java.target.version>
 
         <!-- Project revision -->
-        <revision>1.0.1-SNAPSHOT</revision>
+        <revision>1.0.2</revision>
         <basis-project.version>${revision}</basis-project.version>
         <basis-starters.version>${revision}</basis-starters.version>
 
