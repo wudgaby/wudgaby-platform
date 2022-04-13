@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.wudgaby.platform.simplesecurity.spring;
+package com.wudgaby.platform.webcore.spring.util;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Collections;

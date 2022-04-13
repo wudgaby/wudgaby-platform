@@ -7,7 +7,7 @@ import com.wudgaby.platform.simplesecurity.SimpleAuthenInterceptor;
 import com.wudgaby.platform.simplesecurity.SimpleSecurityInterceptor;
 import com.wudgaby.platform.simplesecurity.SimpleSecurityService;
 import com.wudgaby.platform.simplesecurity.ext.RequestMatcherCreator;
-import com.wudgaby.platform.simplesecurity.spring.AntPathRequestMatcher;
+import com.wudgaby.platform.webcore.spring.util.AntPathRequestMatcher;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication;
 import org.springframework.context.annotation.Bean;

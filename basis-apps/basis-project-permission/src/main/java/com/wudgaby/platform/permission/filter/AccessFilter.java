@@ -12,6 +12,7 @@ import com.wudgaby.platform.permission.service.BaseAuthorityService;
 import com.wudgaby.platform.security.core.SecurityUtils;
 import com.wudgaby.platform.security.core.UserInfo;
 import com.wudgaby.platform.utils.FastJsonUtil;
+import com.wudgaby.platform.webcore.spring.util.AntPathRequestMatcher;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang3.BooleanUtils;
@@ -22,7 +23,6 @@ import org.springframework.http.MediaType;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.access.ConfigAttribute;
 import org.springframework.security.access.SecurityConfig;
-import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.util.AntPathMatcher;
 
 import javax.servlet.*;
@@ -254,7 +254,7 @@ public class AccessFilter implements Filter{
 
     private void outputError(HttpServletResponse response, int status, String message) throws IOException {
         response.setStatus(status);
-        response.setContentType(MediaType.APPLICATION_JSON_UTF8_VALUE);
+        response.setContentType(MediaType.APPLICATION_JSON_VALUE);
         response.getWriter().println(message);
         response.getWriter().flush();
     }

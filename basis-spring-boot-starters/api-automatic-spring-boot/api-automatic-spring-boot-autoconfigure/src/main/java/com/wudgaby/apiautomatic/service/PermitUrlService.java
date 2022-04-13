@@ -1,6 +1,6 @@
 package com.wudgaby.apiautomatic.service;
 
-import org.springframework.security.web.util.matcher.RequestMatcher;
+import com.wudgaby.platform.webcore.spring.util.RequestMatcher;
 
 import java.util.Collection;
 
