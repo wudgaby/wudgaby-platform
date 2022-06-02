@@ -44,6 +44,10 @@ public class MailSendService {
      * @param sendMailContent
      */
     public void sendSimpleMail(SendMailContent sendMailContent){
+        sendCustomSimpleMail(sendMailContent, this.javaMailSender);
+    }
+
+    public void sendCustomSimpleMail(SendMailContent sendMailContent, JavaMailSender javaMailSender){
         checkSendMailParam(sendMailContent);
 
         SimpleMailMessage simpleMailMessage = new SimpleMailMessage();

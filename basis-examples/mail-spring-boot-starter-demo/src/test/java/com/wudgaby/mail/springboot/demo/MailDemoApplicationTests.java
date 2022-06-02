@@ -12,6 +12,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.mail.MailProperties;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.List;
@@ -33,7 +34,16 @@ public class MailDemoApplicationTests {
 
 	@Test
 	public void sendMailTest(){
-		mailSendService.sendSimpleMail(new SendMailContent(new MailAccount(mailProperties.getUsername(), "123"), new String[]{"wudgaby@sina.com"}, "wo shi hkbird !你好", "测试看能发送吗"));
+		//mailSendService.sendSimpleMail(new SendMailContent(new MailAccount(mailProperties.getUsername(), "123"), new String[]{"wudgaby@sina.com"}, "wo shi hkbird !你好", "测试看能发送吗"));
+
+		JavaMailSenderImpl sender = new JavaMailSenderImpl();
+		sender.setHost("192.168.98.141");
+		sender.setPort(1026);
+		sender.setUsername("hkbird@est.com");
+		sender.setPassword("aaaaa");
+		sender.setProtocol("smtp");
+		sender.setDefaultEncoding("utf8");
+		mailSendService.sendCustomSimpleMail(new SendMailContent(new MailAccount("hkbird@test.com", "test"), new String[]{"bar@example.com"}, "wo shi hkbird !你好", "测试看能发送吗"), sender);
 	}
 
 	@Test
