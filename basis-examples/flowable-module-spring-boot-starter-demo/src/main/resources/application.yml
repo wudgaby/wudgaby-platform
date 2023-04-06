@@ -41,7 +41,7 @@ spring:
         reset-enable: false
         login-username: druid
         login-password: druid
-        allow: 127.0.0.1
+        allow: 127.0.0.1,localhost
         #deny:
 
 mybatis:

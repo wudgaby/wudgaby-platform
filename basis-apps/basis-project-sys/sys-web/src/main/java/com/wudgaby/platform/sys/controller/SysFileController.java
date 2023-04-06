@@ -21,13 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletResponse;
-import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
+import java.io.*;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.Date;
@@ -88,7 +82,7 @@ public class SysFileController {
     private AttachmentDTO buildAttachment(MultipartFile uploadFile) throws IOException {
         String path = DateUtil.format(new Date(), DatePattern.PURE_DATE_PATTERN);
 
-        String newName = UUID.randomUUID().toString() + "." + FilenameUtils.getExtension(uploadFile.getOriginalFilename());
+        String newName = UUID.randomUUID() + "." + FilenameUtils.getExtension(uploadFile.getOriginalFilename());
         File file = new File(uploadPath + File.separator + path, newName);
         FileUtils.forceMkdirParent(file);
         uploadFile.transferTo(file);

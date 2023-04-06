@@ -135,21 +135,21 @@ public class DictMemCachedService implements DictCachedService{
     }
 
     @Override
-    public DictDTO getDictItemByVal(String type, String value) {
+    public Optional<DictDTO> getDictItemByVal(String type, String value) {
         List<DictDTO> dictDTOList = DICT_ITEM_CACHED.getIfPresent(type);
         if(CollectionUtil.isEmpty(dictDTOList)) {
             return null;
         }
-        return dictDTOList.stream().filter(dictDTO -> StrUtil.equals(dictDTO.getValue(), value)).findFirst().get();
+        return dictDTOList.stream().filter(dictDTO -> StrUtil.equals(dictDTO.getValue(), value)).findFirst();
     }
 
     @Override
-    public DictDTO getDictItemByLabel(String type, String label) {
+    public Optional<DictDTO> getDictItemByLabel(String type, String label) {
         List<DictDTO> dictDTOList = DICT_ITEM_CACHED.getIfPresent(type);
         if(CollectionUtil.isEmpty(dictDTOList)) {
             return null;
         }
-        return dictDTOList.stream().filter(dictDTO -> StrUtil.equals(dictDTO.getLabel(), label)).findFirst().get();
+        return dictDTOList.stream().filter(dictDTO -> StrUtil.equals(dictDTO.getLabel(), label)).findFirst();
     }
 
     @Override

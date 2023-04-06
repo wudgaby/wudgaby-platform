@@ -3,6 +3,7 @@ package com.wudgaby.platform.sys.dict;
 import cn.hutool.core.lang.tree.Tree;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * @author :  wudgaby
@@ -33,7 +34,7 @@ public interface DictCachedService {
      * @param value
      * @return
      */
-    DictDTO getDictItemByVal(String type, String value);
+    Optional<DictDTO> getDictItemByVal(String type, String value);
 
     /**
      * 通过字典类型 和 字典项名称 获取字典项
@@ -41,7 +42,7 @@ public interface DictCachedService {
      * @param label
      * @return
      */
-    DictDTO getDictItemByLabel(String type, String label);
+    Optional<DictDTO> getDictItemByLabel(String type, String label);
 
     /**
      * 通过字典类型获取 字典项列表

@@ -4,6 +4,7 @@ import cn.hutool.core.lang.tree.Tree;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * @author :  wudgaby
@@ -24,11 +25,11 @@ public class DictHelper {
         return dictCachedService.listDictTypes();
     }
 
-    public static DictDTO getDictItemByVal(String type, String value) {
+    public static Optional<DictDTO> getDictItemByVal(String type, String value) {
         return dictCachedService.getDictItemByVal(type, value);
     }
 
-    public static DictDTO getDictItemByLabel(String type, String label) {
+    public static Optional<DictDTO> getDictItemByLabel(String type, String label) {
         return dictCachedService.getDictItemByLabel(type, label);
     }
 

@@ -50,6 +50,7 @@
         <module>redis-alone-spring-boot-sample</module>
         <module>ip-access-spring-boot-sample</module>
         <module>ip2region-spring-boot-sample</module>
+        <module>download-sample</module>
     </modules>
 
     <build>
