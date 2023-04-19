@@ -1,7 +1,5 @@
-package com.project.ts.controller.download;
+package com.wudgaby.downloadsample.download;
 
-import com.wudgaby.downloadsample.download.DownloadProcessor;
-import com.wudgaby.downloadsample.download.DownloadUtil;
 import lombok.SneakyThrows;
 
 import javax.servlet.http.HttpServletResponse;
@@ -24,7 +22,7 @@ public class CommonDownloadProcessor<T> implements DownloadProcessor<T> {
         this.fileName = fileName;
         this.response = response;
         this.rowDataList = new ArrayList<>(1);
-        com.project.ts.controller.download.DownloadUtil.processHttpResponse(fileName, response);
+       DownloadUtil.processHttpResponse(fileName, response);
     }
 
     @Override

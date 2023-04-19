@@ -1,4 +1,4 @@
-package com.wudgaby.platform.sso.core.helper;
+package com.wudgaby.platform.utils;
 
 import lombok.experimental.UtilityClass;
 import org.apache.commons.collections4.CollectionUtils;

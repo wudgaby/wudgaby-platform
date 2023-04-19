@@ -51,6 +51,7 @@
         <module>ip-access-spring-boot-sample</module>
         <module>ip2region-spring-boot-sample</module>
         <module>download-sample</module>
+        <module>muilti-ports-spring-boot-sample</module>
     </modules>
 
     <build>

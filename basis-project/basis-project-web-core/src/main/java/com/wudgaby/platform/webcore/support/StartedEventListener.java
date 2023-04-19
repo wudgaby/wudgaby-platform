@@ -19,8 +19,8 @@ import org.springframework.util.ClassUtils;
  * @Date : 2019/8/9 15:54
  * @Desc :   springboot启动监听
  */
-@Configuration
 @Slf4j
+@Configuration
 public class StartedEventListener {
 
     @Async
@@ -55,6 +55,7 @@ public class StartedEventListener {
         if (ClassUtils.isPresent("com.wudgaby.codegen.annotations.EnableCodeGenUI", null)) {
             log.info("代码生成地址: {}://localhost:{}{}/codegen.html", protocol, localPort, contextPath);
         }
+        log.info("地址: {}://localhost:{}{}/", protocol, localPort, contextPath);
         log.info("===================================================================================");
     }
 }

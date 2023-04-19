@@ -2,6 +2,7 @@ package com.wudgaby.platform.sys.dict;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.DependsOn;
 
 /**
  * @author :  wudgaby
@@ -10,6 +11,7 @@ import org.springframework.context.annotation.Configuration;
  * @desc :
  */
 @Configuration
+@DependsOn({"flyway", "flywayInitializer"})
 public class DictCachedConfiguration {
     @Bean
     public DictHelper dictHelper(DictCachedService dictCachedService){

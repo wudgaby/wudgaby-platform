@@ -2,6 +2,7 @@ package com.wudgaby.redis.starter.config;
 
 import com.wudgaby.redis.starter.enums.RedisConvertType;
 import lombok.Data;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.data.redis.RedisProperties;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
@@ -17,7 +18,6 @@ import java.util.Map;
  * @Desc :
  */
 @Data
-@Configuration
 @ConfigurationProperties(prefix = "spring.redis")
 public class RedisProp {
     private RedisConvertType keyConvert = RedisConvertType.STRING;

@@ -45,5 +45,6 @@
         <module>ip-access-spring-boot</module>
         <module>ip2region-spring-boot</module>
         <module>oss-spring-boot</module>
+        <module>muilti-ports-spring-boot</module>
     </modules>
 </project>

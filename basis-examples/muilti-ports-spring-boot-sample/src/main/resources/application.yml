@@ -1,0 +1,10 @@
+server:
+  port: 8010
+  trusted-port: 8020
+  trusted-path-prefix: /internal
+
+spring:
+  application:
+    name: 多端口示例
+app:
+  version: 1.0.1

@@ -21,6 +21,6 @@ ${AnsiColor.BRIGHT_YELLOW}//      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 ${AnsiColor.BRIGHT_BLUE}//            佛祖保佑       永不宕机     永无BUG                   //
 ${AnsiColor.BRIGHT_YELLOW}////////////////////////////////////////////////////////////////////
 ${AnsiColor.BRIGHT_BLUE}SpringBoot版本: ${spring-boot.version}
-${AnsiColor.BRIGHT_BLUE}应用名称: ${spring.application.name:UN_SET} | Application版本: ${application.version:1.0.0}
+${AnsiColor.BRIGHT_BLUE}应用名称: ${spring.application.name:UN_SET} | APP版本: ${app.version:1.0.0}
 ${AnsiColor.BRIGHT_YELLOW}////////////////////////////////////////////////////////////////////
 ${AnsiColor.DEFAULT}
