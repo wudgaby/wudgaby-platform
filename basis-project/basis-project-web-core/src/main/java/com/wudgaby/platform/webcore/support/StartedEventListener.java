@@ -55,7 +55,7 @@ public class StartedEventListener {
         if (ClassUtils.isPresent("com.wudgaby.codegen.annotations.EnableCodeGenUI", null)) {
             log.info("代码生成地址: {}://localhost:{}{}/codegen.html", protocol, localPort, contextPath);
         }
-        log.info("地址: {}://localhost:{}{}/", protocol, localPort, contextPath);
+        log.info("Server Started Success. 地址: {}://localhost:{}{}/", protocol, localPort, contextPath);
         log.info("===================================================================================");
     }
 }

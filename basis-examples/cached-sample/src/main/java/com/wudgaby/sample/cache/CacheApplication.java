@@ -4,7 +4,6 @@ import com.wudgaby.platform.core.result.ApiResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -15,7 +14,6 @@ import org.springframework.web.bind.annotation.*;
  */
 @SpringBootApplication
 @RestController
-@EnableCaching
 public class CacheApplication {
     @Autowired private CacheService cacheService;
 
@@ -26,6 +24,11 @@ public class CacheApplication {
     @GetMapping("/")
     public ApiResult get(@RequestParam String name){
         return ApiResult.success().data(cacheService.getAge(name));
+    }
+
+    @GetMapping("/all")
+    public ApiResult getAll(){
+        return ApiResult.success().data(cacheService.getAll());
     }
 
     @PutMapping("/")

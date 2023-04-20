@@ -1,2 +1,6 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
   com.wudgaby.platform.core.config.ApplicationConfiguration
+
+# Run Listeners
+org.springframework.boot.SpringApplicationRunListener=\
+    com.wudgaby.platform.core.listener.TimeCostSpringApplicationRunListener

@@ -1,5 +1,9 @@
 #服务器配置
 server:
+  tomcat:
+    threads:
+      max: 200
+    max-connections: 8192
   undertow:
     # 设置IO线程数, 它主要执行非阻塞的任务,它们会负责多个连接, 默认设置每个CPU核心一个线程
     io-threads: 4
@@ -9,6 +13,11 @@ server:
     buffer-size: 1024
     # 是否分配的直接内存
     direct-buffers: true
+
+#bean初始化耗时分析
+bean:
+  cost:
+    enabled: false
 
 #spring配置
 spring:

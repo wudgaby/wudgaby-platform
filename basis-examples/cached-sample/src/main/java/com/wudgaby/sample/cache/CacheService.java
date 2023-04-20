@@ -7,6 +7,7 @@ import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
+import java.util.Collection;
 import java.util.Map;
 
 /**
@@ -42,6 +43,12 @@ public class CacheService {
     @CacheEvict(value = {"user_age", "age"}, key = "#name")
     public void del(String name){
         map.remove(name);
+    }
+
+    @Cacheable(value = "all#3600")
+    public Collection<Integer> getAll(){
+        log.info("from memory");
+        return map.values();
     }
 
 }

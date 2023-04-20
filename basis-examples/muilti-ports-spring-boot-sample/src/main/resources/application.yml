@@ -8,3 +8,7 @@ spring:
     name: 多端口示例
 app:
   version: 1.0.1
+
+bean:
+  cost:
+    enabled: true
