@@ -1,0 +1,4 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+    com.wudgaby.starter.crypto.ApiCryptoAutoConfiguration
+org.springframework.boot.env.EnvironmentPostProcessor=\
+    com.wudgaby.starter.crypto.support.DefaultConfigEnvironmentPostProcessor

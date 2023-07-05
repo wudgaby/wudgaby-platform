@@ -23,6 +23,7 @@ import com.amazonaws.services.s3.model.S3Object;
 import com.amazonaws.services.s3.model.S3ObjectSummary;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -46,6 +47,7 @@ import java.util.Map;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("${oss.http.prefix:}/oss")
+@ConditionalOnProperty(prefix = OssProperties.PREFIX, name = "http.enable", havingValue = "true")
 public class OssEndpoint {
 
     /**

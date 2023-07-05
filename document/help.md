@@ -24,6 +24,6 @@ git pull origin master --allow-unrelated-histories
          git push -u origin master
          
          
-``
+```
 deploy:deploy-file -Dfile=pom.xml -DgroupId=com.wudgaby.platform -DartifactId=base-spring-boot-starters -Dversion=${revision} -Dpackaging=jar
-``
+```

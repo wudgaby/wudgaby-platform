@@ -1,0 +1,9 @@
+api:
+  crypto:
+    key: 1234567890!@#$%^
+    simple: false
+    custom:
+      mode: CBC
+      padding: PKCS7Padding
+      key: 1234567890!@#$%^
+      iv: 2023070520113929

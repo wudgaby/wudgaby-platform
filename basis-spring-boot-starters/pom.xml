@@ -46,5 +46,6 @@
         <module>ip2region-spring-boot</module>
         <module>oss-spring-boot</module>
         <module>muilti-ports-spring-boot</module>
+        <module>api-crypto-spring-boot</module>
     </modules>
 </project>

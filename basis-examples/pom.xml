@@ -52,6 +52,7 @@
         <module>ip2region-spring-boot-sample</module>
         <module>download-sample</module>
         <module>muilti-ports-spring-boot-sample</module>
+        <module>api-crypto-sample</module>
     </modules>
 
     <build>
