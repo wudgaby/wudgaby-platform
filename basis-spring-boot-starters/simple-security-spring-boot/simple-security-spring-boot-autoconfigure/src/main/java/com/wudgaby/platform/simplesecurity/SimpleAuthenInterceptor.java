@@ -4,7 +4,7 @@ import com.wudgaby.platform.core.result.ApiResult;
 import com.wudgaby.platform.security.core.SecurityUtils;
 import com.wudgaby.platform.security.core.UserInfo;
 import com.wudgaby.platform.simplesecurity.annotations.AnonymousAccess;
-import com.wudgaby.platform.utils.FastJsonUtil;
+import com.wudgaby.platform.utils.JacksonUtil;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController;
@@ -41,7 +41,7 @@ public class SimpleAuthenInterceptor implements HandlerInterceptor {
             response.setStatus(HttpStatus.UNAUTHORIZED.value());
             response.setContentType(MediaType.APPLICATION_JSON_VALUE);
             response.setCharacterEncoding("utf-8");
-            response.getWriter().write(FastJsonUtil.collectToString(ApiResult.failure("请登录后访问.")));
+            response.getWriter().write(JacksonUtil.serialize(ApiResult.failure("请登录后访问.")));
             response.getWriter().flush();
             return false;
         }

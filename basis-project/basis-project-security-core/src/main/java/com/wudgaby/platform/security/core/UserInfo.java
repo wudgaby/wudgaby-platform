@@ -1,6 +1,6 @@
 package com.wudgaby.platform.security.core;
 
-import com.alibaba.fastjson.annotation.JSONField;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -33,7 +33,7 @@ public class UserInfo implements Serializable {
     @ApiModelProperty(value = "账号")
     private String account;
 
-    @JSONField(serialize = false)
+    @JsonIgnore
     @ApiModelProperty(value = "密码")
     private String password;
 

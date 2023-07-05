@@ -1,6 +1,6 @@
 package com.wudgaby.platform.websocket.vo;
 
-import com.alibaba.fastjson.annotation.JSONField;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -31,6 +31,6 @@ public class WsMessage implements Serializable {
      */
     private MsgType type;
 
-    @JSONField(format = "yyyy-MM-dd hh:mm:ss")
+    @JsonFormat(pattern = "yyyy-MM-dd hh:mm:ss")
     private Date date;
 }

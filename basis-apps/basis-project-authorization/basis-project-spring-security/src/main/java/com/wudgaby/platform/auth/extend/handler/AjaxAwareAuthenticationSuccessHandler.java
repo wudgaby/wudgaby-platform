@@ -5,7 +5,7 @@ import com.wudgaby.platform.auth.model.token.JwtToken;
 import com.wudgaby.platform.auth.model.token.JwtTokenFactory;
 import com.wudgaby.platform.auth.model.token.UserContext;
 import com.wudgaby.platform.core.result.ApiResult;
-import com.wudgaby.platform.utils.FastJsonUtil;
+import com.wudgaby.platform.utils.JacksonUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -53,7 +53,7 @@ public class AjaxAwareAuthenticationSuccessHandler implements AuthenticationSucc
         response.setCharacterEncoding(Charsets.UTF_8.name());
         response.setContentType(MediaType.APPLICATION_JSON_VALUE);
 
-        String json = FastJsonUtil.collectToString(ApiResult.success().data(tokenMap));
+        String json = JacksonUtil.serialize(ApiResult.success().data(tokenMap));
         response.getWriter().write(json);
         response.getWriter().flush();
 

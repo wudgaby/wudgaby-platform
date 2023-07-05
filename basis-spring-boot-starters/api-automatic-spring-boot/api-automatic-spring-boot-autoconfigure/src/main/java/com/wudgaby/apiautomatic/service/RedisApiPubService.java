@@ -2,14 +2,12 @@ package com.wudgaby.apiautomatic.service;
 
 import com.wudgaby.apiautomatic.consts.ApiSystemConst;
 import com.wudgaby.apiautomatic.dto.ApiDTO;
-import com.wudgaby.platform.utils.FastJsonUtil;
 import com.wudgaby.redis.api.RedisSupport;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections.CollectionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Collection;
-import java.util.List;
 
 /**
  * @ClassName : ResourceService

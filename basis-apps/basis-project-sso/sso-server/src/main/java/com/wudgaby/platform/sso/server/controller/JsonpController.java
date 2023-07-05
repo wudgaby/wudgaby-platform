@@ -7,7 +7,7 @@ import com.wudgaby.platform.sso.core.constant.SsoConst;
 import com.wudgaby.platform.sso.core.vo.SsoUserVo;
 import com.wudgaby.platform.sso.server.entity.BaseApp;
 import com.wudgaby.platform.sso.server.service.BaseAppService;
-import com.wudgaby.platform.utils.FastJsonUtil;
+import com.wudgaby.platform.utils.JacksonUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.AllArgsConstructor;
@@ -34,19 +34,19 @@ public class JsonpController {
         SsoUserVo ssoUserVo = (SsoUserVo) request.getSession().getAttribute(SsoConst.SSO_USER);
 
         if(ssoUserVo == null){
-            return StrUtil.format("{}({})", callback, FastJsonUtil.collectToString(ApiResult.failure().message("未登录.")));
+            return StrUtil.format("{}({})", callback, JacksonUtil.serialize(ApiResult.failure().message("未登录.")));
         }
 
         if(StringUtils.isNotBlank(appId)) {
             BaseApp baseApp = baseAppService.getOne(Wrappers.<BaseApp>lambdaQuery().eq(BaseApp::getAppCode, appId));
             if (baseApp == null) {
-                return StrUtil.format("{}({})", callback, FastJsonUtil.collectToString(ApiResult.failure().message("未知应用.")));
+                return StrUtil.format("{}({})", callback, JacksonUtil.serialize(ApiResult.failure().message("未知应用.")));
             }
             if (baseApp.getStatus() == 0) {
-                return StrUtil.format("{}({})", callback, FastJsonUtil.collectToString(ApiResult.failure().message("该应用未开启.")));
+                return StrUtil.format("{}({})", callback, JacksonUtil.serialize(ApiResult.failure().message("该应用未开启.")));
             }
-            return StrUtil.format("{}({})", callback, FastJsonUtil.collectToString(ApiResult.success().data(request.getSession().getId())));
+            return StrUtil.format("{}({})", callback, JacksonUtil.serialize(ApiResult.success().data(request.getSession().getId())));
         }
-        return StrUtil.format("{}({})", callback, FastJsonUtil.collectToString(ApiResult.failure().message("未知应用")));
+        return StrUtil.format("{}({})", callback, JacksonUtil.serialize(ApiResult.failure().message("未知应用")));
     }
 }

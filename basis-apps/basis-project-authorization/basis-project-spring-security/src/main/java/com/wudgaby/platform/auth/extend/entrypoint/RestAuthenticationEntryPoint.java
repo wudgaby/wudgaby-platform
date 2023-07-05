@@ -2,7 +2,7 @@ package com.wudgaby.platform.auth.extend.entrypoint;
 
 import com.google.common.base.Charsets;
 import com.wudgaby.platform.core.result.ApiResult;
-import com.wudgaby.platform.utils.FastJsonUtil;
+import com.wudgaby.platform.utils.JacksonUtil;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.security.core.AuthenticationException;
@@ -29,7 +29,7 @@ public class RestAuthenticationEntryPoint implements AuthenticationEntryPoint {
         response.setCharacterEncoding(Charsets.UTF_8.name());
         response.setContentType(MediaType.APPLICATION_JSON_VALUE);
 
-        String json = FastJsonUtil.collectToString(ApiResult.<String>failure().message("未认证"));
+        String json = JacksonUtil.serialize(ApiResult.<String>failure().message("未认证"));
         response.getWriter().write(json);
         response.getWriter().flush();
     }

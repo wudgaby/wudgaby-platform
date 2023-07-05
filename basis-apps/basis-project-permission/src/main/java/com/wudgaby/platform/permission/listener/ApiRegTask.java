@@ -9,7 +9,7 @@ import com.wudgaby.platform.permission.consts.AuthorityConst;
 import com.wudgaby.platform.permission.entity.BaseApi;
 import com.wudgaby.platform.permission.service.BaseApiService;
 import com.wudgaby.platform.permission.service.BaseAuthorityService;
-import com.wudgaby.platform.utils.FastJsonUtil;
+import com.wudgaby.platform.utils.JacksonUtil;
 import com.wudgaby.redis.api.RedisSupport;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -47,7 +47,7 @@ public class ApiRegTask{
 
         Map<String, Set<String>> apiCodeMap = Maps.newHashMap();
         apiSet.forEach(api -> {
-            ApiDTO apiDTO = FastJsonUtil.toBean(api.toString(), ApiDTO.class);
+            ApiDTO apiDTO = JacksonUtil.deserialize(api.toString(), ApiDTO.class);
             BaseApi baseApi = new BaseApi();
             baseApi.setApiCode(apiDTO.getCode());
             baseApi.setApiName(apiDTO.getName());

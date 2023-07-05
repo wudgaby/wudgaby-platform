@@ -1,7 +1,7 @@
 package sample;
 
 import com.google.common.collect.Maps;
-import com.wudgaby.platform.utils.FastJsonUtil;
+import com.wudgaby.platform.utils.JacksonUtil;
 import com.wudgaby.sign.api.SignConst;
 import com.wudgaby.sign.api.SignatureHeaders;
 import com.wudgaby.sign.api.SignatureUtils;
@@ -111,13 +111,13 @@ class SignSampleBootstrapTest {
         signatureVo.setContentType(MediaType.APPLICATION_JSON_VALUE);
         signatureVo.setHttpMethod("POST");
 
-        String body = FastJsonUtil.collectToString(order);
+        String body = JacksonUtil.serialize(order);
         System.out.println(body);
         System.out.println(SignatureUtils.buildContentMd5(body));
         signatureVo.setContentMD5(SignatureUtils.buildContentMd5(body));
 
         MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.post("/orders")
-                .headers(getHeaders(signatureVo)).content(FastJsonUtil.collectToString(order)))
+                .headers(getHeaders(signatureVo)).content(JacksonUtil.serialize(order)))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andDo(MockMvcResultHandlers.print())
                 .andReturn();

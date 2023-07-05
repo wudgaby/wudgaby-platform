@@ -10,7 +10,7 @@ import com.wudgaby.platform.permission.consts.AuthorityConst;
 import com.wudgaby.platform.permission.entity.BaseApi;
 import com.wudgaby.platform.permission.service.BaseApiService;
 import com.wudgaby.platform.permission.service.BaseAuthorityService;
-import com.wudgaby.platform.utils.FastJsonUtil;
+import com.wudgaby.platform.utils.JacksonUtil;
 import com.wudgaby.redis.api.RedisSupport;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -38,7 +38,7 @@ public class ApiSubRedisListenerService implements ISubscriberRedisListenerServi
     @Override
     public void receiveMessage(String message) {
         log.info("订阅API注册信息");
-        Set<ApiDTO> apiSet = Sets.newHashSet(FastJsonUtil.toList(message, ApiDTO.class));
+        Set<ApiDTO> apiSet = Sets.newHashSet(JacksonUtil.deserializeArray(message, ApiDTO.class));
         if(CollectionUtils.isEmpty(apiSet)) {
             return;
         }

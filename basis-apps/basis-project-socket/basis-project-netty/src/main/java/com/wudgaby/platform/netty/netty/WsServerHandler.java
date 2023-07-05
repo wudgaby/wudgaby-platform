@@ -1,6 +1,6 @@
 package com.wudgaby.platform.netty.netty;
 
-import com.alibaba.fastjson.JSON;
+import cn.hutool.json.JSONUtil;
 import com.wudgaby.platform.netty.vo.WsMessage;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandlerContext;
@@ -134,7 +134,7 @@ public class WsServerHandler extends SimpleChannelInboundHandler<WebSocketFrame>
         msg.setOnlineNum(online);
 
         for(Channel channel:channelGroup){
-            channel.writeAndFlush(new TextWebSocketFrame(JSON.toJSONString(msg)));
+            channel.writeAndFlush(new TextWebSocketFrame(JSONUtil.toJsonStr(msg)));
         }
 
         super.channelUnregistered(ctx);
@@ -151,7 +151,7 @@ public class WsServerHandler extends SimpleChannelInboundHandler<WebSocketFrame>
         msg.setMsg("欢迎 " + name + " 进入聊天室.");
         msg.setType(WsMessage.MsgType.NOTICE);
         msg.setOnlineNum(online);
-        ctx.channel().writeAndFlush(new TextWebSocketFrame(JSON.toJSONString(msg)));
+        ctx.channel().writeAndFlush(new TextWebSocketFrame(JSONUtil.toJsonStr(msg)));
 
         msg = new WsMessage();
         msg.setDate(new Date());
@@ -164,7 +164,7 @@ public class WsServerHandler extends SimpleChannelInboundHandler<WebSocketFrame>
             if(channel == ctx.channel()){
                 continue;
             }
-            channel.writeAndFlush(new TextWebSocketFrame(JSON.toJSONString(msg)));
+            channel.writeAndFlush(new TextWebSocketFrame(JSONUtil.toJsonStr(msg)));
         }
 
         super.channelActive(ctx);

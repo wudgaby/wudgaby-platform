@@ -21,7 +21,6 @@ import java.time.LocalDateTime;
  * @since 2022-02-24
  */
 @Data
-@EqualsAndHashCode(callSuper = false)
 @TableName("biz_people")
 public class People implements Serializable {
 

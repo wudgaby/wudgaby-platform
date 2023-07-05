@@ -4,7 +4,7 @@ import cn.hutool.core.util.ObjectUtil;
 import cn.hutool.core.util.StrUtil;
 import com.alibaba.fastjson.support.spring.MappingFastJsonValue;
 import com.wudgaby.platform.core.result.ApiResult;
-import com.wudgaby.platform.utils.FastJsonUtil;
+import com.wudgaby.platform.utils.JacksonUtil;
 import com.wudgaby.starter.crypto.annotation.ApiEncryption;
 import com.wudgaby.starter.crypto.util.AESUtil;
 import org.springframework.core.MethodParameter;
@@ -45,7 +45,7 @@ public class EncryptionResponseBodyAdvice implements ResponseBodyAdvice<Object> 
         if(body instanceof MappingFastJsonValue && ((MappingFastJsonValue) body).getValue() instanceof ApiResult){
             ApiResult result = (ApiResult) ((MappingFastJsonValue) body).getValue();
             if(ObjectUtil.isNotNull(result.getData())){
-                String dataJson = FastJsonUtil.collectToString(result.getData());
+                String dataJson = JacksonUtil.serialize(result.getData());
                 result.setData(AESUtil.encryptBase64(dataJson));
             }
             if(StrUtil.isNotBlank(result.getMessage())){
@@ -54,7 +54,7 @@ public class EncryptionResponseBodyAdvice implements ResponseBodyAdvice<Object> 
             return body;
         }
 
-        String dataJson = FastJsonUtil.collectToString(body);
+        String dataJson = JacksonUtil.serialize(body);
         return ApiResult.success().data(AESUtil.encryptHex(dataJson));
     }
 }

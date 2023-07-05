@@ -4,19 +4,14 @@ import com.google.common.base.Charsets;
 import com.google.common.collect.Lists;
 import com.wudgaby.codegen.ui.controller.GeneratorCodeController;
 import com.wudgaby.platform.core.result.ApiResult;
-import com.wudgaby.platform.utils.FastJsonUtil;
+import com.wudgaby.platform.utils.JacksonUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.util.AntPathMatcher;
 import org.springframework.util.PathMatcher;
 
-import javax.servlet.Filter;
-import javax.servlet.FilterChain;
-import javax.servlet.FilterConfig;
-import javax.servlet.ServletException;
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
+import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -61,7 +56,7 @@ public class CodeGenFilter implements Filter {
                     response.setStatus(HttpStatus.FORBIDDEN.value());
                     response.setContentType(MediaType.APPLICATION_JSON_VALUE);
                     response.setCharacterEncoding(Charsets.UTF_8.name());
-                    response.getWriter().write(FastJsonUtil.collectToString(ApiResult.failure().message("未开放")));
+                    response.getWriter().write(JacksonUtil.serialize(ApiResult.failure().message("未开放")));
                     return;
                 }
             }

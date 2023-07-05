@@ -1,14 +1,13 @@
 package com.wudgaby.platform.core.entity;
 
 import cn.hutool.core.date.DatePattern;
-import com.alibaba.fastjson.annotation.JSONField;
-import com.alibaba.fastjson.serializer.ToStringSerializer;
 import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.wudgaby.platform.core.constant.SystemConstant;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.experimental.Accessors;
@@ -31,13 +30,12 @@ public class BaseEntity implements Serializable {
 
     @ApiModelProperty(value = "主键id")
     @TableId(value = "id", type = IdType.ASSIGN_ID)
-    @JSONField(serializeUsing= ToStringSerializer.class)
+    @JsonSerialize(using= ToStringSerializer.class)
     private Long id;
 
     @ApiModelProperty(value = "创建时间")
     @DateTimeFormat(pattern = DatePattern.NORM_DATETIME_PATTERN)
     @JsonFormat(pattern = DatePattern.NORM_DATETIME_PATTERN, timezone = "GMT+8")
-    @JSONField(format = DatePattern.NORM_DATETIME_PATTERN)
     @TableField(fill = FieldFill.INSERT)
     private Date createTime;
 
@@ -48,7 +46,6 @@ public class BaseEntity implements Serializable {
     @ApiModelProperty(value = "更新时间")
     @DateTimeFormat(pattern = DatePattern.NORM_DATETIME_PATTERN)
     @JsonFormat(pattern = DatePattern.NORM_DATETIME_PATTERN, timezone = "GMT+8")
-    @JSONField(format = DatePattern.NORM_DATETIME_PATTERN)
     @TableField(fill = FieldFill.UPDATE)
     private Date updateTime;
 

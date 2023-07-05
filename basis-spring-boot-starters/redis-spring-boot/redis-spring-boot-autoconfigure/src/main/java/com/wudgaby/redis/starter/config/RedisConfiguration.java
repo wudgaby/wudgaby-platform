@@ -6,7 +6,6 @@ import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.wudgaby.redis.api.RedisSupport;
 import com.wudgaby.redis.starter.enums.RedisConvertType;
-import com.wudgaby.redis.starter.support.FastJson2JsonRedisSerializer;
 import org.springframework.boot.autoconfigure.AutoConfigureBefore;
 import org.springframework.boot.autoconfigure.AutoConfigureOrder;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
@@ -70,21 +69,11 @@ public class RedisConfiguration {
         if (redisProperties.getValueConvert() == RedisConvertType.JACKSON) {
             // 设置value的序列化器
             //使用Jackson 2，将对象序列化为JSON
-            Jackson2JsonRedisSerializer<Object> jackson2JsonRedisSerializer = new Jackson2JsonRedisSerializer<>(Object.class);
-            //GenericJackson2JsonRedisSerializer genericJackson2JsonRedisSerializer = new GenericJackson2JsonRedisSerializer();
-            //json转对象类，不设置默认的会将json转成hashmap
-            ObjectMapper map = new ObjectMapper();
-            map.setVisibility(PropertyAccessor.ALL, JsonAutoDetect.Visibility.ANY);
-            map.activateDefaultTyping(map.getPolymorphicTypeValidator(), ObjectMapper.DefaultTyping.NON_FINAL, JsonTypeInfo.As.WRAPPER_ARRAY);
-            jackson2JsonRedisSerializer.setObjectMapper(map);
+            Jackson2JsonRedisSerializer<Object> jackson2JsonRedisSerializer = jackson2JsonRedisSerializer();
 
             template.setValueSerializer(jackson2JsonRedisSerializer);
             template.setHashValueSerializer(jackson2JsonRedisSerializer);
-        }else if (redisProperties.getValueConvert() == RedisConvertType.FASTJSON) {
-            FastJson2JsonRedisSerializer<Object> fastJsonRedisSerializer = new FastJson2JsonRedisSerializer<>(Object.class);
-            template.setValueSerializer(fastJsonRedisSerializer);
-            template.setHashValueSerializer(fastJsonRedisSerializer);
-        } else if (redisProperties.getValueConvert() == RedisConvertType.STRING) {
+        } else {
             template.setValueSerializer(RedisSerializer.string());
             template.setHashValueSerializer(RedisSerializer.string());
         }
@@ -113,8 +102,6 @@ public class RedisConfiguration {
         RedisCacheConfiguration redisCacheConfiguration;
         if(redisProperties.getValueConvert() == RedisConvertType.JACKSON){
             redisCacheConfiguration = jacksonRedisCacheConfigurationWithTtl(600);
-        }else if (redisProperties.getValueConvert() == RedisConvertType.FASTJSON) {
-            redisCacheConfiguration = fastJsonRedisCacheConfigurationWithTtl(600);
         }else{
             redisCacheConfiguration = stringRedisCacheConfigurationWithTtl(600);
         }
@@ -124,31 +111,11 @@ public class RedisConfiguration {
     }
 
     private RedisCacheConfiguration jacksonRedisCacheConfigurationWithTtl(Integer seconds) {
-        Jackson2JsonRedisSerializer<Object> jackson2JsonRedisSerializer = new Jackson2JsonRedisSerializer<>(Object.class);
-        ObjectMapper mapper = new ObjectMapper();
-        mapper.setVisibility(PropertyAccessor.ALL, JsonAutoDetect.Visibility.ANY);
-
-        /**
-         * 如果是作为api返回结果，不需要反序列化时：不设置activateDefaultTyping或者使用EXISTING_PROPERTY。
-         * 如果作为缓存等，需要反序列化时：一般使用 WRAPPER_ARRAY、WRAPPER_OBJECT、PROPERTY中的一种。如果不指定则默认使用的是WRAPPER_ARRAY。
-         */
-        mapper.activateDefaultTyping(mapper.getPolymorphicTypeValidator(), ObjectMapper.DefaultTyping.NON_FINAL, JsonTypeInfo.As.WRAPPER_ARRAY);
-        jackson2JsonRedisSerializer.setObjectMapper(mapper);
+        Jackson2JsonRedisSerializer<Object> jackson2JsonRedisSerializer = jackson2JsonRedisSerializer();
 
         RedisCacheConfiguration redisCacheConfiguration = RedisCacheConfiguration.defaultCacheConfig();
         redisCacheConfiguration = redisCacheConfiguration.serializeValuesWith(
                 RedisSerializationContext.SerializationPair.fromSerializer(jackson2JsonRedisSerializer))
-                .entryTtl(Duration.ofSeconds(seconds));
-
-        return redisCacheConfiguration;
-    }
-
-    private RedisCacheConfiguration fastJsonRedisCacheConfigurationWithTtl(Integer seconds) {
-        FastJson2JsonRedisSerializer<Object> redisSerializer = new FastJson2JsonRedisSerializer<>(Object.class);
-
-        RedisCacheConfiguration redisCacheConfiguration = RedisCacheConfiguration.defaultCacheConfig();
-        redisCacheConfiguration = redisCacheConfiguration.serializeValuesWith(
-                RedisSerializationContext.SerializationPair.fromSerializer(redisSerializer))
                 .entryTtl(Duration.ofSeconds(seconds));
 
         return redisCacheConfiguration;
@@ -163,5 +130,19 @@ public class RedisConfiguration {
                 .entryTtl(Duration.ofSeconds(seconds));
 
         return redisCacheConfiguration;
+    }
+
+    private Jackson2JsonRedisSerializer jackson2JsonRedisSerializer(){
+        Jackson2JsonRedisSerializer<Object> jackson2JsonRedisSerializer = new Jackson2JsonRedisSerializer<>(Object.class);
+        ObjectMapper mapper = new ObjectMapper();
+        mapper.setVisibility(PropertyAccessor.ALL, JsonAutoDetect.Visibility.ANY);
+
+        /**
+         * 如果是作为api返回结果，不需要反序列化时：不设置activateDefaultTyping或者使用EXISTING_PROPERTY。
+         * 如果作为缓存等，需要反序列化时：一般使用 WRAPPER_ARRAY、WRAPPER_OBJECT、PROPERTY中的一种。如果不指定则默认使用的是WRAPPER_ARRAY。
+         */
+        mapper.activateDefaultTyping(mapper.getPolymorphicTypeValidator(), ObjectMapper.DefaultTyping.NON_FINAL, JsonTypeInfo.As.WRAPPER_ARRAY);
+        jackson2JsonRedisSerializer.setObjectMapper(mapper);
+        return jackson2JsonRedisSerializer;
     }
 }

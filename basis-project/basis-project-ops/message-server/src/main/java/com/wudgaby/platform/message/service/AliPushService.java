@@ -1,28 +1,10 @@
 package com.wudgaby.platform.message.service;
 
-import com.alibaba.fastjson.JSON;
 import com.aliyuncs.DefaultAcsClient;
 import com.aliyuncs.exceptions.ClientException;
 import com.aliyuncs.http.MethodType;
 import com.aliyuncs.http.ProtocolType;
-import com.aliyuncs.push.model.v20160801.CancelPushRequest;
-import com.aliyuncs.push.model.v20160801.CancelPushResponse;
-import com.aliyuncs.push.model.v20160801.PushMessageToAndroidRequest;
-import com.aliyuncs.push.model.v20160801.PushMessageToAndroidResponse;
-import com.aliyuncs.push.model.v20160801.PushMessageToiOSRequest;
-import com.aliyuncs.push.model.v20160801.PushMessageToiOSResponse;
-import com.aliyuncs.push.model.v20160801.PushNoticeToAndroidRequest;
-import com.aliyuncs.push.model.v20160801.PushNoticeToAndroidResponse;
-import com.aliyuncs.push.model.v20160801.PushNoticeToiOSRequest;
-import com.aliyuncs.push.model.v20160801.PushNoticeToiOSResponse;
-import com.aliyuncs.push.model.v20160801.PushRequest;
-import com.aliyuncs.push.model.v20160801.PushResponse;
-import com.aliyuncs.push.model.v20160801.QueryAliasesRequest;
-import com.aliyuncs.push.model.v20160801.QueryAliasesResponse;
-import com.aliyuncs.push.model.v20160801.QueryDeviceInfoRequest;
-import com.aliyuncs.push.model.v20160801.QueryDeviceInfoResponse;
-import com.aliyuncs.push.model.v20160801.QueryDevicesByAccountRequest;
-import com.aliyuncs.push.model.v20160801.QueryDevicesByAccountResponse;
+import com.aliyuncs.push.model.v20160801.*;
 import com.aliyuncs.utils.ParameterHelper;
 import com.google.common.base.Joiner;
 import com.google.common.collect.Lists;
@@ -31,7 +13,7 @@ import com.wudgaby.platform.core.exception.BusinessException;
 import com.wudgaby.platform.message.api.enmus.AliTargetType;
 import com.wudgaby.platform.message.api.form.AliPushForm;
 import com.wudgaby.platform.message.config.properties.AliPushProperties;
-import com.wudgaby.platform.utils.FastJsonUtil;
+import com.wudgaby.platform.utils.JacksonUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -92,7 +74,7 @@ public class AliPushService {
         androidRequest.setTargetValue(Joiner.on(SymbolConstant.COMMA).skipNulls().join(aliPushForm.getTargetList()));
         androidRequest.setTitle(aliPushForm.getTitle());
         androidRequest.setBody(aliPushForm.getContent());
-        androidRequest.setExtParameters(FastJsonUtil.collectToString(aliPushForm.getExtrasMap()));
+        androidRequest.setExtParameters(JacksonUtil.serialize(aliPushForm.getExtrasMap()));
 
         PushNoticeToAndroidResponse pushNoticeToAndroidResponse = defaultAcsClient.getAcsResponse(androidRequest);
         log.info("发送成功. requestId: {}, messageId: {}", pushNoticeToAndroidResponse.getRequestId(), pushNoticeToAndroidResponse.getMessageId());
@@ -135,7 +117,7 @@ public class AliPushService {
         iOSRequest.setTargetValue(Joiner.on(SymbolConstant.COMMA).skipNulls().join(aliPushForm.getTargetList()));
         iOSRequest.setTitle(aliPushForm.getTitle());
         iOSRequest.setBody(aliPushForm.getContent());
-        iOSRequest.setExtParameters(FastJsonUtil.collectToString(aliPushForm.getExtrasMap()));
+        iOSRequest.setExtParameters(JacksonUtil.serialize(aliPushForm.getExtrasMap()));
 
         PushNoticeToiOSResponse pushNoticeToiOSResponse = defaultAcsClient.getAcsResponse(iOSRequest);
         log.info("发送成功. requestId: {}, messageId: {}", pushNoticeToiOSResponse.getRequestId(), pushNoticeToiOSResponse.getMessageId());
@@ -157,7 +139,7 @@ public class AliPushService {
 
         QueryDeviceInfoResponse response = defaultAcsClient.getAcsResponse(request);
         QueryDeviceInfoResponse.DeviceInfo deviceInfo = response.getDeviceInfo();
-        return JSON.toJSONString(deviceInfo);
+        return JacksonUtil.serialize(deviceInfo);
     }
 
     public List<String> queryAliaseList(String deviceId) throws ClientException {
@@ -213,7 +195,7 @@ public class AliPushService {
         pushRequest.setIOSApnsEnv(aliPushProperties.getApnsEnv());//iOS的通知是通过APNs中心来发送的，需要填写对应的环境信息。"DEV" : 表示开发环境 "PRODUCT" : 表示生产环境
         pushRequest.setIOSRemind(true); // 消息推送时设备不在线（既与移动推送的服务端的长连接通道不通），则这条推送会做为通知，通过苹果的APNs通道送达一次。注意：离线消息转通知仅适用于生产环境
         pushRequest.setIOSRemindBody("iOSRemindBody");//iOS消息转通知时使用的iOS通知内容，仅当iOSApnsEnv=PRODUCT && iOSRemind为true时有效
-        pushRequest.setIOSExtParameters(FastJsonUtil.collectToString(aliPushForm.getExtrasMap())); //通知的扩展属性(注意 : 该参数要以json map的格式传入,否则会解析出错)
+        pushRequest.setIOSExtParameters(JacksonUtil.serialize(aliPushForm.getExtrasMap())); //通知的扩展属性(注意 : 该参数要以json map的格式传入,否则会解析出错)
 
         // 推送配置: Android
         //通知的提醒方式 "VIBRATE" : 震动 "SOUND" : 声音 "BOTH" : 声音和震动 NONE : 静音
@@ -234,7 +216,7 @@ public class AliPushService {
         pushRequest.setAndroidPopupTitle(aliPushForm.getTitle());
         pushRequest.setAndroidPopupBody(aliPushForm.getContent());
         //设定通知的扩展属性。(注意 : 该参数要以 json map 的格式传入,否则会解析出错)
-        pushRequest.setAndroidExtParameters(FastJsonUtil.collectToString(aliPushForm.getExtrasMap()));
+        pushRequest.setAndroidExtParameters(JacksonUtil.serialize(aliPushForm.getExtrasMap()));
         pushRequest.setAndroidNotificationChannel("1");
         //推送控制
         //Date pushDate = new Date(System.currentTimeMillis()); // 30秒之间的时间点, 也可以设置成你指定固定时间

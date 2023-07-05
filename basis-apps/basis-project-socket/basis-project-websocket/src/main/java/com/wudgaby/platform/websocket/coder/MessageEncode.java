@@ -1,6 +1,6 @@
 package com.wudgaby.platform.websocket.coder;
 
-import com.alibaba.fastjson.JSON;
+import cn.hutool.json.JSONUtil;
 import com.wudgaby.platform.websocket.vo.WsMessage;
 
 import javax.websocket.EncodeException;
@@ -28,6 +28,6 @@ public class MessageEncode implements Encoder.Text<WsMessage> {
 
     @Override
     public String encode(WsMessage msg) throws EncodeException {
-        return JSON.toJSONString(msg);
+        return JSONUtil.toJsonStr(msg);
     }
 }

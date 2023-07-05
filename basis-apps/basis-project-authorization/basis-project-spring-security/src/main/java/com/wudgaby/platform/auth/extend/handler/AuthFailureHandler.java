@@ -2,7 +2,7 @@ package com.wudgaby.platform.auth.extend.handler;
 
 import com.google.common.base.Charsets;
 import com.wudgaby.platform.core.result.ApiResult;
-import com.wudgaby.platform.utils.FastJsonUtil;
+import com.wudgaby.platform.utils.JacksonUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.MediaType;
 import org.springframework.security.core.AuthenticationException;
@@ -34,7 +34,7 @@ public class AuthFailureHandler extends SimpleUrlAuthenticationFailureHandler {
         response.setCharacterEncoding(Charsets.UTF_8.name());
         response.setContentType(MediaType.APPLICATION_JSON_VALUE);
 
-        String json = FastJsonUtil.collectToString(ApiResult.<String>failure().message(exception.getMessage()));
+        String json = JacksonUtil.serialize(ApiResult.<String>failure().message(exception.getMessage()));
         response.getWriter().write(json);
         response.getWriter().flush();
     }

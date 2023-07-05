@@ -8,7 +8,7 @@ import com.wudgaby.platform.sso.core.config.SsoProperties;
 import com.wudgaby.platform.sso.core.constant.SsoConst;
 import com.wudgaby.platform.sso.core.vo.PermissionVo;
 import com.wudgaby.platform.sso.core.vo.SsoUserVo;
-import com.wudgaby.platform.utils.FastJsonUtil;
+import com.wudgaby.platform.utils.JacksonUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -64,7 +64,7 @@ public class SsoRemoteHelper {
 
             ApiResult apiResult = response.getBody();
             if(ApiResult.isSuccess(apiResult)){
-                return FastJsonUtil.toBean(FastJsonUtil.collectToString(apiResult.getData()), SsoUserVo.class);
+                return JacksonUtil.deserialize(JacksonUtil.serialize2Bytes(apiResult.getData()), SsoUserVo.class);
             }
         }catch (RestClientException ioe){
             log.error(ioe.getMessage(), ioe);
@@ -110,7 +110,7 @@ public class SsoRemoteHelper {
 
             ApiResult apiResult = response.getBody();
             if(ApiResult.isSuccess(apiResult)){
-                List<PermissionVo> permissionVoList = FastJsonUtil.toList(FastJsonUtil.collectToString(apiResult.getData()), PermissionVo.class);
+                List<PermissionVo> permissionVoList = JacksonUtil.deserializeArray(JacksonUtil.serialize(apiResult.getData()), PermissionVo.class);
                 return Optional.ofNullable(permissionVoList).orElse(Lists.newArrayList());
             }
         }catch (RestClientException ioe){

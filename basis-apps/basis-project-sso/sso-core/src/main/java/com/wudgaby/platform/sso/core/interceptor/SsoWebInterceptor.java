@@ -11,7 +11,7 @@ import com.wudgaby.platform.sso.core.utils.SsoSecurityUtils;
 import com.wudgaby.platform.sso.core.utils.WebUtil;
 import com.wudgaby.platform.sso.core.vo.SsoTokenVo;
 import com.wudgaby.platform.sso.core.vo.SsoUserVo;
-import com.wudgaby.platform.utils.FastJsonUtil;
+import com.wudgaby.platform.utils.JacksonUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
@@ -132,7 +132,7 @@ public class SsoWebInterceptor implements HandlerInterceptor {
             if (WebUtil.isAjax(request) || WebUtil.isContentTypeJson(request)) {
                 log.info("缺少:" + SsoConst.ACCESS_TOKEN);
                 ApiResult apiResult = ApiResult.failure().message("未登录").data(ssoLoginUrl).code(401);
-                output(response, FastJsonUtil.collectToString(apiResult));
+                output(response, JacksonUtil.serialize(apiResult));
             } else {
                 response.sendRedirect(ssoLoginUrl);
             }
@@ -146,7 +146,7 @@ public class SsoWebInterceptor implements HandlerInterceptor {
             log.error("获取用户信息失败");
             if (WebUtil.isAjax(request) || WebUtil.isContentTypeJson(request)) {
                 ApiResult apiResult = ApiResult.failure().message("未登录").data(ssoLoginUrl).code(401);
-                output(response, FastJsonUtil.collectToString(apiResult));
+                output(response, JacksonUtil.serialize(apiResult));
             } else {
                 response.sendRedirect(ssoLoginUrl);
             }

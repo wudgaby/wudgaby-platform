@@ -3,7 +3,6 @@ package com.wudgaby.redis.starter.config;
 import com.wudgaby.redis.starter.consts.RedisConst;
 import com.wudgaby.redis.starter.enums.RedisConvertType;
 import com.wudgaby.redis.starter.support.BeanHelper;
-import com.wudgaby.redis.starter.support.FastJson2JsonRedisSerializer;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections4.MapUtils;
 import org.apache.commons.pool2.impl.GenericObjectPoolConfig;
@@ -71,11 +70,7 @@ public class RedisAloneConfiguration implements ApplicationContextAware {
         if (type == RedisConvertType.JACKSON) {
             template.setValueSerializer(RedisSerializer.json());
             template.setHashValueSerializer(RedisSerializer.json());
-        }else if (type == RedisConvertType.FASTJSON) {
-            FastJson2JsonRedisSerializer<Object> fastJsonRedisSerializer = new FastJson2JsonRedisSerializer<>(Object.class);
-            template.setValueSerializer(fastJsonRedisSerializer);
-            template.setHashValueSerializer(fastJsonRedisSerializer);
-        } else if (type == RedisConvertType.STRING) {
+        }else {
             template.setValueSerializer(RedisSerializer.string());
             template.setHashValueSerializer(RedisSerializer.string());
         }

@@ -2,7 +2,7 @@ package com.wudgaby.platform.auth.extend.handler;
 
 import com.google.common.base.Charsets;
 import com.wudgaby.platform.core.result.ApiResult;
-import com.wudgaby.platform.utils.FastJsonUtil;
+import com.wudgaby.platform.utils.JacksonUtil;
 import org.springframework.http.MediaType;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.logout.SimpleUrlLogoutSuccessHandler;
@@ -31,7 +31,7 @@ public class MyLogoutSuccessHandler extends SimpleUrlLogoutSuccessHandler {
 
         response.setCharacterEncoding(Charsets.UTF_8.name());
         response.setContentType(MediaType.APPLICATION_JSON_VALUE);
-        String json = FastJsonUtil.collectToString(ApiResult.success().message("登出成功"));
+        String json = JacksonUtil.serialize(ApiResult.success().message("登出成功"));
         response.getWriter().write(json);
         response.getWriter().flush();
     }

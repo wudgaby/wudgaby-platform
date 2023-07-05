@@ -4,7 +4,7 @@ import com.google.common.base.Charsets;
 import com.wudgaby.platform.auth.exceptions.AuthMethodNotSupportedException;
 import com.wudgaby.platform.auth.exceptions.JwtExpiredTokenException;
 import com.wudgaby.platform.core.result.ApiResult;
-import com.wudgaby.platform.utils.FastJsonUtil;
+import com.wudgaby.platform.utils.JacksonUtil;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -42,7 +42,7 @@ public class AjaxAwareAuthenticationFailureHandler implements AuthenticationFail
 		}else{
 			apiResult = ApiResult.<String>failure().message("认证失败");
 		}
-		String json = FastJsonUtil.collectToString(apiResult);
+		String json = JacksonUtil.serialize(apiResult);
 		response.getWriter().write(json);
 		response.getWriter().flush();
 	}

@@ -14,7 +14,7 @@ import com.wudgaby.platform.security.core.UserInfo;
 import com.wudgaby.platform.sys.entity.SysLog;
 import com.wudgaby.platform.sys.mapper.SysLogMapper;
 import com.wudgaby.platform.sys.service.SysLogService;
-import com.wudgaby.platform.utils.FastJsonUtil;
+import com.wudgaby.platform.utils.JacksonUtil;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
@@ -61,12 +61,12 @@ public class SysLogServiceImpl extends ServiceImpl<SysLogMapper, SysLog> impleme
         if(StringUtils.isNotBlank(contentType) && contentType.contains("multipart/form-data")){
             sysLog.setReqParam(StringUtils.EMPTY);
         }else{
-            sysLog.setReqParam(FastJsonUtil.collectToString(loggerInfo.getParameters()));
+            sysLog.setReqParam(JacksonUtil.serialize(loggerInfo.getParameters()));
         }
 
         sysLog.setReqTime(new Date(loggerInfo.getRequestTime()));
         sysLog.setRespTime(new Date(loggerInfo.getResponseTime()));
-        sysLog.setReqHeaders(FastJsonUtil.collectToString(loggerInfo.getHttpHeaders()));
+        sysLog.setReqHeaders(JacksonUtil.serialize(loggerInfo.getHttpHeaders()));
         sysLog.setReqIp(loggerInfo.getIp());
         sysLog.setHttpStatus(loggerInfo.getHttpStatus());
         if (sysLog.getReqIp() != null) {
@@ -91,7 +91,7 @@ public class SysLogServiceImpl extends ServiceImpl<SysLogMapper, SysLog> impleme
             sysLog.setSucceed(StringUtils.isBlank(sysLog.getError()));
         }
         sysLog.setResponse(Optional.ofNullable(loggerInfo.getResponse()).map(resp -> {
-            String result = FastJsonUtil.collectToString(resp);
+            String result = JacksonUtil.serialize(resp);
             if(result.length() > 20000) {
                 return StrUtil.sub(result, 0, 20000);
             }

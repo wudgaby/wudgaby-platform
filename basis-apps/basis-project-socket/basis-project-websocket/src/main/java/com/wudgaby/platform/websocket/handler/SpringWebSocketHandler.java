@@ -1,6 +1,7 @@
 package com.wudgaby.platform.websocket.handler;
 
-import com.alibaba.fastjson.JSON;
+import cn.hutool.json.JSON;
+import cn.hutool.json.JSONUtil;
 import com.wudgaby.platform.websocket.storage.WsSessionManager;
 import com.wudgaby.platform.websocket.vo.WsMessage;
 import lombok.extern.slf4j.Slf4j;
@@ -38,7 +39,7 @@ public class SpringWebSocketHandler extends TextWebSocketHandler {
         msg.setMsg("欢迎 " + name + " 进入聊天室.");
         msg.setType(WsMessage.MsgType.NOTICE);
         msg.setOnlineNum(WsSessionManager.getOnlineNum());
-        session.sendMessage(new TextMessage(JSON.toJSONString(msg)));
+        session.sendMessage(new TextMessage(JSONUtil.toJsonStr(msg)));
 
         msg = new WsMessage();
         msg.setDate(new Date());
@@ -51,7 +52,7 @@ public class SpringWebSocketHandler extends TextWebSocketHandler {
             if (s == session) {
                 continue;
             }
-            s.sendMessage(new TextMessage(JSON.toJSONString(msg)));
+            s.sendMessage(new TextMessage(JSONUtil.toJsonStr(msg)));
         }
     }
 
@@ -59,7 +60,7 @@ public class SpringWebSocketHandler extends TextWebSocketHandler {
     protected void handleTextMessage(WebSocketSession session, TextMessage message) throws Exception {
         String name = Optional.ofNullable(session.getPrincipal()).map(Principal::getName).orElse(null);
         String payload = message.getPayload();
-        WsMessage receiveMessage = JSON.parseObject(payload, WsMessage.class);
+        WsMessage receiveMessage = JSONUtil.toBean(payload, WsMessage.class);
 
         WsMessage msg = new WsMessage();
         msg.setDate(new Date());
@@ -69,7 +70,7 @@ public class SpringWebSocketHandler extends TextWebSocketHandler {
         msg.setOnlineNum(WsSessionManager.getOnlineNum());
 
         for(WebSocketSession wss : WsSessionManager.getWebSocketSessions()){
-            wss.sendMessage(new TextMessage(JSON.toJSONString(msg)));
+            wss.sendMessage(new TextMessage(JSONUtil.toJsonStr(msg)));
         }
     }
 
@@ -86,7 +87,7 @@ public class SpringWebSocketHandler extends TextWebSocketHandler {
         msg.setOnlineNum(WsSessionManager.getOnlineNum());
 
         for(WebSocketSession s : WsSessionManager.getWebSocketSessions()){
-            s.sendMessage(new TextMessage(JSON.toJSONString(msg)));
+            s.sendMessage(new TextMessage(JSONUtil.toJsonStr(msg)));
         }
     }
 }

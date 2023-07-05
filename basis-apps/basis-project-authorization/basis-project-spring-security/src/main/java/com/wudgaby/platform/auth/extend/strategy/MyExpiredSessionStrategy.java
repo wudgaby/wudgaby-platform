@@ -2,7 +2,7 @@ package com.wudgaby.platform.auth.extend.strategy;
 
 import com.google.common.base.Charsets;
 import com.wudgaby.platform.core.result.ApiResult;
-import com.wudgaby.platform.utils.FastJsonUtil;
+import com.wudgaby.platform.utils.JacksonUtil;
 import org.springframework.http.MediaType;
 import org.springframework.security.web.session.SessionInformationExpiredEvent;
 import org.springframework.security.web.session.SessionInformationExpiredStrategy;
@@ -26,7 +26,7 @@ public class MyExpiredSessionStrategy implements SessionInformationExpiredStrate
         response.setCharacterEncoding(Charsets.UTF_8.name());
         response.setContentType(MediaType.APPLICATION_JSON_VALUE);
 
-        String json = FastJsonUtil.collectToString(ApiResult.<String>failure().message("用户已在其他地方登录..."));
+        String json = JacksonUtil.serialize(ApiResult.<String>failure().message("用户已在其他地方登录..."));
         response.getWriter().write(json);
         response.getWriter().flush();
     }

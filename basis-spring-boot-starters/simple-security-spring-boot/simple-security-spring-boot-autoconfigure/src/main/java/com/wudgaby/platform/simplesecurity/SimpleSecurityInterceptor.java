@@ -3,7 +3,7 @@ package com.wudgaby.platform.simplesecurity;
 import com.wudgaby.platform.core.result.ApiResult;
 import com.wudgaby.platform.simplesecurity.annotations.AuthPermit;
 import com.wudgaby.platform.simplesecurity.ext.RequestMatcherCreator;
-import com.wudgaby.platform.utils.FastJsonUtil;
+import com.wudgaby.platform.utils.JacksonUtil;
 import com.wudgaby.platform.webcore.spring.util.RequestMatcher;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -87,7 +87,7 @@ public class SimpleSecurityInterceptor implements HandlerInterceptor {
         response.setStatus(HttpStatus.FORBIDDEN.value());
         response.setContentType(MediaType.APPLICATION_JSON_VALUE);
         response.setCharacterEncoding("utf-8");
-        response.getWriter().write(FastJsonUtil.collectToString(ApiResult.failure("无权限访问.")));
+        response.getWriter().write(JacksonUtil.serialize(ApiResult.failure("无权限访问.")));
         response.getWriter().flush();
     }
 

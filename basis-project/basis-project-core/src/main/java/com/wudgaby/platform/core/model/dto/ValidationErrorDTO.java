@@ -1,7 +1,7 @@
 package com.wudgaby.platform.core.model.dto;
 
 import cn.hutool.core.collection.CollUtil;
-import com.alibaba.fastjson.annotation.JSONField;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.google.common.base.Joiner;
 import com.google.common.collect.Lists;
 import lombok.Data;
@@ -27,12 +27,12 @@ public class ValidationErrorDTO {
         fieldErrors.add(new FieldErrorDTO(field, message));
     }
 
-    @JSONField(serialize = false)
+    @JsonIgnore
     public String getAllErrorMsg(){
         return Joiner.on(";").skipNulls().join(fieldErrors);
     }
 
-    @JSONField(serialize = false)
+    @JsonIgnore
     public String getFirstErrorMsg(){
         return Optional.ofNullable(CollUtil.getFirst(fieldErrors)).map(err -> err.getMessage()).orElse("");
     }

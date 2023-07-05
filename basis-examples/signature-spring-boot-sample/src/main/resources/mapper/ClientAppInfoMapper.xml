@@ -3,7 +3,7 @@
 <mapper namespace="sampe.mapper.ClientAppInfoMapper">
 
     <!-- 通用查询映射结果 -->
-    <resultMap id="BaseResultMap" type="sample.model.entity.ClientAppInfo">
+    <resultMap id="BaseResultMap" type="com.wudgaby.platform.openapi.entity.ClientAppInfo">
         <id column="id" property="id" />
         <result column="app_name" property="appName" />
         <result column="app_id" property="appId" />

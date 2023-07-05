@@ -1,9 +1,9 @@
 package com.wudgaby.platform.sys.entity;
 
-import com.alibaba.fastjson.annotation.JSONField;
-import com.alibaba.fastjson.serializer.ToStringSerializer;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 import com.wudgaby.platform.core.entity.BaseEntity;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -29,7 +29,7 @@ public class SysDept extends BaseEntity {
 
     @ApiModelProperty(value = "主键id")
     @TableId(value = "id", type = IdType.AUTO)
-    @JSONField(serializeUsing= ToStringSerializer.class)
+    @JsonSerialize(using = ToStringSerializer.class)
     private Long id;
 
     @ApiModelProperty(value = "父id 0:根节点", required = true)

@@ -10,7 +10,7 @@ import com.wudgaby.platform.sso.core.helper.SsoRemoteHelper;
 import com.wudgaby.platform.sso.core.utils.SsoSecurityUtils;
 import com.wudgaby.platform.sso.core.vo.PermissionVo;
 import com.wudgaby.platform.sso.core.vo.SsoUserVo;
-import com.wudgaby.platform.utils.FastJsonUtil;
+import com.wudgaby.platform.utils.JacksonUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections4.CollectionUtils;
@@ -72,7 +72,7 @@ public class PermissionInterceptor implements HandlerInterceptor {
             response.setCharacterEncoding(Charsets.UTF_8.name());
             response.setContentType(MediaType.APPLICATION_JSON_VALUE);
 
-            String json = FastJsonUtil.collectToString(ApiResult.<String>failure().message("无权限"));
+            String json = JacksonUtil.serialize(ApiResult.<String>failure().message("无权限"));
             response.getWriter().write(json);
             response.getWriter().flush();
             return false;

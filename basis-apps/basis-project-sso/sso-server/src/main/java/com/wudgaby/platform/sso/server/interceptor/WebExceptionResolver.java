@@ -2,7 +2,7 @@ package com.wudgaby.platform.sso.server.interceptor;
 
 import com.wudgaby.platform.core.result.ApiResult;
 import com.wudgaby.platform.sso.core.exception.SsoException;
-import com.wudgaby.platform.utils.FastJsonUtil;
+import com.wudgaby.platform.utils.JacksonUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
@@ -51,7 +51,7 @@ public class WebExceptionResolver implements HandlerExceptionResolver {
             try {
                 response.setContentType(MediaType.APPLICATION_JSON_VALUE);
                 response.setCharacterEncoding(StandardCharsets.UTF_8.name());
-                response.getWriter().println(FastJsonUtil.collectToString(errorResult));
+                response.getWriter().println(JacksonUtil.serialize(errorResult));
                 response.getWriter().flush();
             } catch (IOException e) {
                 log.error(e.getMessage(), e);

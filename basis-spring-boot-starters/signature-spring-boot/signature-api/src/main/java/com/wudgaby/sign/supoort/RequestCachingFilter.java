@@ -1,8 +1,7 @@
 package com.wudgaby.sign.supoort;
 
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONObject;
-import com.alibaba.fastjson.serializer.SerializerFeature;
+import com.google.common.collect.Maps;
+import com.wudgaby.platform.utils.JacksonUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -15,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.Collections;
+import java.util.Map;
 
 /**
  * @ClassName : RequestCachingFilter
@@ -55,8 +55,9 @@ public class RequestCachingFilter extends OncePerRequestFilter {
             log.error("printRequest 获取body异常...", e);
         }
 
-        JSONObject requestJ = new JSONObject();
-        JSONObject headers = new JSONObject();
+
+        Map<String, Object> requestJ = Maps.newHashMap();
+        Map<String, Object> headers = Maps.newHashMap();
         Collections.list(request.getHeaderNames())
                 .stream()
                 .forEach(name -> headers.put(name, request.getHeader(name)));
@@ -75,7 +76,7 @@ public class RequestCachingFilter extends OncePerRequestFilter {
         requestJ.put("path-info", request.getPathInfo());
         requestJ.put("context-path", request.getContextPath());
 
-        log.info("Request-Info: " + JSON.toJSONString(requestJ, SerializerFeature.PrettyFormat));
+        log.info("Request-Info: " + JacksonUtil.serialize(requestJ));
     }
 
 }

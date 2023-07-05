@@ -1,15 +1,13 @@
 package com.wudgaby.platform.auth.configuration;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.wudgaby.platform.core.support.FastJson2JsonRedisSerializer;
 import org.springframework.beans.factory.BeanClassLoaderAware;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
 import org.springframework.data.redis.serializer.RedisSerializer;
 import org.springframework.security.jackson2.SecurityJackson2Modules;
 import org.springframework.session.data.redis.config.ConfigureRedisAction;
-
-import java.util.Arrays;
 
 /**
  * @ClassName : JsonSessionConfig
@@ -30,7 +28,7 @@ public class JsonSessionConfig implements BeanClassLoaderAware {
         //无法反序列化DefaultSavedRequest
         //return new GenericFastJsonRedisSerializer();
 
-        return new FastJson2JsonRedisSerializer<>(Object.class, Arrays.asList("org.springframework.security.web.savedrequest.DefaultSavedRequest"));
+        return new Jackson2JsonRedisSerializer<>(Object.class);
     }
 
     /**

@@ -1,6 +1,6 @@
 package com.wudgaby.platform.websocket.coder;
 
-import com.alibaba.fastjson.JSON;
+import cn.hutool.json.JSONUtil;
 import com.wudgaby.platform.websocket.vo.WsMessage;
 
 import javax.websocket.DecodeException;
@@ -28,7 +28,7 @@ public class MessageDecode implements Decoder.Text<WsMessage> {
 
     @Override
     public WsMessage decode(String msg) throws DecodeException {
-        return JSON.parseObject(msg, WsMessage.class);
+        return JSONUtil.toBean(msg, WsMessage.class);
     }
 
     @Override

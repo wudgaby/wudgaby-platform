@@ -11,7 +11,7 @@ import com.wudgaby.platform.permission.dto.OpenAuthority;
 import com.wudgaby.platform.permission.service.BaseAuthorityService;
 import com.wudgaby.platform.security.core.SecurityUtils;
 import com.wudgaby.platform.security.core.UserInfo;
-import com.wudgaby.platform.utils.FastJsonUtil;
+import com.wudgaby.platform.utils.JacksonUtil;
 import com.wudgaby.platform.webcore.spring.util.AntPathRequestMatcher;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections.CollectionUtils;
@@ -67,9 +67,9 @@ public class AccessFilter implements Filter{
                 chain.doFilter(request, response);
                 return;
             }
-            outputError((HttpServletResponse)response, HttpStatus.FORBIDDEN.value(), FastJsonUtil.collectToString(ApiResult.failure("无权限")));
+            outputError((HttpServletResponse)response, HttpStatus.FORBIDDEN.value(), JacksonUtil.serialize(ApiResult.failure("无权限")));
         }catch (AccessDeniedException ae) {
-            outputError((HttpServletResponse)response, HttpStatus.FORBIDDEN.value(), FastJsonUtil.collectToString(ApiResult.failure(ae.getMessage())));
+            outputError((HttpServletResponse)response, HttpStatus.FORBIDDEN.value(), JacksonUtil.serialize(ApiResult.failure(ae.getMessage())));
         }
     }
 

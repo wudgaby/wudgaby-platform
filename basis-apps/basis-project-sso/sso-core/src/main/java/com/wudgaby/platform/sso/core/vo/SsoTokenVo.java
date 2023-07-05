@@ -1,6 +1,6 @@
 package com.wudgaby.platform.sso.core.vo;
 
-import com.alibaba.fastjson.annotation.JSONField;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.experimental.Accessors;
@@ -18,10 +18,10 @@ import java.io.Serializable;
 public class SsoTokenVo implements Serializable {
 
     @ApiModelProperty(value = "用户令牌")
-    @JSONField(name = "access_token")
+    @JsonProperty(value = "access_token")
     private String accessToken;
 
     @ApiModelProperty(value = "目标url")
-    @JSONField(name = "target_url")
+    @JsonProperty(value = "target_url")
     private String targetUrl;
 }

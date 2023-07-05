@@ -1,7 +1,7 @@
 package sample.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import sample.model.entity.ClientAppInfo;
+import com.wudgaby.platform.openapi.entity.ClientAppInfo;
 
 /**
  * <p>

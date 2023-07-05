@@ -3,6 +3,7 @@ package com.wudgaby.platform.permission.dto;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.wudgaby.platform.permission.entity.BaseMenu;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import java.util.List;
 
@@ -11,6 +12,7 @@ import java.util.List;
  * @author liuyadu
  */
 @Data
+@EqualsAndHashCode(callSuper = true)
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class AuthorityMenu extends BaseMenu {
     /**

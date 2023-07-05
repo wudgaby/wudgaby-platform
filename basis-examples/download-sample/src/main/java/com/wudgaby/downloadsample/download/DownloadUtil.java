@@ -3,8 +3,8 @@ package com.wudgaby.downloadsample.download;
 import com.alibaba.excel.EasyExcel;
 import com.alibaba.excel.ExcelWriter;
 import com.alibaba.excel.write.metadata.WriteSheet;
-import com.alibaba.fastjson.JSON;
 import com.wudgaby.platform.core.result.ApiResult;
+import com.wudgaby.platform.utils.JacksonUtil;
 import lombok.SneakyThrows;
 import lombok.experimental.UtilityClass;
 import lombok.extern.slf4j.Slf4j;
@@ -46,7 +46,7 @@ public class DownloadUtil {
             //response.reset();
             response.setContentType("application/json");
             response.setCharacterEncoding("utf-8");
-            response.getWriter().println(JSON.toJSONString(ApiResult.failure().message("下载文件失败!")));
+            response.getWriter().println(JacksonUtil.serialize(ApiResult.failure().message("下载文件失败!")));
         }
     }
 
@@ -61,7 +61,7 @@ public class DownloadUtil {
             //response.reset();
             response.setContentType("application/json");
             response.setCharacterEncoding("utf-8");
-            response.getWriter().println(JSON.toJSONString(ApiResult.failure().message("下载文件失败!")));
+            response.getWriter().println(JacksonUtil.serialize(ApiResult.failure().message("下载文件失败!")));
         }
     }
 
@@ -86,7 +86,7 @@ public class DownloadUtil {
             //response.reset();
             response.setContentType("application/json");
             response.setCharacterEncoding("utf-8");
-            response.getWriter().println(JSON.toJSONString(ApiResult.failure().message("下载文件失败!")));
+            response.getWriter().println(JacksonUtil.serialize(ApiResult.failure().message("下载文件失败!")));
         }
     }
 
@@ -104,7 +104,7 @@ public class DownloadUtil {
             //response.reset();
             response.setContentType("application/json");
             response.setCharacterEncoding("utf-8");
-            response.getWriter().println(JSON.toJSONString(ApiResult.failure().message("生成数据失败")));
+            response.getWriter().println(JacksonUtil.serialize(ApiResult.failure().message("生成数据失败")));
         }
     }
 

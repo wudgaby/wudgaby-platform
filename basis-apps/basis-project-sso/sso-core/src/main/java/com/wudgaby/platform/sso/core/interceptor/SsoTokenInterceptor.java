@@ -8,13 +8,11 @@ import com.wudgaby.platform.sso.core.helper.SsoRemoteHelper;
 import com.wudgaby.platform.sso.core.utils.SsoSecurityUtils;
 import com.wudgaby.platform.sso.core.vo.SsoTokenVo;
 import com.wudgaby.platform.sso.core.vo.SsoUserVo;
-import com.wudgaby.platform.utils.FastJsonUtil;
+import com.wudgaby.platform.utils.JacksonUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.annotation.AnnotationUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -53,7 +51,7 @@ public class SsoTokenInterceptor implements HandlerInterceptor {
         if (StringUtils.equals(ssoProperties.getLogoutPath(), servletPath)) {
             request.getSession().invalidate();
             ApiResult apiResult = ApiResult.success().message("登出成功");
-            output(response, FastJsonUtil.collectToString(apiResult));
+            output(response, JacksonUtil.serialize(apiResult));
             return false;
         }
 
@@ -93,7 +91,7 @@ public class SsoTokenInterceptor implements HandlerInterceptor {
             }else{
                 apiResult = ApiResult.failure().message(tokenApiResult.getMessage());
             }
-            output(response, FastJsonUtil.collectToString(apiResult));
+            output(response, JacksonUtil.serialize(apiResult));
             return false;
         }
 
@@ -104,7 +102,7 @@ public class SsoTokenInterceptor implements HandlerInterceptor {
 
         if (ssoUserVo == null) {
             ApiResult apiResult = ApiResult.failure().message("未登录").code(401);
-            output(response, FastJsonUtil.collectToString(apiResult));
+            output(response, JacksonUtil.serialize(apiResult));
             return false;
         }
 

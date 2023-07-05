@@ -3,7 +3,7 @@ package com.wudgaby.platform.auth.extend.authway.ajax;
 import cn.hutool.core.io.IoUtil;
 import com.wudgaby.platform.auth.exceptions.AuthMethodNotSupportedException;
 import com.wudgaby.platform.auth.utils.WebUtil;
-import com.wudgaby.platform.utils.FastJsonUtil;
+import com.wudgaby.platform.utils.JacksonUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -54,7 +54,7 @@ public class AjaxLoginProcessingFilter extends AbstractAuthenticationProcessingF
         }
 
         String json = IoUtil.read(request.getReader());
-        LoginRequest loginRequest = FastJsonUtil.toBean(json, LoginRequest.class);
+        LoginRequest loginRequest = JacksonUtil.deserialize(json, LoginRequest.class);
         
         if (StringUtils.isBlank(loginRequest.getUsername()) || StringUtils.isBlank(loginRequest.getPassword())) {
             throw new AuthenticationServiceException("Username or Password not provided");

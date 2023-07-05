@@ -1,8 +1,8 @@
 package com.wudgaby.platform.core.entity;
 
-import com.alibaba.fastjson.annotation.JSONField;
 import com.baomidou.mybatisplus.annotation.TableLogic;
 import com.baomidou.mybatisplus.annotation.Version;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -26,12 +26,12 @@ public class MyEntity extends BaseEntity {
     private Integer sort;
 
     @ApiModelProperty(value = "乐观锁")
-    @JSONField(serialize = false)
+    @JsonIgnore
     @Version
     private Integer version;
 
     @ApiModelProperty(value = "逻辑删除 0:存在 1:已删除")
-    @JSONField(serialize = false)
+    @JsonIgnore
     @TableLogic
     private Boolean deleted;
 }

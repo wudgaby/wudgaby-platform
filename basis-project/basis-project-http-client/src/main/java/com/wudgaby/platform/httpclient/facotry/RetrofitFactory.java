@@ -1,6 +1,6 @@
 package com.wudgaby.platform.httpclient.facotry;
 
-import com.wudgaby.platform.httpclient.support.converter.fastjson.FastJsonConverterFactory;
+import com.wudgaby.platform.httpclient.support.converter.jackson.JacksonConverterFactory;
 import lombok.experimental.UtilityClass;
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
@@ -18,7 +18,7 @@ public class RetrofitFactory {
         return new Retrofit.Builder()
                 .baseUrl(baseUrl)
                 .client(okHttpClient)
-                .addConverterFactory(FastJsonConverterFactory.create())
+                .addConverterFactory(JacksonConverterFactory.create())
                 //.addConverterFactory(GsonConverterFactory.create())
                 .build();
     }

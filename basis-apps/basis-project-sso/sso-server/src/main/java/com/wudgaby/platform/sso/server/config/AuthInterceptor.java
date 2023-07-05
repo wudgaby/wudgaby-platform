@@ -6,8 +6,7 @@ import com.wudgaby.platform.sso.core.constant.SsoConst;
 import com.wudgaby.platform.sso.core.utils.SsoSecurityUtils;
 import com.wudgaby.platform.sso.core.utils.WebUtil;
 import com.wudgaby.platform.sso.core.vo.SsoUserVo;
-import com.wudgaby.platform.utils.FastJsonUtil;
-import lombok.RequiredArgsConstructor;
+import com.wudgaby.platform.utils.JacksonUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.annotation.AnnotationUtils;
 import org.springframework.http.HttpStatus;
@@ -49,7 +48,7 @@ public class AuthInterceptor implements HandlerInterceptor {
         if(ssoUserVo == null){
             if (WebUtil.isAjax(request) || WebUtil.isContentTypeJson(request)) {
                 ApiResult apiResult = ApiResult.failure().message("未登录").data(SsoConst.SSO_LOGIN_URL).code(401);
-                output(response, FastJsonUtil.collectToString(apiResult));
+                output(response, JacksonUtil.serialize(apiResult));
             } else {
                 response.sendRedirect(SsoConst.SSO_LOGIN_URL);
             }
