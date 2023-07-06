@@ -1,7 +1,6 @@
 package com.wudgaby.platform.sso.server.entity;
 
 import cn.hutool.core.date.DatePattern;
-import com.alibaba.fastjson.annotation.JSONField;
 import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
@@ -26,7 +25,6 @@ import java.util.Date;
  * @since 2021-07-15
  */
 @Data
-@EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
 @ApiModel(value="BaseApp对象", description="系统应用-基础信息")
 public class BaseApp implements Serializable {
@@ -73,14 +71,12 @@ public class BaseApp implements Serializable {
     @ApiModelProperty(value = "创建时间")
     @DateTimeFormat(pattern = DatePattern.NORM_DATETIME_PATTERN)
     @JsonFormat(pattern = DatePattern.NORM_DATETIME_PATTERN, timezone = "GMT+8")
-    @JSONField(format = DatePattern.NORM_DATETIME_PATTERN)
     @TableField(fill = FieldFill.INSERT)
     private Date createTime;
 
     @ApiModelProperty(value = "更新时间")
     @DateTimeFormat(pattern = DatePattern.NORM_DATETIME_PATTERN)
     @JsonFormat(pattern = DatePattern.NORM_DATETIME_PATTERN, timezone = "GMT+8")
-    @JSONField(format = DatePattern.NORM_DATETIME_PATTERN)
     @TableField(fill = FieldFill.UPDATE)
     private Date updateTime;
 

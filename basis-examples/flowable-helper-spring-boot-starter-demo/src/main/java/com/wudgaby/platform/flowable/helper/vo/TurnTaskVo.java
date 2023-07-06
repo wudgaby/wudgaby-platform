@@ -2,6 +2,7 @@ package com.wudgaby.platform.flowable.helper.vo;
 
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 /**
  * @author : bruce.liu
@@ -11,6 +12,7 @@ import lombok.Data;
  * @date : 2019/11/1315:34
  */
 @Data
+@EqualsAndHashCode(callSuper = true)
 public class TurnTaskVo extends BaseProcessVo {
 
     /**

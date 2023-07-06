@@ -1,6 +1,7 @@
 package com.wudgaby.platform.flowable.helper.vo;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 /**
  * @Description: 驳回的实体VO
@@ -9,6 +10,7 @@ import lombok.Data;
  * 爱拼才会赢 2018 ~ 2030 版权所有
  */
 @Data
+@EqualsAndHashCode(callSuper = true)
 public class BackTaskVo extends BaseProcessVo {
 
     /**

@@ -1,7 +1,6 @@
 package com.wudgaby.platform.permission.entity;
 
 import cn.hutool.core.date.DatePattern;
-import com.alibaba.fastjson.annotation.JSONField;
 import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.IdType;
 import java.util.Date;
@@ -71,14 +70,12 @@ public class BaseApp implements Serializable {
     @ApiModelProperty(value = "创建时间")
     @DateTimeFormat(pattern = DatePattern.NORM_DATETIME_PATTERN)
     @JsonFormat(pattern = DatePattern.NORM_DATETIME_PATTERN, timezone = "GMT+8")
-    @JSONField(format = DatePattern.NORM_DATETIME_PATTERN)
     @TableField(fill = FieldFill.INSERT)
     private Date createTime;
 
     @ApiModelProperty(value = "更新时间")
     @DateTimeFormat(pattern = DatePattern.NORM_DATETIME_PATTERN)
     @JsonFormat(pattern = DatePattern.NORM_DATETIME_PATTERN, timezone = "GMT+8")
-    @JSONField(format = DatePattern.NORM_DATETIME_PATTERN)
     @TableField(fill = FieldFill.UPDATE)
     private Date updateTime;
 

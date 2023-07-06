@@ -1,7 +1,6 @@
 package com.wudgaby.codegen.ui.entity;
 
 import cn.hutool.core.date.DatePattern;
-import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 import lombok.experimental.Accessors;
@@ -22,6 +21,6 @@ public class TableEntity implements Serializable {
     private String tableName;
     private String engine;
     private String tableComment;
-    @JSONField(format = DatePattern.NORM_DATETIME_PATTERN)
+    @JsonFormat(pattern = DatePattern.NORM_DATETIME_PATTERN)
     private Date createTime;
 }

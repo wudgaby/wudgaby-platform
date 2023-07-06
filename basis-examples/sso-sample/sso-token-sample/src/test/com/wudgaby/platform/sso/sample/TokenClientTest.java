@@ -1,39 +1,22 @@
 package com.wudgaby.platform.sso.sample;
 
 import com.wudgaby.platform.core.result.ApiResult;
-import com.wudgaby.platform.core.util.FastJsonUtil;
-import com.wudgaby.platform.sso.core.config.SsoProperties;
 import com.wudgaby.platform.sso.core.constant.SsoConst;
 import com.wudgaby.platform.sso.core.vo.SsoUserVo;
+import com.wudgaby.platform.utils.JacksonUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Assert;
-import org.junit.Before;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
-import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.MvcResult;
-import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
-import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
-import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
-import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * @ClassName : IndexControllerTest
@@ -82,7 +65,7 @@ public class TokenClientTest {
         ApiResult apiResult = responseEntity.getBody();
         log.info("{}", apiResult);
         if(apiResult.getSuccess()){
-            SsoUserVo ssoUserVo = FastJsonUtil.toBean(FastJsonUtil.collectToString(apiResult.getData()), SsoUserVo.class);
+            SsoUserVo ssoUserVo = JacksonUtil.deserialize(JacksonUtil.serialize(apiResult.getData()), SsoUserVo.class);
             log.info("登录用户: {}", ssoUserVo);
         }else{
             log.info("请求失败. {}", apiResult.getMessage());
@@ -137,7 +120,7 @@ public class TokenClientTest {
         ApiResult apiResult = responseEntity.getBody();
         log.info("{}", apiResult);
         if(apiResult.getSuccess()){
-            SsoUserVo ssoUserVo = FastJsonUtil.toBean(FastJsonUtil.collectToString(apiResult.getData()), SsoUserVo.class);
+            SsoUserVo ssoUserVo = JacksonUtil.deserialize(JacksonUtil.serialize(apiResult.getData()), SsoUserVo.class);
             return ssoUserVo.getUsername();
         }
 

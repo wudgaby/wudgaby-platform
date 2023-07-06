@@ -37,6 +37,7 @@ spring:
   resources:
     add-mappings: false
   datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
     driver-class-name: com.mysql.cj.jdbc.Driver
     druid:
       initial-size: 5
@@ -53,6 +54,13 @@ spring:
       test-while-idle: true
       time-between-eviction-runs-millis: 60000
       min-evictable-idle-time-millis: 300000
+      filter:
+        stat:
+          #开启后内存溢出, 生产不开启
+          enabled: false
+          db-type: mysql
+          log-slow-sql: true
+          slow-sql-millis: 2000
       stat-view-servlet:
         enabled: true
         login-username: wudgaby

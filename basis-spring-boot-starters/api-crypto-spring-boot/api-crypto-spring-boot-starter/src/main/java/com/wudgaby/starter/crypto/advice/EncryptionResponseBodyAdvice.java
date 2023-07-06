@@ -2,7 +2,6 @@ package com.wudgaby.starter.crypto.advice;
 
 import cn.hutool.core.util.ObjectUtil;
 import cn.hutool.core.util.StrUtil;
-import com.alibaba.fastjson.support.spring.MappingFastJsonValue;
 import com.wudgaby.platform.core.result.ApiResult;
 import com.wudgaby.platform.utils.JacksonUtil;
 import com.wudgaby.starter.crypto.annotation.ApiEncryption;
@@ -42,8 +41,8 @@ public class EncryptionResponseBodyAdvice implements ResponseBodyAdvice<Object> 
             return null;
         }
 
-        if(body instanceof MappingFastJsonValue && ((MappingFastJsonValue) body).getValue() instanceof ApiResult){
-            ApiResult result = (ApiResult) ((MappingFastJsonValue) body).getValue();
+        if(body instanceof ApiResult){
+            ApiResult result = (ApiResult) body;
             if(ObjectUtil.isNotNull(result.getData())){
                 String dataJson = JacksonUtil.serialize(result.getData());
                 result.setData(AESUtil.encryptBase64(dataJson));

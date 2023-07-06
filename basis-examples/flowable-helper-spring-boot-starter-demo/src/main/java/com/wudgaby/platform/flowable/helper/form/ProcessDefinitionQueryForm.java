@@ -5,6 +5,7 @@ import com.wudgaby.platform.flowable.helper.enums.ProcessType;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 /**
  * @ClassName : ProcessDefinitionQueryForm
@@ -15,6 +16,7 @@ import lombok.Data;
  */
 @ApiModel("流程定义查询表单")
 @Data
+@EqualsAndHashCode(callSuper = true)
 public class ProcessDefinitionQueryForm extends DateRangeForm {
     @ApiModelProperty("流程类型")
     private ProcessType processType;

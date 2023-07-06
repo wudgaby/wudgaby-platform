@@ -1,7 +1,7 @@
 package com.wudgaby.platform.flowable.helper.vo;
 
 import cn.hutool.core.date.DatePattern;
-import com.alibaba.fastjson.annotation.JSONField;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.experimental.Accessors;
@@ -41,6 +41,6 @@ public class ProcessDefinitionVo {
     @ApiModelProperty("租户")
     protected String tenantId;
     @ApiModelProperty("部署时间")
-    @JSONField(format = DatePattern.NORM_DATETIME_PATTERN)
+    @JsonFormat(pattern = DatePattern.NORM_DATETIME_PATTERN)
     protected Date deployTime;
 }

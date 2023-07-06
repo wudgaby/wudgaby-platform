@@ -27,11 +27,11 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-tx</artifactId>
         </dependency>
-        <dependency>
+        <!--<dependency>
             <groupId>com.github.houbb</groupId>
             <artifactId>sensitive-core</artifactId>
             <version>0.0.9</version>
-        </dependency>
+        </dependency>-->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-beans</artifactId>

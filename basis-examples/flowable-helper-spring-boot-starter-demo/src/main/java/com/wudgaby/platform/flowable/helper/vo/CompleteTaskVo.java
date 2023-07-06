@@ -2,6 +2,7 @@ package com.wudgaby.platform.flowable.helper.vo;
 
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import java.util.Map;
 
@@ -13,6 +14,7 @@ import java.util.Map;
  * @date : 2019/11/1315:27
  */
 @Data
+@EqualsAndHashCode(callSuper = true)
 public class CompleteTaskVo extends BaseProcessVo {
     /**
      * 流程变量

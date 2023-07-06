@@ -14,7 +14,6 @@ public enum RedisConvertType {
     /**
      * 序列化类型
      */
-    //JAVA("java"),
     JACKSON("jackson"),
     //FASTJSON("fastjson"),
     STRING("string");

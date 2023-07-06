@@ -2,6 +2,7 @@ package com.wudgaby.platform.flowable.helper.vo;
 
 import com.wudgaby.platform.core.model.form.PageForm;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 /**
  * @author : bruce.liu
@@ -11,6 +12,7 @@ import lombok.Data;
  * @date : 2019/11/2115:42
  */
 @Data
+@EqualsAndHashCode(callSuper = true)
 public class ProcessInstanceQueryVo extends PageForm {
     private String formName;
     private String userCode;

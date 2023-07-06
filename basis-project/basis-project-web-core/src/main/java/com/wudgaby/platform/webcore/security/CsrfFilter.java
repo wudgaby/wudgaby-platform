@@ -1,8 +1,9 @@
 package com.wudgaby.platform.webcore.security;
 
-import com.alibaba.fastjson.JSON;
+import cn.hutool.json.JSON;
 import com.wudgaby.platform.core.result.ApiResult;
 import com.wudgaby.platform.core.result.enums.SystemResultCode;
+import com.wudgaby.platform.utils.JacksonUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.http.HttpMethod;
@@ -48,7 +49,7 @@ public class CsrfFilter implements Filter {
         }
         if(!StringUtils.equals(csrf_token, session_csrf_token)){
             response.setContentType(MediaType.APPLICATION_JSON_VALUE);
-            response.getWriter().println(JSON.toJSON(ApiResult.failure(SystemResultCode.TOKEN_IS_INVALID)));
+            response.getWriter().println(JacksonUtil.serialize(ApiResult.failure(SystemResultCode.TOKEN_IS_INVALID)));
             response.getWriter().flush();
             return;
         }

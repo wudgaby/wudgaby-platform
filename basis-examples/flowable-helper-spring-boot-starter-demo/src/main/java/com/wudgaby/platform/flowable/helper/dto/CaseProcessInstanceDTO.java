@@ -1,7 +1,7 @@
 package com.wudgaby.platform.flowable.helper.dto;
 
 import cn.hutool.core.date.DatePattern;
-import com.alibaba.fastjson.annotation.JSONField;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -40,6 +40,6 @@ public class CaseProcessInstanceDTO {
     private String businessKey;
 
     @ApiModelProperty("流程开始时间")
-    @JSONField(format = DatePattern.NORM_DATETIME_PATTERN)
+    @JsonFormat(pattern = DatePattern.NORM_DATETIME_PATTERN)
     private Date startTime;
 }

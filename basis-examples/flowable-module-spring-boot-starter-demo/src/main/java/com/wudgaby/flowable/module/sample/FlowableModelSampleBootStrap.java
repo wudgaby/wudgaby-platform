@@ -1,11 +1,8 @@
 package com.wudgaby.flowable.module.sample;
 
-import com.wudgaby.platform.webcore.configuration.FastJsonAutoConfiguration;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.FilterType;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 /**
@@ -17,7 +14,6 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
  */
 @SpringBootApplication(exclude = {SecurityAutoConfiguration.class})
 @EnableTransactionManagement
-@ComponentScan(excludeFilters = @ComponentScan.Filter(type = FilterType.ASSIGNABLE_TYPE, classes = FastJsonAutoConfiguration.class))
 public class FlowableModelSampleBootStrap {
     public static void main(String[] args) {
         SpringApplication.run(FlowableModelSampleBootStrap.class, args);

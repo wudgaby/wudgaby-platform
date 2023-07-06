@@ -1,6 +1,5 @@
 package com.wudgaby.codegen.ui.form;
 
-import com.github.houbb.heaven.util.lang.reflect.ClassUtil;
 import com.wudgaby.platform.core.model.form.PageForm;
 import io.swagger.annotations.ApiModel;
 import lombok.Data;

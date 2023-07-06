@@ -1,7 +1,7 @@
 package com.wudgaby.platform.flowable.helper.vo;
 
 import cn.hutool.core.date.DatePattern;
-import com.alibaba.fastjson.annotation.JSONField;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -48,13 +48,13 @@ public class TaskVo implements Serializable {
     /**
      * 开始时间
      */
-    @JSONField(format = DatePattern.NORM_DATETIME_PATTERN)
+    @JsonFormat(pattern = DatePattern.NORM_DATETIME_PATTERN)
     private Date startTime ;
 
     /**
      * 结束时间
      */
-    @JSONField(format = DatePattern.NORM_DATETIME_PATTERN)
+    @JsonFormat(pattern = DatePattern.NORM_DATETIME_PATTERN)
     private Date endTime;
     /**
      * 系统标识
