@@ -9,6 +9,9 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.FilterType;
 
+/**
+ * @author wudgaby
+ */
 @Slf4j
 @Configuration
 @ComponentScan(value = EnableOwnFrame.BASE_PACKAGE,

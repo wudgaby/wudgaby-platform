@@ -3,8 +3,8 @@ package com.wudgaby.platform.simplesecurity;
 import com.wudgaby.platform.core.result.ApiResult;
 import com.wudgaby.platform.simplesecurity.annotations.AuthPermit;
 import com.wudgaby.platform.simplesecurity.ext.RequestMatcherCreator;
+import com.wudgaby.platform.simplesecurity.ext.RequestMatcher;
 import com.wudgaby.platform.utils.JacksonUtil;
-import com.wudgaby.platform.webcore.spring.util.RequestMatcher;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.ArrayUtils;
@@ -22,6 +22,9 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Set;
 
+/**
+ * @author wudgaby
+ */
 @Slf4j
 @AllArgsConstructor
 @Order

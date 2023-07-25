@@ -45,7 +45,8 @@
         <module>ip-access-spring-boot</module>
         <module>ip2region-spring-boot</module>
         <module>oss-spring-boot</module>
-        <module>muilti-ports-spring-boot</module>
-        <module>api-crypto-spring-boot</module>
+        <module>multi-ports-spring-boot</module>
+        <module>data-security-spring-boot</module>
+        <module>mybatis-plus-helper-spring-boot</module>
     </modules>
 </project>

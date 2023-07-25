@@ -25,12 +25,6 @@ public class RedisApiRegisterService implements ApiRegisterService{
     private RedisSupport redisSupport;
 
     @Override
-    public void register(ApiDTO apiDTO) {
-        log.info("注册API -- {}", apiDTO);
-        redisSupport.sSetAndTime(ApiSystemConst.REDIS_API_SET, 3600, JacksonUtil.serialize(apiDTO));
-    }
-
-    @Override
     public void batchRegister(Collection<ApiDTO> apiDTOList) {
         if(CollectionUtils.isEmpty(apiDTOList)){
             return;

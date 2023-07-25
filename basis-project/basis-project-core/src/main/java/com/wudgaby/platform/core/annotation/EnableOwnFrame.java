@@ -19,7 +19,7 @@ import java.lang.annotation.*;
 @Documented
 @Import(ApplicationConfiguration.class)
 public @interface EnableOwnFrame {
-    String BASE_PACKAGE = "com.wudgaby.platform";
+    String BASE_PACKAGE = "com.wudgaby";
 
     @AliasFor(annotation = ComponentScan.class, attribute = "basePackages")
     String[] scanBasePackages() default { BASE_PACKAGE };

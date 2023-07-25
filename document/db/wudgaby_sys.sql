@@ -381,7 +381,7 @@ CREATE TABLE `sys_user`  (
   `version` int(11) NOT NULL DEFAULT 0 COMMENT '乐观锁',
   `deleted` tinyint(1) NOT NULL DEFAULT 0 COMMENT '逻辑删除 0:存在 1:删除',
   `account` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '账号',
-  `password` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '密码',
+  `password` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '密码',
   `salt` varchar(255) DEFAULT NULL COMMENT '密码盐',
   `user_name` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '用户名',
   `phone` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '电话',

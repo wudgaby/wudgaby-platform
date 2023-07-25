@@ -8,7 +8,6 @@ import org.springframework.messaging.Message;
 import org.springframework.messaging.support.MessageBuilder;
 
 import java.util.Collection;
-import java.util.List;
 
 /**
  * @ClassName : ResourceService
@@ -21,13 +20,6 @@ import java.util.List;
 public class MqApiRegisterService implements ApiRegisterService {
     @Autowired
     private ResourceSource resourceSource;
-
-    @Override
-    public void register(ApiDTO apiDTO) {
-        log.info("注册API -- {}", apiDTO);
-        Message message = MessageBuilder.withPayload(apiDTO).build();
-        resourceSource.resourceChannel().send(message);
-    }
 
     @Override
     public void batchRegister(Collection<ApiDTO> apiDTOList) {

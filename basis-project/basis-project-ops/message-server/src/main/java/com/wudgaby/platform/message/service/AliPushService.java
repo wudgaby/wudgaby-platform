@@ -14,8 +14,8 @@ import com.wudgaby.platform.message.api.enmus.AliTargetType;
 import com.wudgaby.platform.message.api.form.AliPushForm;
 import com.wudgaby.platform.message.config.properties.AliPushProperties;
 import com.wudgaby.platform.utils.JacksonUtil;
+import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
@@ -30,14 +30,13 @@ import java.util.List;
  */
 @Slf4j
 @Service
+@AllArgsConstructor
 public class AliPushService {
     /**
      * 离线消息保存12小时
      */
     private static final long MESSAGE_EXPIRE = 12 * 3600 * 1000;
-    @Autowired
     private AliPushProperties aliPushProperties;
-    @Autowired
     private DefaultAcsClient defaultAcsClient;
 
     /**

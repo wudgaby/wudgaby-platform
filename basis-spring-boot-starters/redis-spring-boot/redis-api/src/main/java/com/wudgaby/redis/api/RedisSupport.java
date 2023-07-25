@@ -57,6 +57,16 @@ public class RedisSupport {
 
     // =============================common============================
 
+    public boolean isConnected(){
+        boolean isConnected = false;
+        try{
+            isConnected = redisTemplate.execute((RedisConnection connection) -> !connection.isClosed());
+        }catch (Exception ex){
+            log.error(ex.getMessage(), ex);
+        }
+        return isConnected;
+    }
+
     /**
      * 指定缓存失效时间
      *

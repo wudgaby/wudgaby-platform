@@ -1,0 +1,10 @@
+crypto:
+  data:
+    key: qwertyuiop!@#$%^
+    simple: true
+    db-crypto: true
+    custom:
+      mode: CBC
+      padding: PKCS7Padding
+      key: qwertyuiop!@#$%^
+      iv: 2023070520113929

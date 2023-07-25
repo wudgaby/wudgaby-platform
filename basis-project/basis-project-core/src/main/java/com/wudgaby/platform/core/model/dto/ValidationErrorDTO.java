@@ -8,6 +8,7 @@ import lombok.Data;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 /**
  * @ClassName : ValidationErrorDTO
@@ -29,7 +30,10 @@ public class ValidationErrorDTO {
 
     @JsonIgnore
     public String getAllErrorMsg(){
-        return Joiner.on(";").skipNulls().join(fieldErrors);
+        if(fieldErrors == null){
+            return "";
+        }
+        return fieldErrors.stream().map(fe -> fe.getMessage()).collect(Collectors.joining(";"));
     }
 
     @JsonIgnore

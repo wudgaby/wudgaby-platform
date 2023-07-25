@@ -6,7 +6,6 @@ import com.wudgaby.platform.message.api.enmus.PlatformEnum;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -23,7 +22,6 @@ import java.io.Serializable;
  */
 @Data
 @ApiModel("告警表单")
-@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class AlarmForm implements Serializable {

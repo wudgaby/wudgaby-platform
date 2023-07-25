@@ -46,7 +46,7 @@
         <java.target.version>1.8</java.target.version>
 
         <!-- Project revision -->
-        <revision>1.0.3-SNAPSHOT</revision>
+        <revision>1.0.4-SNAPSHOT</revision>
         <basis-project.version>${revision}</basis-project.version>
         <basis-starters.version>${revision}</basis-starters.version>
 
@@ -215,6 +215,12 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-json</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework</groupId>
+                    <artifactId>spring-web</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <dependency>

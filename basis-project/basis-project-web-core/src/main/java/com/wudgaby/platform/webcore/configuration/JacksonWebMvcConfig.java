@@ -1,6 +1,14 @@
 package com.wudgaby.platform.webcore.configuration;
 
-/*@Configuration
+import com.wudgaby.platform.webcore.support.JacksonHttpMessageConverter;
+import org.springframework.http.converter.HttpMessageConverter;
+import org.springframework.web.servlet.config.annotation.PathMatchConfigurer;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
+
+import java.util.List;
+
+@Deprecated
+//@Configuration
 public class JacksonWebMvcConfig extends WebMvcConfigurationSupport {
     @Override
     protected void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
@@ -13,4 +21,4 @@ public class JacksonWebMvcConfig extends WebMvcConfigurationSupport {
         configurer.setUseSuffixPatternMatch(false)
                 .setUseTrailingSlashMatch(false);
     }
-}*/
+}

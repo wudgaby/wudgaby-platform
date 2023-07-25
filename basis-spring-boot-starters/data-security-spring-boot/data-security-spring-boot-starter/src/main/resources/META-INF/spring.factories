@@ -1,0 +1,7 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.wudgaby.starter.data.security.crypt.config.CryptoConfig,\
+  com.wudgaby.starter.data.security.crypt.config.MyBatisCryptoConfig,\
+  com.wudgaby.starter.data.security.sensitive.config.SensitiveConfig
+
+org.springframework.boot.env.EnvironmentPostProcessor=\
+  com.wudgaby.starter.data.security.support.DefaultConfigEnvironmentPostProcessor

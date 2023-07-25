@@ -1,0 +1,5 @@
+mybatis-helper:
+  demoEnv: false
+  exclude-url:
+    - /ss/login
+    - /ss/logout

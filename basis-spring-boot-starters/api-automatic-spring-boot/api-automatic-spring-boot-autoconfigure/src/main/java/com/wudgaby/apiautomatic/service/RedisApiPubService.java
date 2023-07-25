@@ -22,12 +22,6 @@ public class RedisApiPubService implements ApiRegisterService{
     private RedisSupport redisSupport;
 
     @Override
-    public void register(ApiDTO apiDTO) {
-        log.info("发布注册API -- {}", apiDTO);
-        redisSupport.convertAndSend(ApiSystemConst.REDIS_API_CHANNEL, apiDTO);
-    }
-
-    @Override
     public void batchRegister(Collection<ApiDTO> apiDTOList) {
         if(CollectionUtils.isEmpty(apiDTOList)){
             return;

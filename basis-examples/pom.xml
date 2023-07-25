@@ -26,7 +26,6 @@
 
     <modules>
         <module>api-automatic-spring-boot-sample</module>
-        <module>zxing-spring-boot-sample</module>
         <module>two-factor-auth-spring-boot-sample</module>
         <module>swagger-spring-boot-sample</module>
         <module>social-spring-boot-sample</module>
@@ -51,8 +50,9 @@
         <module>ip-access-spring-boot-sample</module>
         <module>ip2region-spring-boot-sample</module>
         <module>download-sample</module>
-        <module>muilti-ports-spring-boot-sample</module>
-        <module>api-crypto-sample</module>
+        <module>multi-ports-spring-boot-sample</module>
+        <module>assembly-sample</module>
+        <module>data-security-spring-boot-sample</module>
     </modules>
 
     <build>
@@ -74,6 +74,21 @@
                 <configuration>
                     <skip>true</skip>
                 </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <finalName>${project.artifactId}</finalName>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>

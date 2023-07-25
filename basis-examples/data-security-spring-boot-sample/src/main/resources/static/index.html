@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>接口加解密测试</title>
+
+    <style>
+        #app {
+            width: 500px;
+            height: 500px;
+            margin: 100px auto;
+        }
+
+        .mytable {
+            border: 1px solid #A6C1E4;
+            font-family: Arial;
+            border-collapse: collapse;
+        }
+
+        table th {
+            border: 1px solid black;
+            background-color: #71c1fb;
+            width: 100px;
+            height: 20px;
+            font-size: 15px;
+        }
+
+        table td {
+            border: 1px solid #A6C1E4;
+            text-align: center;
+            height: 15px;
+            padding-top: 5px;
+            font-size: 12px;
+        }
+
+        .double {
+            background-color: #c7dff6;
+        }
+
+        input {
+            width: 95%;
+            padding-left: 10px;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <table class="mytable">
+        <tr class="double">
+            <th>字段:</th>
+            <th>值:</th>
+        </tr>
+        <tr class="double">
+            <td>userId:</td>
+            <td><input v-model="userInfo.userId"></td>
+        </tr>
+        <tr class="double">
+            <td>userName:</td>
+            <td><input v-model="userInfo.userName"></td>
+        </tr>
+        <tr class="double">
+            <td>age:</td>
+            <td><input v-model="userInfo.age"></td>
+        </tr>
+        <tr class="double">
+            <td>info:</td>
+            <td>
+                <textarea v-model="userInfo.info" cols="50" rows="5" placeholder="随便输一点"></textarea>
+            </td>
+        </tr>
+        <tr class="double">
+            <td>AES密钥:</td>
+            <td>
+                <textarea v-model="aes.key" cols="50" rows="2" placeholder="AES密钥"></textarea>
+            </td>
+        </tr>
+        <tr class="double">
+            <td>AES向量:</td>
+            <td>
+                <textarea v-model="aes.iv" cols="50" rows="1" placeholder="向量的长度为16位"></textarea>
+            </td>
+        </tr>
+    </table>
+    <button @click="testRequest">发送测试请求</button>
+    <br>
+    <div>
+        <p>要发送的数据：<span>{{parameter}}</span></p>
+        <p>加密后的数据：{{encodeContent}}</p>
+        <br>
+        <p>收到服务端的内容：{{result}}</p>
+        <p>最终拿到服务端的内容：{{decodeContent}}</p>
+
+    </div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.7.14/vue.min.js" integrity="sha512-BAMfk70VjqBkBIyo9UTRLl3TBJ3M0c6uyy2VMUrq370bWs7kchLNN9j1WiJQus9JAJVqcriIUX859JOm12LWtw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aes-js/3.1.2/index.min.js" integrity="sha512-LOqfKFwH2W3jeb0NzXcImFlSyoL7hjsWbZvIeKNOaZw1gFw+yKTE/QUDGLit2KWdd57qd6IgMDkppK2tkwIEhA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.4.0/axios.min.js" integrity="sha512-uMtXmF28A2Ab/JJO2t/vYhlaa/3ahUOgj1Zf27M5rOo8/+fcTUVH0/E0ll68njmjrLqOBjXM3V9NiPFL5ywWPQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js" integrity="sha512-E8QSvWZ0eCLGk4km3hxSsNmGWbLtSCSUcewDQPQWZF6pEU8GlT8a5fF32wOl1i8ftdMhssTrF/OhyGWwonTcXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+    window.onload = function () {
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                aes: {
+                    iv: "",
+                    key:"qwertyuiop!@#$%^",
+                },
+                userInfo: {
+                    userId: "1",
+                    userName: "test",
+                    age: 20,
+                    info: "信息内容......",
+                },
+                parameter: "",
+                encodeContent: "",
+                decodeContent: "",
+                decodeAes: "",
+                result: ""
+            },
+            http: {
+                root: '/'
+            },
+            methods: {
+                testRequest: function () {
+                    // 随机生成32位  aes 密钥
+                    //this.aes.key=generateKey();
+                    // 参数转json 字符串
+                    this.parameter = JSON.stringify(this.userInfo);
+                    // aes 加密
+                    this.encodeContent = aesEncode(this.parameter,this.aes.iv,this.aes.key);
+                    axios.post('http://localhost:8080/users', this.encodeContent,{
+                        headers: {
+                            "Content-Type": "application/json;charset=utf-8",
+                        }
+                    }).then(function (response) {
+                        console.log("response:",response);
+                        // 1、服务端返回的数据
+                        vm.result=response.data;
+                        // 2、aes 解密
+                        vm.decodeContent = JSON.parse(JSON.stringify(response.data));
+                        vm.decodeContent.data=aesDecode(vm.decodeContent.data,vm.aes.iv,vm.aes.key);
+                        vm.decodeContent.message=aesDecode(vm.decodeContent.message,vm.aes.iv,vm.aes.key);
+                    }).catch(function (error) {
+                        console.log("error:",error);
+                    });
+                }
+            }
+        });
+    }
+
+    // aes 加密
+    function aesEncode(content,iv,aesKey){
+        ivUtf8 = CryptoJS.enc.Utf8.parse(iv);
+        aesUtf8Key = CryptoJS.enc.Utf8.parse(aesKey);
+        let encrypted = CryptoJS.AES.encrypt(content, aesUtf8Key, {
+            iv: ivUtf8,
+            mode: CryptoJS.mode.CBC,
+            padding: CryptoJS.pad.Pkcs7
+        });
+
+        if(iv){
+            return encrypted.toString();
+            //return encrypted.ciphertext.toString();
+        }else{
+            return CryptoJS.AES.encrypt(content, aesUtf8Key, { mode: CryptoJS.mode.ECB, padding: CryptoJS.pad.Pkcs7 }).toString();
+        }
+    }
+
+    // aes 解密
+    function aesDecode(encrypted,iv,aesKey){
+        ivUtf8 = CryptoJS.enc.Utf8.parse(iv);
+        aesUtf8Key = CryptoJS.enc.Utf8.parse(aesKey);
+        var decrypted = CryptoJS.AES.decrypt(encrypted, aesUtf8Key, {
+            iv: ivUtf8,
+            mode: CryptoJS.mode.CBC,
+            padding: CryptoJS.pad.Pkcs7
+        });
+
+        // 转换为 utf8 字符串
+        if(iv){
+            return CryptoJS.enc.Utf8.stringify(decrypted);
+            //return CryptoJS.enc.Hex.stringify(decrypted);
+        }else{
+            return CryptoJS.AES.decrypt(encrypted, aesUtf8Key, { mode: CryptoJS.mode.ECB, padding: CryptoJS.pad.Pkcs7 });
+        }
+
+    }
+</script>
+</body>
+</html>

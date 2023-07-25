@@ -4,10 +4,12 @@ import com.google.common.collect.Sets;
 import com.wudgaby.platform.core.util.AssertUtil;
 import com.wudgaby.platform.security.core.MetaResource;
 import com.wudgaby.platform.security.core.UserInfo;
-import com.wudgaby.platform.webcore.support.RequestContextHolderSupport;
+import com.wudgaby.platform.simplesecurity.ext.RequestContextHolderSupport;
 import org.apache.commons.collections4.CollectionUtils;
 
 import java.util.*;
+
+;
 
 /**
  * @Author :  wudgaby

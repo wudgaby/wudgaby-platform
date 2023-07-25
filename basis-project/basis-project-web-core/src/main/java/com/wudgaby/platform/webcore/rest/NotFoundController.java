@@ -28,6 +28,7 @@ import java.util.Map;
 @ConditionalOnWebApplication(type = ConditionalOnWebApplication.Type.SERVLET)
 @RestController
 @ApiIgnore
+@RequestMapping("${server.error.path:${error.path:/error}}")
 public class NotFoundController implements ErrorController {
     private static final String ERROR_PATH = "/error";
     private final ErrorAttributes errorAttributes;
@@ -37,7 +38,7 @@ public class NotFoundController implements ErrorController {
     }
 
     @ApiIgnore
-    @RequestMapping(value = ERROR_PATH)
+    //@RequestMapping(value = ERROR_PATH)
     //@ResponseStatus(HttpStatus.NOT_FOUND)
     public ApiResult handleError(HttpServletRequest request) {
         ServletWebRequest requestAttributes =  new ServletWebRequest(request);
@@ -53,6 +54,6 @@ public class NotFoundController implements ErrorController {
 
     @Override
     public String getErrorPath() {
-        return ERROR_PATH;
+        return null;
     }
 }

@@ -14,11 +14,6 @@
     <dependencies>
         <dependency>
             <groupId>com.wudgaby.platform</groupId>
-            <artifactId>basis-project-web-core</artifactId>
-            <version>${basis-project.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.wudgaby.platform</groupId>
             <artifactId>basis-project-core</artifactId>
             <version>${basis-project.version}</version>
         </dependency>
@@ -33,13 +28,9 @@
             <artifactId>redis-spring-boot-starter</artifactId>
             <version>${revision}</version>
         </dependency>
-        <!--<dependency>
-            <groupId>org.springframework.security</groupId>
-            <artifactId>spring-security-config</artifactId>
-        </dependency>-->
         <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-core</artifactId>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
         <dependency>
             <groupId>io.springfox</groupId>

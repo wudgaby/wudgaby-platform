@@ -19,8 +19,21 @@
     <dependencies>
         <dependency>
             <groupId>com.wudgaby.platform</groupId>
-            <artifactId>basis-project-web-core</artifactId>
+            <artifactId>basis-project-core</artifactId>
             <version>${revision}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.wudgaby.platform</groupId>
+            <artifactId>basis-project-security-core</artifactId>
+            <version>${revision}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-core</artifactId>
         </dependency>
     </dependencies>
 </project>

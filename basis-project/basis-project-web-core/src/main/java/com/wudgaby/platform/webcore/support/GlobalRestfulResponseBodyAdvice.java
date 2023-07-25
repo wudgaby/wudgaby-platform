@@ -21,6 +21,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
  *          参考使用 FastJsonViewResponseBodyAdvice, JSONPResponseBodyAdvice
  */
 @Slf4j
+@Deprecated
 //@ControllerAdvice
 public class GlobalRestfulResponseBodyAdvice implements ResponseBodyAdvice<Object> {
     @Override

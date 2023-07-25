@@ -1,0 +1,118 @@
+<assembly xmlns="http://maven.apache.org/ASSEMBLY/2.2.0"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/ASSEMBLY/2.2.0 http://maven.apache.org/xsd/assembly-2.2.0.xsd">
+
+    <id>assembly</id>
+    <formats>
+        <format>tar.gz</format>
+    </formats>
+    <includeBaseDirectory>true</includeBaseDirectory>
+    <baseDirectory>assembly-${project.version}</baseDirectory>
+    <dependencySets>
+        <!--    只是本项目的依赖jar包    -->
+        <dependencySet>
+            <useProjectArtifact>true</useProjectArtifact>
+            <outputDirectory>lib</outputDirectory>
+            <scope>runtime</scope>
+            <excludes>
+                <!--  排除assembly自身打的jar包-->
+                <exclude>${project.groupId}:${project.artifactId}</exclude>
+            </excludes>
+        </dependencySet>
+        <!--   jar包     -->
+        <dependencySet>
+            <outputDirectory>/</outputDirectory>
+            <includes>
+                <include>${project.groupId}:${project.artifactId}</include>
+            </includes>
+        </dependencySet>
+    </dependencySets>
+
+    <fileSets>
+        <!--脚本-->
+        <fileSet>
+            <directory>${project.basedir}/bin</directory>
+            <outputDirectory>bin</outputDirectory>
+            <lineEnding>unix</lineEnding>
+            <fileMode>744</fileMode>
+            <includes>
+                <include>*.sh</include>
+            </includes>
+        </fileSet>
+        <!--配置文件-->
+        <fileSet>
+            <directory>${project.basedir}/conf</directory>
+            <outputDirectory>conf</outputDirectory>
+            <lineEnding>unix</lineEnding>
+            <fileMode>744</fileMode>
+            <includes>
+                <include>*.conf</include>
+            </includes>
+        </fileSet>
+        <!--windows脚本-->
+        <fileSet>
+            <directory>${project.basedir}/bin</directory>
+            <outputDirectory>bin</outputDirectory>
+            <includes>
+                <include>*.bat</include>
+                <include>*.ps1</include>
+            </includes>
+        </fileSet>
+        <!--sql-->
+        <fileSet>
+            <directory>${project.basedir}/sql</directory>
+            <outputDirectory>sql</outputDirectory>
+            <lineEnding>unix</lineEnding>
+            <fileMode>644</fileMode>
+            <includes>
+                <include>*.sql</include>
+            </includes>
+        </fileSet>
+        <!--doc-->
+        <fileSet>
+            <directory>${project.basedir}/doc</directory>
+            <outputDirectory>doc</outputDirectory>
+            <lineEnding>unix</lineEnding>
+            <fileMode>644</fileMode>
+        </fileSet>
+
+        <fileSet>
+            <directory>${project.parent.basedir}/api-version-sample/src/main/resources</directory>
+            <outputDirectory>conf/api-version-sample</outputDirectory>
+            <includes>
+                <include>*.properties</include>
+                <include>*.xml</include>
+                <include>*.db</include>
+                <include>*.yml</include>
+            </includes>
+        </fileSet>
+
+        <fileSet>
+            <directory>${project.parent.basedir}/code-generator-spring-boot-demo/src/main/resources</directory>
+            <outputDirectory>conf/code-generator-spring-boot-demo</outputDirectory>
+            <includes>
+                <include>*.properties</include>
+                <include>*.xml</include>
+                <include>*.db</include>
+                <include>*.yml</include>
+            </includes>
+        </fileSet>
+
+        <!-- 把项目自己编译出来的jar文件 -->
+        <fileSet>
+            <directory>${project.parent.basedir}/api-version-sample/${project.build.directory}</directory>
+            <outputDirectory>/</outputDirectory>
+            <includes>
+                <include>*.jar</include>
+            </includes>
+        </fileSet>
+        <!-- 把项目自己编译出来的jar文件 -->
+        <fileSet>
+            <directory>${project.parent.basedir}/code-generator-spring-boot-demo/${project.build.directory}</directory>
+            <outputDirectory>/</outputDirectory>
+            <includes>
+                <include>*.jar</include>
+            </includes>
+        </fileSet>
+    </fileSets>
+</assembly>

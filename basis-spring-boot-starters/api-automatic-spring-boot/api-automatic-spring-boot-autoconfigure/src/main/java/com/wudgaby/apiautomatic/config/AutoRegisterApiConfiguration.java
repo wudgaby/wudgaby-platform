@@ -20,11 +20,6 @@ import org.springframework.context.annotation.Import;
 @ConditionalOnProperty(value = "api.register.enabled", havingValue = "true", matchIfMissing = true)
 @Import({MqConfiguration.class, RedisSubscriberConfiguration.class})
 public class AutoRegisterApiConfiguration {
-    /*@Bean
-    public WebServerStartedListener webServerStartedListener() {
-        return new WebServerStartedListener();
-    }*/
-
     @Bean
     public RequestMappingScanListener requestMappingScanListener() {
         return new RequestMappingScanListener();

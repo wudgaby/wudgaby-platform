@@ -1,0 +1,5 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.wudgaby.starter.mybatisplus.helper.config.MyBatisConfig
+
+org.springframework.boot.env.EnvironmentPostProcessor=\
+  com.wudgaby.starter.mybatisplus.helper.support.DefaultConfigEnvironmentPostProcessor

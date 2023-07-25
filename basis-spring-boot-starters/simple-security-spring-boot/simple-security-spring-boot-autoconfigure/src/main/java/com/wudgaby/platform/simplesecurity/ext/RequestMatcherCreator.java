@@ -1,7 +1,6 @@
 package com.wudgaby.platform.simplesecurity.ext;
 
 import com.wudgaby.platform.security.core.MetaResource;
-import com.wudgaby.platform.webcore.spring.util.RequestMatcher;
 
 import java.util.Set;
 

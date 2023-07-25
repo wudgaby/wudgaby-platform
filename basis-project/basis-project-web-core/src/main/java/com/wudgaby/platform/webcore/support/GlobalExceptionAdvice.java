@@ -246,7 +246,7 @@ public class GlobalExceptionAdvice {
     public ApiResult sqlException(SQLException ex) {
         log.error(ex.getMessage(), ex);
         showStackTraceInfo(ex);
-        ApiResult apiResult = ApiResult.failure().code(HttpStatus.INTERNAL_SERVER_ERROR.value()).message("数据库异常." + ex.getMessage());
+        ApiResult apiResult = ApiResult.failure().code(HttpStatus.INTERNAL_SERVER_ERROR.value()).message("数据库异常.");
         process(apiResult, ex);
         return apiResult;
     }
@@ -254,7 +254,7 @@ public class GlobalExceptionAdvice {
     @ExceptionHandler({MyBatisSystemException.class})
     @ResponseBody
     public ApiResult myBatisSystemException(MyBatisSystemException ex) {
-        ApiResult apiResult = ApiResult.failure().code(HttpStatus.INTERNAL_SERVER_ERROR.value()).message("数据库异常." + ex.getMessage());
+        ApiResult apiResult = ApiResult.failure().code(HttpStatus.INTERNAL_SERVER_ERROR.value()).message("数据库异常.");
 
         Throwable cause = ex.getCause();
         if (cause instanceof PersistenceException) {

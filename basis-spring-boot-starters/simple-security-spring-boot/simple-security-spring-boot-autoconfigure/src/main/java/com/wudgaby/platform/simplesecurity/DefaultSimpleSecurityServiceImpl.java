@@ -9,9 +9,10 @@ import com.wudgaby.platform.security.core.UserInfo;
  * @Desc :  默认实现
  */
 public class DefaultSimpleSecurityServiceImpl extends AbstractSimpleSecurityService {
+    private static final String DEFAULT = "default";
     @Override
     public UserInfo getLoginUser(String account, String password) {
-        if("default".equals(account) && "default".equals(password)) {
+        if(DEFAULT.equals(account) && DEFAULT.equals(password)) {
             return new UserInfo().setId(0).setAccount(account).setAdmin(false);
         }
         return null;
