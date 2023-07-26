@@ -66,28 +66,5 @@
             <type>pom</type>
         </dependency>
 
-        <dependency>
-            <groupId>vip.mate</groupId>
-            <artifactId>mate-starter-mail</artifactId>
-            <version>4.6.8</version>
-        </dependency>
-
-        <dependency>
-            <groupId>vip.mate</groupId>
-            <artifactId>mate-starter-file</artifactId>
-            <version>4.6.8</version>
-        </dependency>
-
-        <dependency>
-            <groupId>vip.mate</groupId>
-            <artifactId>mate-starter-validator</artifactId>
-            <version>4.6.8</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.baomidou</groupId>
-            <artifactId>mybatis-mate-starter</artifactId>
-            <version>1.2.9</version>
-        </dependency>
     </dependencies>
 </project>
