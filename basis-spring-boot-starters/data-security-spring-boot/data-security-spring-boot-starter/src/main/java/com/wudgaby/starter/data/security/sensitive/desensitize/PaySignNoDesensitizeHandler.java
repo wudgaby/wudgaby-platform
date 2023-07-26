@@ -10,7 +10,7 @@ import org.apache.commons.lang3.StringUtils;
  */
 public class PaySignNoDesensitizeHandler implements DesensitizeHandler {
     @Override
-    public SensitiveType getSensitiveType() {
+    public String getSensitiveType() {
         return SensitiveType.PAY_SIGN_NO;
     }
 
@@ -21,7 +21,5 @@ public class PaySignNoDesensitizeHandler implements DesensitizeHandler {
         }
         String agreementNo = src.toString();
         return StringUtils.left(agreementNo, 6).concat(StringUtils.removeStart(StringUtils.leftPad(StringUtils.right(agreementNo, 6), StringUtils.length(agreementNo), "*"), "***"));
-
-
     }
 }

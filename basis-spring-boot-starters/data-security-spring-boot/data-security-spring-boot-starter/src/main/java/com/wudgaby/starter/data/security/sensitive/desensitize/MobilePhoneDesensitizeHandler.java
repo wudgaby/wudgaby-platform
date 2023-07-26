@@ -9,7 +9,7 @@ import org.apache.commons.lang3.StringUtils;
  */
 public class MobilePhoneDesensitizeHandler implements DesensitizeHandler {
     @Override
-    public SensitiveType getSensitiveType() {
+    public String getSensitiveType() {
         return SensitiveType.MOBILE_PHONE;
     }
 

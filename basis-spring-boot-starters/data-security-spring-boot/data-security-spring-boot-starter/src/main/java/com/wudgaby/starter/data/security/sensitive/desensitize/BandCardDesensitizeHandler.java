@@ -10,7 +10,7 @@ import org.apache.commons.lang3.StringUtils;
  */
 public class BandCardDesensitizeHandler implements DesensitizeHandler {
     @Override
-    public SensitiveType getSensitiveType() {
+    public String getSensitiveType() {
         return SensitiveType.BANK_CARD;
     }
 

@@ -8,7 +8,7 @@ import java.util.concurrent.ConcurrentHashMap;
  * @author wudgaby
  */
 public class DesensitizeHandlerFactory {
-    private static final Map<SensitiveType, DesensitizeHandler> HANDLER_MAP = new ConcurrentHashMap<>();
+    private static final Map<String, DesensitizeHandler> HANDLER_MAP = new ConcurrentHashMap<>();
     static {
         HANDLER_MAP.put(SensitiveType.NONE,new NoneDesensitizeHandler());
         HANDLER_MAP.put(SensitiveType.DEFAULT,new DafaultDesensitizeHandler());
@@ -27,7 +27,7 @@ public class DesensitizeHandlerFactory {
         HANDLER_MAP.put(sensitiveTypeHandler.getSensitiveType(),sensitiveTypeHandler);
     }
 
-    public static DesensitizeHandler get(SensitiveType sensitiveType){
+    public static DesensitizeHandler get(String sensitiveType){
         DesensitizeHandler sensitiveTypeHandler =  HANDLER_MAP.get(sensitiveType);
         if(sensitiveTypeHandler == null){
             throw new IllegalArgumentException(sensitiveType + " 无有效的脱敏处理.");

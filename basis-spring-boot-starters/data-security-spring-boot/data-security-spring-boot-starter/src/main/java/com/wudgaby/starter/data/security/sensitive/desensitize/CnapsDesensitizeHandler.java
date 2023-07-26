@@ -9,7 +9,7 @@ import org.apache.commons.lang3.StringUtils;
  */
 public class CnapsDesensitizeHandler implements DesensitizeHandler {
     @Override
-    public SensitiveType getSensitiveType() {
+    public String getSensitiveType() {
         return SensitiveType.CNAPS_CODE;
     }
 

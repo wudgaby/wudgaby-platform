@@ -13,7 +13,7 @@ public class AddressDesensitizeHandler implements DesensitizeHandler {
     private static final int RIGHT=10;
     private static final int LEFT=6;
     @Override
-    public SensitiveType getSensitiveType() {
+    public String getSensitiveType() {
         return SensitiveType.ADDRESS;
     }
 

@@ -3,7 +3,7 @@ package com.wudgaby.starter.data.security.sensitive;
 import cn.hutool.core.util.ArrayUtil;
 import cn.hutool.core.util.ObjectUtil;
 import cn.hutool.core.util.StrUtil;
-import com.wudgaby.starter.data.security.sensitive.annotation.Sensitive;
+import com.wudgaby.starter.data.security.sensitive.annotation.SensitiveBean;
 import com.wudgaby.starter.data.security.sensitive.annotation.SensitiveField;
 import com.wudgaby.starter.data.security.sensitive.annotation.SensitiveJSONFieldKey;
 import com.wudgaby.starter.data.security.sensitive.desensitize.DafaultDesensitizeHandler;
@@ -36,8 +36,8 @@ public class DataSensitiveUtil {
                 return t;
             }
 
-            Sensitive sensitive = collection.stream().findFirst().get().getClass().getAnnotation(Sensitive.class);
-            if (sensitive == null) {
+            SensitiveBean sensitiveBean = collection.stream().findFirst().get().getClass().getAnnotation(SensitiveBean.class);
+            if (sensitiveBean == null) {
                 return t;
             }
 
@@ -48,8 +48,8 @@ public class DataSensitiveUtil {
                 return t;
             }
 
-            Sensitive sensitive = Arrays.stream(array).findFirst().get().getClass().getAnnotation(Sensitive.class);
-            if (sensitive == null) {
+            SensitiveBean sensitiveBean = Arrays.stream(array).findFirst().get().getClass().getAnnotation(SensitiveBean.class);
+            if (sensitiveBean == null) {
                 return t;
             }
 

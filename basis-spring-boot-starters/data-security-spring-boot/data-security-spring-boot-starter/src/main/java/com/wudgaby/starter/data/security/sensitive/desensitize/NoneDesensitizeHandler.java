@@ -6,7 +6,7 @@ package com.wudgaby.starter.data.security.sensitive.desensitize;
  */
 public class NoneDesensitizeHandler implements DesensitizeHandler {
     @Override
-    public SensitiveType getSensitiveType() {
+    public String getSensitiveType() {
         return SensitiveType.NONE;
     }
 

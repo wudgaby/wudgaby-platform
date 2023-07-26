@@ -9,7 +9,7 @@ import java.util.Set;
  * @author junliang.zhuo
  * @date 2019-03-29 12:49
  */
-public class CryptUtil {
+public class IgnoreClassUtil {
 
     private static final Set<Class> IGNORE_CLASS = new HashSet<>();
     static {

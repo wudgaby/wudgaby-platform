@@ -47,3 +47,4 @@ resubmit:
 crypto:
   data:
     db-crypto: true
+    db-dict-bind: true

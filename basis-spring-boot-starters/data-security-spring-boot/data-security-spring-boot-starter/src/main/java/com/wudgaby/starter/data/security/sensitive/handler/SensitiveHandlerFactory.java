@@ -3,7 +3,7 @@ package com.wudgaby.starter.data.security.sensitive.handler;
 import cn.hutool.core.util.ArrayUtil;
 import com.wudgaby.starter.data.security.enums.HandlerType;
 import com.wudgaby.starter.data.security.sensitive.annotation.SensitiveField;
-import com.wudgaby.starter.data.security.util.CryptUtil;
+import com.wudgaby.starter.data.security.util.IgnoreClassUtil;
 
 import java.util.Collection;
 import java.util.List;
@@ -28,7 +28,7 @@ public class SensitiveHandlerFactory {
     }
 
     public static SensitiveHandler getSensitiveHandler(Object obj, SensitiveField sensitiveField) {
-        if (obj == null || CryptUtil.inIgnoreClass(obj.getClass())) {
+        if (obj == null || IgnoreClassUtil.inIgnoreClass(obj.getClass())) {
             return HANDLER_MAP.get(HandlerType.DEFAULT);
         }
 

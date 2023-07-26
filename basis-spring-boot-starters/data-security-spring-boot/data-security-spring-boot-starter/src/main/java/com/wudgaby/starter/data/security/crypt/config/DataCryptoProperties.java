@@ -26,7 +26,15 @@ public class DataCryptoProperties {
 
     private AesProp custom;
 
+    /**
+     * 开启数据库加解密
+     */
     private boolean dbCrypto;
+
+    /**
+     * 开启数据返回字典绑定
+     */
+    private boolean dbDictBind;
 
     @Data
     public static class AesProp {

@@ -11,7 +11,7 @@ import org.apache.commons.lang3.StringUtils;
  */
 public class NameDesensitizeHandler implements DesensitizeHandler {
     @Override
-    public SensitiveType getSensitiveType() {
+    public String getSensitiveType() {
         return SensitiveType.CHINESE_NAME;
     }
 

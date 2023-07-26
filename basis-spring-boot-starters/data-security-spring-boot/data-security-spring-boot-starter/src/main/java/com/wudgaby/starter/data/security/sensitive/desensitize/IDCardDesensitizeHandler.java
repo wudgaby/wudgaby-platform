@@ -10,7 +10,7 @@ import org.apache.commons.lang3.StringUtils;
  */
 public class IDCardDesensitizeHandler implements DesensitizeHandler {
     @Override
-    public SensitiveType getSensitiveType() {
+    public String getSensitiveType() {
         return SensitiveType.ID_CARD;
     }
 

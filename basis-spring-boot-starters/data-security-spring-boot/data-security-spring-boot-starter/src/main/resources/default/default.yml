@@ -3,6 +3,7 @@ crypto:
     key: qwertyuiop!@#$%^
     simple: true
     db-crypto: true
+    db-dict-bind: false
     custom:
       mode: CBC
       padding: PKCS7Padding

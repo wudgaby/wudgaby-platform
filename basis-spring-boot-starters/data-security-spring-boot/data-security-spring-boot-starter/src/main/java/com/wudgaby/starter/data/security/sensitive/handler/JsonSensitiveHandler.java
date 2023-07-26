@@ -5,7 +5,6 @@ import cn.hutool.json.JSONUtil;
 import com.wudgaby.starter.data.security.sensitive.annotation.SensitiveField;
 import com.wudgaby.starter.data.security.sensitive.annotation.SensitiveJSONFieldKey;
 import com.wudgaby.starter.data.security.sensitive.desensitize.DesensitizeHandlerFactory;
-import com.wudgaby.starter.data.security.sensitive.desensitize.SensitiveType;
 import lombok.extern.slf4j.Slf4j;
 
 
@@ -28,7 +27,7 @@ public class JsonSensitiveHandler implements SensitiveHandler<String> {
                 String key = jsonFieldKey.key();
                 Object oldData = jsonObject.get(key);
                 if (oldData != null) {
-                    SensitiveType sensitiveType = jsonFieldKey.type();
+                    String sensitiveType = jsonFieldKey.type();
                     Object newData = DesensitizeHandlerFactory.get(sensitiveType).handle(oldData);
                     jsonObject.set(key, newData);
                 }

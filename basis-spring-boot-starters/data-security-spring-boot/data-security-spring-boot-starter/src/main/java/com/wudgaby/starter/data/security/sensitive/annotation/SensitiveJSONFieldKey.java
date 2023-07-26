@@ -1,7 +1,5 @@
 package com.wudgaby.starter.data.security.sensitive.annotation;
 
-import com.wudgaby.starter.data.security.sensitive.desensitize.SensitiveType;
-
 import java.lang.annotation.*;
 
 /**
@@ -18,7 +16,7 @@ public @interface SensitiveJSONFieldKey {
      */
     String key();
     /**
-     * 脱敏类型
+     * 脱敏类型. SensitiveType或自定义
      */
-    SensitiveType type() default SensitiveType.DEFAULT;
+    String type() default "DEFAULT";
 }

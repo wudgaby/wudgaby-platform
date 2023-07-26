@@ -9,7 +9,8 @@ public interface DesensitizeHandler {
      * 获取脱敏的类型枚举
      * @return ;
      */
-    SensitiveType getSensitiveType();
+    String getSensitiveType();
+
     /**
      * 对数据的值进行脱敏处理
      * @param src src

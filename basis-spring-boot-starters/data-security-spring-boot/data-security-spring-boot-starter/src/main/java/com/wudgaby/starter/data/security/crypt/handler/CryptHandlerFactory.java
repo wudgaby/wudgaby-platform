@@ -3,7 +3,7 @@ package com.wudgaby.starter.data.security.crypt.handler;
 import com.google.common.collect.Maps;
 import com.wudgaby.starter.data.security.crypt.annotation.CryptoField;
 import com.wudgaby.starter.data.security.enums.HandlerType;
-import com.wudgaby.starter.data.security.util.CryptUtil;
+import com.wudgaby.starter.data.security.util.IgnoreClassUtil;
 import org.springframework.lang.NonNull;
 
 import java.util.Collection;
@@ -39,7 +39,7 @@ public class CryptHandlerFactory {
     }
 
     public static CryptHandler getCryptHandler(Object obj, CryptoField cryptoField) {
-        if (obj == null || CryptUtil.inIgnoreClass(obj.getClass())) {
+        if (obj == null || IgnoreClassUtil.inIgnoreClass(obj.getClass())) {
             return HANDLER_MAP.get(HandlerType.DEFAULT);
         }
 

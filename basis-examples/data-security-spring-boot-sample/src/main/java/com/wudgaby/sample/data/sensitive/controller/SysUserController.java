@@ -54,6 +54,14 @@ public class SysUserController {
                 Wrappers.<SysUser>lambdaQuery().orderByDesc(SysUser::getCreateTime)));
     }
 
+    @ApiOperation("用户列表2")
+    @GetMapping("/list2")
+    public ApiPageResult<SysUser> userPageList2(PageForm pageForm){
+        return ApiPageResult.success(sysUserService.page(
+                new Page<>(pageForm.getPageNum(), pageForm.getPageSize()),
+                Wrappers.<SysUser>lambdaQuery().orderByDesc(SysUser::getCreateTime)));
+    }
+
     @ApiOperation("添加用户")
     @PostMapping
     public ApiResult addUser(@Validated @RequestBody SysUser sysUser){

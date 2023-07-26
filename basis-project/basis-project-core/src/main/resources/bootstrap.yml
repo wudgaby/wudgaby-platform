@@ -81,8 +81,8 @@ spring:
 
 #配置日志地址
 logging:
-  path: /var/log/${spring.application.name}
-  config: log/logback-spring.xml
+  path: /var/log/${spring.application.name:UN-APP}
+  config: classpath:logback-spring.xml
 
 # mybatis
 mybatis-plus:

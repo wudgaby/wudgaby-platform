@@ -11,7 +11,7 @@ public class DafaultDesensitizeHandler implements DesensitizeHandler {
     private static final String SYMBOL = "*";
 
     @Override
-    public SensitiveType getSensitiveType() {
+    public String getSensitiveType() {
         return SensitiveType.DEFAULT;
     }
 

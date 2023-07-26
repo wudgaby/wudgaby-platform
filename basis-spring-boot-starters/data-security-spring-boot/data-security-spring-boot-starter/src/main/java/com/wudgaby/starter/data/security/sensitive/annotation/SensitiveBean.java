@@ -10,10 +10,9 @@ import java.lang.annotation.*;
 @Retention(RetentionPolicy.RUNTIME)
 @Inherited
 @Documented
-public @interface Sensitive {
+public @interface SensitiveBean {
     /**
      * 是否开启加解密和脱敏模式
-     * @return Sensitive
      */
     boolean value() default true;
 }
