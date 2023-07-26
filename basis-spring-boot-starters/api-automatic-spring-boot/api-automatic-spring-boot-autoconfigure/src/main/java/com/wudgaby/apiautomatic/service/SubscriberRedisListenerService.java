@@ -4,9 +4,9 @@ package com.wudgaby.apiautomatic.service;
  * @Author :  wudgaby
  * @Version :  since 1.0
  * @Date :  2021/7/24 15:33
- * @Desc :
+ * @Desc :  订阅
  */
-public interface ISubscriberRedisListenerService {
+public interface SubscriberRedisListenerService {
     /**
      * 消费消息
      * @param message

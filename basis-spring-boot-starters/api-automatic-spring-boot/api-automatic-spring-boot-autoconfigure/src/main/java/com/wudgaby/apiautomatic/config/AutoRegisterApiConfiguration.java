@@ -1,10 +1,7 @@
 package com.wudgaby.apiautomatic.config;
 
 import com.wudgaby.apiautomatic.listeners.RequestMappingScanListener;
-import com.wudgaby.apiautomatic.service.ApiRegisterService;
-import com.wudgaby.apiautomatic.service.MqApiRegisterService;
-import com.wudgaby.apiautomatic.service.RedisApiPubService;
-import com.wudgaby.apiautomatic.service.RedisApiRegisterService;
+import com.wudgaby.apiautomatic.service.*;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -53,5 +50,15 @@ public class AutoRegisterApiConfiguration {
     @ConditionalOnProperty(value = "api.register.type", havingValue = "MQ")
     public ApiRegisterService mqResourceService() {
         return new MqApiRegisterService();
+    }
+
+    /**
+     * event 模式
+     * @return
+     */
+    @Bean
+    @ConditionalOnProperty(value = "api.register.type", havingValue = "EVENT")
+    public EventApiRegisterService eventApiRegisterService() {
+        return new EventApiRegisterService();
     }
 }

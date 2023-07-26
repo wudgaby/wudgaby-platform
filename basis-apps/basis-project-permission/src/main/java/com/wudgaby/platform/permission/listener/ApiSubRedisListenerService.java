@@ -5,7 +5,7 @@ import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
 import com.wudgaby.apiautomatic.consts.ApiSystemConst;
 import com.wudgaby.apiautomatic.dto.ApiDTO;
-import com.wudgaby.apiautomatic.service.ISubscriberRedisListenerService;
+import com.wudgaby.apiautomatic.service.SubscriberRedisListenerService;
 import com.wudgaby.platform.permission.consts.AuthorityConst;
 import com.wudgaby.platform.permission.entity.BaseApi;
 import com.wudgaby.platform.permission.service.BaseApiService;
@@ -30,7 +30,7 @@ import java.util.Set;
 @Slf4j
 @Service
 @AllArgsConstructor
-public class ApiSubRedisListenerService implements ISubscriberRedisListenerService {
+public class ApiSubRedisListenerService implements SubscriberRedisListenerService {
     private final BaseApiService baseApiService;
     private final BaseAuthorityService baseAuthorityService;
     private final RedisSupport redisSupport;

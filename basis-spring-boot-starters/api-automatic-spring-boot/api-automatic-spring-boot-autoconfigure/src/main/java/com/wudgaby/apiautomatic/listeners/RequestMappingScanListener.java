@@ -68,6 +68,11 @@ public class RequestMappingScanListener implements ApplicationListener<Applicati
             //一个方法可以绑定多个url
             RequestMethodsRequestCondition methodsRequestCondition = requestMappingInfo.getMethodsCondition();
 
+            ApiRegisterIgnore apiRegisterIgnoreClass = AnnotationUtils.findAnnotation(method.getBeanType(), ApiRegisterIgnore.class);
+            if(apiRegisterIgnoreClass != null) {
+                continue;
+            }
+
             ApiRegisterIgnore apiRegisterIgnore = AnnotationUtils.findAnnotation(method.getMethod(), ApiRegisterIgnore.class);
             if(apiRegisterIgnore != null) {
                 continue;

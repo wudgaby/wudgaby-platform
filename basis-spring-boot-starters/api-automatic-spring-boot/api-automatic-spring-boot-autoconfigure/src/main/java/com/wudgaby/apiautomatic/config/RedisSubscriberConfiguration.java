@@ -1,7 +1,7 @@
 package com.wudgaby.apiautomatic.config;
 
 import com.wudgaby.apiautomatic.consts.ApiSystemConst;
-import com.wudgaby.apiautomatic.service.ISubscriberRedisListenerService;
+import com.wudgaby.apiautomatic.service.SubscriberRedisListenerService;
 import com.wudgaby.platform.core.util.AssertUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,7 +48,7 @@ public class RedisSubscriberConfiguration {
      */
     @Bean
     @ConditionalOnMissingBean
-    public MessageListenerAdapter listenerAdapter(@Autowired(required = false) ISubscriberRedisListenerService subscriberRedisService){
+    public MessageListenerAdapter listenerAdapter(@Autowired(required = false) SubscriberRedisListenerService subscriberRedisService){
         AssertUtil.notNull(subscriberRedisService, "请实现SubscriberRedisListenerService接口.");
         return new MessageListenerAdapter(subscriberRedisService,"receiveMessage");
     }
