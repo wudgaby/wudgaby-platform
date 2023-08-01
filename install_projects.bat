@@ -1,20 +1,25 @@
 @echo off
 
+set VAR_ACTION=install
+set VAR_PROFILE=
+
 echo 1.flatten
-echo 2.install
-echo 3.all
+echo 2.only install
+echo 3.full install
+echo 4.release 2 sonatype
 
 :main
 set /p opt=Enter your option:
 
-if %opt% == 1 goto one
-if %opt% == 2 goto two
-if %opt% == 3 goto all
+if %opt% == 1 goto flatten
+if %opt% == 2 goto only_install
+if %opt% == 3 goto full_install
+if %opt% == 4 goto release2sonatype
 
 echo Invalid option
 goto main
 
-:one
+:flatten
 echo "===================================execute flatten BEGIN==================================================="
 call  mvn flatten:clean flatten:flatten
 echo "===================================execute flatten END==================================================="
@@ -23,11 +28,16 @@ if %opt% == 1 (
 )
 
 
-:two
+:only_install
 echo "===================================execute install BEGIN==================================================="
-call mvn clean install -DskipTests=true -N^
-&& mvn clean install -DskipTests=true -f ./basis-project -pl ./basis-project-core -pl ./basis-project-security-core -am^
-&& mvn clean install -DskipTests=true -f ./basis-spring-boot-starters -pl ^
+echo "ACTION:%VAR_ACTION%"
+echo "PROFILE:%VAR_PROFILE%"
+
+call mvn clean %VAR_ACTION% -DskipTests=true %VAR_PROFILE% -N^
+
+&& mvn clean %VAR_ACTION% -DskipTests=true -f ./basis-project %VAR_PROFILE% -pl ./basis-project-core -pl ./basis-project-security-core -am^
+
+&& mvn clean %VAR_ACTION% -DskipTests=true -f ./basis-spring-boot-starters %VAR_PROFILE% -pl ^
 ./redis-spring-boot/redis-spring-boot-starter,^
 ./rate-limiter-spring-boot/rate-limiter-spring-boot-starter,^
 ./swagger-spring-boot/swagger-spring-boot-starter,^
@@ -35,16 +45,27 @@ call mvn clean install -DskipTests=true -N^
 ./mail-spring-boot/mail-spring-boot-starter,^
 ./mybatis-plus-helper-spring-boot/mybatis-plus-helper-srping-boot-starter ^
 -am^
-&& mvn clean install -DskipTests=true -f ./basis-project -rf ./basis-project-core^
-&& mvn clean install -DskipTests=true -f ./basis-spring-boot-starters -rf ./mail-spring-boot/mail-spring-boot-starter^
-&& mvn clean install -DskipTests=true -f ./basis-apps^
-&& mvn clean install -DskipTests=true -f ./basis-project-dependencies
+
+&& mvn clean %VAR_ACTION% -DskipTests=true -f ./basis-project %VAR_PROFILE% -rf ./basis-project-core^
+
+&& mvn clean %VAR_ACTION% -DskipTests=true -f ./basis-spring-boot-starters %VAR_PROFILE% -rf ./mail-spring-boot/mail-spring-boot-starter^
+
+&& mvn clean %VAR_ACTION% -DskipTests=true -f ./basis-project-dependencies %VAR_PROFILE%
+
+:: mvn clean %VAR_PROFILE% -DskipTests=true -f ./basis-apps
 echo "===================================execute install END==================================================="
-if %opt% == 1 (
+if %opt% == 2 (
     exit /b 0
 )
 
-:all
-goto one
-goto two
+:full_install
+goto flatten
+goto only_install
+exit /b 0
+
+:release2sonatype
+set VAR_ACTION=deploy
+set VAR_PROFILE=-P release-sonatype
+goto flatten
+goto only_install
 exit /b 0
