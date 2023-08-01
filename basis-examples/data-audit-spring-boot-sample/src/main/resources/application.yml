@@ -1,0 +1,28 @@
+spring:
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:test
+    username: sa
+    password: sa
+    initialization-mode: always
+    schema:
+      - classpath:db/ddl.sql
+    data:
+      - classpath:db/dml.sql
+
+  #sprinboot2.5.0之后才支持
+#  sql:
+#    init:
+#      schema-locations: classpath:db/ddl.sql
+#      data-locations: classpath:db/dml.sql
+#      mode: always
+
+  h2:
+    console:
+      path: /h2
+      enabled: true
+      settings:
+        web-allow-others: true
+  application:
+    name:
+

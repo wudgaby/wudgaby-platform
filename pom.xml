@@ -96,6 +96,7 @@
         <!-- utils  -->
         <hutool.version>5.7.19</hutool.version>
         <guava.version>28.0-jre</guava.version>
+        <gson.version>2.9.0</gson.version>
         <email.version>1.4</email.version>
         <commons-math.version>3.6.1</commons-math.version>
         <commons-collections.version>4.1</commons-collections.version>

@@ -155,6 +155,30 @@
                 <artifactId>swagger-spring-boot-starter</artifactId>
                 <version>${revision}</version>
             </dependency>
+            <!--数据审计-->
+            <dependency>
+                <groupId>com.wudgaby.platform</groupId>
+                <artifactId>data-audit-spring-boot-starter</artifactId>
+                <version>${revision}</version>
+            </dependency>
+            <!--数据加解密,脱敏-->
+            <dependency>
+                <groupId>com.wudgaby.platform</groupId>
+                <artifactId>data-security-spring-boot-starter</artifactId>
+                <version>${revision}</version>
+            </dependency>
+            <!--mybatis-plus助手-->
+            <dependency>
+                <groupId>com.wudgaby.platform</groupId>
+                <artifactId>mybatis-plus-helper-srping-boot-starter</artifactId>
+                <version>${revision}</version>
+            </dependency>
+            <!--多端口-->
+            <dependency>
+                <groupId>com.wudgaby.platform</groupId>
+                <artifactId>multi-ports-spring-boot-starter</artifactId>
+                <version>${revision}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
