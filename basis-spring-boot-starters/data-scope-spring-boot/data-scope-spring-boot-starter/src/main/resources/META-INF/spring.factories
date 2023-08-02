@@ -1,0 +1,5 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.wudgaby.starter.datascope.config.DataScopeConfig
+
+org.springframework.boot.env.EnvironmentPostProcessor=\
+  com.wudgaby.starter.datascope.support.DefaultConfigEnvironmentPostProcessor
