@@ -21,19 +21,6 @@ public class DataAuditor {
         return JaversHolder.JAVERS;
     }
 
-    /*private static Javers JAVERS;
-    public static Javers getJavers() {
-        if (null == DataAuditor.JAVERS) {
-            synchronized (DataAuditor.class) {
-                if (null == DataAuditor.JAVERS) {
-                    DataAuditor.JAVERS = JaversBuilder.javers().withListCompareAlgorithm(ListCompareAlgorithm.LEVENSHTEIN_DISTANCE).build();
-                }
-
-            }
-        }
-        return DataAuditor.JAVERS;
-    }*/
-
     public static List<Change> compare(Object oldVersion, Object currentVersion){
         return JaversHolder.JAVERS.compare(oldVersion, currentVersion).getChanges();
     }

@@ -14,9 +14,9 @@ public class DataAuditEvent extends ApplicationEvent {
     }
 
     public void apply() {
-        DataAuditConsumer biFunction = (DataAuditConsumer)getSource();
-        if (null != biFunction){
-            biFunction.accept((paramObject1, paramObject2) -> DataAuditor.compare(paramObject1, paramObject2));
+        DataAuditConsumer consumer = (DataAuditConsumer)getSource();
+        if (null != consumer){
+            consumer.accept((paramObject1, paramObject2) -> DataAuditor.compare(paramObject1, paramObject2));
         }
     }
 }

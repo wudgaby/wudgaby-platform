@@ -2,10 +2,6 @@ package com.wudgaby.platform.sso.server.config;
 
 import com.google.common.collect.Lists;
 import com.wudgaby.platform.core.config.ExcludeRegistry;
-import com.wudgaby.platform.sso.core.config.SsoProperties;
-import com.wudgaby.platform.sso.core.helper.SsoRemoteHelper;
-import com.wudgaby.platform.sso.core.interceptor.SsoWebInterceptor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
@@ -14,7 +10,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.util.UrlPathHelper;
 
 /**
- * @ClassName : w
+ * @ClassName : WebMvcConfig
  * @Author :  WudGaby
  * @Version :  1.0
  * @Date : 2020/6/25 0:08
