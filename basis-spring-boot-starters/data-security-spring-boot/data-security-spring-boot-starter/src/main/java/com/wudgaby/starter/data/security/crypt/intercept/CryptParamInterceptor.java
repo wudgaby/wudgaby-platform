@@ -13,6 +13,7 @@ import org.apache.ibatis.executor.parameter.ParameterHandler;
 import org.apache.ibatis.plugin.*;
 import org.apache.ibatis.reflection.MetaObject;
 import org.apache.ibatis.reflection.SystemMetaObject;
+import org.springframework.core.annotation.Order;
 
 import java.sql.PreparedStatement;
 import java.util.Arrays;
@@ -27,6 +28,7 @@ import java.util.Properties;
         @Signature(type = ParameterHandler.class, method = "setParameters", args = PreparedStatement.class)
 })
 @Slf4j
+@Order(1)
 @RequiredArgsConstructor
 public class CryptParamInterceptor implements Interceptor {
     /**

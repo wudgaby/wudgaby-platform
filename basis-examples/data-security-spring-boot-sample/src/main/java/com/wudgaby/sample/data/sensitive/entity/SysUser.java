@@ -59,7 +59,6 @@ public class SysUser extends BaseEntity {
     @ApiModelProperty(value = "密码盐")
     private String salt;
 
-    @SensitiveField
     @CryptoField
     @ApiModelProperty(value = "用户名")
     private String userName;

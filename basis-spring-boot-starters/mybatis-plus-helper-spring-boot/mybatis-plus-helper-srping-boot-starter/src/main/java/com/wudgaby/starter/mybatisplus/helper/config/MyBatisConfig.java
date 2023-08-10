@@ -56,7 +56,15 @@ public class MyBatisConfig {
         return new OptimisticLockerInterceptor();
     }
 
-    /**
+    /*@Bean
+    public MybatisPlusInterceptor mybatisPlusInterceptor() {
+        MybatisPlusInterceptor interceptor = new MybatisPlusInterceptor();
+        interceptor.addInnerInterceptor(new BlockAttackInnerInterceptor());
+        interceptor.addInnerInterceptor(new OptimisticLockerInnerInterceptor());
+        return interceptor;
+    }*/
+
+    /**4
      * 数据库id选择器
      * @return
      */

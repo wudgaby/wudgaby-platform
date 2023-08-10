@@ -1,9 +1,7 @@
 package com.wudgaby.starter.data.security.crypt.intercept;
 
-import com.google.common.collect.Maps;
+import com.wudgaby.starter.data.security.crypt.DataCryptUtil;
 import com.wudgaby.starter.data.security.crypt.annotation.CryptoBean;
-import com.wudgaby.starter.data.security.crypt.annotation.CryptoField;
-import com.wudgaby.starter.data.security.crypt.handler.CryptHandlerFactory;
 import com.wudgaby.starter.data.security.util.PluginUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.executor.resultset.ResultSetHandler;
@@ -12,11 +10,9 @@ import org.apache.ibatis.mapping.ResultMap;
 import org.apache.ibatis.plugin.*;
 import org.apache.ibatis.reflection.MetaObject;
 import org.apache.ibatis.reflection.SystemMetaObject;
+import org.springframework.core.annotation.Order;
 
-import java.lang.reflect.Field;
 import java.util.List;
-import java.util.Map;
-import java.util.Objects;
 import java.util.Properties;
 
 /**
@@ -26,6 +22,7 @@ import java.util.Properties;
         @Signature(type = ResultSetHandler.class, method = "handleResultSets", args = {java.sql.Statement.class})
 })
 @Slf4j
+@Order(1)
 public class CryptReadInterceptor implements Interceptor {
     private static final String MAPPED_STATEMENT = "mappedStatement";
 
@@ -48,34 +45,8 @@ public class CryptReadInterceptor implements Interceptor {
             return results;
         }
 
-        Map<String, CryptoField> cryptFieldMap = getCryptFieldMap(resultMap);
-        for (Object obj: results) {
-            final MetaObject objMetaObject = SystemMetaObject.forObject(obj);
-            for (Map.Entry<String, CryptoField> entry : cryptFieldMap.entrySet()) {
-                String property = entry.getKey();
-                Object value = objMetaObject.getValue(property);
-                if (Objects.nonNull(value)) {
-                    objMetaObject.setValue(property, CryptHandlerFactory.getCryptHandler(value, entry.getValue()).decrypt(value, entry.getValue()));
-                }
-            }
-        }
+        DataCryptUtil.decrypt(results);
         return results;
-    }
-
-    private Map<String, CryptoField> getCryptFieldMap(ResultMap resultMap) {
-        Map<String, CryptoField> cryptFieldMap = Maps.newHashMap();
-
-        if (resultMap == null) {
-            return cryptFieldMap;
-        }
-
-        for (Field field: resultMap.getType().getDeclaredFields()) {
-            CryptoField cryptoField = field.getAnnotation(CryptoField.class);
-            if (cryptoField != null && cryptoField.decrypt()) {
-                cryptFieldMap.put(field.getName(), cryptoField);
-            }
-        }
-        return cryptFieldMap;
     }
 
     @Override
