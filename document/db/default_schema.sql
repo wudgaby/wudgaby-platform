@@ -4,7 +4,7 @@ CREATE TABLE `default_schema` (
   `update_time` datetime DEFAULT NULL COMMENT '修改时间',
   `create_by` varchar(50) DEFAULT '' COMMENT '创建者',
   `update_by` varchar(50) DEFAULT '' COMMENT '修改者',
-  `status` tinyint(4) NOT NULL DEFAULT '0' COMMENT '状态 0:正常, -1:异常',
+  `status` tinyint(4) NOT NULL DEFAULT '1' COMMENT '状态 0:异常, 1:正常',
   `version` int(11) NOT NULL DEFAULT '0' COMMENT '乐观锁',
   `deleted` tinyint(1) NOT NULL DEFAULT '0' COMMENT '逻辑删除 0:未删除 1:已删除',
   `sort` int(11) NOT NULL DEFAULT '0' COMMENT '排序',
