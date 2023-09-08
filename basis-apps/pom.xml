@@ -16,6 +16,11 @@
     <name>Basis Apps</name>
     <packaging>pom</packaging>
 
+    <properties>
+        <maven.install.skip>true</maven.install.skip>
+        <maven.deploy.skip>true</maven.deploy.skip>
+    </properties>
+
     <modules>
         <module>basis-project-data-auth</module>
         <module>basis-project-sso</module>

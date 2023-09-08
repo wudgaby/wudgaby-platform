@@ -6,7 +6,7 @@ set VAR_PROFILE=
 echo 1.flatten
 echo 2.only install
 echo 3.full install
-echo 4.release 2 sonatype
+echo 4.release to sonatype
 
 :main
 set /p opt=Enter your option:
@@ -69,3 +69,5 @@ set VAR_PROFILE=-P release-sonatype
 goto flatten
 goto only_install
 exit /b 0
+
+:: mvn deploy -P release-sonatype -DskipTests=true -f ./basis-spring-boot-starters -rf :signature-spring-boot-autoconfigure
