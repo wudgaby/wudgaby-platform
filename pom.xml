@@ -46,7 +46,7 @@
         <java.target.version>1.8</java.target.version>
 
         <!-- Project revision -->
-        <revision>1.0.4-SNAPSHOT</revision>
+        <revision>1.0.4</revision>
         <basis-project.version>${revision}</basis-project.version>
         <basis-starters.version>${revision}</basis-starters.version>
 
@@ -803,11 +803,11 @@
 
             <distributionManagement>
                 <snapshotRepository>
-                    <id>oss-snapshots</id>
+                    <id>oss</id>
                     <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
                 </snapshotRepository>
                 <repository>
-                    <id>oss-releases</id>
+                    <id>oss</id>
                     <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
                 </repository>
             </distributionManagement>
