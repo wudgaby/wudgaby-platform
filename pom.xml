@@ -46,7 +46,7 @@
         <java.target.version>1.8</java.target.version>
 
         <!-- Project revision -->
-        <revision>1.0.4</revision>
+        <revision>1.0.5-SNAPSHOT</revision>
         <basis-project.version>${revision}</basis-project.version>
         <basis-starters.version>${revision}</basis-starters.version>
 

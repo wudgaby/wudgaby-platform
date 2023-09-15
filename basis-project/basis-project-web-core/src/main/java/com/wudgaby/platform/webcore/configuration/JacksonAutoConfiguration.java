@@ -9,10 +9,13 @@ import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 import org.springframework.http.converter.json.Jackson2ObjectMapperBuilder;
 
 import java.io.IOException;
+import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -26,6 +29,7 @@ import static com.wudgaby.platform.webcore.configuration.JacksonAutoConfiguratio
  * @date: 2019/5/20 14:56
  * @description:
  */
+@Configuration
 @Slf4j
 public class JacksonAutoConfiguration {
 
@@ -134,11 +138,13 @@ public class JacksonAutoConfiguration {
         objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
         /**
          * 序列换成json时,将所有的long变成string
-         * 因为js中得数字类型不能包含所有的java long值
+         * 因为js中得数字类型丢失精度
          */
         SimpleModule simpleModule = new SimpleModule();
         simpleModule.addSerializer(Long.class, ToStringSerializer.instance);
         simpleModule.addSerializer(Long.TYPE, ToStringSerializer.instance);
+        simpleModule.addSerializer(BigInteger.class, ToStringSerializer.instance);
+        simpleModule.addSerializer(BigDecimal.class, ToStringSerializer.instance);
         objectMapper.registerModule(simpleModule);
         // 兼容fastJson 的一些空值处理
         SerializerFeature[] features = new SerializerFeature[]{

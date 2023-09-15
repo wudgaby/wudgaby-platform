@@ -1,17 +1,25 @@
 package com.wudgaby.logger.sample;
 
+import cn.hutool.core.util.StrUtil;
 import com.wudgaby.logger.api.AccessLoggerEventListener;
 import com.wudgaby.logger.api.event.AccessLoggerAfterEvent;
 import com.wudgaby.logger.api.event.AccessLoggerBeforeEvent;
+import com.wudgaby.logger.api.vo.AccessLoggerInfo;
+import com.wudgaby.platform.utils.JacksonUtil;
 import com.wudgaby.starter.logger.aop.EnableAccessLogger;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.event.EventListener;
 
+import java.io.Serializable;
 import java.net.InetAddress;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.Optional;
 
 /**
  * @ClassName : LoggerSampleBootstrap
@@ -55,5 +63,27 @@ public class LoggerSampleBootstrap implements CommandLineRunner {
     @EventListener
     public void accessLoggerAfterEvent(AccessLoggerAfterEvent event) {
         log.info("after event: {}", event.getAccessLogInfoVo());
+        AccessLoggerInfo loggerInfo = event.getAccessLogInfoVo();
+
+        String contentType = loggerInfo.getHttpHeaders().get("content-type");
+        if(StringUtils.isNotBlank(contentType) && contentType.contains("multipart/form-data")){
+
+        }else{
+            Map<String, Object> filterMap = loggerInfo.getParameters().entrySet().stream()
+                    .filter(entry -> entry.getValue() instanceof Serializable)
+                    .collect(LinkedHashMap::new, (m, e) -> m.put(e.getKey(), e.getValue()), LinkedHashMap::putAll);
+            JacksonUtil.serialize(filterMap);
+        }
+
+        Optional.ofNullable(loggerInfo.getResponse()).map(resp -> {
+            if(resp instanceof Serializable){
+                String result = JacksonUtil.serialize(resp);
+                if(result.length() > 20000) {
+                    return StrUtil.sub(result, 0, 20000);
+                }
+                return result;
+            }
+            return null;
+        }).orElse(null);
     }
 }
