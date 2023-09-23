@@ -67,7 +67,7 @@ public class EnumScanHandlerImpl implements EnumScanHandler {
                 List<CodeItem> codeItemList = items.stream().map(item-> {
                     try{
                         Object enumCode = ReflectUtil.getFieldValue(item, bindCode);
-                        String enumName = StrUtil.toString(ReflectUtil.getFieldValue(item, bindName));
+                        String enumName = StrUtil.toStringOrNull(ReflectUtil.getFieldValue(item, bindName));
                         return new CodeItem(enumCode, enumName);
                     }catch (Exception e){
                         log.error(e.getMessage(), e);
