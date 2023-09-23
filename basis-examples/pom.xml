@@ -54,6 +54,7 @@
         <module>assembly-sample</module>
         <module>data-security-spring-boot-sample</module>
         <module>data-audit-spring-boot-sample</module>
+        <module>enums-scanner-spring-boot-sample</module>
     </modules>
 
     <build>

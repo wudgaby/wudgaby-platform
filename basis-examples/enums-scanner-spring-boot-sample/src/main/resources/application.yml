@@ -1,0 +1,3 @@
+enum-scan:
+  scanPackages:
+    - "com.wudgaby"

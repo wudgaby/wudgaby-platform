@@ -179,6 +179,12 @@
                 <artifactId>multi-ports-spring-boot-starter</artifactId>
                 <version>${revision}</version>
             </dependency>
+            <!--枚举扫描-->
+            <dependency>
+                <groupId>com.wudgaby.platform</groupId>
+                <artifactId>enums-scanner-spring-boot-starter</artifactId>
+                <version>${revision}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 

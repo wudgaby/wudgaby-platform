@@ -78,10 +78,7 @@ public class LoggerSampleBootstrap implements CommandLineRunner {
         Optional.ofNullable(loggerInfo.getResponse()).map(resp -> {
             if(resp instanceof Serializable){
                 String result = JacksonUtil.serialize(resp);
-                if(result.length() > 20000) {
-                    return StrUtil.sub(result, 0, 20000);
-                }
-                return result;
+                return StrUtil.sub(result, 0, Math.min(20000, result.length()));
             }
             return null;
         }).orElse(null);

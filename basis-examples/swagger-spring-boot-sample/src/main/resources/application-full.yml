@@ -1,0 +1,81 @@
+server:
+  port: 8081
+
+#https://github.com/SpringForAll/spring-boot-starter-swagger/blob/1.9.1.RELEASE/README.md
+swagger:
+  apply-default-response-messages: false
+  base-package: com.wudgaby
+  base-path: /**
+  contact:
+    email: xx@xx.com
+    name: xx
+    url: http://xx.xx.com
+  description: 文档描述
+  enabled: true
+  exclude-path: /error, /ops/*
+  global-response-message:
+    get:
+      - code: 401
+        message: 401get
+      - code: 500
+        message: 500get
+        modelRef: ERROR
+    post:
+      - code: 500
+        message: 500post
+        modelRef: ERROR
+  globalOperationParameters:
+    - description: some description one
+      modelRef: string
+      name: name one
+      parameterType: header
+      required: true
+    - description: some description two
+      modelRef: string
+      name: name two
+      parameterType: body
+      required: false
+  license: Apache License, Version 2.0
+  licenseUrl: https://www.apache.org/licenses/LICENSE-2.0.html
+  termsOfServiceUrl: https://github.com
+  title: test
+  version: 1.0.1
+
+#分组
+  docket:
+    all:
+      groupName: controller组
+      basePackage: com.wudgaby.swagger.sample.controller
+      contact:
+        email: group@xx.com
+        name: group
+        url: http://spring4all.com/
+      description: 分组文档描述
+      #excludePath: /ops/*
+      globalOperationParameters:
+        - description: some description three override
+          modelRef: string
+          name: name three
+          parameterType: header
+      termsOfServiceUrl: https://gitee.com
+      title: group-all
+      version: 1.3.0.RELEASE
+    aaa:
+      groupName: 组1
+      basePackage: com.wudgaby.swagger.sample.controller1
+      title: group-a
+    bbb:
+      groupName: 组2
+      basePackage: com.wudgaby.swagger.sample.controller2
+      title: group-bbb
+    ccc:
+      groupName: 组3
+      basePackage: com.wudgaby.swagger.sample.controller3
+      title: group-ccc
+
+#Authorization 鉴权配置
+  authorization:
+    auth-regex: ^.*$
+    key-name: token
+    name: Authorization
+    type: ApiKey

@@ -50,5 +50,6 @@
         <module>mybatis-plus-helper-spring-boot</module>
         <module>data-audit-spring-boot</module>
         <module>data-scope-spring-boot</module>
+        <module>enums-scanner-spring-boot</module>
     </modules>
 </project>

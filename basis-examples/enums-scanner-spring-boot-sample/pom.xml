@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>data-audit-spring-boot-sample</artifactId>
+    <artifactId>enums-scanner-spring-boot-sample</artifactId>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
@@ -21,22 +21,13 @@
     <dependencies>
         <dependency>
             <groupId>com.wudgaby.platform</groupId>
-            <artifactId>data-audit-spring-boot-starter</artifactId>
+            <artifactId>basis-project-web-core</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>com.wudgaby.platform</groupId>
-            <artifactId>mybatis-plus-helper-srping-boot-starter</artifactId>
+            <artifactId>enums-scanner-spring-boot-starter</artifactId>
             <version>${project.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.h2database</groupId>
-            <artifactId>h2</artifactId>
-            <scope>runtime</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
     </dependencies>
 </project>

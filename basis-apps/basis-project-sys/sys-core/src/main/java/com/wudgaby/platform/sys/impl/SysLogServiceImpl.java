@@ -23,9 +23,12 @@ import org.springframework.context.event.EventListener;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
+import java.io.Serializable;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.util.Date;
+import java.util.LinkedHashMap;
+import java.util.Map;
 import java.util.Optional;
 
 /**
@@ -61,7 +64,15 @@ public class SysLogServiceImpl extends ServiceImpl<SysLogMapper, SysLog> impleme
         if(StringUtils.isNotBlank(contentType) && contentType.contains("multipart/form-data")){
             sysLog.setReqParam(StringUtils.EMPTY);
         }else{
-            sysLog.setReqParam(JacksonUtil.serialize(loggerInfo.getParameters()));
+            Map<String, Object> filterMap = loggerInfo.getParameters().entrySet().stream()
+                    .filter(entry -> entry.getValue() instanceof Serializable)
+                    .collect(LinkedHashMap::new, (m, e) -> m.put(e.getKey(), e.getValue()), LinkedHashMap::putAll);
+
+            try{
+                sysLog.setReqParam(JacksonUtil.serialize(filterMap));
+            }catch (Exception e){
+                log.error("日志记录,请求体序列化失败. {}", e.getMessage());
+            }
         }
 
         sysLog.setReqTime(new Date(loggerInfo.getRequestTime()));
@@ -91,11 +102,13 @@ public class SysLogServiceImpl extends ServiceImpl<SysLogMapper, SysLog> impleme
             sysLog.setSucceed(StringUtils.isBlank(sysLog.getError()));
         }
         sysLog.setResponse(Optional.ofNullable(loggerInfo.getResponse()).map(resp -> {
-            String result = JacksonUtil.serialize(resp);
-            if(result.length() > 20000) {
-                return StrUtil.sub(result, 0, 20000);
+            try {
+                String result = JacksonUtil.serialize(resp);
+                return StrUtil.sub(result, 0, Math.min(20000, result.length()));
+            } catch (Exception e){
+                log.error("日志记录,响应体序列化失败. {}", e.getMessage());
             }
-            return result;
+            return null;
         }).orElse(null));
 
         UserAgent userAgent = UserAgentUtil.parse(loggerInfo.getUserAgent());
