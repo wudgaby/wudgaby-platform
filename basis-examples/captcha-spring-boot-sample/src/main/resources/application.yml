@@ -1,0 +1,7 @@
+captcha:
+  filter-mode:
+    enabled: true
+    filter-urls:
+      - /filter
+    key-name: k
+    captcha-name: code

@@ -185,6 +185,12 @@
                 <artifactId>enums-scanner-spring-boot-starter</artifactId>
                 <version>${revision}</version>
             </dependency>
+            <!--验证码-->
+            <dependency>
+                <groupId>com.wudgaby.platform</groupId>
+                <artifactId>captcha-spring-boot-starter</artifactId>
+                <version>${revision}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 

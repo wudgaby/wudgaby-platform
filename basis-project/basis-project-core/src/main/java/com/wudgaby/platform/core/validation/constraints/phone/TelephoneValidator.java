@@ -1,5 +1,6 @@
 package com.wudgaby.platform.core.validation.constraints.phone;
 
+import cn.hutool.core.util.StrUtil;
 import com.wudgaby.platform.utils.RegexUtil;
 
 import javax.validation.ConstraintValidator;
@@ -16,7 +17,7 @@ public class TelephoneValidator implements ConstraintValidator<Telephone, String
     @Override
     public boolean isValid(String value, ConstraintValidatorContext context) {
         //可空
-        if(value == null || "".equals(value)){
+        if (StrUtil.isBlank(value)) {
             return true;
         }
         return RegexUtil.isTelephone(value);

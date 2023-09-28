@@ -19,7 +19,7 @@ import java.util.Date;
  * @Desc :   
  */
 @Data
-@EqualsAndHashCode(callSuper = false)
+@EqualsAndHashCode
 @ApiModel("时间范围表单")
 public class DateRangeForm extends PageForm{
     @ApiModelProperty(value = "开始时间(yyyy-MM-dd HH:mm:ss)")
