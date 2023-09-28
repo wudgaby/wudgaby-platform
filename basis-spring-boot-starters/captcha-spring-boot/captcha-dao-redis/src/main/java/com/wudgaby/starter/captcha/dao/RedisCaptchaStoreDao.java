@@ -1,7 +1,7 @@
 package com.wudgaby.starter.captcha.dao;
 
 import cn.hutool.core.lang.UUID;
-import com.wudgaby.starter.captcha.core.dao.CaptchaStoreDao;
+import com.wudgaby.starter.captcha.core.CaptchaStoreDao;
 import lombok.AllArgsConstructor;
 import org.springframework.data.redis.core.StringRedisTemplate;
 

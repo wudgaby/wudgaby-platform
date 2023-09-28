@@ -56,6 +56,7 @@
         <module>data-audit-spring-boot-sample</module>
         <module>enums-scanner-spring-boot-sample</module>
         <module>captcha-spring-boot-sample</module>
+        <module>tianai-captcha-sample</module>
     </modules>
 
     <build>

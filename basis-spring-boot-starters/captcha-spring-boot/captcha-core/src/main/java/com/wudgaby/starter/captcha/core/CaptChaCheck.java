@@ -1,4 +1,4 @@
-package com.wudgaby.starter.captcha.interceptor;
+package com.wudgaby.starter.captcha.core;
 
 import java.lang.annotation.*;
 

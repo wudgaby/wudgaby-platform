@@ -34,10 +34,5 @@
             <artifactId>captcha-core</artifactId>
             <version>${project.version}</version>
         </dependency>
-        <dependency>
-            <groupId>com.wudgaby.platform</groupId>
-            <artifactId>basis-project-core</artifactId>
-            <version>${project.version}</version>
-        </dependency>
     </dependencies>
 </project>

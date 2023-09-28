@@ -1,4 +1,4 @@
-package com.wudgaby.starter.captcha.core.dao;
+package com.wudgaby.starter.captcha.core;
 
 import java.util.Optional;
 

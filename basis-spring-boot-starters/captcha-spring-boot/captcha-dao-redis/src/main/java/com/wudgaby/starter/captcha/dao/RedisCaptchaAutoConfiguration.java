@@ -1,6 +1,6 @@
 package com.wudgaby.starter.captcha.dao;
 
-import com.wudgaby.starter.captcha.core.dao.CaptchaStoreDao;
+import com.wudgaby.starter.captcha.core.CaptchaStoreDao;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.core.StringRedisTemplate;

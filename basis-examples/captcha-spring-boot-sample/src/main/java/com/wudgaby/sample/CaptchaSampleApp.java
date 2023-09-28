@@ -2,7 +2,8 @@ package com.wudgaby.sample;
 
 import cn.hutool.core.util.StrUtil;
 import com.wudgaby.starter.captcha.config.CaptchaProp;
-import com.wudgaby.starter.captcha.core.dao.CaptchaStoreDao;
+import com.wudgaby.starter.captcha.core.CaptchaStoreDao;
+import com.wudgaby.starter.captcha.core.CaptChaCheck;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -31,8 +32,8 @@ public class CaptchaSampleApp {
 
     @GetMapping("/verify")
     public String getCaptChaResult(String key, String captcha){
-        String code = captchaStoreDao.get(captchaProp.getCaptchaStorePrefixKey(), key).orElse(null);
-        captchaStoreDao.clear(captchaProp.getCaptchaStorePrefixKey(), key);
+        String code = captchaStoreDao.get(captchaProp.getStorePrefixKey(), key).orElse(null);
+        captchaStoreDao.clear(captchaProp.getStorePrefixKey(), key);
 
         if(StrUtil.isBlank(code)){
             return "验证码已过期";
@@ -43,6 +44,12 @@ public class CaptchaSampleApp {
 
     @GetMapping("/filter")
     public String filterTest(String k, String code){
-        return "已进入";
+        return "filter已进入";
+    }
+
+    @CaptChaCheck
+    @GetMapping("/aspect")
+    public String aspectTest(String k, String code){
+        return "aspect已进入";
     }
 }

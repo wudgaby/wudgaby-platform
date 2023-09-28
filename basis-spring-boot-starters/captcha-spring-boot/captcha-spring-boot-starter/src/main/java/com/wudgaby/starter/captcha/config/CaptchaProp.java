@@ -1,6 +1,7 @@
 package com.wudgaby.starter.captcha.config;
 
 import com.wf.captcha.base.Captcha;
+import com.wudgaby.starter.captcha.enums.CaptchaAutoCheckModeEnum;
 import com.wudgaby.starter.captcha.enums.CaptchaEnum;
 import com.wudgaby.starter.captcha.enums.CaptchaStoreEnum;
 import lombok.Data;
@@ -42,7 +43,7 @@ public class CaptchaProp {
     /**
      * 验证码类型
      */
-    private CaptchaEnum captchaType = CaptchaEnum.SPEC;
+    private CaptchaEnum captchaType = CaptchaEnum.GIF;
 
     /**
      * 验证码文本类型, 默认纯数字. 只有Spec,GIF类型有效
@@ -57,7 +58,7 @@ public class CaptchaProp {
     /**
      * 存储prefix key
      */
-    private String captchaStorePrefixKey = "captcha";
+    private String storePrefixKey = "captcha";
 
     /**
      * 存储redis时间
@@ -72,14 +73,20 @@ public class CaptchaProp {
     /**
      * 过滤器模式
      */
-    private FilterMode filterMode = new FilterMode();
+    private AutoCheckMode autoCheckMode = new AutoCheckMode();
+
 
     @Data
-    public static class FilterMode{
+    public static class AutoCheckMode{
         /**
-         * 过滤器模式
+         * 是否开启
          */
         private boolean enabled = false;
+
+        /**
+         * 模式
+         */
+        private CaptchaAutoCheckModeEnum mode = CaptchaAutoCheckModeEnum.ASPECT;
 
         /**
          * 过滤器需要拦截的url

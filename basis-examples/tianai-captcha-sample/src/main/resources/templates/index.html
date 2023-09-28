@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link  rel="stylesheet" href="/css/tac.css">
+    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+    <script src="/js/tac.min.js"></script>
+
+    <style>
+        ul li {
+            list-style: none;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .top{
+            overflow: auto;
+        }
+        .top li:hover{
+            cursor: pointer;
+        }
+        .top li{
+            float: left;
+            height: 40px;
+            width: 120px;
+            margin-right: 5px;
+            line-height: 40px;
+            text-align: center;
+            background-color: #409eff;
+            color: #fff;
+            font-size: 15px;
+            box-sizing: border-box;
+            border: 1px solid #409eff;
+        }
+        .captcha-iframe {
+            width: 300px;
+            height: 320px;
+            border: none;
+        }
+        .after {
+            color: #88949d;
+        }
+    </style>
+</head>
+
+<body>
+<div>
+    <ul class="top">
+        <li onclick="openCaptcha('RANDOM')">随机</li>
+        <li onclick="openCaptcha('SLIDER')">滑块验证码</li>
+        <li onclick="openCaptcha('ROTATE')">旋转验证码</li>
+        <li onclick="openCaptcha('CONCAT')">滑动还原验证码</li>
+        <li onclick="openCaptcha('WORD_IMAGE_CLICK')">点选验证码</li>
+    </ul>
+    <div id="captcha-box"></div>
+</div>
+<script>
+    const config = {
+        // 生成接口
+        requestCaptchaDataUrl: "/gen?type=RANDOM",
+        // 验证接口
+        validCaptchaUrl: "/check",
+        // 验证码绑定的div块
+        bindEl: "#captcha-box",
+        // 验证成功回调函数
+        validSuccess: (res, c, tac) => {
+            alert("验证成功");
+            // 销毁验证码服务
+            tac.destroyWindow();
+        }
+    }
+    const style = {
+        // 配置样式， logoURL地址
+        logoUrl: "/images/logo.png"
+    }
+    $(function () {
+        // 创建 TAC 启动验证码服务
+        new TAC(config, style).init();
+    })
+    function openCaptcha(type) {
+        config.requestCaptchaDataUrl = "/gen?type="+type
+        new TAC(config, style).init();
+    }
+</script>
+</body>
+</html>

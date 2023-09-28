@@ -2,11 +2,9 @@ package com.wudgaby.starter.captcha.filter;
 
 import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.util.StrUtil;
-import com.wudgaby.platform.core.result.ApiResult;
-import com.wudgaby.platform.utils.JacksonUtil;
 import com.wudgaby.starter.captcha.config.CaptchaProp;
-import com.wudgaby.starter.captcha.core.dao.CaptchaStoreDao;
-import com.wudgaby.starter.captcha.exception.CaptchaException;
+import com.wudgaby.starter.captcha.core.CaptchaException;
+import com.wudgaby.starter.captcha.core.CaptchaStoreDao;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.MediaType;
@@ -41,7 +39,7 @@ public class CaptchaFilter extends OncePerRequestFilter {
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
-        if(CollUtil.isEmpty(captchaProp.getFilterMode().getFilterUrls())){
+        if(CollUtil.isEmpty(captchaProp.getAutoCheckMode().getFilterUrls())){
             filterChain.doFilter(request, response);
             return;
         }
@@ -49,7 +47,7 @@ public class CaptchaFilter extends OncePerRequestFilter {
         //url是否需要拦截
         boolean needValidate = false;
         String reqURI = request.getRequestURI();
-        for(String filterUrl : captchaProp.getFilterMode().getFilterUrls()){
+        for(String filterUrl : captchaProp.getAutoCheckMode().getFilterUrls()){
             if(pathMatcher.match(filterUrl, reqURI)){
                 needValidate = true;
                 break;
@@ -67,14 +65,14 @@ public class CaptchaFilter extends OncePerRequestFilter {
             log.error(captchaException.getMessage());
             response.setContentType(MediaType.APPLICATION_JSON_VALUE);
             response.setCharacterEncoding("utf-8");
-            response.getWriter().write(JacksonUtil.serialize(ApiResult.failure(captchaException.getMessage())));
+            response.getWriter().write("{\"code\":0,\"message\":\""+captchaException.getMessage()+"\"}");
             response.getWriter().flush();
             return;
         } catch (Exception ex){
             log.error(ex.getMessage(), ex);
             response.setContentType(MediaType.APPLICATION_JSON_VALUE);
             response.setCharacterEncoding("utf-8");
-            response.getWriter().write(JacksonUtil.serialize(ApiResult.failure("系统异常")));
+            response.getWriter().write("{\"code\":0,\"message\":\"系统异常\"}");
             response.getWriter().flush();
             return;
         }
@@ -87,13 +85,13 @@ public class CaptchaFilter extends OncePerRequestFilter {
      * @param request
      */
     private void validate(HttpServletRequest request) throws ServletRequestBindingException {
-        String key = ServletRequestUtils.getStringParameter(request, captchaProp.getFilterMode().getKeyName());
-        String captchaInRequest = ServletRequestUtils.getStringParameter(request, captchaProp.getFilterMode().getCaptchaName());
+        String key = ServletRequestUtils.getStringParameter(request, captchaProp.getAutoCheckMode().getKeyName());
+        String captchaInRequest = ServletRequestUtils.getStringParameter(request, captchaProp.getAutoCheckMode().getCaptchaName());
 
         if (StrUtil.isBlank(key) || StrUtil.isBlank(captchaInRequest)) {
             throw new CaptchaException("请填写验证码!");
         }
-        String captchaInStore = captchaStoreDao.get(captchaProp.getCaptchaStorePrefixKey(), key).orElse(null);
+        String captchaInStore = captchaStoreDao.get(captchaProp.getStorePrefixKey(), key).orElse(null);
         if (StrUtil.isBlank(captchaInStore)) {
             throw new CaptchaException("验证码错误!");
         }
@@ -101,6 +99,6 @@ public class CaptchaFilter extends OncePerRequestFilter {
             throw new CaptchaException("验证码错误!");
         }
         //验证通过 移除缓存
-        captchaStoreDao.clear(captchaProp.getCaptchaStorePrefixKey(), key);
+        captchaStoreDao.clear(captchaProp.getStorePrefixKey(), key);
     }
 }

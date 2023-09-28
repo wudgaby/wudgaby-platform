@@ -1,6 +1,7 @@
 captcha:
-  filter-mode:
+  auto-check-mode:
     enabled: true
+    mode: aspect
     filter-urls:
       - /filter
     key-name: k

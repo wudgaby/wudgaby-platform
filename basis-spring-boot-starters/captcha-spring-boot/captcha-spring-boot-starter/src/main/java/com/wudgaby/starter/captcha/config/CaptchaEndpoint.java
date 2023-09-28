@@ -1,10 +1,10 @@
 package com.wudgaby.starter.captcha.config;
 
 import cn.hutool.json.JSONUtil;
-import com.google.common.collect.Maps;
 import com.wf.captcha.*;
 import com.wf.captcha.base.Captcha;
-import com.wudgaby.starter.captcha.core.dao.CaptchaStoreDao;
+import com.wudgaby.starter.captcha.core.CaptchaResultVO;
+import com.wudgaby.starter.captcha.core.CaptchaStoreDao;
 import com.wudgaby.starter.captcha.dao.SessionCaptchaStoreDao;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
@@ -13,7 +13,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import javax.servlet.http.HttpServletResponse;
-import java.util.Map;
 
 /**
  * @author :  wudgaby
@@ -45,7 +44,7 @@ public class CaptchaEndpoint {
         String captchaResult = captcha.text();
 
         //存储
-        String key = captchaStoreDao.save(captchaProp.getCaptchaStorePrefixKey(), captchaResult, captchaProp.getDuration().getSeconds());
+        String key = captchaStoreDao.save(captchaProp.getStorePrefixKey(), captchaResult, captchaProp.getDuration().getSeconds());
 
         if(captchaStoreDao instanceof SessionCaptchaStoreDao){
             //设置响应头
@@ -57,10 +56,7 @@ public class CaptchaEndpoint {
         }else{
             response.setContentType(MediaType.APPLICATION_JSON_VALUE);
             //不要base64的头部data:image/png;base64
-            Map<String, String> resultMap = Maps.newHashMap();
-            resultMap.put("key", key);
-            resultMap.put("captchaImg", captcha.toBase64(""));
-            response.getWriter().println(JSONUtil.toJsonStr(resultMap));
+            response.getWriter().println(JSONUtil.toJsonStr(new CaptchaResultVO().setKey(key).setCaptcha(captcha.toBase64())));
         }
     }
 

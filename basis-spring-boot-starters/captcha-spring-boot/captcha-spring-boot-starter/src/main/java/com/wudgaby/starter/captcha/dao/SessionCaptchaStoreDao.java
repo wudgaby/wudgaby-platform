@@ -1,6 +1,6 @@
 package com.wudgaby.starter.captcha.dao;
 
-import com.wudgaby.starter.captcha.core.dao.CaptchaStoreDao;
+import com.wudgaby.starter.captcha.core.CaptchaStoreDao;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 

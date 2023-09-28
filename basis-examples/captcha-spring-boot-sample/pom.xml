@@ -28,9 +28,14 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-        <dependency>
+        <!--<dependency>
             <groupId>com.wudgaby.platform</groupId>
             <artifactId>captcha-dao-redis</artifactId>
+            <version>${project.version}</version>
+        </dependency>-->
+        <dependency>
+            <groupId>com.wudgaby.platform</groupId>
+            <artifactId>swagger-spring-boot-starter</artifactId>
             <version>${project.version}</version>
         </dependency>
     </dependencies>

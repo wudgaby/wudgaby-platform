@@ -1,4 +1,4 @@
-package com.wudgaby.starter.captcha.exception;
+package com.wudgaby.starter.captcha.core;
 
 /**
  * @author :  wudgaby

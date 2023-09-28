@@ -4,7 +4,7 @@ import cn.hutool.core.lang.UUID;
 import com.google.common.cache.CacheBuilder;
 import com.google.common.cache.CacheLoader;
 import com.google.common.cache.LoadingCache;
-import com.wudgaby.starter.captcha.core.dao.CaptchaStoreDao;
+import com.wudgaby.starter.captcha.core.CaptchaStoreDao;
 
 import javax.annotation.Nonnull;
 import java.util.Optional;

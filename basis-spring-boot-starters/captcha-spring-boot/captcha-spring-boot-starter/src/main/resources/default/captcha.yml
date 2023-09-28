@@ -1,0 +1,15 @@
+captcha:
+  auto-check-mode:
+    enabled: false
+    mode: aspect
+    key-name: key
+    captcha-name: captcha
+  store-type: memory
+  len: 4
+  height: 48
+  width: 130
+  font-type: 1
+  store-prefix-key: captcha
+  captcha-type: gif
+  duration: 5m
+  char-type: 2
