@@ -16,6 +16,7 @@ import lombok.experimental.Accessors;
 @Accessors(chain = true)
 @NoArgsConstructor
 @AllArgsConstructor
+@Deprecated
 public class FieldDiffVO {
     private String fieldName;
     private Boolean ignore;

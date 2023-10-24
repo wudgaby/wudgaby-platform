@@ -64,7 +64,7 @@ public class MyBatisConfig {
         return interceptor;
     }*/
 
-    /**4
+    /**
      * 数据库id选择器
      * @return
      */
@@ -73,6 +73,16 @@ public class MyBatisConfig {
     public DatabaseIdProvider customDatabaseIdProvider(){
         return new CustomDatabaseIdProvider();
     }
+
+    /**
+     * id生成器
+     * @return
+     */
+    /*@Bean
+    @ConditionalOnMissingBean
+    public IdentifierGenerator iKeyGenerator() {
+        return new CustomerIdGenerator();
+    }*/
 
     /**
      * mybatis plus 字段填充

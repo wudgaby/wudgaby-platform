@@ -13,11 +13,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
+import java.util.*;
 
 /**
  * @ClassName : ComparisonReflectUtil
@@ -25,7 +21,9 @@ import java.util.Optional;
  * @Version :  1.0
  * @Date : 2019/9/27 10:12
  * @Desc :   对象字段内容比较器
+ * 使用 https://github.com/javers/javers
  */
+@Deprecated
 @UtilityClass
 public class ComparisonReflectUtil {
     private static final List<Class<?>> WRAPPER = Arrays.asList(Byte.class, Short.class,

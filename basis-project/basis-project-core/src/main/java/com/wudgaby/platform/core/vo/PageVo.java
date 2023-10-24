@@ -5,6 +5,7 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -17,7 +18,7 @@ import java.util.List;
 @Data
 @Accessors(chain = true)
 @ApiModel("分页返回对象")
-public class PageVo<T> {
+public class PageVo<T> implements Serializable {
     @ApiModelProperty(value = "当前页数")
     private long pageNum;
 
