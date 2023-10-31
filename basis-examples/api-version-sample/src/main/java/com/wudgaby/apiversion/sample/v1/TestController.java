@@ -2,6 +2,7 @@ package com.wudgaby.apiversion.sample.v1;
 
 import com.wudgaby.apiversion.ApiVersion;
 import com.wudgaby.apiversion.IgnoreApiVersion;
+import com.wudgaby.platform.core.model.form.DateRangeForm;
 import com.wudgaby.platform.core.result.ApiResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -13,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @desc :
  */
 @ApiVersion("1.0")
-@RestController
+@RestController("V1")
 public class TestController {
 
     @GetMapping("/hello")
@@ -31,5 +32,10 @@ public class TestController {
     @GetMapping("/hello")
     public ApiResult helloNone(){
         return ApiResult.success("hello 无版本管理");
+    }
+
+    @GetMapping("/dateTest")
+    public ApiResult dateTest(DateRangeForm dateRangeForm){
+        return ApiResult.success(dateRangeForm);
     }
 }

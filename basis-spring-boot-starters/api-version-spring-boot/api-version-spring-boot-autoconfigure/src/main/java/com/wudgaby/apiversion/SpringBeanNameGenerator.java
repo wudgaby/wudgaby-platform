@@ -20,6 +20,7 @@ package com.wudgaby.apiversion;
 import org.springframework.beans.factory.annotation.AnnotatedBeanDefinition;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.annotation.AnnotationBeanNameGenerator;
+import org.springframework.lang.NonNull;
 import org.springframework.util.StringUtils;
 
 /**
@@ -28,7 +29,7 @@ import org.springframework.util.StringUtils;
  */
 public class SpringBeanNameGenerator extends AnnotationBeanNameGenerator {
     @Override
-    protected String buildDefaultBeanName(BeanDefinition definition) {
+    protected String buildDefaultBeanName(@NonNull BeanDefinition definition) {
         if (definition instanceof AnnotatedBeanDefinition) {
             String beanName = determineBeanNameFromAnnotation((AnnotatedBeanDefinition) definition);
             if (StringUtils.hasText(beanName)) {

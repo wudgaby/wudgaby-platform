@@ -1,0 +1,38 @@
+spring:
+  application:
+    name: app-health-sample
+  security:
+    user:
+      name: client
+      password: client888
+  boot:
+    admin:
+      client:
+        url: http://localhost:12003
+        username: admin
+        password: admin888
+        instance:
+          metadata:
+            user.name: ${spring.security.user.name}
+            user.password: ${spring.security.user.password}
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: ALWAYS
+
+info:
+  groupId: @project.groupId@
+  artifactId: @project.artifactId@
+  version: @project.version@
+  describe: ${spring.application.name}
+
+
+logging:
+  file:
+    path: D://logs/${spring.application.name}

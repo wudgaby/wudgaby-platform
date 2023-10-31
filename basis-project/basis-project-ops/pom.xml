@@ -16,6 +16,7 @@
     <modules>
         <module>message-server</module>
         <module>message-api</module>
+        <module>health-admin-server</module>
     </modules>
 
 

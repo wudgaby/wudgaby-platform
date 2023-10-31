@@ -53,7 +53,6 @@ public class DefaultSwaggerConfiguration {
                 .title(Optional.ofNullable(swaggerProperties.getTitle()).orElse("默认接口文档"))
                 .description(Optional.ofNullable(swaggerProperties.getDescription()).orElse("默认接口文档"))
                 .termsOfServiceUrl(Optional.ofNullable(swaggerProperties.getTermsOfServiceUrl()).orElse("https://www.wudgaby.com"))
-                // https://choosealicense.com
                 .license("Apache License 2.0")
                 .licenseUrl("http://www.apache.org/licenses")
                 .contact(new Contact(Optional.ofNullable(swaggerProperties.getContact()).map(c->c.getName()).orElse("wudgaby"),

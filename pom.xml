@@ -136,6 +136,8 @@
         <poi-tl.version>1.11.0</poi-tl.version>
         <common-random.version>1.0.11</common-random.version>
         <reflections.version>0.10.2</reflections.version>
+
+        <spring-boot-admin.version>2.3.1</spring-boot-admin.version>
     </properties>
 
     <modules>
@@ -604,6 +606,14 @@
                 <groupId>com.apifan.common</groupId>
                 <artifactId>common-random</artifactId>
                 <version>${common-random.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>de.codecentric</groupId>
+                <artifactId>spring-boot-admin-dependencies</artifactId>
+                <version>${spring-boot-admin.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
             </dependency>
         </dependencies>
     </dependencyManagement>

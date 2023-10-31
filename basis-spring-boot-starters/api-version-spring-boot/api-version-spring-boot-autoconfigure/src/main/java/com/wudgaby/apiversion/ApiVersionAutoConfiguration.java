@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Configuration;
 
 /**
  * 配置api版本
+ * @author wudgaby
  */
 @Configuration
 @ConditionalOnWebApplication

@@ -20,7 +20,7 @@
         <dependency>
             <groupId>com.wudgaby.platform</groupId>
             <artifactId>api-version-spring-boot-autoconfigure</artifactId>
-            <version>${revision}</version>
+            <version>${project.version}</version>
         </dependency>
     </dependencies>
 </project>

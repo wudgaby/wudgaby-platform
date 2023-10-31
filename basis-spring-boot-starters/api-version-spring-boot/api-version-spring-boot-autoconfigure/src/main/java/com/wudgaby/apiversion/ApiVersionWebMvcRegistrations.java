@@ -10,7 +10,7 @@ import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandl
 public class ApiVersionWebMvcRegistrations implements WebMvcRegistrations {
 
     @NonNull
-    private ApiVersionProperties apiVersionProperties;
+    private final ApiVersionProperties apiVersionProperties;
 
     @Override
     public RequestMappingHandlerMapping getRequestMappingHandlerMapping() {

@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @desc :
  */
 @ApiVersion("2.0")
-@RestController
+@RestController("V2")
 public class TestController {
     @GetMapping("/hello")
     public ApiResult hello(){

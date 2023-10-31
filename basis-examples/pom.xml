@@ -57,6 +57,7 @@
         <module>enums-scanner-spring-boot-sample</module>
         <module>captcha-spring-boot-sample</module>
         <module>tianai-captcha-sample</module>
+        <module>app-health-client-sample</module>
     </modules>
 
     <build>

@@ -17,7 +17,7 @@
         <dependency>
             <groupId>com.wudgaby.platform</groupId>
             <artifactId>basis-project-core</artifactId>
-            <version>${revision}</version>
+            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -30,28 +30,28 @@
         <dependency>
             <groupId>com.wudgaby.platform</groupId>
             <artifactId>basis-project-security-core</artifactId>
-            <version>${revision}</version>
+            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>com.wudgaby.platform</groupId>
             <artifactId>redis-spring-boot-starter</artifactId>
-            <version>${revision}</version>
+            <version>${basis-starters.version}</version>
         </dependency>
         <dependency>
             <groupId>com.wudgaby.platform</groupId>
             <artifactId>swagger-spring-boot-starter</artifactId>
-            <version>${revision}</version>
+            <version>${basis-starters.version}</version>
             <optional>true</optional>
         </dependency>
         <dependency>
             <groupId>com.wudgaby.platform</groupId>
             <artifactId>resubmit-spring-boot-starter</artifactId>
-            <version>${revision}</version>
+            <version>${basis-starters.version}</version>
         </dependency>
         <dependency>
             <groupId>com.wudgaby.platform</groupId>
             <artifactId>rate-limiter-core</artifactId>
-            <version>${revision}</version>
+            <version>${basis-starters.version}</version>
         </dependency>
         <dependency>
             <groupId>org.mybatis</groupId>
@@ -62,7 +62,7 @@
         <dependency>
             <groupId>com.wudgaby.platform</groupId>
             <artifactId>mybatis-plus-helper-srping-boot-starter</artifactId>
-            <version>${revision}</version>
+            <version>${basis-starters.version}</version>
             <optional>true</optional>
         </dependency>
     </dependencies>

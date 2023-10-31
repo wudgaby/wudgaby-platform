@@ -11,7 +11,6 @@ import io.swagger.annotations.ApiOperation;
 import lombok.AllArgsConstructor;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -52,6 +51,6 @@ public class SampleDownloadController {
         IPage page = new Page<People>(1, 100000, false);
 
         peopleMapper.pageList(page, Wrappers.query());
-        DownloadUtil.downloadExcel("测试2.xls", response, page.getRecords());
+        DownloadUtil.downloadExcel("测试2.xls", response, page.getRecords(), People.class);
     }
 }

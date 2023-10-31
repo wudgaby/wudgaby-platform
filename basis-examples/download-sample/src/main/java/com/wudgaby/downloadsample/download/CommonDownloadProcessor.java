@@ -22,7 +22,7 @@ public class CommonDownloadProcessor<T> implements DownloadProcessor<T> {
         this.fileName = fileName;
         this.response = response;
         this.rowDataList = new ArrayList<>(1);
-       DownloadUtil.processHttpResponse(fileName, response);
+        DownloadUtil.processHttpResponse(fileName, response);
     }
 
     @Override

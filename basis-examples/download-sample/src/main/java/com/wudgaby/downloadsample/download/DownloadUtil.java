@@ -9,7 +9,6 @@ import lombok.SneakyThrows;
 import lombok.experimental.UtilityClass;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.IOUtils;
-import org.apache.poi.ss.formula.functions.T;
 import org.springframework.http.MediaType;
 
 import javax.servlet.ServletOutputStream;
@@ -91,10 +90,10 @@ public class DownloadUtil {
     }
 
     @SneakyThrows
-    public static void downloadExcel(String fileName, HttpServletResponse response, List<T> records){
+    public static <T> void downloadExcel(String fileName, HttpServletResponse response, List<T> records, Class<T> clazz){
         processHttpResponse(fileName, response);
         try {
-            ExcelWriter excelWriter = EasyExcel.write(response.getOutputStream(), T.class).build();
+            ExcelWriter excelWriter = EasyExcel.write(response.getOutputStream(), clazz).build();
             WriteSheet writeSheet = EasyExcel.writerSheet().build();
             excelWriter.write(records, writeSheet);
             excelWriter.finish();

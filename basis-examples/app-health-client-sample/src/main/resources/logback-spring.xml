@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true" scanPeriod="60 seconds" debug="false">
+    <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
+    <property name="serviceName" value="app-health-sample"/>
+    <springProperty scope="context" name="LOG_PATH" source="logging.file.path" defaultValue="D://logs/${serviceName}"/>
+    <springProperty scope="context" name="LOG_NAME" source="logging.file.name" defaultValue="spring.log"/>
+    <contextName>${serviceName}</contextName>
+
+    <!--输出到控制台-->
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>${CONSOLE_LOG_PATTERN}</pattern>
+        </encoder>
+    </appender>
+
+    <!--按天生成日志-->
+    <appender name="logFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <FileNamePattern>
+                ${LOG_PATH}/%d{yyyy-MM-dd}.log.gz
+            </FileNamePattern>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>
+                %d{yyyy-MM-dd HH:mm:ss} -%msg%n
+            </Pattern>
+        </layout>
+    </appender>
+
+    <appender name="springLog" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_PATH}/${LOG_NAME}</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <FileNamePattern>
+                ${LOG_PATH}/${LOG_NAME}-%d{yyyy-MM-dd}.gz
+            </FileNamePattern>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>
+                %d{yyyy-MM-dd HH:mm:ss} -%msg%n
+            </Pattern>
+        </layout>
+    </appender>
+
+    <root level="info">
+        <appender-ref ref="console"/>
+        <appender-ref ref="logFile"/>
+        <appender-ref ref="springLog"/>
+    </root>
+
+</configuration>

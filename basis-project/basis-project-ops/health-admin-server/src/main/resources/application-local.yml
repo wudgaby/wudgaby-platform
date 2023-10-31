@@ -1,0 +1,25 @@
+spring:
+  security:
+    user:
+      name: admin
+      password: admin888
+
+  boot:
+    admin:
+      notify:
+        mail:
+          enabled: false
+          # 发送给谁
+          to: non-existent@cnns.com
+          from: non-existent@cnns.com
+        dingtask:
+          enabled: false
+          webhook-url: https://oapi.dingtalk.com/robot/send?access_token=xxxxx
+      #客户端配置
+      client:
+        username: ${spring.security.user.name}
+        password: ${spring.security.user.password}
+        instance:
+          metadata:
+            user.name: ${spring.security.user.name}
+            user.password: ${spring.security.user.password}

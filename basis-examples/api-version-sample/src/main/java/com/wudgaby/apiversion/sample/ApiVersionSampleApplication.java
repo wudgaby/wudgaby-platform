@@ -1,6 +1,5 @@
 package com.wudgaby.apiversion.sample;
 
-import com.wudgaby.apiversion.SpringBeanNameGenerator;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -10,8 +9,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @date :  2022/3/28 0028 12:00
  * @desc :
  */
-@SpringBootApplication(nameGenerator = SpringBeanNameGenerator.class)
-//@MapperScan(value = "**.mapper", markerInterface = BaseMapper.class, nameGenerator = Application.SpringBeanNameGenerator.class)
+@SpringBootApplication
+//@ComponentScan(nameGenerator = SpringBeanNameGenerator.class)
+//@MapperScan(value = "**.mapper", markerInterface = BaseMapper.class, nameGenerator = SpringBeanNameGenerator.class)
 public class ApiVersionSampleApplication {
     public static void main(String[] args) {
         SpringApplication.run(ApiVersionSampleApplication.class, args);
