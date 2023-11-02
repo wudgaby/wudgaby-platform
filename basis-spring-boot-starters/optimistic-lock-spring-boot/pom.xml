@@ -12,6 +12,7 @@
     <artifactId>optimistic-lock-spring-boot</artifactId>
     <packaging>pom</packaging>
     <name>Optimistic Lock Spring Boot</name>
+    <description>乐观锁</description>
     <modules>
         <module>optimistic-lock-spring-boot-starter</module>
     </modules>

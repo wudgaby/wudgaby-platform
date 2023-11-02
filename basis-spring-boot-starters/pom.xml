@@ -52,5 +52,6 @@
         <module>data-scope-spring-boot</module>
         <module>enums-scanner-spring-boot</module>
         <module>captcha-spring-boot</module>
+        <module>access-limiter-spring-boot</module>
     </modules>
 </project>

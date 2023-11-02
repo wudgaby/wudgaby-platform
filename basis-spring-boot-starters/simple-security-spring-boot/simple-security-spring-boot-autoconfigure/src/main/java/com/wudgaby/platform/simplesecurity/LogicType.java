@@ -22,5 +22,5 @@ public enum LogicType {
     AND("并且")
     ;
 
-    private String desc;
+    private final String desc;
 }

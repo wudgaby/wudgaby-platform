@@ -12,7 +12,7 @@
     <artifactId>rate-limiter-spring-boot</artifactId>
     <packaging>pom</packaging>
     <name>Rate Limiter Spring Boot</name>
-    <description>限流-启动器 - DONE</description>
+    <description>接口限流-启动器 - DONE</description>
     <modules>
         <module>rate-limiter-spring-boot-starter</module>
         <module>rate-limiter-spring-boot-autoconfigure</module>

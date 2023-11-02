@@ -18,7 +18,7 @@ import lombok.experimental.Accessors;
 @Data
 @Accessors(chain = true)
 @EqualsAndHashCode(callSuper = false)
-public class MyEntity extends BaseEntity {
+public class BaseExtendEntity extends BaseEntity {
     @ApiModelProperty(value = "状态 1:正常, 0:异常")
     private Integer status;
 

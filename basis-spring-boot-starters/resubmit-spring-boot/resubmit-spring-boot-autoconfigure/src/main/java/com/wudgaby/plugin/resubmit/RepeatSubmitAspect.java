@@ -1,11 +1,14 @@
 package com.wudgaby.plugin.resubmit;
 
+import cn.hutool.crypto.digest.MD5;
 import cn.hutool.extra.servlet.ServletUtil;
+import cn.hutool.json.JSONUtil;
 import com.google.common.cache.Cache;
 import com.google.common.cache.CacheBuilder;
 import com.wudgaby.redis.api.RedisSupport;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.Signature;
 import org.aspectj.lang.annotation.Aspect;
@@ -17,10 +20,9 @@ import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.Serializable;
 import java.lang.reflect.Method;
-import java.util.Base64;
-import java.util.Optional;
-import java.util.StringJoiner;
+import java.util.*;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -114,8 +116,11 @@ public class RepeatSubmitAspect {
     private String getKey(HttpServletRequest request, JoinPoint joinPoint) {
         //String account = SecurityUtils.getCurrentUser().map(u -> u.getAccount()).orElse("guest");
         String userId = Optional.ofNullable(loginUserService).map(service -> service.getLoginedUserId()).orElse("anyone");
-        String path = request.getServletPath();
+        String path = request.getMethod() + " " + request.getServletPath();
         String timestamp = Optional.ofNullable(request.getParameter(PARAM_TIMESTAMP)).orElse("0");
+        //String md5Param = getMd5Param(request);
+        //String md5Query = MD5.create().digestHex(request.getQueryString());
+
 
         String ipBase64 = Base64.getEncoder().encodeToString(ServletUtil.getClientIP(request).getBytes());
         return new StringJoiner(":")
@@ -125,5 +130,23 @@ public class RepeatSubmitAspect {
                 .add(path)
                 .add(timestamp)
                 .toString();
+    }
+
+    private String getMd5Param(HttpServletRequest request){
+        String contentType = request.getContentType();
+        if(StringUtils.isNotBlank(contentType) && contentType.contains("multipart/form-data")){
+            return "";
+        }else{
+            Map<String, Object> filterMap = request.getParameterMap().entrySet().stream()
+                    .filter(entry -> entry.getValue() instanceof Serializable)
+                    .collect(LinkedHashMap::new, (m, e) -> m.put(e.getKey(), e.getValue()), LinkedHashMap::putAll);
+
+            try{
+                return MD5.create().digestHex(JSONUtil.toJsonStr(filterMap));
+            }catch (Exception e){
+                log.error("日志记录,请求体序列化失败. {}", e.getMessage());
+            }
+        }
+        return "";
     }
 }

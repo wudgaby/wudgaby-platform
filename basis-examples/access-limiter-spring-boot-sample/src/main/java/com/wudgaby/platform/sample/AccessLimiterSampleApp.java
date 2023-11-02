@@ -1,4 +1,4 @@
-package com.wudgaby.platform.ops;
+package com.wudgaby.platform.sample;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -6,13 +6,14 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 /**
  * @author :  wudgaby
  * @version :  1.0.0
- * @date :  2023/10/31 10:09
+ * @date :  2023/11/2 0002 14:08
  * @desc :
  */
+
 @SpringBootApplication
-public class AppHealthClientApp {
+public class AccessLimiterSampleApp {
 
     public static void main(String[] args) {
-        SpringApplication.run(AppHealthClientApp.class, args);
+        SpringApplication.run(AccessLimiterSampleApp.class, args);
     }
 }

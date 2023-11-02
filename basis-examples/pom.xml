@@ -58,6 +58,7 @@
         <module>captcha-spring-boot-sample</module>
         <module>tianai-captcha-sample</module>
         <module>app-health-client-sample</module>
+        <module>access-limiter-spring-boot-sample</module>
     </modules>
 
     <build>

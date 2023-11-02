@@ -15,6 +15,7 @@ spring:
           metadata:
             user.name: ${spring.security.user.name}
             user.password: ${spring.security.user.password}
+          preferIp: true
 
 
 management:

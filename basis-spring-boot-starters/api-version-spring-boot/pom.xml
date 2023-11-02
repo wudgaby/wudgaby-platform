@@ -12,6 +12,7 @@
     <artifactId>api-version-spring-boot</artifactId>
     <packaging>pom</packaging>
     <name>Api Version Spring Boot</name>
+    <description>api多版本</description>
     <modules>
         <module>api-version-spring-boot-autoconfigure</module>
         <module>api-version-spring-boot-starter</module>
