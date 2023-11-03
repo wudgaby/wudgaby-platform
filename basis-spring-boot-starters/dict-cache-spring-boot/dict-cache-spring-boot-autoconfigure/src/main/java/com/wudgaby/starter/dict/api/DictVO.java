@@ -1,6 +1,8 @@
-package com.wudgaby.platform.sys.dict;
+package com.wudgaby.starter.dict.api;
 
 import lombok.Data;
+
+import java.util.Date;
 
 /**
  * @author :  wudgaby
@@ -9,7 +11,7 @@ import lombok.Data;
  * @desc :
  */
 @Data
-public class DictDTO{
+public class DictVO{
     /**
      * 字典id
      */
@@ -34,4 +36,9 @@ public class DictDTO{
      * 排序
      */
     private Integer sort;
+
+    /**
+     * 更新时间
+     */
+    private Date updateTime;
 }

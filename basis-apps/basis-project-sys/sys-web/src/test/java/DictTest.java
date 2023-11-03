@@ -1,11 +1,12 @@
 import cn.hutool.core.lang.tree.Tree;
 import cn.hutool.core.lang.tree.TreeNode;
 import com.wudgaby.platform.sys.SysBootstrap;
-import com.wudgaby.platform.sys.dict.DictHelper;
 import com.wudgaby.platform.utils.TreeUtil;
+import com.wudgaby.starter.dict.load.DictCache;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
@@ -20,38 +21,43 @@ import java.util.List;
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = SysBootstrap.class)
 public class DictTest {
+    @Autowired
+    private DictCache dictCache;
+
     @Test
     public void testListDictType(){
-        Assert.assertNotNull(DictHelper.listDictTypes());
-        System.out.println(DictHelper.listDictTypes());
+        Assert.assertNotNull(dictCache.listDictTypes());
+        System.out.println(dictCache.listDictTypes());
     }
 
     @Test
     public void testItemByVal(){
-        Assert.assertNotNull(DictHelper.getDictItemByVal("alert", "1"));
-        System.out.println(DictHelper.getDictItemByVal("alert", "1"));
+        Assert.assertNotNull(dictCache.getDictItemByVal("alert", "1"));
+        System.out.println(dictCache.getDictItemByVal("alert", "1"));
     }
 
     @Test
     public void testItemByLabel(){
-        Assert.assertNotNull(DictHelper.getDictItemByLabel("alert", "贷款、代办信用卡类"));
-        System.out.println(DictHelper.getDictItemByLabel("alert", "贷款、代办信用卡类"));
+        Assert.assertNotNull(dictCache.getDictItemByLabel("alert", "贷款、代办信用卡类"));
+        System.out.println(dictCache.getDictItemByLabel("alert", "贷款、代办信用卡类"));
     }
 
     @Test
     public void testItemsByType(){
-        Assert.assertNotNull(DictHelper.listDictItems("alert"));
-        System.out.println(DictHelper.listDictItems("alert"));
+        Assert.assertNotNull(dictCache.listDictItemsByType("alert"));
+        System.out.println(dictCache.listDictItemsByType("alert"));
     }
 
     @Test
     public void treeDictItems(){
-        Assert.assertNotNull(DictHelper.treeDictItems("alert"));
+        List<Tree<Object>> list = dictCache.treeDictItemsByType("alert");
+        Assert.assertNotNull(list);
+        Assert.assertNotEquals(list.size(), 0);
 
-        List<Tree<Long>> treeList = DictHelper.treeDictItems("alert");
+        List<Tree<Object>> treeList = dictCache.treeDictItemsByType("alert");
         System.out.println(treeList);
 
-        for(Tree<Long> tree : treeList) {
+        for(Tree<Object> tree : treeList) {
             List<TreeNode> treeNodeList = TreeUtil.treeToList(tree);
             treeNodeList.forEach(node -> System.out.println(node.getId() + " " + node.getName()));
             System.out.println();

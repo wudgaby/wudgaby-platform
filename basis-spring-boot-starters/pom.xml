@@ -53,5 +53,6 @@
         <module>enums-scanner-spring-boot</module>
         <module>captcha-spring-boot</module>
         <module>access-limiter-spring-boot</module>
+        <module>dict-cache-spring-boot</module>
     </modules>
 </project>
