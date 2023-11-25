@@ -1,0 +1,27 @@
+api:
+  register:
+    enabled: true
+    type: EVENT
+
+spring:
+  cloud:
+    stream:
+      rocketmq:
+        binder:
+          name-server: localhost:9876
+        bindings:
+          rocketmq:
+            bindings:
+              resource-output:
+                producer:
+                  group: resource-scan-group
+                  sync: false
+      bindings:
+        resource-output:
+          destination: resource-scan-topic
+          content-type: application/json
+
+        resource-input:
+          destination: resource-scan-topic
+          content-type: application/json
+          group: resource-scan-consumer-group

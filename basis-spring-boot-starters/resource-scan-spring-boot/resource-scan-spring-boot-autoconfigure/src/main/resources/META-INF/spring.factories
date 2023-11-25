@@ -1,0 +1,4 @@
+org.springframework.boot.env.EnvironmentPostProcessor=\
+     com.wudgaby.starter.resource.scan.support.DefaultConfigEnvironmentPostProcessor
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+    com.wudgaby.starter.resource.scan.config.ResourceScanConfiguration

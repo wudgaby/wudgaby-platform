@@ -3,10 +3,7 @@ package com.wudgaby.sample;
 import com.wudgaby.platform.core.result.ApiResult;
 import com.wudgaby.platform.simplesecurity.annotations.AnonymousAccess;
 import com.wudgaby.platform.simplesecurity.annotations.AuthPermit;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @Author :  wudgaby
@@ -57,6 +54,18 @@ public class AuthController {
         return ApiResult.success("del");
     }
 
+    @GetMapping("/spel")
+    @AuthPermit("@mySimpleSecurityImpl.hasAllPermission('sys:user:spel')")
+    //@PreAuthorize("@mySimpleSecurityImpl.hasAllPermission('sys:user:spel')")
+    public ApiResult spel(@RequestParam String name, @RequestParam int age){
+        return ApiResult.success("spel");
+    }
+
+    @GetMapping("/speldel")
+    @AuthPermit("@mySimpleSecurityImpl.hasAllPermission('sys:user:del')")
+    public ApiResult speldel(@RequestParam String name, @RequestParam int age){
+        return ApiResult.success("speldel");
+    }
 
     @GetMapping("/req1")
     @AuthPermit
@@ -75,4 +84,6 @@ public class AuthController {
     public ApiResult req3(){
         return ApiResult.success("req3");
     }
+
+
 }

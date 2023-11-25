@@ -31,7 +31,7 @@
         <module>signature-spring-boot</module>
         <module>distributed-lock-spring-boot</module>
         <module>code-generator-spring-boot</module>
-        <module>api-automatic-spring-boot</module>
+        <module>resource-scan-spring-boot</module>
 
         <module>quartz-spring-boot</module>
         <module>flowable-module-spring-boot</module>

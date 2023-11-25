@@ -7,7 +7,7 @@ package com.wudgaby.platform.simplesecurity;
  * @Desc :
  */
 public interface SecurityConst {
-    String SESSION_LOGINED_USER = "session_logined_user";
+    String SESSION_LOGGED_USER = "session_logged_user";
 
-    String[] ADMIN_CODE_LIST = new String[]{"superAdmin", "admin"};
+    String[] ADMIN_ROLE_CODE_LIST = new String[]{"superAdmin", "admin"};
 }

@@ -1,0 +1,78 @@
+package com.wudgaby.sample;
+
+import com.google.common.base.Charsets;
+import com.wudgaby.platform.core.result.ApiResult;
+import com.wudgaby.platform.utils.JacksonUtil;
+import org.springframework.context.annotation.Bean;
+import org.springframework.http.MediaType;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+
+//@Configuration
+//@EnableWebSecurity
+//@RequiredArgsConstructor
+//@EnableGlobalMethodSecurity(prePostEnabled = true)
+public class SecurityMonitorConfig extends WebSecurityConfigurerAdapter {
+   @Bean
+    public InMemoryUserDetailsManager userDetailsService() {
+        UserDetails user = User.withDefaultPasswordEncoder()
+                .username("user")
+                .password("user")
+                .roles("USER")
+                .build();
+
+       UserDetails admin = User.withDefaultPasswordEncoder()
+               .username("admin")
+               .password("admin")
+               .roles("ADMIN")
+               .build();
+
+        return new InMemoryUserDetailsManager(user, admin);
+    }
+
+    @Override
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth.userDetailsService(userDetailsService());
+    }
+
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        http.authorizeRequests()
+                .anyRequest().authenticated()
+                .and()
+                //.httpBasic(Customizer.withDefaults())
+                //.formLogin(Customizer.withDefaults());
+
+                .formLogin()
+                //.loginPage("/login")  //自定义页面.需要提供.否则出现404, 不设置时会使用框架自带.
+                .permitAll()
+                .successHandler((request, response, authentication) -> restfulHandler(request, response, "认证成功"))
+                .failureHandler((request, response, exception) -> restfulHandler(request, response, "认证失败"))
+                .and()
+                .logout().logoutUrl("/logout")
+                .and()
+                .exceptionHandling()
+                //配置没有权限的自定义处理类
+                .accessDeniedHandler((request, response, accessDeniedException) -> restfulHandler(request, response, "无权限"))
+                //配置未认证的自定义处理类, 不配置并且配置了formlogin()时返回的是登录页. 不可与formLogin一起配置. 会出现404
+                //.authenticationEntryPoint((request, response, authException) -> restfulHandler(request, response, "未认证"))
+                ;
+    }
+
+    private void restfulHandler(HttpServletRequest request, HttpServletResponse response, String message) throws IOException {
+        response.setCharacterEncoding(Charsets.UTF_8.name());
+        response.setContentType(MediaType.APPLICATION_JSON_VALUE);
+
+        String json = JacksonUtil.serialize(ApiResult.<String>failure().message(message));
+        response.getWriter().write(json);
+        response.getWriter().flush();
+    }
+}

@@ -70,20 +70,20 @@ public class UserInfo implements Serializable {
 
     public UserInfo verifyAdmin(String[] adminRoleCodes) {
         if(ArrayUtils.isEmpty(adminRoleCodes) || CollectionUtils.isEmpty(roles)){
-            admin = false;
+            this.admin = false;
             return this;
         }
 
         for (String authority : roles) {
             for(String roleCode : adminRoleCodes){
                 if (authority.equals(roleCode)) {
-                    admin = true;
+                    this.admin = true;
                     return this;
                 }
             }
         }
 
-        admin = false;
+        this.admin = false;
         return this;
     }
 }

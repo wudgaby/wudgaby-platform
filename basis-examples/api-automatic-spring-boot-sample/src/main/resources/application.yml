@@ -1,4 +1,0 @@
-api:
-  register:
-    enabled: true
-    type: REDIS

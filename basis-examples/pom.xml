@@ -25,7 +25,7 @@
     </properties>
 
     <modules>
-        <module>api-automatic-spring-boot-sample</module>
+        <module>resource-scan-spring-boot-sample</module>
         <module>two-factor-auth-spring-boot-sample</module>
         <module>swagger-spring-boot-sample</module>
         <module>social-spring-boot-sample</module>

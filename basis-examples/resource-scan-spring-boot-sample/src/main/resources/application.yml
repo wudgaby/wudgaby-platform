@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: scan-demo
+resource:
+  scan:
+    enabled: true
+    type: event

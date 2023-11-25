@@ -2,12 +2,12 @@ package com.wudgaby.platform.simplesecurity.config;
 
 import com.google.common.collect.Lists;
 import com.wudgaby.platform.core.config.ExcludeRegistry;
-import com.wudgaby.platform.simplesecurity.DefaultSimpleSecurityServiceImpl;
-import com.wudgaby.platform.simplesecurity.SimpleAuthenInterceptor;
-import com.wudgaby.platform.simplesecurity.SimpleSecurityInterceptor;
-import com.wudgaby.platform.simplesecurity.SimpleSecurityService;
-import com.wudgaby.platform.simplesecurity.ext.RequestMatcherCreator;
 import com.wudgaby.platform.simplesecurity.ext.AntPathRequestMatcher;
+import com.wudgaby.platform.simplesecurity.ext.RequestMatcherCreator;
+import com.wudgaby.platform.simplesecurity.interceptor.SimpleAuthInterceptor;
+import com.wudgaby.platform.simplesecurity.interceptor.SimpleSecurityInterceptor;
+import com.wudgaby.platform.simplesecurity.service.DefaultSimpleSecurityServiceImpl;
+import com.wudgaby.platform.simplesecurity.service.SimpleSecurityService;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication;
 import org.springframework.context.annotation.Bean;
@@ -34,8 +34,8 @@ public class SimpleSecurityConfiguration implements WebMvcConfigurer {
 
     @Bean
     @ConditionalOnMissingBean
-    public SimpleAuthenInterceptor simpleAuthenInterceptor(){
-        return new SimpleAuthenInterceptor();
+    public SimpleAuthInterceptor simpleAuthInterceptor(){
+        return new SimpleAuthInterceptor();
     }
 
     @Bean
@@ -59,7 +59,7 @@ public class SimpleSecurityConfiguration implements WebMvcConfigurer {
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(simpleAuthenInterceptor())
+        registry.addInterceptor(simpleAuthInterceptor())
                 .addPathPatterns("/**")
                 .excludePathPatterns(Lists.newArrayList(secureRegistry().getDefaultExcludePatterns()))
                 .excludePathPatterns(Lists.newArrayList(secureRegistry().getExcludePatterns()));

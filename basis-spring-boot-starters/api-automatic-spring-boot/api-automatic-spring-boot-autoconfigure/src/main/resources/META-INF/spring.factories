@@ -1,4 +1,0 @@
-org.springframework.boot.env.EnvironmentPostProcessor=\
-    com.wudgaby.apiautomatic.support.MqConfigEnvironmentPostProcessor
-org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-    com.wudgaby.apiautomatic.config.AutoRegisterApiConfiguration

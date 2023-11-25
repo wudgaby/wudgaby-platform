@@ -3,7 +3,7 @@ package com.wudgaby.sample;
 import cn.hutool.core.collection.CollUtil;
 import com.wudgaby.platform.security.core.MetaResource;
 import com.wudgaby.platform.security.core.UserInfo;
-import com.wudgaby.platform.simplesecurity.AbstractSimpleSecurityService;
+import com.wudgaby.platform.simplesecurity.service.AbstractSimpleSecurityService;
 import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Service;
 
