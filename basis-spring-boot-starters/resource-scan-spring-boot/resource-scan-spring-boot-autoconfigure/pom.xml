@@ -36,5 +36,10 @@
             <groupId>io.springfox</groupId>
             <artifactId>springfox-core</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.wudgaby.platform</groupId>
+            <artifactId>basis-project-security-core</artifactId>
+            <version>${basis-project.version}</version>
+        </dependency>
     </dependencies>
 </project>

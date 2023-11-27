@@ -3,7 +3,7 @@ package com.wudgaby.starter.resource.scan.scanner;
 import cn.hutool.core.util.ArrayUtil;
 import cn.hutool.core.util.StrUtil;
 import cn.hutool.crypto.digest.MD5;
-import com.wudgaby.starter.resource.scan.annotation.ApiScan;
+import com.wudgaby.platform.security.core.annotations.AnonymousAccess;
 import com.wudgaby.starter.resource.scan.consts.ApiScanConst;
 import com.wudgaby.starter.resource.scan.enums.ApiStatus;
 import com.wudgaby.starter.resource.scan.enums.ApiType;
@@ -97,37 +97,34 @@ public class ApiResourceScanner implements BeanPostProcessor {
     private List<ResourceDefinition> doScan(Class<?> clazz) {
         ArrayList<ResourceDefinition> apiResources = new ArrayList<>();
         Method[] declaredMethods = clazz.getDeclaredMethods();
-        boolean ignoreRegister = false;
+        ApiIgnore apiIgnoreType = AnnotationUtils.findAnnotation(clazz, ApiIgnore.class);
 
-        ApiScan apiScanType = AnnotationUtils.findAnnotation(clazz, ApiScan.class);
-        boolean apiIgnoreType = apiScanType != null && apiScanType.ignore();
-        if(ArrayUtil.isEmpty(declaredMethods) && apiIgnoreType){
-            ignoreRegister = true;
-        }
-
+        int ignoreMethodCount = 0;
         for (Method declaredMethod : declaredMethods) {
-            ApiScan apiScanMethod = AnnotationUtils.findAnnotation(declaredMethod, ApiScan.class);
-            boolean apiIgnoreMethod = apiScanMethod != null && apiScanMethod.ignore();
-            if (apiIgnoreMethod) {
+            ApiIgnore apiIgnoreMethod = AnnotationUtils.findAnnotation(declaredMethod, ApiIgnore.class);
+            if(apiIgnoreMethod != null) {
+                ignoreMethodCount++;
                 continue;
             }
 
-            ApiIgnore apiIgnore = AnnotationUtils.findAnnotation(declaredMethod, ApiIgnore.class);
-            if(apiIgnore != null) {
-                continue;
-            }
-
-            if(apiIgnoreType && apiScanMethod == null){
+            if(apiIgnoreType != null){
+                ignoreMethodCount++;
                 continue;
             }
 
             ResourceDefinition definition = createButtonDefinition(clazz, declaredMethod);
             apiResources.add(definition);
-            ignoreRegister = false;
+        }
+
+        //忽略注册. 如果没有方法,或者全部方法都被忽略
+        boolean ignoreRegister = false;
+        boolean allIgnoreForMethods = apiIgnoreType != null && ArrayUtil.length(declaredMethods) == ignoreMethodCount;
+        if(ArrayUtil.isEmpty(declaredMethods) || allIgnoreForMethods){
+            ignoreRegister = true;
         }
 
         if(ignoreRegister){
-            log.info("======完成初始化【" + clazz.getSimpleName() + "】模块API资源扫描. 忽略注册.");
+            log.info("====== " + clazz.getSimpleName() + " 忽略注册.");
         }else{
             ResourceDefinition menuDefinition = createMenuDefinition(clazz);
             log.info("====== " + clazz.getSimpleName() + " 完成初始化【" + menuDefinition.getName() + "】模块API资源扫描,共:" + apiResources.size() + "个接口");
@@ -176,16 +173,12 @@ public class ApiResourceScanner implements BeanPostProcessor {
         ApiOperation apiOperation = AnnotationUtils.findAnnotation(method, ApiOperation.class);
         String methodName = Optional.ofNullable(apiOperation).map(ApiOperation::value).orElse(method.getName());
 
-        ApiScan apiScanType = AnnotationUtils.findAnnotation(clazz, ApiScan.class);
-        ApiScan apiScanMethod = AnnotationUtils.findAnnotation(method, ApiScan.class);
-
-        // 是否需要安全认证
-        boolean isAuth = false;
-        if (apiScanType != null) {
-            isAuth = apiScanType.auth();
-        }
-        if (apiScanMethod != null) {
-            isAuth = apiScanMethod.auth();
+        // 是否需要登录认证
+        AnonymousAccess anonymousAccessType = AnnotationUtils.findAnnotation(clazz, AnonymousAccess.class);
+        AnonymousAccess anonymousAccessMethod = AnnotationUtils.findAnnotation(method, AnonymousAccess.class);
+        boolean isAuth = anonymousAccessType == null;
+        if (anonymousAccessMethod != null) {
+            isAuth = false;
         }
 
         RequestMapping requestMappingTypeAnno = AnnotationUtils.findAnnotation(clazz, RequestMapping.class);

@@ -1,7 +1,6 @@
 package com.wudgaby.api.scan.sample.controller;
 
 import com.wudgaby.platform.core.result.ApiResult;
-import com.wudgaby.starter.resource.scan.annotation.ApiScan;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,7 +25,6 @@ public class DemoController {
 
     @ApiOperation("demoPost")
     @PostMapping("/demoPost")
-    @ApiScan(auth = true)
     public ApiResult demoPost(){
         return ApiResult.success().message("demoPost");
     }

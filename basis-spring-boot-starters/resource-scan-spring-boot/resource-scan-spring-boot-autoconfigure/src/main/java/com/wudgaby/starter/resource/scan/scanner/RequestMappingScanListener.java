@@ -4,7 +4,7 @@ import cn.hutool.core.util.ArrayUtil;
 import cn.hutool.core.util.StrUtil;
 import cn.hutool.crypto.digest.MD5;
 import com.google.common.collect.*;
-import com.wudgaby.starter.resource.scan.annotation.ApiScan;
+import com.wudgaby.platform.security.core.annotations.AnonymousAccess;
 import com.wudgaby.starter.resource.scan.consts.ApiScanConst;
 import com.wudgaby.starter.resource.scan.enums.ApiStatus;
 import com.wudgaby.starter.resource.scan.enums.ApiType;
@@ -86,19 +86,13 @@ public class RequestMappingScanListener implements ApplicationListener<Applicati
                 continue;
             }
 
-            ApiScan apiScanMethod = AnnotationUtils.findAnnotation(handlerMethod.getMethod(), ApiScan.class);
-            boolean apiIgnoreMethod = apiScanMethod != null && apiScanMethod.ignore();
-            if (apiIgnoreMethod) {
-                continue;
-            }
-            ApiIgnore apiIgnore = AnnotationUtils.findAnnotation(handlerMethod.getMethod(), ApiIgnore.class);
-            if (apiIgnore != null) {
+            ApiIgnore apiIgnoreMethod = AnnotationUtils.findAnnotation(handlerMethod.getMethod(), ApiIgnore.class);
+            if (apiIgnoreMethod != null) {
                 continue;
             }
 
-            ApiScan apiScanType = AnnotationUtils.findAnnotation(handlerMethod.getBeanType(), ApiScan.class);
-            boolean apiIgnoreType = apiScanType != null && apiScanType.ignore();
-            if(apiIgnoreType && apiScanMethod == null){
+            ApiIgnore apiIgnoreType = AnnotationUtils.findAnnotation(handlerMethod.getBeanType(), ApiIgnore.class);
+            if (apiIgnoreType != null) {
                 continue;
             }
 
@@ -123,22 +117,18 @@ public class RequestMappingScanListener implements ApplicationListener<Applicati
                 }
         );
 
-        ApiScan apiScanType = AnnotationUtils.findAnnotation(clazz, ApiScan.class);
-        ApiScan apiScanMethod = AnnotationUtils.findAnnotation(method, ApiScan.class);
+        // 是否需要登录认证
+        AnonymousAccess anonymousAccessType = AnnotationUtils.findAnnotation(clazz, AnonymousAccess.class);
+        AnonymousAccess anonymousAccessMethod = AnnotationUtils.findAnnotation(method, AnonymousAccess.class);
+        boolean isAuth = anonymousAccessType == null;
+        if (anonymousAccessMethod != null) {
+            isAuth = false;
+        }
 
         Collection<RequestMatcher> permitUrls = Lists.newArrayList();
         if (permitUrlService != null) {
             permitUrls.addAll(permitUrlService.getPermitUrls());
         }
-        // 是否需要安全认证
-        boolean isAuth = false;
-        if (apiScanType != null) {
-            isAuth = apiScanType.auth();
-        }
-        if (apiScanMethod != null) {
-            isAuth = apiScanMethod.auth();
-        }
-
         if (CollectionUtils.isNotEmpty(permitUrls)) {
             // 匹配项目中.permitAll()配置
             for (String url : patternsCondition.getPatterns()) {
