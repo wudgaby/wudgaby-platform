@@ -56,8 +56,6 @@ public class ApiResourceScanner implements BeanPostProcessor {
         }
         Class<?> clazz = aopTarget.getClass();
 
-        //log.debug("初始化: {}", clazz.getSimpleName());
-
         // 判断是不是控制器,不是控制器就略过
         boolean controllerFlag = getControllerFlag(clazz);
         if (!controllerFlag) {
@@ -152,7 +150,7 @@ public class ApiResourceScanner implements BeanPostProcessor {
                 .setCode(MD5.create().digestHex16(serviceName + menuName + prePath))
                 .setMethod(StringUtils.EMPTY)
                 .setUri(prePath)
-                .setType(ApiType.BUTTON.name())
+                .setType(ApiType.MENU.name())
                 .setServiceName(serviceName)
                 .setStatus(ApiStatus.ENABLED)
                 .setName(menuName)
