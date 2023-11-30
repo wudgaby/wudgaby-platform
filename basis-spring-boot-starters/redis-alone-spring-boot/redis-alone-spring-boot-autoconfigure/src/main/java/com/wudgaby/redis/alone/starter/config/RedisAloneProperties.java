@@ -19,4 +19,5 @@ import java.util.Map;
 @ConfigurationProperties(prefix = "spring.redis")
 public class RedisAloneProperties {
     private Map<String, RedisProperties> alones = new LinkedHashMap<>();
+
 }

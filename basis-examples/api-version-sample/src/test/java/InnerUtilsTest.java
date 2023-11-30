@@ -1,4 +1,4 @@
-import com.wudgaby.apiversion.InnerUtils;
+import com.wudgaby.starter.apiversion.InnerUtils;
 import org.junit.Assert;
 import org.junit.Test;
 

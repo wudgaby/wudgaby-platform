@@ -34,7 +34,7 @@
     </scm>
 
     <properties>
-        <revision>1.0.5</revision>
+        <revision>1.0.6-SNAPSHOT</revision>
         <basis-project.version>${revision}</basis-project.version>
         <basis-starters.version>${revision}</basis-starters.version>
 
@@ -73,7 +73,7 @@
             <!--接口扫描-->
             <dependency>
                 <groupId>com.wudgaby.platform</groupId>
-                <artifactId>api-automatic-spring-boot-starter</artifactId>
+                <artifactId>resource-scan-spring-boot-starter</artifactId>
                 <version>${revision}</version>
             </dependency>
             <!--接口版本-->

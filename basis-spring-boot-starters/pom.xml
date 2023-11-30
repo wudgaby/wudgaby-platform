@@ -35,8 +35,6 @@
 
         <module>quartz-spring-boot</module>
         <module>flowable-module-spring-boot</module>
-        <module>flowable-helper-spring-boot</module>
-        <module>zxing-spring-boot</module>
         <module>office-spring-boot</module>
         <module>simple-security-spring-boot</module>
         <module>optimistic-lock-spring-boot</module>

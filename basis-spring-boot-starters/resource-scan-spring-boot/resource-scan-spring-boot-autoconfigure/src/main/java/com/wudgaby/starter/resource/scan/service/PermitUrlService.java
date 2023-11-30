@@ -1,6 +1,6 @@
 package com.wudgaby.starter.resource.scan.service;
 
-import com.wudgaby.starter.resource.scan.ext.RequestMatcher;
+import com.wudgaby.platform.springext.RequestMatcher;
 
 import java.util.Collection;
 

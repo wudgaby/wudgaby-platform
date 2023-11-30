@@ -13,6 +13,10 @@
     <artifactId>basis-project-utils</artifactId>
     <description>工具包</description>
 
+    <properties>
+        <zxing.version>3.4.0</zxing.version>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>com.belerweb</groupId>
@@ -25,6 +29,17 @@
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.google.zxing</groupId>
+            <artifactId>core</artifactId>
+            <version>${zxing.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.zxing</groupId>
+            <artifactId>javase</artifactId>
+            <version>${zxing.version}</version>
         </dependency>
     </dependencies>
 </project>

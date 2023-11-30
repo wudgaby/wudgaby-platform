@@ -1,6 +1,7 @@
 package com.wudgaby.platform.security.core;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.wudgaby.platform.springext.MetaResource;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;

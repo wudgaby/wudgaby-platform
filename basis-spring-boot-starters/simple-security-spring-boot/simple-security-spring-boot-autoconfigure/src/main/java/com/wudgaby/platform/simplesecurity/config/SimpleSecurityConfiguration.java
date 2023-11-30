@@ -2,12 +2,12 @@ package com.wudgaby.platform.simplesecurity.config;
 
 import com.google.common.collect.Lists;
 import com.wudgaby.platform.core.config.ExcludeRegistry;
-import com.wudgaby.platform.simplesecurity.ext.AntPathRequestMatcher;
-import com.wudgaby.platform.simplesecurity.ext.RequestMatcherCreator;
 import com.wudgaby.platform.simplesecurity.interceptor.SimpleAuthInterceptor;
 import com.wudgaby.platform.simplesecurity.interceptor.SimpleSecurityInterceptor;
 import com.wudgaby.platform.simplesecurity.service.DefaultSimpleSecurityServiceImpl;
 import com.wudgaby.platform.simplesecurity.service.SimpleSecurityService;
+import com.wudgaby.platform.springext.AntPathRequestMatcher;
+import com.wudgaby.platform.springext.RequestMatcherCreator;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication;
 import org.springframework.context.annotation.Bean;

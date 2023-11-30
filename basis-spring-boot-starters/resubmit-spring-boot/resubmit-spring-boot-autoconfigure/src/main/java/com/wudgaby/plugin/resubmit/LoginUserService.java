@@ -11,5 +11,5 @@ public interface LoginUserService {
      * 获取登录用户id
      * @return
      */
-    String getLoginedUserId();
+    String getLoggedUserId();
 }

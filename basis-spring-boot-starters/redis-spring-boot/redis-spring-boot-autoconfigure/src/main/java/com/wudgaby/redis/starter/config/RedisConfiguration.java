@@ -10,6 +10,7 @@ import org.springframework.boot.autoconfigure.AutoConfigureBefore;
 import org.springframework.boot.autoconfigure.AutoConfigureOrder;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.cache.CacheManager;
@@ -32,7 +33,6 @@ import java.lang.reflect.Method;
 import java.time.Duration;
 
 /**
- * @ClassName : SecureRegistry
  * @Author :  WudGaby
  * @Version :  1.0
  * @Date : 2019/6/289:26
@@ -47,13 +47,14 @@ import java.time.Duration;
 public class RedisConfiguration {
     @Bean
     @ConditionalOnMissingBean(RedisSupport.class)
-    public RedisSupport redisSupport(RedisTemplate redisTemplate, StringRedisTemplate stringRedisTemplate) {
+    @ConditionalOnProperty(value = "spring.redis.enabled", havingValue = "true", matchIfMissing = true)
+    public RedisSupport redisSupport(RedisTemplate<String, Object> redisTemplate, StringRedisTemplate stringRedisTemplate) {
         return new RedisSupport(redisTemplate, stringRedisTemplate);
     }
 
     @Bean
     @ConditionalOnMissingBean(name = "redisTemplate")
-    public RedisTemplate redisTemplate(RedisConnectionFactory factory, RedisProp redisProperties) {
+    public RedisTemplate<String, Object> redisTemplate(RedisConnectionFactory factory, RedisProp redisProperties) {
         // 创建一个模板类
         RedisTemplate<String, Object> template = new RedisTemplate<>();
         // 将刚才的redis连接工厂设置到模板类中
@@ -132,7 +133,7 @@ public class RedisConfiguration {
         return redisCacheConfiguration;
     }
 
-    private Jackson2JsonRedisSerializer jackson2JsonRedisSerializer(){
+    private Jackson2JsonRedisSerializer<Object> jackson2JsonRedisSerializer(){
         Jackson2JsonRedisSerializer<Object> jackson2JsonRedisSerializer = new Jackson2JsonRedisSerializer<>(Object.class);
         ObjectMapper mapper = new ObjectMapper();
         mapper.setVisibility(PropertyAccessor.ALL, JsonAutoDetect.Visibility.ANY);

@@ -45,19 +45,6 @@ public class RedisAloneConfiguration implements ApplicationContextAware {
     public static final String REDIS_BEAN_NAME_PREFIX = "redisTemplate_";
     public static final String STRING_REDIS_BEAN_NAME_PREFIX = "stringRedisTemplate_";
 
-    /*@Bean
-    public Map<String, RedisTemplate> redisTemplateMap(RedisAloneProperties redisAloneProperties) {
-        if(MapUtils.isEmpty(redisAloneProperties.getAlones())){
-            return null;
-        }
-
-        Map<String, RedisTemplate> redisTemplateMap = Maps.newHashMap();
-        redisAloneProperties.getAlones().forEach((k,v) -> {
-            redisTemplateMap.put(REDIS_BEAN_NAME_PREFIX + k, createRedisTemplate(v));
-        });
-        return redisTemplateMap;
-    }*/
-
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
         RedisAloneProperties redisAloneProperties = applicationContext.getBean(RedisAloneProperties.class);
@@ -75,7 +62,7 @@ public class RedisAloneConfiguration implements ApplicationContextAware {
         });
     }
 
-    private RedisTemplate createRedisTemplate(RedisProperties redisProperties) {
+    private RedisTemplate<String, Object> createRedisTemplate(RedisProperties redisProperties) {
         // 创建一个模板类
         RedisTemplate<String, Object> template = new RedisTemplate<>();
         // 将刚才的redis连接工厂设置到模板类中
@@ -94,7 +81,7 @@ public class RedisAloneConfiguration implements ApplicationContextAware {
         return template;
     }
 
-    private RedisTemplate createStringRedisTemplate(RedisProperties redisProperties) {
+    private StringRedisTemplate createStringRedisTemplate(RedisProperties redisProperties) {
         StringRedisTemplate template = new StringRedisTemplate();
         template.setConnectionFactory(getRedisConnectionFactory(redisProperties));
         return template;

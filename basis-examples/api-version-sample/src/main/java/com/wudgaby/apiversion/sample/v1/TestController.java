@@ -1,9 +1,9 @@
 package com.wudgaby.apiversion.sample.v1;
 
-import com.wudgaby.apiversion.ApiVersion;
-import com.wudgaby.apiversion.IgnoreApiVersion;
 import com.wudgaby.platform.core.model.form.DateRangeForm;
 import com.wudgaby.platform.core.result.ApiResult;
+import com.wudgaby.starter.apiversion.ApiVersion;
+import com.wudgaby.starter.apiversion.IgnoreApiVersion;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 

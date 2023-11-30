@@ -18,5 +18,10 @@
             <groupId>io.swagger</groupId>
             <artifactId>swagger-annotations</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.wudgaby.platform</groupId>
+            <artifactId>basis-project-spring-ext</artifactId>
+            <version>${revision}</version>
+        </dependency>
     </dependencies>
 </project>

@@ -1,16 +1,15 @@
 package com.wudgaby.sample;
 
 import cn.hutool.core.collection.CollUtil;
-import com.wudgaby.platform.security.core.MetaResource;
 import com.wudgaby.platform.security.core.UserInfo;
 import com.wudgaby.platform.simplesecurity.service.AbstractSimpleSecurityService;
+import com.wudgaby.platform.springext.MetaResource;
 import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
 
 /**
- * @Author :  wudgaby
  * @Version :  since 1.0
  * @Date :  2022/1/10 0010 17:42
  * @Desc :

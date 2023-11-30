@@ -29,17 +29,7 @@
             <artifactId>justauth-spring-boot-starter</artifactId>
             <version>1.3.4</version>
         </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-redis</artifactId>
-        </dependency>
 
-        <!-- 对象池，使用redis时必须引入 -->
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-pool2</artifactId>
-            <version>2.7.0</version>
-        </dependency>
     </dependencies>
 
 </project>

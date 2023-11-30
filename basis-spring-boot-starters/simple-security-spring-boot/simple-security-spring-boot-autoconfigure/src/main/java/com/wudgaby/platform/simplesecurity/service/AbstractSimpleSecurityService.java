@@ -2,10 +2,10 @@ package com.wudgaby.platform.simplesecurity.service;
 
 import com.google.common.collect.Sets;
 import com.wudgaby.platform.core.util.AssertUtil;
-import com.wudgaby.platform.security.core.MetaResource;
 import com.wudgaby.platform.security.core.UserInfo;
 import com.wudgaby.platform.simplesecurity.SecurityConst;
-import com.wudgaby.platform.simplesecurity.ext.RequestContextHolderSupport;
+import com.wudgaby.platform.springext.MetaResource;
+import com.wudgaby.platform.springext.RequestContextHolderSupport;
 import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.util.AntPathMatcher;
 

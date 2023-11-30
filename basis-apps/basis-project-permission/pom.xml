@@ -60,7 +60,7 @@
 
         <dependency>
             <groupId>com.wudgaby.platform</groupId>
-            <artifactId>api-automatic-spring-boot-starter</artifactId>
+            <artifactId>resource-scan-spring-boot-starter</artifactId>
             <version>${basis-starters.version}</version>
         </dependency>
     </dependencies>

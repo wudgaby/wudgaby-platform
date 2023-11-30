@@ -21,7 +21,6 @@ import java.util.concurrent.TimeUnit;
 import java.util.function.Consumer;
 
 /**
- * @ClassName : RedisSupport
  * @Author :  WudGaby
  * @Version :  1.0
  * @Date : 2018/10/5/005 16:00
@@ -36,9 +35,6 @@ public class RedisSupport {
     private RedisTemplate<String, Object> redisTemplate;
     @NonNull
     private StringRedisTemplate stringRedisTemplate;
-
-    //@NonNull
-    //private String prefix;
 
     private String keyWrap(String key) {
         //return RedisKeyUtil.buildKey(prefix, key);

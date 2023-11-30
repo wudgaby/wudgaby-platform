@@ -1,6 +1,5 @@
 package com.wudgaby.platform.webcore.security;
 
-import cn.hutool.json.JSON;
 import com.wudgaby.platform.core.result.ApiResult;
 import com.wudgaby.platform.core.result.enums.SystemResultCode;
 import com.wudgaby.platform.utils.JacksonUtil;
@@ -36,18 +35,18 @@ public class CsrfFilter implements Filter {
         HttpServletRequest httpServletRequest = (HttpServletRequest) request;
         HttpSession session = httpServletRequest.getSession();
 
-        String session_csrf_token = Optional.ofNullable(session.getAttribute(X_CSRF_TOKEN)).map(obj -> obj.toString()).orElse(null);
+        String sessionCsrfToken = Optional.ofNullable(session.getAttribute(X_CSRF_TOKEN)).map(Object::toString).orElse(null);
         if(!HttpMethod.POST.name().equalsIgnoreCase(httpServletRequest.getMethod())
-                || StringUtils.isEmpty(session_csrf_token)){
+                || StringUtils.isEmpty(sessionCsrfToken)){
             chain.doFilter(request, response);
             return;
         }
 
-        String csrf_token = httpServletRequest.getParameter(X_CSRF_TOKEN);
-        if(StringUtils.isEmpty(csrf_token)){
-            csrf_token = httpServletRequest.getHeader(X_CSRF_TOKEN);
+        String csrfToken = httpServletRequest.getParameter(X_CSRF_TOKEN);
+        if(StringUtils.isEmpty(csrfToken)){
+            csrfToken = httpServletRequest.getHeader(X_CSRF_TOKEN);
         }
-        if(!StringUtils.equals(csrf_token, session_csrf_token)){
+        if(!StringUtils.equals(csrfToken, sessionCsrfToken)){
             response.setContentType(MediaType.APPLICATION_JSON_VALUE);
             response.getWriter().println(JacksonUtil.serialize(ApiResult.failure(SystemResultCode.TOKEN_IS_INVALID)));
             response.getWriter().flush();

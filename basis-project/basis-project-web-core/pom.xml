@@ -34,17 +34,6 @@
         </dependency>
         <dependency>
             <groupId>com.wudgaby.platform</groupId>
-            <artifactId>redis-spring-boot-starter</artifactId>
-            <version>${basis-starters.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.wudgaby.platform</groupId>
-            <artifactId>swagger-spring-boot-starter</artifactId>
-            <version>${basis-starters.version}</version>
-            <optional>true</optional>
-        </dependency>
-        <dependency>
-            <groupId>com.wudgaby.platform</groupId>
             <artifactId>resubmit-spring-boot-starter</artifactId>
             <version>${basis-starters.version}</version>
         </dependency>
@@ -58,6 +47,21 @@
             <artifactId>mybatis-spring</artifactId>
             <version>2.0.5</version>
             <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-tx</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.wudgaby.platform</groupId>
+            <artifactId>redis-spring-boot-starter</artifactId>
+            <version>${basis-starters.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.wudgaby.platform</groupId>
+            <artifactId>swagger-spring-boot-starter</artifactId>
+            <version>${basis-starters.version}</version>
         </dependency>
         <dependency>
             <groupId>com.wudgaby.platform</groupId>

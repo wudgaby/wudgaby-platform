@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class LoginedUserServiceImpl implements LoginUserService {
     @Override
-    public String getLoginedUserId() {
+    public String getLoggedUserId() {
         return "curtUser";
     }
 }

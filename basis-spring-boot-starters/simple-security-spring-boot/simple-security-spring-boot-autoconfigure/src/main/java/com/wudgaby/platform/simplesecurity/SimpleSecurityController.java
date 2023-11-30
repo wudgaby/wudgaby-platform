@@ -2,8 +2,8 @@ package com.wudgaby.platform.simplesecurity;
 
 import com.wudgaby.platform.core.result.ApiResult;
 import com.wudgaby.platform.simplesecurity.annotations.AnonymousAccess;
-import com.wudgaby.platform.simplesecurity.ext.RequestContextHolderSupport;
 import com.wudgaby.platform.simplesecurity.service.SimpleSecurityService;
+import com.wudgaby.platform.springext.RequestContextHolderSupport;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.AllArgsConstructor;

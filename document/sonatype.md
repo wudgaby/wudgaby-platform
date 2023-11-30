@@ -17,23 +17,30 @@
 
 <servers>
     <server>
-        <id>oss-snapshots</id>
-        <username>Sonatype账号</username>
-        <password>Sonatype密码</password>
-    </server>
-    <server>
-        <id>oss-releases</id>
+        <id>oss</id>
         <username>Sonatype账号</username>
         <password>Sonatype密码</password>
     </server>
 </servers>
+```
+```
+<distributionManagement>
+    <snapshotRepository>
+        <id>oss</id>
+        <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+    </snapshotRepository>
+    <repository>
+        <id>oss</id>
+        <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+    </repository>
+</distributionManagement>
+
 ```
 
 **发布命令**
 ```
 mvn clean deploy -P release-sonatype -DskipTests=true"
 ```
-
 
 **snapshot版本需引入**
 ```
@@ -42,5 +49,5 @@ mvn clean deploy -P release-sonatype -DskipTests=true"
       <id>snapshots-repo</id>
       <url>https://oss.sonatype.org/content/repositories/snapshots</url>
     </repository>
-  </repositories>
-  ```
+</repositories>
+```

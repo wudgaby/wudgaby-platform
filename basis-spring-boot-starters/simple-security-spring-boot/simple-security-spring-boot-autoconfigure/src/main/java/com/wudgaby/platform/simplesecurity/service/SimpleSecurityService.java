@@ -1,7 +1,7 @@
 package com.wudgaby.platform.simplesecurity.service;
 
-import com.wudgaby.platform.security.core.MetaResource;
 import com.wudgaby.platform.security.core.UserInfo;
+import com.wudgaby.platform.springext.MetaResource;
 
 import java.util.Collection;
 import java.util.Set;

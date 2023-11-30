@@ -20,13 +20,11 @@ import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.servlet.http.HttpServletRequest;
-import java.io.Serializable;
 import java.lang.reflect.Method;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
 
 /**
- * @ClassName : RepeatSubmitAspect
  * @Author :  WudGaby
  * @Version :  1.0
  * @Date : 2019/11/14 18:23
@@ -37,7 +35,7 @@ import java.util.concurrent.TimeUnit;
 @Aspect
 @AllArgsConstructor
 public class RepeatSubmitAspect {
-    private static final String KEY_REPEAT = "form:repeat";
+    private static final String KEY_REPEAT = "repeat";
     /**
      * key 过期时间
      */
@@ -51,7 +49,7 @@ public class RepeatSubmitAspect {
 
     private final LoginUserService loginUserService;
 
-    private static final Cache<String, String> cache = CacheBuilder.newBuilder()
+    private static final Cache<String, String> CACHE = CacheBuilder.newBuilder()
             .expireAfterWrite(REPEAT_SUBMIT_EXPIRE_SEC, TimeUnit.SECONDS)
             .maximumSize(99_999)
             .build();
@@ -81,7 +79,10 @@ public class RepeatSubmitAspect {
         long expiresSec = Math.max(expires, 1);
 
         ServletRequestAttributes requestAttributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
-        HttpServletRequest request = requestAttributes.getRequest();
+        HttpServletRequest request = null;
+        if (requestAttributes != null) {
+            request = requestAttributes.getRequest();
+        }
         Assert.notNull(request, "request can not null");
         String key = getKey(request, joinPoint);
 
@@ -104,9 +105,9 @@ public class RepeatSubmitAspect {
     }
 
     private void guavaReSubmit(String key, String message){
-        String val = cache.getIfPresent(key);
+        String val = CACHE.getIfPresent(key);
         if (val == null) {
-            cache.put(key, key);
+            CACHE.put(key, key);
         } else {
             log.warn("重复提交. key = [{}]", key);
             throw new ResubmitException(message);
@@ -114,9 +115,8 @@ public class RepeatSubmitAspect {
     }
 
     private String getKey(HttpServletRequest request, JoinPoint joinPoint) {
-        //String account = SecurityUtils.getCurrentUser().map(u -> u.getAccount()).orElse("guest");
-        String userId = Optional.ofNullable(loginUserService).map(service -> service.getLoginedUserId()).orElse("anyone");
-        String path = request.getMethod() + " " + request.getServletPath();
+        String userId = Optional.ofNullable(loginUserService).map(LoginUserService::getLoggedUserId).orElse("anyone");
+        String path = Base64.getEncoder().encodeToString((request.getMethod() + " " + request.getServletPath()).getBytes());
         String timestamp = Optional.ofNullable(request.getParameter(PARAM_TIMESTAMP)).orElse("0");
         //String md5Param = getMd5Param(request);
         //String md5Query = MD5.create().digestHex(request.getQueryString());
@@ -138,7 +138,7 @@ public class RepeatSubmitAspect {
             return "";
         }else{
             Map<String, Object> filterMap = request.getParameterMap().entrySet().stream()
-                    .filter(entry -> entry.getValue() instanceof Serializable)
+                    .filter(entry -> entry.getValue() != null)
                     .collect(LinkedHashMap::new, (m, e) -> m.put(e.getKey(), e.getValue()), LinkedHashMap::putAll);
 
             try{

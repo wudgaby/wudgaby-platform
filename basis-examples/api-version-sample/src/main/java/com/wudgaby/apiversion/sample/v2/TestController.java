@@ -1,7 +1,7 @@
 package com.wudgaby.apiversion.sample.v2;
 
-import com.wudgaby.apiversion.ApiVersion;
 import com.wudgaby.platform.core.result.ApiResult;
+import com.wudgaby.starter.apiversion.ApiVersion;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;

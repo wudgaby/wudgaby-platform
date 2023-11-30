@@ -3,13 +3,14 @@
 set VAR_ACTION=install
 set VAR_PROFILE=
 
+
+:main
 echo 1.flatten
 echo 2.only install
 echo 3.full install
 echo 4.release to sonatype
 echo 5.exit
 
-:main
 set /p opt=Enter your option:
 
 if %opt% == 1 call:flatten
@@ -34,10 +35,10 @@ echo "PROFILE:%VAR_PROFILE%"
 
 call mvn clean %VAR_ACTION% -DskipTests=true %VAR_PROFILE% -N
 
-echo Clear Done && pause
-call mvn clean %VAR_ACTION% -DskipTests=true -f ./basis-project %VAR_PROFILE% -pl ./basis-project-core -pl ./basis-project-security-core -am
+:: echo Clear Done && pause
+call mvn clean %VAR_ACTION% -DskipTests=true -f ./basis-project %VAR_PROFILE% -pl ./basis-project-core -pl ./basis-project-security-core -pl ./basis-project-spring-ext -am
 
-echo Build Part Core Done && pause
+:: echo Build Part Core Done && pause
 call mvn clean %VAR_ACTION% -DskipTests=true -f ./basis-spring-boot-starters %VAR_PROFILE% -pl ^
 ./redis-spring-boot/redis-spring-boot-starter,^
 ./rate-limiter-spring-boot/rate-limiter-spring-boot-starter,^
@@ -47,16 +48,16 @@ call mvn clean %VAR_ACTION% -DskipTests=true -f ./basis-spring-boot-starters %VA
 ./mybatis-plus-helper-spring-boot/mybatis-plus-helper-srping-boot-starter ^
 -am
 
-echo Build Part Starters Done && pause
+:: echo Build Part Starters Done && pause
 call mvn clean %VAR_ACTION% -DskipTests=true -f ./basis-project %VAR_PROFILE% -rf ./basis-project-core
 
-echo Build Core Done && pause
+:: echo Build Core Done && pause
 call mvn clean %VAR_ACTION% -DskipTests=true -f ./basis-spring-boot-starters %VAR_PROFILE% -rf ./mail-spring-boot/mail-spring-boot-starter
 
-echo Build Starters Done && pause
+:: echo Build Starters Done && pause
 call mvn clean %VAR_ACTION% -DskipTests=true -f ./basis-project-dependencies %VAR_PROFILE%
 
-echo Build Dependencies Done && pause
+:: echo Build Dependencies Done && pause
 :: mvn clean %VAR_PROFILE% -DskipTests=true -f ./basis-apps
 echo "===================================execute install END==================================================="
 goto:eof
@@ -75,6 +76,6 @@ call:only_install
 goto end
 
 :end
-echo "DONE"
+echo DONE
 exit 0
 :: mvn deploy -P release-sonatype -DskipTests=true -f ./basis-spring-boot-starters -rf :signature-spring-boot-autoconfigure

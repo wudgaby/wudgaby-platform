@@ -3,4 +3,5 @@ server:
 
 spring:
   redis:
-    password: redis-pwd
+    enabled: false
+    password:

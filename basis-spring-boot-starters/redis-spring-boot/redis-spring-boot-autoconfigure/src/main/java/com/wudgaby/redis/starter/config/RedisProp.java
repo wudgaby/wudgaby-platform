@@ -22,4 +22,6 @@ public class RedisProp {
     private RedisConvertType valueConvert = RedisConvertType.JACKSON;
 
     private Map<String, RedisProperties> alones = new LinkedHashMap<>();
+
+    private boolean enabled = true;
 }

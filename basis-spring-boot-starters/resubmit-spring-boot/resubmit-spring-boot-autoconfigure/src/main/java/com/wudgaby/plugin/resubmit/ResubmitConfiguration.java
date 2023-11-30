@@ -9,7 +9,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * @ClassName : SecureRegistry
  * @Author :  WudGaby
  * @Version :  1.0
  * @Date : 2019/6/289:26
@@ -21,7 +20,8 @@ public class ResubmitConfiguration {
     @Bean
     @ConditionalOnMissingBean(RepeatSubmitAspect.class)
     @ConditionalOnProperty(name = "resubmit.enabled", havingValue = "true", matchIfMissing = true)
-    public RepeatSubmitAspect repeatSubmitAspect(@Autowired(required = false) RedisSupport redisSupport, @Autowired(required = false) LoginUserService loginUserService) {
+    public RepeatSubmitAspect repeatSubmitAspect(@Autowired(required = false) RedisSupport redisSupport,
+                                                 @Autowired(required = false) LoginUserService loginUserService) {
         return new RepeatSubmitAspect(redisSupport, loginUserService);
     }
 }
