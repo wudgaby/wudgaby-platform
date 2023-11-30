@@ -4,9 +4,9 @@ import cn.hutool.core.img.ImgUtil;
 import cn.hutool.extra.qrcode.QrCodeUtil;
 import com.google.common.collect.Maps;
 import com.wudgaby.platform.core.result.ApiResult;
+import com.wudgaby.platform.springext.RequestContextHolderSupport;
 import com.wudgaby.platform.twofactorauth.sample.util.GoogleAuthenticator;
 import com.wudgaby.platform.twofactorauth.sample.vo.User;
-import com.wudgaby.platform.webcore.support.RequestContextHolderSupport;
 import io.swagger.annotations.ApiOperation;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.http.MediaType;
@@ -56,7 +56,7 @@ public class LoginController {
     @ApiOperation("3生成google密钥")
     @GetMapping("generateGoogleSecret")
     public ApiResult generateGoogleSecret(){
-        User foundUser = (User)RequestContextHolderSupport.getSession().getAttribute("user");
+        User foundUser = (User) RequestContextHolderSupport.getSession().getAttribute("user");
         if(foundUser == null){
             return ApiResult.failure("请先登录");
         }

@@ -1,4 +1,4 @@
-package com.wudgaby.platform.webcore.security.xss;
+package com.wudgaby.platform.webcore.filter.security.xss;
 
 /**
  * @ClassName : a

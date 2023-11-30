@@ -1,4 +1,4 @@
-package com.wudgaby.platform.webcore.security.xss;
+package com.wudgaby.platform.webcore.filter.security.xss;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.util.HtmlUtils;

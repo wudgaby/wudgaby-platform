@@ -2,8 +2,8 @@ package com.wudgaby.platform.webcore.configuration;
 
 import com.wudgaby.platform.webcore.filter.RunLogFilter;
 import com.wudgaby.platform.webcore.filter.TraceFilter;
-import com.wudgaby.platform.webcore.security.CsrfFilter;
-import com.wudgaby.platform.webcore.security.xss.XssFilter;
+import com.wudgaby.platform.webcore.filter.security.CsrfFilter;
+import com.wudgaby.platform.webcore.filter.security.xss.XssFilter;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;

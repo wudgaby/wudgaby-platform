@@ -75,18 +75,17 @@ public class JacksonHttpMessageConverter extends MappingJackson2HttpMessageConve
         @Override
         public List<BeanPropertyWriter> changeProperties(SerializationConfig config, BeanDescription beanDesc, List<BeanPropertyWriter> beanProperties) {
             //循环所有的beanPropertyWriter
-            for (Object beanProperty : beanProperties) {
-                BeanPropertyWriter writer = (BeanPropertyWriter) beanProperty;
+            for (BeanPropertyWriter beanProperty : beanProperties) {
                 //判断字段的类型，如果是array，list，set则注册nullSerializer
-                if (isArrayType(writer)) {
+                if (isArrayType(beanProperty)) {
                     //给writer注册一个自己的nullSerializer
-                    writer.assignNullSerializer(new NullArrayJsonSerializer());
-                } else if (isNumberType(writer)) {
-                    writer.assignNullSerializer(new NullNumberJsonSerializer());
-                } else if (isBooleanType(writer)) {
-                    writer.assignNullSerializer(new NullBooleanJsonSerializer());
-                } else if (isStringType(writer)) {
-                    writer.assignNullSerializer(new NullStringJsonSerializer());
+                    beanProperty.assignNullSerializer(new NullArrayJsonSerializer());
+                } else if (isNumberType(beanProperty)) {
+                    beanProperty.assignNullSerializer(new NullNumberJsonSerializer());
+                } else if (isBooleanType(beanProperty)) {
+                    beanProperty.assignNullSerializer(new NullBooleanJsonSerializer());
+                } else if (isStringType(beanProperty)) {
+                    beanProperty.assignNullSerializer(new NullStringJsonSerializer());
                 }
             }
             return beanProperties;

@@ -1,4 +1,4 @@
-package com.wudgaby.platform.webcore.security;
+package com.wudgaby.platform.webcore.filter.security;
 
 import com.wudgaby.platform.core.result.ApiResult;
 import com.wudgaby.platform.core.result.enums.SystemResultCode;

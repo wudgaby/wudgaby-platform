@@ -10,6 +10,7 @@ import com.wudgaby.platform.core.result.ApiResult;
 import com.wudgaby.platform.core.result.enums.SystemResultCode;
 import com.wudgaby.platform.core.support.FormValidator;
 import com.wudgaby.platform.limiter.core.LimitException;
+import com.wudgaby.platform.springext.RequestContextHolderSupport;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.ibatis.exceptions.PersistenceException;
@@ -45,7 +46,6 @@ import java.util.Iterator;
 import java.util.stream.Collectors;
 
 /**
- * @ClassName : GlobalExceptionAdvice
  * @Author :  WudGaby
  * @Version :  1.0
  * @Date : 2018/9/24/024 2:28

@@ -26,8 +26,8 @@ public class SpringDataConvert {
     @PostConstruct
     public void addConversionConfig(){
         ConfigurableWebBindingInitializer initializer = (ConfigurableWebBindingInitializer) requestMappingHandlerAdapter.getWebBindingInitializer();
-        if(initializer.getConversionService() != null){
-            GenericConversionService genericConversionService =(GenericConversionService) initializer.getConversionService();
+        if (initializer != null && initializer.getConversionService() != null) {
+            GenericConversionService genericConversionService = (GenericConversionService) initializer.getConversionService();
             genericConversionService.addConverter(new CustomStringTrimConverter());
         }
     }

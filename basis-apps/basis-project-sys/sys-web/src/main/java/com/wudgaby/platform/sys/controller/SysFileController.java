@@ -5,8 +5,8 @@ import cn.hutool.core.date.DatePattern;
 import cn.hutool.core.date.DateUtil;
 import com.google.common.collect.Lists;
 import com.wudgaby.platform.core.result.ApiResult;
+import com.wudgaby.platform.springext.RequestContextHolderSupport;
 import com.wudgaby.platform.sys.dto.AttachmentDTO;
-import com.wudgaby.platform.webcore.support.RequestContextHolderSupport;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.apache.commons.io.FileUtils;
@@ -24,6 +24,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.*;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
@@ -72,7 +73,7 @@ public class SysFileController {
         fileName = URLEncoder.encode(fileName, StandardCharsets.UTF_8.name());
         response.setHeader("Content-Disposition", "attachment;filename=" + fileName);
 
-        try(InputStream fis = new BufferedInputStream(new FileInputStream(downloadFile));
+        try(InputStream fis = new BufferedInputStream(Files.newInputStream(downloadFile.toPath()));
             OutputStream bos = new BufferedOutputStream(response.getOutputStream())){
             IOUtils.copy(fis, bos);
             bos.flush();
