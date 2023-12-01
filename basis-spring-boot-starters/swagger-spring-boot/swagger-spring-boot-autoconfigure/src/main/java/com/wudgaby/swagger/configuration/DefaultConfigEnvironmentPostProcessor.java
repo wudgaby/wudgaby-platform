@@ -1,4 +1,4 @@
-package com.wudgaby.starter.datascope.support;
+package com.wudgaby.swagger.configuration;
 
 import cn.hutool.core.util.StrUtil;
 import lombok.extern.slf4j.Slf4j;
@@ -17,7 +17,6 @@ import java.io.IOException;
 import java.util.List;
 
 /**
- * @ClassName : DefaultConfigEnvironmentPostProcessor
  * @Author :  WudGaby
  * @Version :  1.0
  * @Date : 2019/8/9 11:13

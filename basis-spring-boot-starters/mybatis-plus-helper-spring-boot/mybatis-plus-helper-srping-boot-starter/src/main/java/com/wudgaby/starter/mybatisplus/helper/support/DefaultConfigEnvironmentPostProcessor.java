@@ -40,7 +40,6 @@ public class DefaultConfigEnvironmentPostProcessor implements EnvironmentPostPro
     /**
      * 加载默认配置
      *
-     * @param environment
      */
     public void loadDefaultConfig(ConfigurableEnvironment environment) {
         String profile = StringUtils.arrayToCommaDelimitedString(environment.getActiveProfiles());
@@ -52,7 +51,7 @@ public class DefaultConfigEnvironmentPostProcessor implements EnvironmentPostPro
                     String propertiesPath = DEFAULT_CONFIG_PATH + "*" + fileExtension;
 
                     Resource[] resources = this.resourceResolver.getResources(propertiesPath);
-                    if (resources == null || resources.length == 0) {
+                    if (resources.length == 0) {
                         System.err.println(StrUtil.format("未发现后缀 {} 默认配置.", fileExtension));
                         continue;
                     }

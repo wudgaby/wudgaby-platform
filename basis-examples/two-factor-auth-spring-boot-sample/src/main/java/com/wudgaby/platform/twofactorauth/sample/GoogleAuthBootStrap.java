@@ -4,7 +4,6 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
- * @ClassName : GoogleAuthBootStrap
  * @Author :  WudGaby
  * @Version :  1.0
  * @Date : 2020/12/9 17:06

@@ -1,5 +1,6 @@
 package com.wudgaby.platform.twofactorauth.sample.util;
 
+import cn.hutool.core.util.StrUtil;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.MultiFormatWriter;
 import com.google.zxing.WriterException;
@@ -100,7 +101,10 @@ public class GoogleAuthenticator {
      *            The time in msec (System.currentTimeMillis() for example)
      * @return
      */
-    public static boolean check_code(String secret, long code, long timeMsec) {
+    public static boolean checkCode(String secret, long code, long timeMsec) {
+        if(StrUtil.isBlank(secret)){
+            return false;
+        }
         Base32 codec = new Base32();
         byte[] decodedKey = codec.decode(secret);
         // convert unix msec time into a 30 second "window"
@@ -111,14 +115,13 @@ public class GoogleAuthenticator {
         for (int i = -window_size; i <= window_size; ++i) {
             long hash;
             try {
-                hash = verify_code(decodedKey, t + i);
+                hash = verifyCode(decodedKey, t + i);
             } catch (Exception e) {
                 // Yes, this is bad form - but
                 // the exceptions thrown would be rare and a static
                 // configuration problem
                 // e.printStackTrace();
                 throw new RuntimeException(e.getMessage());
-                // return false;
             }
             if (hash == code) {
                 return true;
@@ -128,7 +131,7 @@ public class GoogleAuthenticator {
         return false;
     }
 
-    private static int verify_code(byte[] key, long t)
+    private static int verifyCode(byte[] key, long t)
             throws NoSuchAlgorithmException, InvalidKeyException {
         byte[] data = new byte[8];
         long value = t;

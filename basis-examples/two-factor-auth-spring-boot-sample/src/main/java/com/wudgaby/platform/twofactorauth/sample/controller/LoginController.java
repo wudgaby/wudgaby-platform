@@ -2,11 +2,13 @@ package com.wudgaby.platform.twofactorauth.sample.controller;
 
 import cn.hutool.core.img.ImgUtil;
 import cn.hutool.extra.qrcode.QrCodeUtil;
+import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
 import com.google.common.collect.Maps;
 import com.wudgaby.platform.core.result.ApiResult;
 import com.wudgaby.platform.springext.RequestContextHolderSupport;
 import com.wudgaby.platform.twofactorauth.sample.util.GoogleAuthenticator;
 import com.wudgaby.platform.twofactorauth.sample.vo.User;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.http.MediaType;
@@ -21,12 +23,14 @@ import java.util.Map;
  * @Date : 2020/12/9 23:07
  * @Desc :
  */
+@Api(tags="2FA认证")
 @RestController
 public class LoginController {
     private Map<String, User> userStore = Maps.newHashMap();
 
     @ApiOperation("1注册")
     @PostMapping("register")
+    @ApiOperationSupport(order = 1, author = "bird")
     public ApiResult register(@RequestBody User user){
         userStore.put(user.getAccount(), user);
         return ApiResult.success();
@@ -34,6 +38,7 @@ public class LoginController {
 
     @ApiOperation("2登录")
     @PostMapping("/login")
+    @ApiOperationSupport(order = 2, author = "bird")
     public ApiResult login(@RequestBody User user){
         User foundUser = userStore.get(user.getAccount());
         if(foundUser == null){
@@ -44,7 +49,7 @@ public class LoginController {
         }
 
         if(StringUtils.isNotBlank(foundUser.getSecretKey())){
-            if(!GoogleAuthenticator.check_code(foundUser.getSecretKey(), user.getGoogleCode(), System.currentTimeMillis())){
+            if(!GoogleAuthenticator.checkCode(foundUser.getSecretKey(), user.getGoogleCode(), System.currentTimeMillis())){
                 return ApiResult.failure("谷歌认证验证错误");
             }
         }
@@ -55,8 +60,9 @@ public class LoginController {
 
     @ApiOperation("3生成google密钥")
     @GetMapping("generateGoogleSecret")
+    @ApiOperationSupport(order = 3, author = "bird")
     public ApiResult generateGoogleSecret(){
-        User foundUser = (User) RequestContextHolderSupport.getSession().getAttribute("user");
+        User foundUser = (User)RequestContextHolderSupport.getSession().getAttribute("user");
         if(foundUser == null){
             return ApiResult.failure("请先登录");
         }
@@ -72,6 +78,7 @@ public class LoginController {
 
     @ApiOperation("4生成二维码")
     @GetMapping(value = "/genQrCode", produces = MediaType.IMAGE_PNG_VALUE)
+    @ApiOperationSupport(order = 4, author = "bird")
     public void genQrCode(String secretQrCode) throws Exception{
         RequestContextHolderSupport.getResponse().setContentType("image/png");
         OutputStream stream = RequestContextHolderSupport.getResponse().getOutputStream();
@@ -80,13 +87,14 @@ public class LoginController {
 
     @ApiOperation("5绑定google验证")
     @PostMapping("/bindGoogle")
+    @ApiOperationSupport(order = 5, author = "bird")
     public ApiResult bindGoogle(String secret, Long googleCode) throws Exception{
         User foundUser = (User)RequestContextHolderSupport.getSession().getAttribute("user");
         if(foundUser == null){
             return ApiResult.failure("请先登录");
         }
 
-        if(!GoogleAuthenticator.check_code(secret, googleCode, System.currentTimeMillis())){
+        if(!GoogleAuthenticator.checkCode(secret, googleCode, System.currentTimeMillis())){
             return ApiResult.failure("谷歌双重认证错误");
         }
 
@@ -97,6 +105,7 @@ public class LoginController {
 
     @ApiOperation("6登出")
     @DeleteMapping("/logout")
+    @ApiOperationSupport(order = 6, author = "bird")
     public ApiResult logout() throws Exception{
         RequestContextHolderSupport.getSession().invalidate();
         return ApiResult.success("登出成功");
@@ -104,13 +113,14 @@ public class LoginController {
 
     @ApiOperation("7谷歌双重认证登录")
     @PostMapping("/googleLogin")
+    @ApiOperationSupport(order = 7, author = "bird")
     public ApiResult googleLogin(String account, Long googleCode) throws Exception{
         User foundUser = userStore.get(account);
         if(foundUser == null){
             return ApiResult.failure("账号错误");
         }
 
-        if(!GoogleAuthenticator.check_code(foundUser.getSecretKey(), googleCode, System.currentTimeMillis())){
+        if(!GoogleAuthenticator.checkCode(foundUser.getSecretKey(), googleCode, System.currentTimeMillis())){
             return ApiResult.failure("google双重认证错误");
         }
 
