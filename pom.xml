@@ -93,10 +93,13 @@
         <retrofit-starter.version>2.2.9</retrofit-starter.version>
 
         <!-- utils  -->
+
         <hutool.version>5.7.19</hutool.version>
         <guava.version>28.0-jre</guava.version>
         <gson.version>2.9.0</gson.version>
         <email.version>1.4</email.version>
+
+        <!-- https://commons.apache.org/ -->
         <commons-math.version>3.6.1</commons-math.version>
         <commons-collections.version>4.1</commons-collections.version>
         <commons-beanutils.version>1.9.3</commons-beanutils.version>
@@ -105,9 +108,10 @@
         <commons-fileupload.version>1.4</commons-fileupload.version>
         <commons-text.version>1.8</commons-text.version>
         <commons-compress.version>1.20</commons-compress.version>
-        <tika-version>1.24</tika-version>
         <commons-csv.version>1.8</commons-csv.version>
+        <common-random.version>1.0.11</common-random.version>
 
+        <tika-version>1.24</tika-version>
         <java-mail.version>1.4.7</java-mail.version>
         <easyexcel.version>2.1.6</easyexcel.version>
         <thread-local.version>2.11.4</thread-local.version>
@@ -134,7 +138,6 @@
         <minio.version>8.0.3</minio.version>
         <shedlock.version>4.30.0</shedlock.version>
         <poi-tl.version>1.11.0</poi-tl.version>
-        <common-random.version>1.0.11</common-random.version>
         <reflections.version>0.10.2</reflections.version>
 
         <spring-boot-admin.version>2.3.1</spring-boot-admin.version>

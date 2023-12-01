@@ -1,7 +1,13 @@
 server:
   port: 8080
+  servlet:
+    session:
+      cookie:
+        secure: true
+        http-only: true
 
 spring:
   redis:
     enabled: false
     password:
+

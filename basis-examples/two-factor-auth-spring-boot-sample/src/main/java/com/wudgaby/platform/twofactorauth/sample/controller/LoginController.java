@@ -3,6 +3,7 @@ package com.wudgaby.platform.twofactorauth.sample.controller;
 import cn.hutool.core.img.ImgUtil;
 import cn.hutool.extra.qrcode.QrCodeUtil;
 import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
+import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Maps;
 import com.wudgaby.platform.core.result.ApiResult;
 import com.wudgaby.platform.springext.RequestContextHolderSupport;
@@ -67,13 +68,11 @@ public class LoginController {
             return ApiResult.failure("请先登录");
         }
 
-        String secretKey = GoogleAuthenticator.getRandomSecretKey();
+        //生成秘钥
+        String secret = GoogleAuthenticator.getRandomSecretKey();
         //用户二维码内容
-        String secretQrCode = GoogleAuthenticator.getGoogleAuthenticatorBarCode(secretKey, foundUser.getAccount(), "九五网");
-        Map<String, Object> resultMap = Maps.newHashMap();
-        resultMap.put("secret", secretKey);
-        resultMap.put("secretQrCode", secretQrCode);
-        return ApiResult.success().data(resultMap);
+        String secretQrCode = GoogleAuthenticator.getGoogleAuthenticatorBarCode(secret, foundUser.getAccount(), "95至尊网");
+        return ApiResult.success().data(ImmutableMap.of("secret",secret, "secretQrCode", secretQrCode));
     }
 
     @ApiOperation("4生成二维码")
@@ -83,6 +82,7 @@ public class LoginController {
         RequestContextHolderSupport.getResponse().setContentType("image/png");
         OutputStream stream = RequestContextHolderSupport.getResponse().getOutputStream();
         QrCodeUtil.generate(secretQrCode, 300, 300, ImgUtil.IMAGE_TYPE_JPG, stream);
+        stream.flush();
     }
 
     @ApiOperation("5绑定google验证")
@@ -127,5 +127,4 @@ public class LoginController {
         RequestContextHolderSupport.getSession().setAttribute("user", foundUser);
         return ApiResult.success("google双重认证成功");
     }
-
 }
