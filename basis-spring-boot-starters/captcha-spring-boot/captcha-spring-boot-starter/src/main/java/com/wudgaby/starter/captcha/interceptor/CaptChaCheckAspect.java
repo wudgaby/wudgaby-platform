@@ -16,6 +16,7 @@ import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.Objects;
 
 /**
  * @ClassName : CaptChaCheckAspect
@@ -37,7 +38,7 @@ public class CaptChaCheckAspect {
     }
 
     private void check(JoinPoint joinPoint){
-        HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
+        HttpServletRequest request = ((ServletRequestAttributes) Objects.requireNonNull(RequestContextHolder.getRequestAttributes())).getRequest();
         try {
             validate(request);
         }catch (CaptchaException captchaException) {
@@ -51,7 +52,7 @@ public class CaptChaCheckAspect {
         String key = ServletRequestUtils.getStringParameter(request, captchaProp.getAutoCheckMode().getKeyName());
         String captchaInRequest = ServletRequestUtils.getStringParameter(request, captchaProp.getAutoCheckMode().getCaptchaName());
 
-        if (StrUtil.isBlank(key) || StrUtil.isBlank(captchaInRequest)) {
+        if (StrUtil.isBlank(captchaInRequest)) {
             throw new CaptchaException("请填写验证码!");
         }
         String captchaInStore = captchaStoreDao.get(captchaProp.getStorePrefixKey(), key).orElse(null);

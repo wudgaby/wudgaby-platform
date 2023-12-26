@@ -2,12 +2,13 @@ package com.wudgaby.sample;
 
 import cn.hutool.core.util.StrUtil;
 import com.wudgaby.starter.captcha.config.CaptchaProp;
-import com.wudgaby.starter.captcha.core.CaptchaStoreDao;
 import com.wudgaby.starter.captcha.core.CaptChaCheck;
+import com.wudgaby.starter.captcha.core.CaptchaStoreDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Objects;
@@ -31,7 +32,7 @@ public class CaptchaSampleApp {
     private CaptchaProp captchaProp;
 
     @GetMapping("/verify")
-    public String getCaptChaResult(String key, String captcha){
+    public String getCaptChaResult(@RequestParam(required = false, name = "k") String key, String captcha){
         String code = captchaStoreDao.get(captchaProp.getStorePrefixKey(), key).orElse(null);
         captchaStoreDao.clear(captchaProp.getStorePrefixKey(), key);
 
@@ -43,13 +44,13 @@ public class CaptchaSampleApp {
     }
 
     @GetMapping("/filter")
-    public String filterTest(String k, String code){
+    public String filterTest(@RequestParam(required = false, name = "k") String k, String code){
         return "filter已进入";
     }
 
     @CaptChaCheck
     @GetMapping("/aspect")
-    public String aspectTest(String k, String code){
+    public String aspectTest(@RequestParam(required = false, name = "k") String k, String code){
         return "aspect已进入";
     }
 }

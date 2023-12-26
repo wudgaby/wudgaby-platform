@@ -42,7 +42,7 @@ public class DefaultSwaggerConfiguration {
                 .apiInfo(apiInfo())
                 .groupName("所有接口")
                 .select()
-                .apis(RequestHandlerSelectors.withClassAnnotation(RestController.class))
+                .apis(RequestHandlerSelectors.withClassAnnotation(RestController.class)) //RequestHandlerSelectors.any() / RequestHandlerSelectors.basePackage('')
                 .paths(PathSelectors.any())
                 .paths(PathSelectors.regex("^(?!/error).*?$"))
                 .build();

@@ -35,7 +35,7 @@ public class CaptchaFilter extends OncePerRequestFilter {
     /**
      * spring的路径匹配器
      */
-    private PathMatcher pathMatcher = new AntPathMatcher();
+    private final PathMatcher pathMatcher = new AntPathMatcher();
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
@@ -88,7 +88,7 @@ public class CaptchaFilter extends OncePerRequestFilter {
         String key = ServletRequestUtils.getStringParameter(request, captchaProp.getAutoCheckMode().getKeyName());
         String captchaInRequest = ServletRequestUtils.getStringParameter(request, captchaProp.getAutoCheckMode().getCaptchaName());
 
-        if (StrUtil.isBlank(key) || StrUtil.isBlank(captchaInRequest)) {
+        if (StrUtil.isBlank(captchaInRequest)) {
             throw new CaptchaException("请填写验证码!");
         }
         String captchaInStore = captchaStoreDao.get(captchaProp.getStorePrefixKey(), key).orElse(null);

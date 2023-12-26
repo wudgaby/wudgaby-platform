@@ -28,14 +28,14 @@ import org.springframework.context.annotation.Configuration;
 public class CaptchaAutoConfiguration{
     @Bean
     @ConditionalOnMissingBean
-    @ConditionalOnProperty(value = "captcha.store-type", havingValue = "SESSION")
+    @ConditionalOnProperty(value = "captcha.store-type", havingValue = "SESSION", matchIfMissing = true)
     public CaptchaStoreDao sessionCaptchaStoreDao(){
         return new SessionCaptchaStoreDao();
     }
 
     @Bean
     @ConditionalOnMissingBean
-    @ConditionalOnProperty(value = "captcha.store-type", havingValue = "MEMORY", matchIfMissing = true)
+    @ConditionalOnProperty(value = "captcha.store-type", havingValue = "MEMORY")
     public CaptchaStoreDao memoryCaptchaStoreDao(){
         return new MemoryCaptchaStoreDao();
     }

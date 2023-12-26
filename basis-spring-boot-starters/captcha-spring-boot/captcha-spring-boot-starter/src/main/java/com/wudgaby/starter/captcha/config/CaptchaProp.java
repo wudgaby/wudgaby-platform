@@ -66,9 +66,9 @@ public class CaptchaProp {
     private Duration duration = Duration.ofMinutes(5L);
 
     /**
-     * 存储类型
+     * 存储类型, session存储模式支持json/image, 其他模式只支持json模式.
      */
-    private CaptchaStoreEnum storeType = CaptchaStoreEnum.MEMORY;
+    private CaptchaStoreEnum storeType = CaptchaStoreEnum.SESSION;
 
     /**
      * 过滤器模式
@@ -81,7 +81,7 @@ public class CaptchaProp {
         /**
          * 是否开启
          */
-        private boolean enabled = false;
+        private boolean enabled = true;
 
         /**
          * 模式
@@ -89,7 +89,7 @@ public class CaptchaProp {
         private CaptchaAutoCheckModeEnum mode = CaptchaAutoCheckModeEnum.ASPECT;
 
         /**
-         * 过滤器需要拦截的url
+         * 过滤器需要拦截的url. CaptchaAutoCheckModeEnum.FILTER模式时有效
          */
         private List<String> filterUrls;
 

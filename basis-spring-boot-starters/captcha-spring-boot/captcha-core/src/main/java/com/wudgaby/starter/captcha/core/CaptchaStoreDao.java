@@ -9,8 +9,8 @@ import java.util.Optional;
  * @desc :  验证码存储接口
  */
 public interface CaptchaStoreDao {
-    String save(String prefix, String String);
-    String save(String prefix, String String, long expire);
+    String save(String prefix, String data);
+    String save(String prefix, String data, long expire);
     Optional<String> get(String prefix, String key);
     void clear(String prefix, String key);
 }

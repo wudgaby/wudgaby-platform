@@ -17,7 +17,7 @@ import java.util.concurrent.TimeUnit;
  * @desc : 本地内存存储
  */
 public class MemoryCaptchaStoreDao implements CaptchaStoreDao {
-    private static final LoadingCache<String, String> loadingCache = CacheBuilder.newBuilder()
+    private static final LoadingCache<String, String> LOADING_CACHE = CacheBuilder.newBuilder()
             //设置并发级别为8，并发级别是指可以同时写缓存的线程数
             .concurrencyLevel(8)
             //设置写缓存后8秒钟过期
@@ -37,7 +37,7 @@ public class MemoryCaptchaStoreDao implements CaptchaStoreDao {
     @Override
     public String save(String prefix, String data) {
         String key = UUID.fastUUID().toString(true);
-        loadingCache.put(prefix + key, data);
+        LOADING_CACHE.put(prefix + key, data);
         return key;
     }
 
@@ -48,11 +48,11 @@ public class MemoryCaptchaStoreDao implements CaptchaStoreDao {
 
     @Override
     public Optional<String> get(String prefix, String key) {
-        return Optional.ofNullable(loadingCache.getUnchecked(prefix + key));
+        return Optional.ofNullable(LOADING_CACHE.getUnchecked(prefix + key));
     }
 
     @Override
     public void clear(String prefix, String key) {
-        loadingCache.invalidate(prefix + key);
+        LOADING_CACHE.invalidate(prefix + key);
     }
 }

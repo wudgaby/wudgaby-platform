@@ -5,6 +5,7 @@ import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.servlet.http.HttpSession;
+import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -17,7 +18,7 @@ public class SessionCaptchaStoreDao implements CaptchaStoreDao {
     @Override
     public String save(String prefix, String data) {
         getSession().setAttribute(prefix, data);
-        return getSession().getId();
+        return "";
     }
 
     @Override
@@ -27,11 +28,11 @@ public class SessionCaptchaStoreDao implements CaptchaStoreDao {
 
     @Override
     public Optional<String> get(String prefix, String key) {
-        return Optional.ofNullable(getSession().getAttribute(prefix)).map(v -> String.valueOf(v));
+        return Optional.ofNullable(getSession().getAttribute(prefix)).map(String::valueOf);
     }
 
     private HttpSession getSession(){
-        return ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest().getSession();
+        return ((ServletRequestAttributes) Objects.requireNonNull(RequestContextHolder.getRequestAttributes())).getRequest().getSession();
     }
 
     @Override

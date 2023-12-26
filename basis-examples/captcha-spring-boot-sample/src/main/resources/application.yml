@@ -6,3 +6,4 @@ captcha:
       - /filter
     key-name: k
     captcha-name: code
+  store-type: session
