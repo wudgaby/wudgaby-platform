@@ -22,6 +22,6 @@ public class CollectionSensitiveHandler implements SensitiveHandler<Collection> 
     }
 
     private boolean needCrypt(Collection collection) {
-        return collection != null && collection.size() != 0;
+        return collection != null && !collection.isEmpty();
     }
 }

@@ -34,12 +34,12 @@ public class JsonSensitiveHandler implements SensitiveHandler<String> {
             }
             return JSONUtil.toJsonStr(jsonObject);
         }catch (Throwable e){
-            log.error("脱敏json串时失败, {}, {}",e.getMessage(), e);
+            log.error("脱敏json串时失败, {}",e.getMessage(), e);
             return param;
         }
     }
 
     private boolean needCrypt(String param) {
-        return param != null && param.length() != 0;
+        return param != null && !param.isEmpty();
     }
 }

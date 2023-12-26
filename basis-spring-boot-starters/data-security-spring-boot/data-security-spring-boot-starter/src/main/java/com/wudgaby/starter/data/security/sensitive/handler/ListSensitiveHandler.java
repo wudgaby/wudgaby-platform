@@ -22,6 +22,6 @@ public class ListSensitiveHandler implements SensitiveHandler<List> {
     }
 
     private boolean needCrypt(List list) {
-        return list != null && list.size() != 0;
+        return list != null && !list.isEmpty();
     }
 }

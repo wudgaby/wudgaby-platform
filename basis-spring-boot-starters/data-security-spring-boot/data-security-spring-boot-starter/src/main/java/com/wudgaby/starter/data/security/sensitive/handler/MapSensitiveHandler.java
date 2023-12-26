@@ -37,6 +37,6 @@ public class MapSensitiveHandler implements SensitiveHandler<Map<String, Object>
     }
 
     private boolean needCrypt(Map map) {
-        return map != null && map.size() != 0;
+        return map != null && !map.isEmpty();
     }
 }

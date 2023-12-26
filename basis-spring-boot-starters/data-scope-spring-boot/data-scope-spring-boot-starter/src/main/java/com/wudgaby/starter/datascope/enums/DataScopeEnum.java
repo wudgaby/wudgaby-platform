@@ -20,5 +20,5 @@ public enum DataScopeEnum {
     ;
 
 
-    private String name;
+    private final String name;
 }

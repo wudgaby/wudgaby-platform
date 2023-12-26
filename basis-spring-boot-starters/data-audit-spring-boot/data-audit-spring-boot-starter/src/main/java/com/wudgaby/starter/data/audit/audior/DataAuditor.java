@@ -17,7 +17,7 @@ public class DataAuditor {
     private static class JaversHolder {
         private static final Javers JAVERS = JaversBuilder.javers().withListCompareAlgorithm(ListCompareAlgorithm.LEVENSHTEIN_DISTANCE).build();
     }
-    public static final Javers getJavers() {
+    public static Javers getJavers() {
         return JaversHolder.JAVERS;
     }
 

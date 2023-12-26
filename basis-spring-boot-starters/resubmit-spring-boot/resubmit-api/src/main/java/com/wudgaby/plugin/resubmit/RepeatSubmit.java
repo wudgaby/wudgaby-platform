@@ -16,13 +16,11 @@ import java.util.concurrent.TimeUnit;
 public @interface RepeatSubmit {
     /**
      * 提示内容
-     * @return
      */
     String value() default "请不要重复提交";
 
     /**
      * 重复提交间隔时间. 只支持redis. 不支持guava cache
-     * @return
      */
     int expires() default 1;
 

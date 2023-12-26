@@ -9,7 +9,6 @@ package com.wudgaby.plugin.resubmit;
 public interface LoginUserService {
     /**
      * 获取登录用户id
-     * @return
      */
     String getLoggedUserId();
 }

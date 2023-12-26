@@ -59,6 +59,7 @@
         <module>app-health-client-sample</module>
         <module>access-limiter-spring-boot-sample</module>
         <module>plumelog-sample</module>
+        <module>i18n-sample</module>
     </modules>
 
     <build>

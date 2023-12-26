@@ -22,7 +22,7 @@ public class StringSensitiveHandler implements SensitiveHandler<String> {
     }
 
     private boolean needCrypt(String param) {
-        return param != null && param.length() != 0;
+        return param != null && !param.isEmpty();
     }
 }
 
