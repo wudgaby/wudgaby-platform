@@ -34,7 +34,7 @@
     </scm>
 
     <properties>
-        <revision>1.0.6-SNAPSHOT</revision>
+        <revision>1.0.7-SNAPSHOT</revision>
         <basis-project.version>${revision}</basis-project.version>
         <basis-starters.version>${revision}</basis-starters.version>
 
@@ -56,145 +56,145 @@
             <dependency>
                 <groupId>com.wudgaby.platform</groupId>
                 <artifactId>basis-project-core</artifactId>
-                <version>${revision}</version>
+                <version>${basis-project.version}</version>
             </dependency>
             <!--web工程基础包-->
             <dependency>
                 <groupId>com.wudgaby.platform</groupId>
                 <artifactId>basis-project-web-core</artifactId>
-                <version>${revision}</version>
+                <version>${basis-project.version}</version>
             </dependency>
             <!--redis 工具包-->
             <dependency>
                 <groupId>com.wudgaby.platform</groupId>
                 <artifactId>redis-spring-boot-starter</artifactId>
-                <version>${revision}</version>
+                <version>${basis-starters.version}</version>
             </dependency>
             <!--接口扫描-->
             <dependency>
                 <groupId>com.wudgaby.platform</groupId>
                 <artifactId>resource-scan-spring-boot-starter</artifactId>
-                <version>${revision}</version>
+                <version>${basis-starters.version}</version>
             </dependency>
             <!--接口版本-->
             <dependency>
                 <groupId>com.wudgaby.platform</groupId>
                 <artifactId>api-version-spring-boot-starter</artifactId>
-                <version>${revision}</version>
+                <version>${basis-starters.version}</version>
             </dependency>
             <!--代码生成-->
             <dependency>
                 <groupId>com.wudgaby.platform</groupId>
                 <artifactId>code-generator-spring-boot-starter</artifactId>
-                <version>${revision}</version>
+                <version>${basis-starters.version}</version>
             </dependency>
             <!--分布式锁-->
             <dependency>
                 <groupId>com.wudgaby.platform</groupId>
                 <artifactId>distributed-lock-spring-boot-starter</artifactId>
-                <version>${revision}</version>
+                <version>${basis-starters.version}</version>
             </dependency>
             <!--ip转地址-->
             <dependency>
                 <groupId>com.wudgaby.platform</groupId>
                 <artifactId>ip2region-spring-boot-starter</artifactId>
-                <version>${revision}</version>
+                <version>${basis-starters.version}</version>
             </dependency>
             <!--黑白名单-->
             <dependency>
                 <groupId>com.wudgaby.platform</groupId>
                 <artifactId>ip-access-spring-boot-starter</artifactId>
-                <version>${revision}</version>
+                <version>${basis-starters.version}</version>
             </dependency>
             <!--日志记录-->
             <dependency>
                 <groupId>com.wudgaby.platform</groupId>
                 <artifactId>logger-spring-boot-starter</artifactId>
-                <version>${revision}</version>
+                <version>${basis-starters.version}</version>
             </dependency>
             <!--邮箱工具-->
             <dependency>
                 <groupId>com.wudgaby.platform</groupId>
                 <artifactId>mail-spring-boot-starter</artifactId>
-                <version>${revision}</version>
+                <version>${basis-starters.version}</version>
             </dependency>
             <!--s3标准oss-->
             <dependency>
                 <groupId>com.wudgaby.platform</groupId>
                 <artifactId>oss-spring-boot-starter</artifactId>
-                <version>${revision}</version>
+                <version>${basis-starters.version}</version>
             </dependency>
             <!--限流-->
             <dependency>
                 <groupId>com.wudgaby.platform</groupId>
                 <artifactId>rate-limiter-spring-boot-starter</artifactId>
-                <version>${revision}</version>
+                <version>${basis-starters.version}</version>
             </dependency>
             <!--支持redis多库工具-->
             <dependency>
                 <groupId>com.wudgaby.platform</groupId>
                 <artifactId>redis-alone-spring-boot-starter</artifactId>
-                <version>${revision}</version>
+                <version>${basis-starters.version}</version>
             </dependency>
             <!--重复提交-->
             <dependency>
                 <groupId>com.wudgaby.platform</groupId>
                 <artifactId>resubmit-spring-boot-starter</artifactId>
-                <version>${revision}</version>
+                <version>${basis-starters.version}</version>
             </dependency>
             <!--接口签名-->
             <dependency>
                 <groupId>com.wudgaby.platform</groupId>
                 <artifactId>signature-spring-boot-starter</artifactId>
-                <version>${revision}</version>
+                <version>${basis-starters.version}</version>
             </dependency>
             <!--简单认证-->
             <dependency>
                 <groupId>com.wudgaby.platform</groupId>
                 <artifactId>simple-security-spring-boot-starter</artifactId>
-                <version>${revision}</version>
+                <version>${basis-starters.version}</version>
             </dependency>
             <!--接口文档-->
             <dependency>
                 <groupId>com.wudgaby.platform</groupId>
                 <artifactId>swagger-spring-boot-starter</artifactId>
-                <version>${revision}</version>
+                <version>${basis-starters.version}</version>
             </dependency>
             <!--数据审计-->
             <dependency>
                 <groupId>com.wudgaby.platform</groupId>
                 <artifactId>data-audit-spring-boot-starter</artifactId>
-                <version>${revision}</version>
+                <version>${basis-starters.version}</version>
             </dependency>
             <!--数据加解密,脱敏-->
             <dependency>
                 <groupId>com.wudgaby.platform</groupId>
                 <artifactId>data-security-spring-boot-starter</artifactId>
-                <version>${revision}</version>
+                <version>${basis-starters.version}</version>
             </dependency>
             <!--mybatis-plus助手-->
             <dependency>
                 <groupId>com.wudgaby.platform</groupId>
                 <artifactId>mybatis-plus-helper-srping-boot-starter</artifactId>
-                <version>${revision}</version>
+                <version>${basis-starters.version}</version>
             </dependency>
             <!--多端口-->
             <dependency>
                 <groupId>com.wudgaby.platform</groupId>
                 <artifactId>multi-ports-spring-boot-starter</artifactId>
-                <version>${revision}</version>
+                <version>${basis-starters.version}</version>
             </dependency>
             <!--枚举扫描-->
             <dependency>
                 <groupId>com.wudgaby.platform</groupId>
                 <artifactId>enums-scanner-spring-boot-starter</artifactId>
-                <version>${revision}</version>
+                <version>${basis-starters.version}</version>
             </dependency>
             <!--验证码-->
             <dependency>
                 <groupId>com.wudgaby.platform</groupId>
                 <artifactId>captcha-spring-boot-starter</artifactId>
-                <version>${revision}</version>
+                <version>${basis-starters.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

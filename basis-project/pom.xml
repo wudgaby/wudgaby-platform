@@ -10,7 +10,6 @@
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.wudgaby.platform</groupId>
     <artifactId>basis-project</artifactId>
     <packaging>pom</packaging>
     <name>Basis Project</name>
@@ -19,7 +18,6 @@
         <module>basis-project-core</module>
         <module>basis-project-utils</module>
         <module>basis-project-security-core</module>
-        <module>basis-project-common</module>
         <module>basis-project-web-core</module>
         <module>basis-project-http-client</module>
         <module>basis-project-ops</module>

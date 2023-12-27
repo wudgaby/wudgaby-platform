@@ -33,31 +33,10 @@ echo "===================================execute install BEGIN==================
 echo "ACTION:%VAR_ACTION%"
 echo "PROFILE:%VAR_PROFILE%"
 
-call mvn clean %VAR_ACTION% -DskipTests=true %VAR_PROFILE% -N
-
-:: echo Clear Done && pause
-call mvn clean %VAR_ACTION% -DskipTests=true -f ./basis-project %VAR_PROFILE% -pl ./basis-project-core -pl ./basis-project-security-core -pl ./basis-project-spring-ext -am
-
-:: echo Build Part Core Done && pause
-call mvn clean %VAR_ACTION% -DskipTests=true -f ./basis-spring-boot-starters %VAR_PROFILE% -pl ^
-./redis-spring-boot/redis-spring-boot-starter,^
-./rate-limiter-spring-boot/rate-limiter-spring-boot-starter,^
-./swagger-spring-boot/swagger-spring-boot-starter,^
-./resubmit-spring-boot/resubmit-spring-boot-starter,^
-./mail-spring-boot/mail-spring-boot-starter,^
-./mybatis-plus-helper-spring-boot/mybatis-plus-helper-srping-boot-starter ^
--am
-
-:: echo Build Part Starters Done && pause
-call mvn clean %VAR_ACTION% -DskipTests=true -f ./basis-project %VAR_PROFILE% -rf ./basis-project-core
-
-:: echo Build Core Done && pause
-call mvn clean %VAR_ACTION% -DskipTests=true -f ./basis-spring-boot-starters %VAR_PROFILE% -rf ./mail-spring-boot/mail-spring-boot-starter
-
-:: echo Build Starters Done && pause
-call mvn clean %VAR_ACTION% -DskipTests=true -f ./basis-project-dependencies %VAR_PROFILE%
-
-:: echo Build Dependencies Done && pause
+call mvn clean
+call mvn %VAR_ACTION% -DskipTests=true %VAR_PROFILE% -pl basis-project/basis-project-ops,basis-project/basis-project-http-client,basis-project/basis-project-web-core -am
+call mvn %VAR_ACTION% -DskipTests=true %VAR_PROFILE% -f ./basis-spring-boot-starters -am
+call mvn %VAR_ACTION% -DskipTests=true %VAR_PROFILE% -f ./basis-project-dependencies -am
 :: mvn clean %VAR_PROFILE% -DskipTests=true -f ./basis-apps
 echo "===================================execute install END==================================================="
 goto:eof
@@ -78,4 +57,3 @@ goto end
 :end
 echo DONE
 exit 0
-:: mvn deploy -P release-sonatype -DskipTests=true -f ./basis-spring-boot-starters -rf :signature-spring-boot-autoconfigure
