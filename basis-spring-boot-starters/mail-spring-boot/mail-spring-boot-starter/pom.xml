@@ -15,7 +15,7 @@
         <dependency>
             <groupId>com.wudgaby.platform</groupId>
             <artifactId>mail-spring-boot-autoconfigure</artifactId>
-            <version>${revision}</version>
+            <version>${project.version}</version>
         </dependency>
     </dependencies>
 </project>

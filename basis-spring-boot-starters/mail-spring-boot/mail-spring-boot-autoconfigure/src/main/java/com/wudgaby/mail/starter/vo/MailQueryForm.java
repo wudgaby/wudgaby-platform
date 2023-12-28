@@ -9,10 +9,10 @@ import lombok.experimental.Accessors;
 import java.util.List;
 
 /**
- * @ClassName : MailQueryForm
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2020/3/31 21:00
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2020/3/31 21:00
  * @Desc :
  */
 @Data

@@ -1,10 +1,10 @@
 package com.wudgaby.sign.api;
 
 /**
- * @ClassName : SignatureException
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2020/6/17 1:03
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2020/6/17 1:03
  * @Desc :
  */
 public class SignatureException extends RuntimeException {

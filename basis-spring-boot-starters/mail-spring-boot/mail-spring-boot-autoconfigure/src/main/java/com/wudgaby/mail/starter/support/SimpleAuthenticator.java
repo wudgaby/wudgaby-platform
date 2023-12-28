@@ -8,10 +8,10 @@ import javax.mail.Authenticator;
 import javax.mail.PasswordAuthentication;
 
 /**
- * @ClassName : SimpleAuthenticator
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2020/4/1 12:46
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2020/4/1 12:46
  * @Desc :
  */
 @Data

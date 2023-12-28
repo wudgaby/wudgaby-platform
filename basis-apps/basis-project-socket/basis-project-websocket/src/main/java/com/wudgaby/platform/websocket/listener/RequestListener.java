@@ -8,10 +8,10 @@ import javax.servlet.annotation.WebListener;
 import javax.servlet.http.HttpServletRequest;
 
 /**
- * @ClassName : RequestListener
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2020/6/27 2:31
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2020/6/27 2:31
  * @Desc :
  * http://www.cnblogs.com/zhuxiaojie/p/6238826.html
  *  配置监听器，将所有request请求都携带上httpSession

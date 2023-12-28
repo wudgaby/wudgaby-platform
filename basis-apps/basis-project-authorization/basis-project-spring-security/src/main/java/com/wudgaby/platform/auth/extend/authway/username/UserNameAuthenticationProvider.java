@@ -13,10 +13,10 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 /**
- * @ClassName : UserNameAuthenticationProvider
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2020/2/3 19:45
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2020/2/3 19:45
  * @Desc :   
  */
 @Slf4j

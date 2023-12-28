@@ -8,10 +8,10 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 /**
- * @ClassName : SsoProperties
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2020/6/24 9:55
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2020/6/24 9:55
  * @Desc :   
  */
 @Data

@@ -8,10 +8,10 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 /**
- * @ClassName : UserServiceDetail
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2019/9/23 17:37
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2019/9/23 17:37
  * @Desc :
  */
 @Service("userServiceDetail")

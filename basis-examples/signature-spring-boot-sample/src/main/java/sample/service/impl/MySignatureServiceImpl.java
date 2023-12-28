@@ -7,10 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import sample.service.ClientAppInfoService;
 
 /**
- * @ClassName : MySignatureServiceImpl
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2020/12/1 16:28
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2020/12/1 16:28
  * @Desc :   
  */
 public class MySignatureServiceImpl implements SignatureService {

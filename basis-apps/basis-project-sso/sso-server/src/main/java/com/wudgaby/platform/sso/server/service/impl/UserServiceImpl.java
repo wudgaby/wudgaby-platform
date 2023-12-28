@@ -12,10 +12,10 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 /**
- * @ClassName : UserServiceImpl
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2020/6/1 18:34
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2020/6/1 18:34
  * @Desc :
  */
 @Service

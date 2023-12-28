@@ -17,10 +17,10 @@ import lombok.extern.slf4j.Slf4j;
 import java.util.Date;
 
 /**
- * @ClassName : WsServerHandler
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2020/6/28 10:57
+ 
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2020/6/28 10:57
  * @Desc :   TextWebSocketFrame是netty用于处理websocket发来的文本对象
  */
 @Slf4j

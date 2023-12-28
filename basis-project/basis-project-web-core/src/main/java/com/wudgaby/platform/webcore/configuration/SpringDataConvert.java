@@ -11,10 +11,10 @@ import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandl
 import javax.annotation.PostConstruct;
 
 /**
- * @ClassName : SpringDataConvert
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2020/4/18 13:25
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2020/4/18 13:25
  * @Desc :
  */
 @ConditionalOnProperty(value = "converter.custom.enabled", havingValue = "true", matchIfMissing = true)

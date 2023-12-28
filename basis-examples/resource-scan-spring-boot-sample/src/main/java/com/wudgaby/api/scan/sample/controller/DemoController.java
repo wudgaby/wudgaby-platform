@@ -8,10 +8,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * @ClassName : DemoController
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2020/5/9 15:19
+ 
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2020/5/9 15:19
  * @Desc :
  */
 @Api(tags = "测试")

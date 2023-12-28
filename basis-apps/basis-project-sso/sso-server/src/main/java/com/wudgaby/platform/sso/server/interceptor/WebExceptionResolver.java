@@ -18,10 +18,10 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 
 /**
- * @ClassName : WebExceptionResolver
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2020/6/1 18:40
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2020/6/1 18:40
  * @Desc :   统一异常
  */
 @Slf4j

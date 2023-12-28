@@ -10,10 +10,10 @@ import org.springframework.web.socket.server.HandshakeHandler;
 import org.springframework.web.socket.server.HandshakeInterceptor;
 
 /**
- * @ClassName : WebSocketConfig
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2020/6/25 19:47
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2020/6/25 19:47
  * @Desc :
  */
 @Configuration

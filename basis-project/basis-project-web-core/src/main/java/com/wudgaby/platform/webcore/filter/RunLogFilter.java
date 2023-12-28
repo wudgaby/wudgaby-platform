@@ -13,10 +13,10 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * @ClassName : RunLogFilter
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2019-07-31
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2019-07-31
  * @Desc :  执行时间过滤器
  */
 @Slf4j

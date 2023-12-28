@@ -10,7 +10,7 @@ import lombok.experimental.Accessors;
 /**
  * @author wudgaby
  * @version V1.0
- * @ClassName: BusinessException
+ 
  * @Description: 基础业务异常类
  * @date 2018/9/30 11:42
  */

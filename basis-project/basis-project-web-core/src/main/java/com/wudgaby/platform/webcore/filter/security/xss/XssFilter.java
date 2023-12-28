@@ -7,10 +7,10 @@ import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 
 /**
- * @ClassName : XssFilter
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2018/10/5/005 20:03
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2018/10/5/005 20:03
  * @Desc :   跨站脚本攻击
  */
 @Slf4j

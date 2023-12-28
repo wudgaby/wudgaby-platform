@@ -33,10 +33,10 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * @ClassName : UserController
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2020/6/1 18:40
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2020/6/1 18:40
  * @Desc :
  */
 @Api(tags = "用户信息")

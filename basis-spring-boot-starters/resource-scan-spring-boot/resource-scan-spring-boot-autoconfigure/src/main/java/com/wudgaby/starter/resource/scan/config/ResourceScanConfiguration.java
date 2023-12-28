@@ -10,9 +10,9 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 
 /**
- * @Author :  wudgaby
- * @Version :  since 1.0
- * @Date :  2021/5/2 10:33
+ * @author :  wudgaby
+ * @version :  since 1.0
+ * @date :  2021/5/2 10:33
  * @Desc :  自动注册资源配置
  */
 @Configuration

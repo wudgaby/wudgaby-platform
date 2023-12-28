@@ -9,10 +9,10 @@ import org.springframework.scheduling.annotation.EnableAsync;
 import springfox.documentation.swagger2.annotations.EnableSwagger2WebMvc;
 
 /**
- * @ClassName : SysBootstrap
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2020/9/28 18:28
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2020/9/28 18:28
  * @Desc :
  */
 @SpringBootApplication(scanBasePackages = "com.wudgaby.platform")

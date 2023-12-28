@@ -13,9 +13,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * @Author :  wudgaby
- * @Version :  since 1.0
- * @Date :  2022/1/10 0010 15:14
+ * @author :  wudgaby
+ * @version :  since 1.0
+ * @date :  2022/1/10 0010 15:14
  * @Desc :
  */
 @Slf4j

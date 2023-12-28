@@ -13,10 +13,10 @@ import java.security.Principal;
 import java.util.Map;
 
 /**
- * @ClassName : SpringHandshakeHandler
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2020/6/26 16:19
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2020/6/26 16:19
  * @Desc :
  */
 @Component

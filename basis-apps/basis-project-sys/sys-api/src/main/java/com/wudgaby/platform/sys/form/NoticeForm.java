@@ -7,10 +7,10 @@ import lombok.Data;
 import javax.validation.constraints.NotBlank;
 
 /**
- * @ClassName : NoticeForm
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2020/10/9 18:11
+ 
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2020/10/9 18:11
  * @Desc :
  */
 @Data

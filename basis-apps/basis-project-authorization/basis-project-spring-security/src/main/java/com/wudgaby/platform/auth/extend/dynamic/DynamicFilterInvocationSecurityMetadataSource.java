@@ -18,10 +18,10 @@ import java.util.Collection;
 import java.util.Set;
 
 /**
- * @ClassName : DynamicFilterInvocationSecurityMetadataSource
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2020/2/10 10:21
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2020/2/10 10:21
  * @Desc :   参考 ExpressionBasedFilterInvocationSecurityMetadataSource
  */
 @Slf4j

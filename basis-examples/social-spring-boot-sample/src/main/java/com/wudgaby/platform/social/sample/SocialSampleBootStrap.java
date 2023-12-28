@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
- * @ClassName : SocialSampleBootStrap
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2020/12/5 16:00
+ 
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2020/12/5 16:00
  * @Desc :   
  */
 @SpringBootApplication

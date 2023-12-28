@@ -14,9 +14,9 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
 /**
- * @Author :  wudgaby
- * @Version :  since 1.0
- * @Date :  2021/5/22 10:58
+ * @author :  wudgaby
+ * @version :  since 1.0
+ * @date :  2021/5/22 10:58
  * @Desc :
  */
 @Api(tags = "上传测试")

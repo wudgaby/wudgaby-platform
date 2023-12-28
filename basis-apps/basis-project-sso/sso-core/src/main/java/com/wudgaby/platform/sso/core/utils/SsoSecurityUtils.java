@@ -8,10 +8,10 @@ import java.util.Map;
 import java.util.Optional;
 
 /**
- * @ClassName : SsoSecurityUtils
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2019/7/4 18:44
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2019/7/4 18:44
  * @Desc :
  */
 public class SsoSecurityUtils {

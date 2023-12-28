@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
- * @ClassName : SsoServerBootstrap
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2020/6/1 17:44
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2020/6/1 17:44
  * @Desc :  #todo role, resource表未实现.
  */
 @SpringBootApplication(scanBasePackages = "com.wudgaby.platform")

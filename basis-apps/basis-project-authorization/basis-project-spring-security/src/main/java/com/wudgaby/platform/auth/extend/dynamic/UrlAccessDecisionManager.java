@@ -11,10 +11,10 @@ import java.util.Collection;
 import java.util.Iterator;
 
 /**
- * @ClassName : UrlAccessDecisionManager
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2020/2/10 22:07
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2020/2/10 22:07
  * @Desc :
  */
 public class UrlAccessDecisionManager implements AccessDecisionManager {

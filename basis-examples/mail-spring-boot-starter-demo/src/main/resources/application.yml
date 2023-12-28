@@ -4,7 +4,7 @@ spring:
     
   mail:
     host: smtp.qq.com
-    username: 523679498@qq.com
+    username: 123456@qq.com
     password: ttqopqgnchsobjab
     properties.mail.smtp.auth: true
     properties.mail.starttls.enable: true

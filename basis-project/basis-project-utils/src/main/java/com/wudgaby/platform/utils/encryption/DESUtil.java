@@ -7,9 +7,9 @@ import java.security.Security;
 /**
  *@Title:   DES可逆加密算法：
  *@Description:
- *@Author:zhoupk
+ *@author:zhoupk
  *@Create:Jan 27, 2011 3:02:18 PM
- *@Version:1.1
+ *@version:1.1
  */
 public class DESUtil {
     private static String strDefaultKey = "defaultkey";

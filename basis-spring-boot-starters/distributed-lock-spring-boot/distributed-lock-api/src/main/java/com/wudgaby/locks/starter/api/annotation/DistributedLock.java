@@ -6,10 +6,10 @@ import java.lang.annotation.*;
 import java.util.concurrent.TimeUnit;
 
 /**
- * @ClassName : DistributedLock
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2019/7/25 15:08
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2019/7/25 15:08
  * @Desc :   
  */
 @Target(ElementType.METHOD)

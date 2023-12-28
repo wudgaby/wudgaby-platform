@@ -12,10 +12,10 @@ import java.time.temporal.TemporalUnit;
 import java.util.Date;
 
 /**
- * @ClassName : LocalDateTimeUtil
- * @Author :  wudgaby
- * @Version :  1.0
- * @Date : 2018/9/19/01919:49
+
+ * @author :  wudgaby
+ * @version :  1.0
+ * @date : 2018/9/19/01919:49
  * @Desc :
  */
 @UtilityClass

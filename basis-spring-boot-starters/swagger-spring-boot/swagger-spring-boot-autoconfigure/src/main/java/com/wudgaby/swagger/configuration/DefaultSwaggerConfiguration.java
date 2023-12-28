@@ -20,10 +20,10 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2WebMvc;
 import java.util.Optional;
 
 /**
- * @ClassName : DefaultSwaggerConfiguration
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2020/3/20 11:18
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2020/3/20 11:18
  * @Desc :
  */
 @Configuration

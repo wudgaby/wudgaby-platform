@@ -1,16 +1,12 @@
 package com.wudgaby.sign.api;
 
-import java.lang.annotation.Documented;
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
+import java.lang.annotation.*;
 
 /**
- * @ClassName : Signature
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2020/6/17 0:37
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2020/6/17 0:37
  * @Desc :   
  */
 @Target({ElementType.TYPE, ElementType.METHOD})

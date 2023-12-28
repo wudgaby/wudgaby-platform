@@ -8,10 +8,10 @@ import lombok.experimental.Accessors;
 import java.io.Serializable;
 
 /**
- * @ClassName : AuthInfo
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2019/7/4 15:21
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2019/7/4 15:21
  * @Desc :
  */
 @Data

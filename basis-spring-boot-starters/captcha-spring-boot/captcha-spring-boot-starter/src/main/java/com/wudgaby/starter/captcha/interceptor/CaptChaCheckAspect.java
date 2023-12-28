@@ -19,10 +19,10 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.Objects;
 
 /**
- * @ClassName : CaptChaCheckAspect
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2023.09.28
+ 
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2023.09.28
  * @Desc :
  */
 @Slf4j

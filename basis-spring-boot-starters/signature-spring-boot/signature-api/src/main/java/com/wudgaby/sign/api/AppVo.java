@@ -3,10 +3,10 @@ package com.wudgaby.sign.api;
 import lombok.Data;
 
 /**
- * @ClassName : AppVo
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2020/12/1 15:17
+ 
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2020/12/1 15:17
  * @Desc :
  */
 @Data

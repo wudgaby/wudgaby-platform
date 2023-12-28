@@ -3,10 +3,10 @@ package com.wudgaby.sign.api;
 import java.lang.annotation.*;
 
 /**
- * @ClassName : SignatureField
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2020/6/19 14:43
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2020/6/19 14:43
  * @Desc :
  */
 @Target({ElementType.FIELD})

@@ -7,10 +7,10 @@ import org.springframework.util.AntPathMatcher;
 import java.util.Collection;
 
 /**
- * @ClassName : PathHelper
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2020/6/24 11:49
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2020/6/24 11:49
  * @Desc :
  */
 @UtilityClass

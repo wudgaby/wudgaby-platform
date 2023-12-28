@@ -1,11 +1,9 @@
 package com.wudgaby.platform.webcore.support;
 
-import com.wudgaby.platform.core.annotation.ApiResultView;
 import com.wudgaby.platform.core.annotation.OriginalResultView;
 import com.wudgaby.platform.core.result.ApiResult;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.MethodParameter;
-import org.springframework.core.annotation.AnnotatedElementUtils;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.server.ServerHttpRequest;
@@ -13,10 +11,10 @@ import org.springframework.http.server.ServerHttpResponse;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
 
 /**
- * @ClassName : GlobalRestfulResponseBodyAdvice
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2018/9/26/026 22:21
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2018/9/26/026 22:21
  * @Desc :   返回值统一处理, 不推荐: swagger文档识别不出返回结果格式
  *          参考使用 FastJsonViewResponseBodyAdvice, JSONPResponseBodyAdvice
  */

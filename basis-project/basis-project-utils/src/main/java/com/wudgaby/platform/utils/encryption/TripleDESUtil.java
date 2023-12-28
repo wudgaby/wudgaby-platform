@@ -1,10 +1,10 @@
 package com.wudgaby.platform.utils.encryption;
 
 /**
- * @ClassName : TripleDESUtil
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2018/9/19/019 22:31
+ 
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2018/9/19/019 22:31
  * @Desc :   
  */
 

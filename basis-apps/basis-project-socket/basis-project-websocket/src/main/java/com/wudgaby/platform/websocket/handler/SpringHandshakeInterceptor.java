@@ -15,10 +15,10 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.Map;
 
 /**
- * @ClassName : SpringHandshakeInterceptor
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2020/6/26 14:27
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2020/6/26 14:27
  * @Desc :
  */
 @Slf4j

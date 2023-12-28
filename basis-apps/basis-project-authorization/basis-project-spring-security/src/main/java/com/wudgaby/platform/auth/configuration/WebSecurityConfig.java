@@ -54,10 +54,10 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 /**
- * @ClassName : WebSecurityConfig
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2020/2/3 14:21
+ 
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2020/2/3 14:21
  * @Desc :
  */
 @Configuration

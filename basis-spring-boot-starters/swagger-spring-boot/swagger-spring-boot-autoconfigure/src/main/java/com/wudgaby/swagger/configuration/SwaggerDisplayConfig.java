@@ -25,10 +25,10 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 /**
- * @ClassName : ICodeEnumPropertyPlugin
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2019/11/4 15:45
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2019/11/4 15:45
  *
  * 对swagger展示进行修改
  * 1. 数字、Boolean属性设置默认的example

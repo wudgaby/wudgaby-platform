@@ -20,7 +20,7 @@ import java.util.stream.Collectors;
 /**
  * @Description: 数据权限util
  * @author: liurunkai
- * @Date: 2020/1/11 16:01
+ * @date: 2020/1/11 16:01
  */
 @Slf4j
 @Component

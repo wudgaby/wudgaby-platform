@@ -21,9 +21,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @Author :  wudgaby
- * @Version :  since 1.0
- * @Date :  2021/12/10 0010 10:02
+ * @author :  wudgaby
+ * @version :  since 1.0
+ * @date :  2021/12/10 0010 10:02
  * @Desc :
  */
 public class    MyPictureRenderPolicy extends AbstractRenderPolicy<MyPictureRenderData> {

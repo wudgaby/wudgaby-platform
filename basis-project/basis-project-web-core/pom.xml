@@ -17,7 +17,7 @@
         <dependency>
             <groupId>com.wudgaby.platform</groupId>
             <artifactId>basis-project-core</artifactId>
-            <version>${project.version}</version>
+            <version>${basis-project.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -30,7 +30,7 @@
         <dependency>
             <groupId>com.wudgaby.platform</groupId>
             <artifactId>basis-project-security-core</artifactId>
-            <version>${project.version}</version>
+            <version>${basis-project.version}</version>
         </dependency>
         <dependency>
             <groupId>com.wudgaby.platform</groupId>

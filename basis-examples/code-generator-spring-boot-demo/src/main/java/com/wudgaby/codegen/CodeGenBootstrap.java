@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
- * @ClassName : CodeGenBootstrap
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2020/4/3 18:36
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2020/4/3 18:36
  * @Desc :
  */
 //@EnableCodeGenUI

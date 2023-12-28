@@ -6,10 +6,10 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * @ClassName : ICodeEnumPropertyPlugin
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2019/11/4 15:45
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2019/11/4 15:45
  *
  * 需要swagger展示的枚举
  * 默认 支持 枚举中属性名为 value和desc

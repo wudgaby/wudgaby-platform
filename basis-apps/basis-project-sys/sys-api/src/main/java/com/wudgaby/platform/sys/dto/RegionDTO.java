@@ -8,10 +8,10 @@ import lombok.Data;
 import lombok.experimental.Accessors;
 
 /**
- * @ClassName : RegionDTO
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2020/9/28 18:02
+ 
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2020/9/28 18:02
  * @Desc :   
  */
 @Data

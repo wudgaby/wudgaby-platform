@@ -5,8 +5,7 @@
     <parent>
         <artifactId>basis-project-sys</artifactId>
         <groupId>com.wudgaby.platform</groupId>
-        <version>${revision}</version>
-        <relativePath>../pom.xml</relativePath>
+        <version>1.0.0</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
@@ -16,7 +15,7 @@
         <dependency>
             <groupId>com.wudgaby.platform</groupId>
             <artifactId>sys-api</artifactId>
-            <version>${revision}</version>
+            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
@@ -26,12 +25,10 @@
         <dependency>
             <groupId>com.wudgaby.platform</groupId>
             <artifactId>logger-spring-boot-starter</artifactId>
-            <version>${basis-starters.version}</version>
         </dependency>
         <dependency>
             <groupId>com.wudgaby.platform</groupId>
             <artifactId>basis-project-web-core</artifactId>
-            <version>${revision}</version>
         </dependency>
         <!--<dependency>
             <groupId>com.baomidou</groupId>
@@ -41,7 +38,6 @@
         <dependency>
             <groupId>com.wudgaby.platform</groupId>
             <artifactId>ip2region-spring-boot-starter</artifactId>
-            <version>${revision}</version>
         </dependency>
     </dependencies>
 </project>

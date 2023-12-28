@@ -303,7 +303,7 @@ swagger.authorization.auth-regex=^.*$
 
 ```java
 // 其中的ID Authorization 即为配置项 swagger.authorization.name，详细请关注后面的配置代码
-@ApiOperation(value = "Hello World", authorizations = {@Authorization(value = "Authorization")})
+@ApiOperation(value = "Hello World", authorizations = {@authorization(value = "Authorization")})
 @RequestMapping(value = "/hello", method = RequestMethod.GET)
 String hello();
 ```

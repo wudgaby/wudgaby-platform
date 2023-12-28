@@ -14,10 +14,10 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * @ClassName : CaptchaFilter
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2019/10/9 16:24
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2019/10/9 16:24
  * @Desc :   图片验证码过滤器
  *  OncePerRequestFilter 过滤器只会调用一次
  */

@@ -54,10 +54,10 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 /**
- * @ClassName : OAuth2Config
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2019/9/23 17:40
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2019/9/23 17:40
  * @Desc :
  */
 @Configuration

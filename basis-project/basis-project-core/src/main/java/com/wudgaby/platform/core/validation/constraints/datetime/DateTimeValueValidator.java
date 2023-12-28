@@ -8,10 +8,10 @@ import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
 /**
- * @ClassName : DateTimeValueValidator
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2020/6/15 1:38
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2020/6/15 1:38
  * @Desc :   校验日期格式
  */
 public class DateTimeValueValidator implements ConstraintValidator<DateTimeValue, String> {

@@ -15,10 +15,10 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 import javax.servlet.http.HttpServletRequest;
 
 /**
- * @ClassName : SignatureAspect
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2020/6/17 0:36
+ 
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2020/6/17 0:36
  * @Desc :
  */
 @Slf4j

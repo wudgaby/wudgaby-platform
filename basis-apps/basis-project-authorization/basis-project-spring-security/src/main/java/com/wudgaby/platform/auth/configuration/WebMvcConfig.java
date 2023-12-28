@@ -16,10 +16,10 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 /**
- * @ClassName : WebMvcConfig
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2020/2/3 14:32
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2020/2/3 14:32
  * @Desc :    WebMvcConfigurationSupport有坑 会使默认配置失效
  * https://www.jianshu.com/p/c5c1503f5367
  */

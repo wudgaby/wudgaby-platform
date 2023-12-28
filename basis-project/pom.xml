@@ -19,8 +19,6 @@
         <module>basis-project-utils</module>
         <module>basis-project-security-core</module>
         <module>basis-project-web-core</module>
-        <module>basis-project-http-client</module>
-        <module>basis-project-ops</module>
         <module>basis-project-spring-ext</module>
     </modules>
 

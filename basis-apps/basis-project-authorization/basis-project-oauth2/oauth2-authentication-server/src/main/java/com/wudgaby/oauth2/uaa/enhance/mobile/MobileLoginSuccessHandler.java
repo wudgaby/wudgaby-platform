@@ -1,10 +1,10 @@
 package com.wudgaby.oauth2.uaa.enhance.mobile;
 
 /**
- * @ClassName : MobileLoginSuccessHandler
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2019/10/9 19:02
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2019/10/9 19:02
  * @Desc :
  */
 

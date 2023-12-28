@@ -5,10 +5,10 @@ import lombok.Data;
 import java.io.Serializable;
 
 /**
- * @ClassName : ChineseMessage
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2020/6/28 11:15
+ 
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2020/6/28 11:15
  * @Desc :   
  */
 @Data

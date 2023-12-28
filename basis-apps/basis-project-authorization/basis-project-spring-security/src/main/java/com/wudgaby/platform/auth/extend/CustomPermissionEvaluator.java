@@ -9,10 +9,10 @@ import org.springframework.security.core.GrantedAuthority;
 import java.io.Serializable;
 
 /**
- * @ClassName : CustomPermissionEvaluator
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2020/6/19 23:04
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2020/6/19 23:04
  * @Desc :
  */
 @Slf4j

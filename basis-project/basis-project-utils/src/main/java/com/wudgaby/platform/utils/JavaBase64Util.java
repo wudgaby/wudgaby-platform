@@ -6,10 +6,10 @@ import java.io.UnsupportedEncodingException;
 import java.util.Base64;
 
 /**
- * @ClassName : JavaBase64Util
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2020/6/14 15:06
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2020/6/14 15:06
  * @Desc :
  */
 @UtilityClass

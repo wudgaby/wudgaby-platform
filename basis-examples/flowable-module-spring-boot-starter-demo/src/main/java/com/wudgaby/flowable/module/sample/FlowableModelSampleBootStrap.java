@@ -6,10 +6,10 @@ import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfi
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 /**
- * @ClassName : FlowableModelSampleBootStrap
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2020/5/9 17:37
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2020/5/9 17:37
  * @Desc :   
  */
 @SpringBootApplication(exclude = {SecurityAutoConfiguration.class})

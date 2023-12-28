@@ -7,10 +7,10 @@ import java.lang.annotation.*;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
 /**
- * @ClassName : DateTimeValue
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2020/6/15 1:38
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2020/6/15 1:38
  * @Desc :   校验日期格式
  */
 @Documented

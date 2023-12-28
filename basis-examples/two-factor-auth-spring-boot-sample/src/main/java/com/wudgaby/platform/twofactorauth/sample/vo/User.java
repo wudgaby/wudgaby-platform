@@ -5,10 +5,10 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 /**
- * @ClassName : User
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2020/12/9 23:09
+ 
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2020/12/9 23:09
  * @Desc :
  */
 @ApiModel

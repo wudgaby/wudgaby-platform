@@ -27,19 +27,15 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceProperties;
 import org.springframework.stereotype.Service;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
+import java.io.*;
 import java.lang.reflect.Field;
 import java.util.Arrays;
 
 /**
- * @ClassName : GeneratorCodeService
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2019/7/6/006 21:41
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2019/7/6/006 21:41
  * @Desc :
  */
 @Slf4j

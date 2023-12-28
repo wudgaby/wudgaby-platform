@@ -10,10 +10,10 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
- * @ClassName : WsSessionManager
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2020/6/26 6:00
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2020/6/26 6:00
  * @Desc :
  */
 @UtilityClass

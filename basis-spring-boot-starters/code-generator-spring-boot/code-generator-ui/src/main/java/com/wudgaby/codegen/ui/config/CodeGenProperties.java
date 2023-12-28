@@ -5,10 +5,10 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * @ClassName : CodeGenProperties
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2020/4/11 23:50
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2020/4/11 23:50
  * @Desc :
  */
 @Data

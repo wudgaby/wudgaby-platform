@@ -5,10 +5,10 @@ import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
 
 /**
- * @ClassName : WebConfig
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2019/10/8 19:20
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2019/10/8 19:20
  * @Desc :
  */
 @Configuration

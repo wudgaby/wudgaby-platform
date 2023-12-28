@@ -7,10 +7,10 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
 
 /**
- * @ClassName : CodeGenConfiguration
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2020/4/3 21:57
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2020/4/3 21:57
  * @Desc :
  */
 @Configuration

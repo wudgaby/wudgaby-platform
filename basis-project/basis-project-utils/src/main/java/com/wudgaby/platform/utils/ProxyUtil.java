@@ -6,10 +6,10 @@ import java.net.InetSocketAddress;
 import java.net.Proxy;
 
 /**
- * @ClassName : ProxyUtil
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2020/4/8 10:24
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2020/4/8 10:24
  * @Desc :   
  */
 @UtilityClass

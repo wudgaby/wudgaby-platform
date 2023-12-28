@@ -18,5 +18,6 @@
         <module>resubmit-spring-boot-autoconfigure</module>
         <module>resubmit-spring-boot-starter</module>
         <module>resubmit-api</module>
+        <module>resubmit-redis-dao</module>
     </modules>
 </project>

@@ -21,9 +21,9 @@ import java.util.concurrent.TimeUnit;
 import java.util.function.Consumer;
 
 /**
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2018/10/5/005 16:00
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2018/10/5/005 16:00
  * @Desc :
  */
 @Slf4j

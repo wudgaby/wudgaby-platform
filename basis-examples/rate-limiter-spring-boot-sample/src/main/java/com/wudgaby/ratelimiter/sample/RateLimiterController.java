@@ -13,10 +13,10 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.concurrent.TimeUnit;
 
 /**
- * @ClassName : RateLimiterController
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2020/5/8 16:49
+ 
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2020/5/8 16:49
  * @Desc :   
  */
 @Slf4j

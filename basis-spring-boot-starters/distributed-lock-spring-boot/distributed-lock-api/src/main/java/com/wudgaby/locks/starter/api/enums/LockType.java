@@ -3,10 +3,10 @@ package com.wudgaby.locks.starter.api.enums;
 import lombok.Getter;
 
 /**
- * @ClassName : LockType
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2019/7/25 15:24
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2019/7/25 15:24
  * @Desc :   分布式锁类型
  */
 @Getter

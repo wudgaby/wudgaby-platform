@@ -1,10 +1,10 @@
 package com.wudgaby.platform.utils.qr;
 
 /**
- * @ClassName : QrImage
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2020/7/16 17:36
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2020/7/16 17:36
  * @Desc :   
  */
 import lombok.AllArgsConstructor;

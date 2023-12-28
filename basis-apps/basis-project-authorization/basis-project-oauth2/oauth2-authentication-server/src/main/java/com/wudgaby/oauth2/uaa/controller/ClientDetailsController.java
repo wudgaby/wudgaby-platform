@@ -7,10 +7,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * @ClassName : ClientDetailsController
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2019/9/24 14:56
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2019/9/24 14:56
  * @Desc :
  */
 @RestController

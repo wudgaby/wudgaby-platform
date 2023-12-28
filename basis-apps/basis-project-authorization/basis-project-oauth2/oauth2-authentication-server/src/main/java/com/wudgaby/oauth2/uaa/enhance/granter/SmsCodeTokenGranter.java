@@ -15,10 +15,10 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
- * @ClassName : SmsCodeTokenGranter
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2019/10/9 15:38
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2019/10/9 15:38
  * @Desc :  自定义授权模式
  */
 public class SmsCodeTokenGranter extends AbstractTokenGranter{

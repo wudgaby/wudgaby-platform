@@ -16,25 +16,16 @@ import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 
-import javax.mail.Authenticator;
-import javax.mail.Folder;
-import javax.mail.Message;
-import javax.mail.MessagingException;
-import javax.mail.Session;
-import javax.mail.Store;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.List;
-import java.util.Objects;
-import java.util.Properties;
+import javax.mail.*;
+import java.util.*;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
 /**
- * @ClassName : MailReceiverHelper
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2019/4/13/013 14:10
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2019/4/13/013 14:10
  * @Desc :   
  */
 @Slf4j

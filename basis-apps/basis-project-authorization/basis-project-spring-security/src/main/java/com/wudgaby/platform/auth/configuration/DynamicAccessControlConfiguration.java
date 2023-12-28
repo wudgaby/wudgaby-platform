@@ -18,10 +18,10 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * @ClassName : DynamicAccessControlConfiguration
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2020/2/10 10:03
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2020/2/10 10:03
  * @Desc :   动态权限组件配置
  */
 @Configuration

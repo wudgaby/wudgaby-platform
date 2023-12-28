@@ -3,10 +3,10 @@ package sample.vo;
 import lombok.Data;
 
 /**
- * @ClassName : Order
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2020/6/21 4:15
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2020/6/21 4:15
  * @Desc :
  */
 @Data

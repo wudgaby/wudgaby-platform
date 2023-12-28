@@ -7,10 +7,10 @@ import org.springframework.web.bind.annotation.RestController;
 import java.security.Principal;
 
 /**
- * @ClassName : UserController
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2019/9/23 14:40
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2019/9/23 14:40
  * @Desc :   
  */
 @Slf4j

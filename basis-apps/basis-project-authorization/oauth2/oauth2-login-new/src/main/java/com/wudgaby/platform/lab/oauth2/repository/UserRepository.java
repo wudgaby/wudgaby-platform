@@ -5,9 +5,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 /**
- * @Author :  wudgaby
- * @Version :  since 1.0
- * @Date :  2021/9/22 14:19
+ * @author :  wudgaby
+ * @version :  since 1.0
+ * @date :  2021/9/22 14:19
  * @Desc :
  */
 @Repository

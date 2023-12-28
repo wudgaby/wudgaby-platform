@@ -10,10 +10,10 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * @ClassName : LockAutoConfiguration
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2019/7/26 9:10
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2019/7/26 9:10
  * @Desc :
  */
 @Configuration

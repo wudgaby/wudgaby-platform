@@ -30,7 +30,7 @@
         <dependency>
             <groupId>com.wudgaby.platform</groupId>
             <artifactId>basis-project-utils</artifactId>
-            <version>${revision}</version>
+            <version>${basis-project.version}</version>
             <scope>compile</scope>
         </dependency>
         <dependency>

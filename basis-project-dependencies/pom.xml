@@ -34,7 +34,7 @@
     </scm>
 
     <properties>
-        <revision>1.0.7-SNAPSHOT</revision>
+        <revision>1.0.8-SNAPSHOT</revision>
         <basis-project.version>${revision}</basis-project.version>
         <basis-starters.version>${revision}</basis-starters.version>
 
@@ -194,6 +194,24 @@
             <dependency>
                 <groupId>com.wudgaby.platform</groupId>
                 <artifactId>captcha-spring-boot-starter</artifactId>
+                <version>${basis-starters.version}</version>
+            </dependency>
+            <!--字典缓存-->
+            <dependency>
+                <groupId>com.wudgaby.platform</groupId>
+                <artifactId>dict-cache-spring-boot-starter</artifactId>
+                <version>${basis-starters.version}</version>
+            </dependency>
+            <!--Open API-->
+            <dependency>
+                <groupId>com.wudgaby.platform</groupId>
+                <artifactId>open-api-spring-boot-starter</artifactId>
+                <version>${basis-starters.version}</version>
+            </dependency>
+            <!--访问限制-->
+            <dependency>
+                <groupId>com.wudgaby.platform</groupId>
+                <artifactId>access-limiter-spring-boot-starter</artifactId>
                 <version>${basis-starters.version}</version>
             </dependency>
         </dependencies>

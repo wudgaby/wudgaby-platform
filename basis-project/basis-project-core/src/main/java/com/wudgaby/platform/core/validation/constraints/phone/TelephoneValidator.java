@@ -7,10 +7,10 @@ import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
 /**
- * @ClassName : PhoneValidator
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2018/9/24/024 3:24
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2018/9/24/024 3:24
  * @Desc :   
  */
 public class TelephoneValidator implements ConstraintValidator<Telephone, String> {

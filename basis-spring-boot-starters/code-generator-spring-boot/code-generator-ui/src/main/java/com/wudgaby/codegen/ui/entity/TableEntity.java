@@ -9,10 +9,10 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- * @ClassName : TableEntity
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2019/7/6/006 22:28
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2019/7/6/006 22:28
  * @Desc :   
  */
 @Data

@@ -12,10 +12,10 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * @ClassName : HeaderCookieHttpSessionIdResolver
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2020/12/8 14:49
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2020/12/8 14:49
  * @Desc :   同时支持 cookie 和 header 传递. 优先header
  */
 public class HeaderCookieHttpSessionIdResolver implements HttpSessionIdResolver {

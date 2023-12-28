@@ -8,10 +8,10 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 /**
- * @ClassName : UpdatePwdForm
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2021/1/2 17:50
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2021/1/2 17:50
  * @Desc :   
  */
 @Data

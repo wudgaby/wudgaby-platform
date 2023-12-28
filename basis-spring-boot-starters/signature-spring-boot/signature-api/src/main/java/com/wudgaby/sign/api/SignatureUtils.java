@@ -1,9 +1,6 @@
 package com.wudgaby.sign.api;
 
-import cn.hutool.core.bean.copier.provider.BeanValueProvider;
-import cn.hutool.core.date.DateUtil;
 import cn.hutool.crypto.digest.MD5;
-import com.wudgaby.platform.utils.BeanUtils;
 import com.wudgaby.platform.utils.ValidatorUtils;
 import com.wudgaby.sign.supoort.BufferedHttpServletRequest;
 import lombok.SneakyThrows;
@@ -14,7 +11,6 @@ import org.apache.commons.codec.digest.HmacUtils;
 import org.apache.commons.collections4.MapUtils;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.springframework.util.Assert;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.UnsupportedEncodingException;
@@ -26,10 +22,10 @@ import java.util.Map;
 import java.util.Optional;
 
 /**
- * @ClassName : SignatureUtils
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2020/6/19 17:54
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2020/6/19 17:54
  * @Desc :
  */
 @Slf4j

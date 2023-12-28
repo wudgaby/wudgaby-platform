@@ -9,7 +9,6 @@ import com.wudgaby.codegen.ui.form.TableQueryForm;
 import com.wudgaby.codegen.ui.service.GeneratorCodeService;
 import com.wudgaby.codegen.ui.service.TableService;
 import com.wudgaby.platform.core.result.ApiPageResult;
-import com.wudgaby.platform.core.result.ApiResult;
 import com.wudgaby.platform.core.vo.PageVo;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -27,10 +26,10 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * @ClassName : GeneratorCodeController
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2019/7/6/006 23:35
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2019/7/6/006 23:35
  * @Desc :
  */
 @Slf4j

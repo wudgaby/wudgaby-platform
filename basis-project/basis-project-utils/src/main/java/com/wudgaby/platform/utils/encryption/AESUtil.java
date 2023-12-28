@@ -11,10 +11,10 @@ import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 
 /**
- * @ClassName : AESUtil
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2018/9/19/019 20:11
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2018/9/19/019 20:11
  * @Desc :   AES 是一种可逆加密算法，对用户的敏感信息加密处理
  *              对原始数据进行AES加密后，在进行Base64编码转化；
  */

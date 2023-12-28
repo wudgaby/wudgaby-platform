@@ -1,15 +1,14 @@
 package com.wudgaby.platform.core.util;
 
-import com.google.common.base.Enums;
 import com.wudgaby.platform.core.enums.ICode;
 import lombok.experimental.UtilityClass;
 import org.apache.commons.lang3.StringUtils;
 
 /**
- * @ClassName : EnumUtil
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2019/7/23 18:02
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2019/7/23 18:02
  * @Desc :   枚举工具类
  */
 @UtilityClass

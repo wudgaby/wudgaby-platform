@@ -21,7 +21,7 @@
         <dependency>
             <groupId>com.wudgaby.platform</groupId>
             <artifactId>dict-cache-spring-boot-autoconfigure</artifactId>
-            <version>${project.version}</version>
+            <version>${revision}</version>
         </dependency>
     </dependencies>
 </project>

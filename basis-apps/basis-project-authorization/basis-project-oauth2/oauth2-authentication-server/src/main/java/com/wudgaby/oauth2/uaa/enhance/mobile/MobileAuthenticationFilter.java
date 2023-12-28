@@ -13,10 +13,10 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * @ClassName : MobileAuthenticationFilter
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2019/10/8 20:07
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2019/10/8 20:07
  * @Desc :   验证码登陆：post: /mobileLogin?mobile=13000000000&verifyCode=1000
  */
 public class MobileAuthenticationFilter extends AbstractAuthenticationProcessingFilter {

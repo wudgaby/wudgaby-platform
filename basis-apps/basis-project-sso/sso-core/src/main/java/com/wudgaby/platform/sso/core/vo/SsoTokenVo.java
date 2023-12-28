@@ -8,9 +8,9 @@ import lombok.experimental.Accessors;
 import java.io.Serializable;
 
 /**
- * @Author :  wudgaby
- * @Version :  since 1.0
- * @Date :  2021/2/27 0:03
+ * @author :  wudgaby
+ * @version :  since 1.0
+ * @date :  2021/2/27 0:03
  * @Desc :
  */
 @Data

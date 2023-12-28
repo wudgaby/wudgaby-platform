@@ -5,7 +5,7 @@
     <parent>
         <artifactId>basis-examples</artifactId>
         <groupId>com.wudgaby.platform</groupId>
-        <version>${revision}</version>
+        <version>1.0.0</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
@@ -22,7 +22,6 @@
         <dependency>
             <groupId>com.wudgaby.platform</groupId>
             <artifactId>captcha-spring-boot-starter</artifactId>
-            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -31,12 +30,11 @@
         <!--<dependency>
             <groupId>com.wudgaby.platform</groupId>
             <artifactId>captcha-dao-redis</artifactId>
-            <version>${project.version}</version>
+            <version>${revision}</version>
         </dependency>-->
         <dependency>
             <groupId>com.wudgaby.platform</groupId>
             <artifactId>swagger-spring-boot-starter</artifactId>
-            <version>${project.version}</version>
         </dependency>
     </dependencies>
 </project>

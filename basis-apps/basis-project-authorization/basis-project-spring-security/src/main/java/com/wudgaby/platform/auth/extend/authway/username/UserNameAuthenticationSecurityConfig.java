@@ -15,10 +15,10 @@ import org.springframework.stereotype.Component;
 import javax.annotation.Resource;
 
 /**
- * @ClassName : UserNameAuthenticationSecurityConfig
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2020/2/3 21:28
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2020/2/3 21:28
  * @Desc :
  */
 @Component

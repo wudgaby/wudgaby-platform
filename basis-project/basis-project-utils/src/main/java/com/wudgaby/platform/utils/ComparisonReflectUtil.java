@@ -1,6 +1,5 @@
 package com.wudgaby.platform.utils;
 
-import cn.hutool.core.util.ReflectUtil;
 import com.google.common.collect.Lists;
 import com.wudgaby.platform.utils.vo.ComparisonFiledInclude;
 import com.wudgaby.platform.utils.vo.FieldDiffVO;
@@ -15,10 +14,10 @@ import java.time.LocalDateTime;
 import java.util.*;
 
 /**
- * @ClassName : ComparisonReflectUtil
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2019/9/27 10:12
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2019/9/27 10:12
  * @Desc :   对象字段内容比较器
  */
 @UtilityClass

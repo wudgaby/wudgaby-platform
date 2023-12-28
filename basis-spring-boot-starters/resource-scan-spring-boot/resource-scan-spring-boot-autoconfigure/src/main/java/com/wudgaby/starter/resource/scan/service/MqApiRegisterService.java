@@ -10,10 +10,10 @@ import org.springframework.messaging.support.MessageBuilder;
 import java.util.Collection;
 
 /**
- * @ClassName : ResourceService
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2019/9/2 17:13
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2019/9/2 17:13
  * @Desc :   
  */
 @Slf4j

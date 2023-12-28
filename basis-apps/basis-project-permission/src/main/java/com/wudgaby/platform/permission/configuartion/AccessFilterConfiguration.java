@@ -8,10 +8,10 @@ import org.springframework.context.annotation.Configuration;
 import javax.servlet.Filter;
 
 /**
- * @ClassName : WebMvcConfiguration
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2019/7/31 16:08
+ 
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2019/7/31 16:08
  * @Desc :   
  */
 @Configuration

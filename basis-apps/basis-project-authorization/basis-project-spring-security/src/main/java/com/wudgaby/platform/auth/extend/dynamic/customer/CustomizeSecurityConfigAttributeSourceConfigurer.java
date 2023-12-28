@@ -8,10 +8,10 @@ import org.springframework.util.Assert;
 import java.util.Objects;
 
 /**
- * @ClassName : CustomizeSecurityConfigAttributeSourceConfigurer
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2020/2/11 12:31
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2020/2/11 12:31
  * @Desc :
  */
 public class CustomizeSecurityConfigAttributeSourceConfigurer {

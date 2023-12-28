@@ -7,10 +7,10 @@ import org.springframework.security.core.SpringSecurityCoreVersion;
 import java.util.Collection;
 
 /**
- * @ClassName : QRCodeAuthenticationToken
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2019/10/8 20:01
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2019/10/8 20:01
  * @Desc :   二维码登录令牌
  */
 public class QRCodeAuthenticationToken extends MyAuthenticationToken {

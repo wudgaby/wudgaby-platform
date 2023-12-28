@@ -4,10 +4,10 @@ import org.springframework.cloud.stream.annotation.Output;
 import org.springframework.messaging.MessageChannel;
 
 /**
- * @ClassName : Resourcesource
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2020/5/7 18:14
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2020/5/7 18:14
  * @Desc :   
  */
 public interface ResourceSource {

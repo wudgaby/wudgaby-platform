@@ -10,10 +10,10 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.mail.javamail.JavaMailSender;
 
 /**
- * @ClassName : MailConfiguration
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2019/4/13/013 14:10
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2019/4/13/013 14:10
  * @Desc :   
  */
 @Configuration

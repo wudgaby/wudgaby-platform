@@ -5,9 +5,9 @@ import com.wudgaby.platform.springext.RequestMatcher;
 import java.util.Collection;
 
 /**
- * @Author :  wudgaby
- * @Version :  since 1.0
- * @Date :  2021/8/8 23:47
+ * @author :  wudgaby
+ * @version :  since 1.0
+ * @date :  2021/8/8 23:47
  * @Desc :
  */
 public interface PermitUrlService {

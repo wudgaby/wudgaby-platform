@@ -12,10 +12,10 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 /**
- * @ClassName : 主要功能:MD5加密 不可逆（Message Digest，消息摘要算法）
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2018/9/19 20:00
+ 主要功能:MD5加密 不可逆（Message Digest，消息摘要算法）
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2018/9/19 20:00
  * @Desc :
  */
 @UtilityClass

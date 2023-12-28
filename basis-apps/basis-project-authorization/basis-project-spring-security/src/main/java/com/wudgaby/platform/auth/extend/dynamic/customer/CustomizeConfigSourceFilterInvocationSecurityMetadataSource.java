@@ -20,10 +20,10 @@ import java.util.Map;
 import java.util.Objects;
 
 /**
- * @ClassName : CustomizeConfigSourceFilterInvocationSecurityMetadataSource
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2020/2/11 12:24
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2020/2/11 12:24
  * @Desc :
  */
 public class CustomizeConfigSourceFilterInvocationSecurityMetadataSource extends DefaultFilterInvocationSecurityMetadataSource {

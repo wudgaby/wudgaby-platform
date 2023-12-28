@@ -7,10 +7,10 @@ import java.io.InputStream;
 import java.util.HashMap;
 
 /**
- * @ClassName : CheckFileFormatUtil
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2020/4/9 10:27
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2020/4/9 10:27
  * @Desc :   
  */
 public class CheckFileFormatUtil {

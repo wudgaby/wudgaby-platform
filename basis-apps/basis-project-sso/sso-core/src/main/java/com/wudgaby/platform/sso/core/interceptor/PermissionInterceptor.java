@@ -29,10 +29,10 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * @ClassName : PermissionInterceptor
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2020/12/4 18:01
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2020/12/4 18:01
  * @Desc :   
  */
 @Slf4j

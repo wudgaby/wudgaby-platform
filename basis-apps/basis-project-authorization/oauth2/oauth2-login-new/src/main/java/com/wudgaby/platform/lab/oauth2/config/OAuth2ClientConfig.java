@@ -8,9 +8,9 @@ import org.springframework.security.oauth2.core.ClientAuthenticationMethod;
 import org.springframework.security.oauth2.core.oidc.IdTokenClaimNames;
 
 /**
- * @Author :  wudgaby
- * @Version :  since 1.0
- * @Date :  2021/9/19 20:15
+ * @author :  wudgaby
+ * @version :  since 1.0
+ * @date :  2021/9/19 20:15
  * @Desc :
  */
 //@Configuration

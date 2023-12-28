@@ -14,10 +14,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * @ClassName : LoggerController
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2020/6/4 15:42
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2020/6/4 15:42
  * @Desc :
  */
 @Api(value = "日志演示", tags = "日志")

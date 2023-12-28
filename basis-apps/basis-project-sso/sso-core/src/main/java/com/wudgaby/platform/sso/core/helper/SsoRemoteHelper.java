@@ -27,10 +27,10 @@ import java.util.List;
 import java.util.Optional;
 
 /**
- * @ClassName : SsoRemoteHelper
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2020/11/18 1:27
+ 
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2020/11/18 1:27
  * @Desc :   
  */
 @Component

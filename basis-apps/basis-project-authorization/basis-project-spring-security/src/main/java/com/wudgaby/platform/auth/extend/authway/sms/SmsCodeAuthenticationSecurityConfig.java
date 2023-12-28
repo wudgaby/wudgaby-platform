@@ -14,10 +14,10 @@ import org.springframework.stereotype.Component;
 import javax.annotation.Resource;
 
 /**
- * @ClassName : SmsCodeAuthenticationSecurityConfig
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2020/2/3 21:28
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2020/2/3 21:28
  * @Desc :  1. 先经过 SmsAuthenticationFilter，构造一个没有鉴权的 SmsAuthenticationToken，然后交给 AuthenticationManager 处理。
  *          2. AuthenticationManager 通过 for-each 挑选出一个合适的 provider 进行处理，当然我们希望这个 provider 要是 SmsAuthenticationProvider。
  *          3. 验证通过后，重新构造一个有鉴权的 SmsAuthenticationToken，并返回给 SmsAuthenticationFilter。

@@ -12,10 +12,10 @@ import java.security.cert.Certificate;
 import java.security.cert.CertificateFactory;
 
 /**
- * @ClassName : RSAKeyToolUtil
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2018/9/19/019 23:05
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2018/9/19/019 23:05
  * @Desc :
  */
 @UtilityClass

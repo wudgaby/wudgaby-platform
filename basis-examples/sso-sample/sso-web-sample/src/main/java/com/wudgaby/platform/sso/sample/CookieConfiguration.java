@@ -8,9 +8,9 @@ import org.springframework.session.web.http.CookieSerializer;
 import org.springframework.session.web.http.DefaultCookieSerializer;
 
 /**
- * @Author :  wudgaby
- * @Version :  since 1.0
- * @Date :  2021/9/16 9:37
+ * @author :  wudgaby
+ * @version :  since 1.0
+ * @date :  2021/9/16 9:37
  * @Desc :
  */
 @Configuration

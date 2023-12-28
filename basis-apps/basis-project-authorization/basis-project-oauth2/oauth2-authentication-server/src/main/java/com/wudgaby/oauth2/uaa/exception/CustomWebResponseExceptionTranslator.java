@@ -6,10 +6,10 @@ import org.springframework.security.oauth2.provider.error.WebResponseExceptionTr
 import org.springframework.stereotype.Component;
 
 /**
- * @ClassName : CustomWebResponseExceptionTranslator
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2019/10/9 12:11
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2019/10/9 12:11
  * @Desc :
  */
 @Component("customWebResponseExceptionTranslator")

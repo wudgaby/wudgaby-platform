@@ -3,10 +3,10 @@ package com.wudgaby.logger.api.annotation;
 import java.lang.annotation.*;
 
 /**
- * @ClassName : AccessLogger
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2020.06.04
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2020.06.04
  * @Desc :   访问日志注解
  */
 @Target(ElementType.METHOD)

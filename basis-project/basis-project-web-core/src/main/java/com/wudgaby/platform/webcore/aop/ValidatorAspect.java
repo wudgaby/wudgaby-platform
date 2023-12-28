@@ -15,10 +15,10 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Map;
 
 /**
- * @ClassName : ValidatorAspect
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2018/9/24/024 1:03
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2018/9/24/024 1:03
  * @Desc : controller验证标记
  */
 

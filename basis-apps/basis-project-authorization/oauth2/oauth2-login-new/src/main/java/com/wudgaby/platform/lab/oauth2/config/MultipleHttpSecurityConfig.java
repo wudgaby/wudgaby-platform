@@ -16,9 +16,9 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.Map;
 
 /**
- * @Author :  wudgaby
- * @Version :  since 1.0
- * @Date :  2021/9/17 10:27
+ * @author :  wudgaby
+ * @version :  since 1.0
+ * @date :  2021/9/17 10:27
  * @Desc :
  */
 @Configuration

@@ -8,10 +8,10 @@ import java.time.format.DateTimeFormatter;
 import java.util.UUID;
 
 /**
- * @ClassName : OpenAppUtils
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2020/12/1 15:42
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2020/12/1 15:42
  * @Desc :   appid, appsecret 生成工具
  */
 @UtilityClass

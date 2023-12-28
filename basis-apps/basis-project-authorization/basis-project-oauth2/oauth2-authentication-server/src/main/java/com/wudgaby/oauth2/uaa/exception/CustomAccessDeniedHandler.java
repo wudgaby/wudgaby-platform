@@ -16,10 +16,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * @ClassName : CustomAccessDeniedHandler
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2019/10/9 11:41
+ 
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2019/10/9 11:41
  * @Desc :
  */
 @Slf4j

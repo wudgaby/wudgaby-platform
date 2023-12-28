@@ -5,9 +5,9 @@ import org.springframework.context.annotation.ConditionContext;
 import org.springframework.core.type.AnnotatedTypeMetadata;
 
 /**
- * @Author :  wudgaby
- * @Version :  since 1.0
- * @Date :  2021/5/2 11:37
+ * @author :  wudgaby
+ * @version :  since 1.0
+ * @date :  2021/5/2 11:37
  * @Desc :
  */
 public class SwaggerCondition implements Condition {

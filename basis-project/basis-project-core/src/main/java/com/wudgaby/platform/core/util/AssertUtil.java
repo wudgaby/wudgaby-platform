@@ -10,10 +10,10 @@ import java.util.Collection;
 import java.util.Map;
 
 /**
- * @ClassName : AssertUtil
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2020/9/11 21:15
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2020/9/11 21:15
  * @Desc :   断言<br> from hutool
  *  * 断言某些对象或值是否符合规定，否则抛出异常。经常用于做变量检查
  */

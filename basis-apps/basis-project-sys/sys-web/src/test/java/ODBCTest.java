@@ -4,10 +4,10 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 /**
- * @ClassName : ODBCTest
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2020/11/13 10:00
+ 
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2020/11/13 10:00
  * @Desc :   
  */
 public class ODBCTest {

@@ -28,10 +28,10 @@ import java.nio.charset.StandardCharsets;
 import static com.wudgaby.platform.sso.core.constant.SsoConst.PART_SESSION_TOKEN_ATTR;
 
 /**
- * @ClassName : SsoTokenInterceptor
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2020/6/1 18:21
+ 
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2020/6/1 18:21
  * @Desc : 设计不对
  */
 @Slf4j

@@ -1,6 +1,5 @@
 package com.wudgaby.swagger.configuration;
 
-import cn.hutool.core.util.RandomUtil;
 import com.google.common.collect.Lists;
 import lombok.AllArgsConstructor;
 import org.apache.commons.lang3.StringUtils;
@@ -24,9 +23,9 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 /**
- * @Author :  wudgaby
- * @Version :  since 1.0
- * @Date :  2021/5/2 11:21
+ * @author :  wudgaby
+ * @version :  since 1.0
+ * @date :  2021/5/2 11:21
  * @Desc : https://github.com/SpringForAll/spring-boot-starter-swagger/blob/1.9.1.RELEASE/README.md
  *
  */

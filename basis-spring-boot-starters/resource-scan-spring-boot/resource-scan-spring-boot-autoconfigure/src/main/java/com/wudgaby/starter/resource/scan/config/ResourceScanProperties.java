@@ -9,9 +9,9 @@ import org.springframework.validation.annotation.Validated;
 import javax.validation.constraints.NotNull;
 
 /**
- * @Author :  wudgaby
- * @Version :  since 1.0
- * @Date :  2021/5/2 13:49
+ * @author :  wudgaby
+ * @version :  since 1.0
+ * @date :  2021/5/2 13:49
  * @Desc :
  */
 @Data

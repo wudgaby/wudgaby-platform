@@ -10,10 +10,10 @@ import static java.lang.annotation.ElementType.*;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
 /**
- * @ClassName : Constant
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2019/5/29/029 11:16
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2019/5/29/029 11:16
  * @Desc :
  */
 @Documented

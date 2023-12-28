@@ -2,9 +2,9 @@ import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 /**
- * @Author :  wudgaby
- * @Version :  since 1.0
- * @Date :  2021/9/20 4:15
+ * @author :  wudgaby
+ * @version :  since 1.0
+ * @date :  2021/9/20 4:15
  * @Desc :
  */
 public class PasswordEncodeTest {

@@ -12,10 +12,10 @@ import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.web.access.AccessDeniedHandler;
 
 /**
- * @ClassName : ResourceServerConfiguration
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2019/9/24 19:06
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2019/9/24 19:06
  * @Desc :
  */
 @Slf4j

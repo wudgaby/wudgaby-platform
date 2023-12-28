@@ -5,8 +5,7 @@
     <parent>
         <artifactId>basis-apps</artifactId>
         <groupId>com.wudgaby.platform</groupId>
-        <version>${revision}</version>
-        <relativePath>../pom.xml</relativePath>
+        <version>1.0.0</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
@@ -17,6 +16,5 @@
     <modules>
         <module>basis-project-spring-security</module>
         <module>basis-project-oauth2</module>
-        <module>oauth2</module>
     </modules>
 </project>

@@ -2,7 +2,6 @@ package com.wudgaby.platform.core.model.dto;
 
 import cn.hutool.core.collection.CollUtil;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.google.common.base.Joiner;
 import com.google.common.collect.Lists;
 import lombok.Data;
 
@@ -11,10 +10,10 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 /**
- * @ClassName : ValidationErrorDTO
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2019/5/29/029 11:07
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2019/5/29/029 11:07
  * @Desc :
  */
 @Data

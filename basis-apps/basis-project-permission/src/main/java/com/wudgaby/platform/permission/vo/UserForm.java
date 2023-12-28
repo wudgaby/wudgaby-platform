@@ -10,9 +10,9 @@ import org.hibernate.validator.constraints.Length;
 import javax.validation.constraints.NotBlank;
 
 /**
- * @Author :  wudgaby
- * @Version :  since 1.0
- * @Date :  2021/7/17 0:14
+ * @author :  wudgaby
+ * @version :  since 1.0
+ * @date :  2021/7/17 0:14
  * @Desc :
  */
 @ApiModel("用户表单")

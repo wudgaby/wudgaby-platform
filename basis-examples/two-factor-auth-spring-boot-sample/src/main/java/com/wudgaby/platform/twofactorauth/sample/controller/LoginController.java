@@ -19,9 +19,9 @@ import java.io.OutputStream;
 import java.util.Map;
 
 /**
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2020/12/9 23:07
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2020/12/9 23:07
  * @Desc :
  */
 @Api(tags="2FA认证")

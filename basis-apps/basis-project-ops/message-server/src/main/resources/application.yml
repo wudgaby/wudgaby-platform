@@ -1,0 +1,52 @@
+server:
+  port: 12540
+
+spring:
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+    default-property-inclusion: non_null
+
+  dinger:
+    project-id: ${spring.application.name}
+    dingers:
+      # 使用钉钉机器人, 请根据自己机器人配置信息进行修改
+      dingtalk:
+        token-id: xx
+        secret: xx
+
+  mail:
+    host: smtp.qq.com
+    username: 123456@qq.com
+    password: ttqopqgnchsobjab
+    properties.mail.smtp.auth: true
+    properties.mail.starttls.enable: true
+    properties.mail.starttls.required: true
+    test-connection: false
+
+sms:
+  app-id: 123
+  app-key: xx
+  sign: xx
+
+alarm:
+  send-mail: false
+  sendTo:
+    - non-existent@domain.com
+
+#极光账号
+jpush:
+  app-key: 123456789123456789123456
+  app-secure: 123456789123456789123456
+
+#阿里账号
+ali:
+  accessKeyId: xx
+  accessKeySecret: xx
+
+#阿里推送
+ali-push:
+  app-key: 123
+  app-secure: xx
+  #ios才有
+  apns-env: DEV

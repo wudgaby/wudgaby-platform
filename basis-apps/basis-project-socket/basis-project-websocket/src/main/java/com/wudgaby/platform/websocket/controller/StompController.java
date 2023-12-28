@@ -19,10 +19,10 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * @ClassName : StompController
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2020/6/26 5:08
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2020/6/26 5:08
  * @Desc :   https://www.cnblogs.com/jmcui/p/8999998.html
  */
 @Slf4j

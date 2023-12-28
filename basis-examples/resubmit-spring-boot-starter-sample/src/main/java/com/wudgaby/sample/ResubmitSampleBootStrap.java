@@ -13,15 +13,12 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 /**
- * @ClassName : ResubmitSample
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2021/3/14 0:46
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2021/3/14 0:46
  * @Desc :
  */
-@SpringBootApplication(exclude={
-        RedisAutoConfiguration.class
-})
 @RestController
 @RestControllerAdvice
 public class ResubmitSampleBootStrap {

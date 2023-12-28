@@ -15,10 +15,10 @@ import java.util.Collection;
 import java.util.Set;
 
 /**
- * @ClassName : UserInfo
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2020/4/23 10:01
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2020/4/23 10:01
  * @Desc :
  */
 

@@ -6,10 +6,10 @@ import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 
 /**
- * @ClassName : FieldDiffVO
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2019/9/27 10:16
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2019/9/27 10:16
  * @Desc :   
  */
 @Data

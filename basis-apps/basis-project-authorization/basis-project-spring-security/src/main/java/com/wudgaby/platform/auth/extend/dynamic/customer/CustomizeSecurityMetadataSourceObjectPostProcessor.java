@@ -4,10 +4,10 @@ import org.springframework.security.config.annotation.ObjectPostProcessor;
 import org.springframework.security.web.access.intercept.FilterSecurityInterceptor;
 
 /**
- * @ClassName : CustomizeSecurityMetadataSourceObjectPostProcessor
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2020/2/11 12:32
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2020/2/11 12:32
  * @Desc :
  */
 public class CustomizeSecurityMetadataSourceObjectPostProcessor implements ObjectPostProcessor<FilterSecurityInterceptor> {

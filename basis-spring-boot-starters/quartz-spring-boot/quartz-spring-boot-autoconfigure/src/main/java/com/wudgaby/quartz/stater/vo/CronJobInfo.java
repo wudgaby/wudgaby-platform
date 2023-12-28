@@ -1,14 +1,15 @@
 package com.wudgaby.quartz.stater.vo;
 
-import lombok.*;
-import lombok.experimental.SuperBuilder;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 
 import java.util.Map;
 
 /**
  * @author wudgaby
  * @version V1.0
- * @ClassName: CronJobInfo
+ 
  * @description: 
  * @date 2018/9/20 09:30
  */

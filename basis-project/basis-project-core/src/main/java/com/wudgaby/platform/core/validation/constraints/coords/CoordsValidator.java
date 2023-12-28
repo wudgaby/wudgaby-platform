@@ -4,10 +4,10 @@ import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
 /**
- * @ClassName : CoordsValidator
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2020/6/15 1:41
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2020/6/15 1:41
  * @Desc :
  */
 public class CoordsValidator implements ConstraintValidator<Coords, String> {

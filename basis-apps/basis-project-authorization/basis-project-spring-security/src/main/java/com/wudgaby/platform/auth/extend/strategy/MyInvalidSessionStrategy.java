@@ -14,10 +14,10 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * @ClassName : MyInvalidSessionStrategy
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2020/2/5 20:56
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2020/2/5 20:56
  * @Desc :
  */
 public class MyInvalidSessionStrategy implements InvalidSessionStrategy {

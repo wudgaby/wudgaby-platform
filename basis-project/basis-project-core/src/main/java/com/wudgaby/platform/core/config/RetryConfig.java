@@ -7,10 +7,10 @@ import org.springframework.retry.policy.SimpleRetryPolicy;
 import org.springframework.retry.support.RetryTemplate;
 
 /**
- * @ClassName : RetryConfig
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2020/6/16 23:51
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2020/6/16 23:51
  * @Desc :
  */
 @Configuration

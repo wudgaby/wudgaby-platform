@@ -15,10 +15,10 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * @ClassName : SmsCodeAuthenticationProcessingFilter
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2020/2/3 20:05
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2020/2/3 20:05
  * @Desc :
  */
 @Data

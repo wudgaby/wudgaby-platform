@@ -24,10 +24,10 @@ import java.util.Date;
 import java.util.Optional;
 
 /**
- * @ClassName : ChatEndpoint
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2020/6/25 20:44
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2020/6/25 20:44
  * @Desc :   
  */
 @Slf4j

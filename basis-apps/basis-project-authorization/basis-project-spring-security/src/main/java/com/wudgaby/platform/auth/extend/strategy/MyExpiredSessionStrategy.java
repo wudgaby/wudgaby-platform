@@ -12,10 +12,10 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * @ClassName : MyExpiredSessionStrategy
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2020/2/3 18:42
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2020/2/3 18:42
  * @Desc :
  */
 public class MyExpiredSessionStrategy implements SessionInformationExpiredStrategy {

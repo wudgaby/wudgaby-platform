@@ -5,7 +5,9 @@ import org.springframework.boot.env.EnvironmentPostProcessor;
 import org.springframework.boot.env.PropertySourceLoader;
 import org.springframework.core.env.ConfigurableEnvironment;
 import org.springframework.core.env.PropertySource;
-import org.springframework.core.io.*;
+import org.springframework.core.io.DefaultResourceLoader;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.ResourceLoader;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.core.io.support.ResourcePatternResolver;
 import org.springframework.core.io.support.SpringFactoriesLoader;
@@ -16,10 +18,10 @@ import java.io.IOException;
 import java.util.List;
 
 /**
- * @ClassName : RedisEnvironmentPostProcessor
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2019/4/13/013 18:46
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2019/4/13/013 18:46
  * @Desc :
  */
 @Component

@@ -10,9 +10,9 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * @Author :  wudgaby
- * @Version :  since 1.0
- * @Date :  2021/9/16 11:39
+ * @author :  wudgaby
+ * @version :  since 1.0
+ * @date :  2021/9/16 11:39
  * @Desc :
  */
 //@Configuration

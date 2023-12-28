@@ -19,10 +19,10 @@ import org.springframework.stereotype.Component;
 import java.lang.reflect.Method;
 
 /**
- * @ClassName : DataScope
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2020/4/9 18:32
+ 
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2020/4/9 18:32
  * @Desc :   数据范围权限切面
  */
 @Aspect

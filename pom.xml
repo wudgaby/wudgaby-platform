@@ -46,7 +46,7 @@
         <java.target.version>1.8</java.target.version>
 
         <!-- Project revision -->
-        <revision>1.0.7-SNAPSHOT</revision>
+        <revision>1.0.8-SNAPSHOT</revision>
         <basis-project.version>${revision}</basis-project.version>
         <basis-starters.version>${revision}</basis-starters.version>
 
@@ -57,6 +57,15 @@
             -server -Xms256m -Xmx512m -Dfile.encoding=UTF-8 -Djava.net.preferIPv4Stack=true
         </argline>
         <arguments/>
+
+        <hutool.version>5.7.19</hutool.version>
+        <guava.version>28.0-jre</guava.version>
+        <commons-math.version>3.6.1</commons-math.version>
+        <commons-collections.version>4.1</commons-collections.version>
+        <commons-beanutils.version>1.9.3</commons-beanutils.version>
+        <thread-local.version>2.11.4</thread-local.version>
+        <commons-io.version>2.6</commons-io.version>
+        <reflections.version>0.10.2</reflections.version>
 
         <!-- Maven Plugin Versions -->
         <maven-compiler-plugin.version>3.6.0</maven-compiler-plugin.version>
@@ -93,17 +102,10 @@
         <retrofit-starter.version>2.2.9</retrofit-starter.version>
 
         <!-- utils  -->
-
-        <hutool.version>5.7.19</hutool.version>
-        <guava.version>28.0-jre</guava.version>
         <gson.version>2.9.0</gson.version>
         <email.version>1.4</email.version>
 
         <!-- https://commons.apache.org/ -->
-        <commons-math.version>3.6.1</commons-math.version>
-        <commons-collections.version>4.1</commons-collections.version>
-        <commons-beanutils.version>1.9.3</commons-beanutils.version>
-        <commons-io.version>2.6</commons-io.version>
         <commons-chain.version>1.2</commons-chain.version>
         <commons-fileupload.version>1.4</commons-fileupload.version>
         <commons-text.version>1.8</commons-text.version>
@@ -114,7 +116,7 @@
         <tika-version>1.24</tika-version>
         <java-mail.version>1.4.7</java-mail.version>
         <easyexcel.version>2.1.6</easyexcel.version>
-        <thread-local.version>2.11.4</thread-local.version>
+
         <redisson.starter.version>3.11.0</redisson.starter.version>
 
         <!--swagger-->
@@ -138,7 +140,6 @@
         <minio.version>8.0.3</minio.version>
         <shedlock.version>4.30.0</shedlock.version>
         <poi-tl.version>1.11.0</poi-tl.version>
-        <reflections.version>0.10.2</reflections.version>
 
         <spring-boot-admin.version>2.3.1</spring-boot-admin.version>
     </properties>
@@ -146,8 +147,6 @@
     <modules>
         <module>basis-project</module>
         <module>basis-spring-boot-starters</module>
-        <module>basis-examples</module>
-        <module>basis-apps</module>
         <module>basis-project-dependencies</module>
     </modules>
 
@@ -202,7 +201,6 @@
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
-            <version>${commons-lang3.version}</version>
         </dependency>
 
         <dependency>
@@ -237,13 +235,11 @@
         <dependency>
             <groupId>org.aspectj</groupId>
             <artifactId>aspectjweaver</artifactId>
-            <version>${aspectj.version}</version>
         </dependency>
 
         <dependency>
             <groupId>commons-codec</groupId>
             <artifactId>commons-codec</artifactId>
-            <version>${commons-codec.version}</version>
         </dependency>
 
         <dependency>

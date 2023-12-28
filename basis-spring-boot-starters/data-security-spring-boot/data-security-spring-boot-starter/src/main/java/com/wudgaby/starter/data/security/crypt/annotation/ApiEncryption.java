@@ -3,10 +3,10 @@ package com.wudgaby.starter.data.security.crypt.annotation;
 import java.lang.annotation.*;
 
 /**
- * @ClassName : ApiEncryption
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2023.07.04
+ 
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2023.07.04
  * @Desc : 接口数据加密
  */
 @Documented

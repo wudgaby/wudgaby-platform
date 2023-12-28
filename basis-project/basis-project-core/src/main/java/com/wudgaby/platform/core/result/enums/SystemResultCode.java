@@ -4,10 +4,10 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 /**
- * @ClassName : SystemResultCode
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2018/9/26/026 22:05
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2018/9/26/026 22:05
  * @Desc :
  */
 @Getter

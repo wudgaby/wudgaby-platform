@@ -8,10 +8,10 @@ import java.lang.reflect.Method;
 import java.util.Map;
 
 /**
- * @ClassName : AccessLoggerInfo
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2020/6/4 12:14
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2020/6/4 12:14
  * @Desc :
  */
 @Data

@@ -6,10 +6,10 @@ import org.springframework.context.annotation.Import;
 import java.lang.annotation.*;
 
 /**
- * @ClassName : EnableCodeGenUI
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2020/4/3 10:46
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2020/4/3 10:46
  * @Desc :
  */
 @Retention(RetentionPolicy.RUNTIME)

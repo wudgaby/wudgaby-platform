@@ -16,10 +16,10 @@ import java.io.IOException;
 import java.io.InputStream;
 
 /**
- * @ClassName : AjaxUsernamePasswordAuthenticationFilter
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2020/2/14 14:48
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2020/2/14 14:48
  * @Desc :
  */
 public class AjaxUsernamePasswordAuthenticationFilter extends AbstractAuthenticationProcessingFilter {

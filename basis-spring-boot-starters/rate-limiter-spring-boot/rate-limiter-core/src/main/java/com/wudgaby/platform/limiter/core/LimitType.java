@@ -1,10 +1,10 @@
 package com.wudgaby.platform.limiter.core;
 
 /**
- * @ClassName : LimitType
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2020/4/30 21:01
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2020/4/30 21:01
  * @Desc :
  */
 public enum LimitType {

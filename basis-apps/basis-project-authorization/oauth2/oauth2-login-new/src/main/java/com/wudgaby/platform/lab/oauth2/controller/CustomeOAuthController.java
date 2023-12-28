@@ -12,9 +12,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import java.util.Map;
 
 /**
- * @Author :  wudgaby
- * @Version :  since 1.0
- * @Date :  2021/9/23 15:13
+ * @author :  wudgaby
+ * @version :  since 1.0
+ * @date :  2021/9/23 15:13
  * @Desc :
  */
 @Slf4j

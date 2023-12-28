@@ -18,10 +18,10 @@ import javax.websocket.server.HandshakeRequest;
 import javax.websocket.server.ServerEndpointConfig;
 
 /**
- * @ClassName : JavaxWebSocketConfig
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2020/6/27 1:37
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2020/6/27 1:37
  * @Desc :   http://www.cnblogs.com/zhuxiaojie/p/6238826.html
  * 由于websocket的协议与Http协议是不同的，
  * 所以造成了无法直接拿到session。

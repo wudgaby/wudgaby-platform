@@ -15,10 +15,10 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.util.UrlPathHelper;
 
 /**
- * @ClassName : w
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2020/6/25 0:08
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2020/6/25 0:08
  * @Desc :
  */
 @Configuration

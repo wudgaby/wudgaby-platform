@@ -4,10 +4,10 @@ import java.lang.annotation.*;
 import java.util.concurrent.TimeUnit;
 
 /**
- * @ClassName : RepeatSubmit
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2019/11/14 18:22
+ 
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2019/11/14 18:22
  * @Desc :   
  */
 @Target(ElementType.METHOD)

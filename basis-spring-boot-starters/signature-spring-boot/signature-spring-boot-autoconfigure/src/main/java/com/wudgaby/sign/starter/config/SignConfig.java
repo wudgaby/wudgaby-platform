@@ -11,10 +11,10 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * @ClassName : SignConfig
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2020/6/17 0:35
+ 
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2020/6/17 0:35
  * @Desc :   
  */
 @Configuration

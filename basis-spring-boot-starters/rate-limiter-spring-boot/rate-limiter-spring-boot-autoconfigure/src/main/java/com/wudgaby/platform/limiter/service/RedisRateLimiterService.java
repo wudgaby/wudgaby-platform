@@ -16,10 +16,10 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 /**
- * @ClassName : RedisRateLimiterService
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2020/4/30 23:49
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2020/4/30 23:49
  * @Desc :   
  */
 @Slf4j

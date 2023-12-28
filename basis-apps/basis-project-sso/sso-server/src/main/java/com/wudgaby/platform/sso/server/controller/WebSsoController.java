@@ -32,10 +32,10 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 /**
- * @ClassName : AppSsoController
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2020/6/1 18:40
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2020/6/1 18:40
  * @Desc :   TODO
  */
 @Api(tags = "web单点")

@@ -3,10 +3,10 @@ package com.wudgaby.platform.utils.encryption;
 import lombok.experimental.UtilityClass;
 
 /**
- * @ClassName : HexUtil
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2018/9/19/019 20:03
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2018/9/19/019 20:03
  * @Desc :
  */
 @UtilityClass

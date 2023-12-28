@@ -38,10 +38,10 @@ import java.lang.reflect.Method;
 import java.util.*;
 
 /**
- * @ClassName : RequestMappingScanListener
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2019/8/29 15:30
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2019/8/29 15:30
  * @Desc :  启动后扫描所有接口并注册
  * 层级关系: menu->button->api
  */

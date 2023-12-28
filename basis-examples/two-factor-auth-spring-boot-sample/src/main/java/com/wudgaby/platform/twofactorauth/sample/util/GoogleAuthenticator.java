@@ -20,10 +20,10 @@ import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 
 /**
- * @ClassName : GoogleAuthenticator
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2020/12/9 17:08
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2020/12/9 17:08
  * @Desc :   
  */
 public class GoogleAuthenticator {

@@ -1,16 +1,12 @@
 package com.wudgaby.platform.core.annotation;
 
-import java.lang.annotation.Documented;
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
+import java.lang.annotation.*;
 
 /**
- * @ClassName : OriginalResultView
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2018/9/26/026 22:23
+ 
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2018/9/26/026 22:23
  * @Desc :  controller方法返回标记,
  */
 @Documented

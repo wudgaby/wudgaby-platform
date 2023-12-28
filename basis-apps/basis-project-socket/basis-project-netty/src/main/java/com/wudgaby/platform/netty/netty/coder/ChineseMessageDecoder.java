@@ -8,10 +8,10 @@ import java.nio.charset.StandardCharsets;
 import java.util.List;
 
 /**
- * @ClassName : ChineseMessageDecoder
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2020/6/28 11:14
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2020/6/28 11:14
  * @Desc :   https://www.cnblogs.com/throwable/p/11619080.html
  */
 // 解码器

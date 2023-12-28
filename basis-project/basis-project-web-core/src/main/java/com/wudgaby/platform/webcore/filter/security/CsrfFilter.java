@@ -15,10 +15,10 @@ import java.io.IOException;
 import java.util.Optional;
 
 /**
- * @ClassName : CsrfFilter
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2018/10/5/005 23:00
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2018/10/5/005 23:00
  * @Desc :   跨站请求伪造
  */
 @Slf4j

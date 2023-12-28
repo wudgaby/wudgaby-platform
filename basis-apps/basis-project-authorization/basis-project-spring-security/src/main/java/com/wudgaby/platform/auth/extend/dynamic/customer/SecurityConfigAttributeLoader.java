@@ -8,10 +8,10 @@ import java.util.Collection;
 import java.util.LinkedHashMap;
 
 /**
- * @ClassName : SecurityConfigAttributeLoader
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2020/2/11 12:29
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2020/2/11 12:29
  * @Desc :
  */
 public interface SecurityConfigAttributeLoader {

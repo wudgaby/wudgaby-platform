@@ -6,10 +6,10 @@ import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 
 /**
- * @ClassName : UserVo
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2020/6/26 21:22
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2020/6/26 21:22
  * @Desc :
  */
 @Data

@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 import static cloud.tianai.captcha.generator.impl.StandardSliderImageCaptchaGenerator.DEFAULT_SLIDER_IMAGE_TEMPLATE_PATH;
 
 /**
- * @Author: 天爱有情
+ * @author: 天爱有情
  * @date 2022/7/11 14:22
  * @Description 负责模板和背景图存储的地方
  */

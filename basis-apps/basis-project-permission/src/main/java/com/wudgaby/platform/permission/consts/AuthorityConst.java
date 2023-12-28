@@ -3,9 +3,9 @@ package com.wudgaby.platform.permission.consts;
 import lombok.experimental.UtilityClass;
 
 /**
- * @Author :  wudgaby
- * @Version :  since 1.0
- * @Date :  2021/7/17 15:03
+ * @author :  wudgaby
+ * @version :  since 1.0
+ * @date :  2021/7/17 15:03
  * @Desc :
  */
 @UtilityClass

@@ -5,9 +5,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import springfox.documentation.swagger2.annotations.EnableSwagger2WebMvc;
 
 /**
- * @Author :  wudgaby
- * @Version :  since 1.0
- * @Date :  2021/5/11 19:22
+ * @author :  wudgaby
+ * @version :  since 1.0
+ * @date :  2021/5/11 19:22
  * @Desc :
  */
 

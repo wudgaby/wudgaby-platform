@@ -11,10 +11,10 @@ import sample.vo.Order;
 import springfox.documentation.swagger2.annotations.EnableSwagger2WebMvc;
 
 /**
- * @ClassName : SignSampleBootstrap
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2020/6/20 1:45
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2020/6/20 1:45
  * @Desc :
  */
 @Slf4j

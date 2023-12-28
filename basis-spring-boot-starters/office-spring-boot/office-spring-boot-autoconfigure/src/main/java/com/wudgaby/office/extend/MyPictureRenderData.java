@@ -11,9 +11,9 @@ import java.io.InputStream;
 import java.util.Map;
 
 /**
- * @Author :  wudgaby
- * @Version :  since 1.0
- * @Date :  2021/12/10 0010 14:03
+ * @author :  wudgaby
+ * @version :  since 1.0
+ * @date :  2021/12/10 0010 14:03
  * @Desc :
  */
 @Data

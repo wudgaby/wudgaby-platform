@@ -6,7 +6,7 @@
     <parent>
         <groupId>com.wudgaby.platform</groupId>
         <artifactId>basis-examples</artifactId>
-        <version>${revision}</version>
+        <version>1.0.0</version>
     </parent>
 
     <artifactId>access-limiter-spring-boot-sample</artifactId>
@@ -23,7 +23,6 @@
         <dependency>
             <groupId>com.wudgaby.platform</groupId>
             <artifactId>access-limiter-spring-boot-starter</artifactId>
-            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>

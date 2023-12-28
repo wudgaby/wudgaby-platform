@@ -7,10 +7,10 @@ import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
- * @ClassName : AuthControllerTest
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2020/4/23 9:16
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2020/4/23 9:16
  * @Desc :
  */
 class AuthControllerTest {

@@ -5,8 +5,7 @@
     <parent>
         <artifactId>basis-project-sso</artifactId>
         <groupId>com.wudgaby.platform</groupId>
-        <version>${revision}</version>
-        <relativePath>../pom.xml</relativePath>
+        <version>1.0.0</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
@@ -25,17 +24,10 @@
         <dependency>
             <groupId>com.wudgaby.platform</groupId>
             <artifactId>basis-project-core</artifactId>
-            <version>${revision}</version>
         </dependency>
         <dependency>
             <groupId>com.wudgaby.platform</groupId>
             <artifactId>redis-spring-boot-starter</artifactId>
-            <version>${basis-starters.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.wudgaby.platform</groupId>
-            <artifactId>basis-project-utils</artifactId>
-            <version>${revision}</version>
         </dependency>
         <dependency>
             <groupId>commons-codec</groupId>

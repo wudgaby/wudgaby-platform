@@ -7,10 +7,10 @@ import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 /**
- * @ClassName : w
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2020/6/25 0:08
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2020/6/25 0:08
  * @Desc :
  */
 @Configuration

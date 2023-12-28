@@ -12,10 +12,10 @@ import java.time.LocalDateTime;
 import java.util.Date;
 
 /**
- * @ClassName : DateRangeForm
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2019/7/22 18:06
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2019/7/22 18:06
  * @Desc :   
  */
 @Data

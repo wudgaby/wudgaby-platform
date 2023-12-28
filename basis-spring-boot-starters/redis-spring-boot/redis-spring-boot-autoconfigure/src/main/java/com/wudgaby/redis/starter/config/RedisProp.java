@@ -9,10 +9,10 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
- * @ClassName : RedisProperties
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2019/7/16 14:38
+ 
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2019/7/16 14:38
  * @Desc :
  */
 @Data

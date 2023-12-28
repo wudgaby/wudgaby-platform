@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
- * @ClassName : RedisDemoBootStrap
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2020/5/7 12:36
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2020/5/7 12:36
  * @Desc :
  */
 @SpringBootApplication(scanBasePackages = "com.wudgaby")

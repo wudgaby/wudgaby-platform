@@ -9,10 +9,10 @@ import org.springframework.context.ApplicationEventPublisherAware;
 import org.springframework.stereotype.Component;
 
 /**
- * @ClassName : ApplicationContextProvider
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2019/10/23 20:02
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2019/10/23 20:02
  * @Desc :   获取ApplicationContent
  */
 @Component

@@ -3,10 +3,10 @@ package com.wudgaby.platform.utils.vo;
 import java.lang.annotation.*;
 
 /**
- * @ClassName : ComparisonInclude
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2019/9/27 11:07
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2019/9/27 11:07
  * @Desc :   TODO
  */
 @Target(ElementType.FIELD)

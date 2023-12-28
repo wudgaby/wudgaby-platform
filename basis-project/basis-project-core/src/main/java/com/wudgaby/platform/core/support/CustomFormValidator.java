@@ -16,10 +16,10 @@ import java.util.Map;
 import java.util.Set;
 
 /**
- * @ClassName : FormValidtor
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2018/9/25/025 20:55
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2018/9/25/025 20:55
  * @Desc :
  */
 @Slf4j

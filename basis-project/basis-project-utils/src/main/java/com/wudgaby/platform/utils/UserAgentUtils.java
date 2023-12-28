@@ -6,10 +6,10 @@ import lombok.experimental.UtilityClass;
 import java.util.List;
 
 /**
- * @ClassName : UserAgentUtils
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2020/4/1 11:17
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2020/4/1 11:17
  * @Desc :
  */
 @UtilityClass

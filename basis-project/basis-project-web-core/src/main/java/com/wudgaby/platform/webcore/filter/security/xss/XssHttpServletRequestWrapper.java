@@ -15,10 +15,10 @@ import java.util.Optional;
 import java.util.Vector;
 
 /**
- * @ClassName : XssHttpServletRequestWrapper
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2018/10/5/005 19:58
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2018/10/5/005 19:58
  * @Desc :
  */
 @Slf4j

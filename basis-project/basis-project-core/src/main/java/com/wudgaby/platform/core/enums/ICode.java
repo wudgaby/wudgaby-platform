@@ -4,10 +4,10 @@ import java.util.Arrays;
 import java.util.Optional;
 
 /**
- * @ClassName : ICode
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2019/7/10 9:48
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2019/7/10 9:48
  * @Desc :   枚举接口
  */
 public interface ICode<T> {

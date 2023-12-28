@@ -11,10 +11,10 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * @ClassName : SwaggerProperties
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2020/5/9 15:02
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2020/5/9 15:02
  * @Desc :   https://github.com/SpringForAll/spring-boot-starter-swagger/blob/1.9.1.RELEASE/README.md
  */
 @Data

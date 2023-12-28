@@ -21,10 +21,10 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 
 /**
- * @ClassName : AuthInterceptor
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2020/6/1 18:21
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2020/6/1 18:21
  * @Desc :
  */
 @Slf4j

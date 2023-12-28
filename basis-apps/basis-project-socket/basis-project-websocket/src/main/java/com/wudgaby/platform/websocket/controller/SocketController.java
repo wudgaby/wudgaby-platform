@@ -13,10 +13,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import javax.servlet.http.HttpServletRequest;
 
 /**
- * @ClassName : SocketController
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2020/6/26 3:16
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2020/6/26 3:16
  * @Desc :   
  */
 @Controller

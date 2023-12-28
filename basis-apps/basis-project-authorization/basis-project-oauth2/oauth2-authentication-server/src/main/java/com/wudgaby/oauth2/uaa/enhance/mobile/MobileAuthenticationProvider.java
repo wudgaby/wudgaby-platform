@@ -11,10 +11,10 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
 /**
- * @ClassName : MobileAuthenticationProvider
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2019/10/8 20:04
+ 
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2019/10/8 20:04
  * @Desc : 手机号登录校验逻辑
  */
 @Slf4j

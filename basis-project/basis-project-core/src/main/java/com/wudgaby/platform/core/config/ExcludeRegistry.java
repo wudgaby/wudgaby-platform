@@ -10,10 +10,10 @@ import java.util.List;
 import java.util.Set;
 
 /**
- * @ClassName : SecureRegistry
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2019/6/289:26
+ 
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2019/6/289:26
  * @Desc :  拦截排除设置
  */
 @Data

@@ -23,10 +23,10 @@ import java.util.Arrays;
 import java.util.concurrent.TimeUnit;
 
 /**
- * @ClassName : SecurityBeanConfig
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2020/2/5 20:02
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2020/2/5 20:02
  * @Desc :   
  */
 @Configuration

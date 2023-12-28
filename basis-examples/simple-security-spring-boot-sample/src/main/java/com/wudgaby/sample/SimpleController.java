@@ -7,9 +7,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * @Author :  wudgaby
- * @Version :  since 1.0
- * @Date :  2022/1/10 0010 17:34
+ * @author :  wudgaby
+ * @version :  since 1.0
+ * @date :  2022/1/10 0010 17:34
  * @Desc :
  */
 @AnonymousAccess

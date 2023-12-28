@@ -15,9 +15,9 @@ import org.springframework.data.redis.listener.RedisMessageListenerContainer;
 import org.springframework.data.redis.listener.adapter.MessageListenerAdapter;
 
 /**
- * @Author :  wudgaby
- * @Version :  since 1.0
- * @Date :  2021/7/24 15:21
+ * @author :  wudgaby
+ * @version :  since 1.0
+ * @date :  2021/7/24 15:21
  * @Desc : api消息订阅消费
  */
 @Slf4j

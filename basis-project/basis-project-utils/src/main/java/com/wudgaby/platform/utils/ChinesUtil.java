@@ -9,10 +9,10 @@ import net.sourceforge.pinyin4j.format.HanyuPinyinVCharType;
 import net.sourceforge.pinyin4j.format.exception.BadHanyuPinyinOutputFormatCombination;
 
 /**
- * @ClassName : ChinesUtil
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2018/9/19/019 20:05
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2018/9/19/019 20:05
  * @Desc :   一些中文拼音相关的操作方法.
  */
 @UtilityClass

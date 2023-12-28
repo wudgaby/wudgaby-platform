@@ -10,10 +10,10 @@ import org.springframework.web.socket.server.HandshakeHandler;
 import org.springframework.web.socket.server.HandshakeInterceptor;
 
 /**
- * @ClassName : StompWebSocketConfig
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2020/6/26 15:32
+ 
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2020/6/26 15:32
  * @Desc :
  */
 @Configuration

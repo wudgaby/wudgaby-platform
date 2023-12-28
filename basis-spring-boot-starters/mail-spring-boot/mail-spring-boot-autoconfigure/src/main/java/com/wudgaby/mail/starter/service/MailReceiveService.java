@@ -19,10 +19,10 @@ import java.util.List;
 import java.util.Properties;
 
 /**
- * @ClassName : MailReceiveService
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2019/4/12/012 17:36
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2019/4/12/012 17:36
  * @Desc :
  */
 @Slf4j

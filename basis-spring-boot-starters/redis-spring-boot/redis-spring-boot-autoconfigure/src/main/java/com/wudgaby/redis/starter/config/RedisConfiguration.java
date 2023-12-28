@@ -33,9 +33,9 @@ import java.lang.reflect.Method;
 import java.time.Duration;
 
 /**
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2019/6/289:26
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2019/6/289:26
  * @Desc :  redis 配置
  */
 @Configuration

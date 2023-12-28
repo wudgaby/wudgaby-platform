@@ -13,10 +13,10 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * @ClassName : ResourceService
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2019/9/2 17:13
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2019/9/2 17:13
  * @Desc :
  */
 @Slf4j

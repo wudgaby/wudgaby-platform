@@ -10,10 +10,10 @@ import org.springframework.security.jackson2.SecurityJackson2Modules;
 import org.springframework.session.data.redis.config.ConfigureRedisAction;
 
 /**
- * @ClassName : JsonSessionConfig
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2020/4/23 15:22
+ 
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2020/4/23 15:22
  * @Desc :
  */
 @Configuration

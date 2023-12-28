@@ -13,10 +13,10 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.Map;
 
 /**
- * @ClassName : LoginController
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2019/9/24 19:37
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2019/9/24 19:37
  * @Desc :
  */
 @Slf4j

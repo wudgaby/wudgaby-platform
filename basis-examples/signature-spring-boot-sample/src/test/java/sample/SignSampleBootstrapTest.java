@@ -30,10 +30,10 @@ import java.util.Map;
 import java.util.UUID;
 
 /**
- * @ClassName : SignSampleBootstrapTest
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2020/6/21 3:40
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2020/6/21 3:40
  * @Desc :
  */
 @RunWith(SpringRunner.class)

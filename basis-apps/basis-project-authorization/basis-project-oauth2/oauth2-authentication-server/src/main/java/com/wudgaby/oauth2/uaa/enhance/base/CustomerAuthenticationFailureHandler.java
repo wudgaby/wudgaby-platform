@@ -9,10 +9,10 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * @ClassName : CustomerAuthenticationFailureHandler
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2019/10/9 18:16
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2019/10/9 18:16
  * @Desc :
  */
 public class CustomerAuthenticationFailureHandler implements AuthenticationFailureHandler {

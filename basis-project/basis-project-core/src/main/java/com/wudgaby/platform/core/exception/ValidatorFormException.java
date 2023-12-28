@@ -4,10 +4,10 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 /**
- * @ClassName : ValidatorFormException
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2018/9/24/024 2:03
+ 
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2018/9/24/024 2:03
  * @Desc :   
  */
 @EqualsAndHashCode(callSuper=false)

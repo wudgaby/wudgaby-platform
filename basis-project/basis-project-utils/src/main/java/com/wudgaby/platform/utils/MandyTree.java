@@ -5,9 +5,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @Author :  wudgaby
- * @Version :  since 1.0
- * @Date :  2021/2/23 11:50
+ * @author :  wudgaby
+ * @version :  since 1.0
+ * @date :  2021/2/23 11:50
  * @Desc : MandyTree 实现 deepClone, 需要 Serializable
  */
 public interface MandyTree<T> extends Serializable {

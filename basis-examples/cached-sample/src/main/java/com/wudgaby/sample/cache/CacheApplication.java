@@ -7,9 +7,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.*;
 
 /**
- * @Author :  wudgaby
- * @Version :  since 1.0
- * @Date :  2022/1/20 0020 11:59
+ * @author :  wudgaby
+ * @version :  since 1.0
+ * @date :  2022/1/20 0020 11:59
  * @Desc :
  */
 @SpringBootApplication

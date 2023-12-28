@@ -12,10 +12,10 @@ import javax.annotation.Resource;
 import java.util.Date;
 
 /**
- * @ClassName : QuartzJobManager
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2018/9/26/026 23:18
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2018/9/26/026 23:18
  * @Desc : quartz管理类
  */
 @Slf4j

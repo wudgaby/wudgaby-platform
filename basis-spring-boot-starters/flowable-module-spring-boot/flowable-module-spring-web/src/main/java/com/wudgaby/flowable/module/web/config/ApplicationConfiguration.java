@@ -12,10 +12,10 @@ import org.springframework.web.context.support.AnnotationConfigWebApplicationCon
 import org.springframework.web.servlet.DispatcherServlet;
 
 /**
- * @ClassName : ApplicationConfiguration
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2020/2/24 23:56
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2020/2/24 23:56
  * @Desc :   
  */
 @Configuration

@@ -5,10 +5,10 @@ import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 
 /**
- * @ClassName : FieldErrorDTO
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2019/5/29/029 11:08
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2019/5/29/029 11:08
  * @Desc :
  */
 @Data

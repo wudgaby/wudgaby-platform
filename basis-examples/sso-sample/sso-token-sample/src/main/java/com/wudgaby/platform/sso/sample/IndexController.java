@@ -8,10 +8,10 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.servlet.http.HttpServletRequest;
 
 /**
- * @ClassName : IndexController
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2020/6/24 16:19
+ 
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2020/6/24 16:19
  * @Desc :
  */
 @RestController

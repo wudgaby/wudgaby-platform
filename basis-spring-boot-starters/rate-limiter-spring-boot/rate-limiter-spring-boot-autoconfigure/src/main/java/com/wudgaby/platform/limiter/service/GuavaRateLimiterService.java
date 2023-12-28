@@ -11,10 +11,10 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.TimeUnit;
 
 /**
- * @ClassName : GuavaRateLimiterService
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2020/4/30 23:48
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2020/4/30 23:48
  * @Desc :
  */
 @Slf4j

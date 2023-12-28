@@ -3,10 +3,10 @@ package com.wudgaby.platform.utils;
 import lombok.experimental.UtilityClass;
 
 /**
- * @ClassName : BeanUtils
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2019/10/14 18:35
+ 
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2019/10/14 18:35
  * @Desc :
  */
 @UtilityClass

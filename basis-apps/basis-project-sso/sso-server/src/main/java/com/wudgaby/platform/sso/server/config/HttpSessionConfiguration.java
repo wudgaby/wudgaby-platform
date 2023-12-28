@@ -14,10 +14,10 @@ import org.springframework.session.data.redis.config.ConfigureRedisAction;
 import org.springframework.session.web.http.DefaultCookieSerializer;
 
 /**
- * @ClassName : HttpSessionConfiguration
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2020/12/8 16:20
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2020/12/8 16:20
  * @Desc :
  */
 @Configuration

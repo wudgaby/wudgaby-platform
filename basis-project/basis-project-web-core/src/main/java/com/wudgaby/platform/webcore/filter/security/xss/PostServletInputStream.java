@@ -1,10 +1,10 @@
 package com.wudgaby.platform.webcore.filter.security.xss;
 
 /**
- * @ClassName : a
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2018/10/5/005 22:22
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2018/10/5/005 22:22
  * @Desc :   
  */
 

@@ -5,17 +5,16 @@ import org.apache.catalina.connector.Connector;
 import org.springframework.boot.web.embedded.tomcat.TomcatConnectorCustomizer;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextClosedEvent;
-import org.springframework.stereotype.Component;
 
 import java.util.concurrent.Executor;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
 /**
- * @ClassName : GracefulShutdown
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2020/4/29 16:54
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2020/4/29 16:54
  * @Desc :   2.3已支持, 使用server.shutdown: GRACEFUL
  */
 @Slf4j

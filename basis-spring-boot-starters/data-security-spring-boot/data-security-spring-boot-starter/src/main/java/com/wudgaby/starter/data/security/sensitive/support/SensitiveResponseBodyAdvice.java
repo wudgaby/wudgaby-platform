@@ -14,10 +14,10 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
 
 /**
- * @ClassName : EncryptionResponseBodyAdvice
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2023.07.04
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2023.07.04
  * @Desc :   接口数据加密返回
  */
 @Slf4j

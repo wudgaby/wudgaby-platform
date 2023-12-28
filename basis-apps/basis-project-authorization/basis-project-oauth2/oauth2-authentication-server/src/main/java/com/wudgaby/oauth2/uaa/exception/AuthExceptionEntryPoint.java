@@ -13,10 +13,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * @ClassName : AuthExceptionEntryPoint
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2019/10/9 11:36
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2019/10/9 11:36
  * @Desc :
  */
 public class AuthExceptionEntryPoint implements AuthenticationEntryPoint {

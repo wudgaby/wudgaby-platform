@@ -9,10 +9,10 @@ import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 
 /**
- * @ClassName : MyEntity
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2020/5/23 19:23
+ 
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2020/5/23 19:23
  * @Desc :
  */
 @Data

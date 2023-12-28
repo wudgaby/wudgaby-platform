@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
- * @ClassName : WebSocketBootstrap
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2020/6/25 17:38
+ 
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2020/6/25 17:38
  * @Desc :
  */
 //@ServletComponentScan

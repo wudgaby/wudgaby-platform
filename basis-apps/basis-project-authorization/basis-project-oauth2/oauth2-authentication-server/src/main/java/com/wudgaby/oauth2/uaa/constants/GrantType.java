@@ -1,10 +1,10 @@
 package com.wudgaby.oauth2.uaa.constants;
 
 /**
- * @ClassName : GrantType
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2019/9/24 18:15
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2019/9/24 18:15
  * @Desc :
  */
 public interface GrantType {

@@ -5,10 +5,10 @@ import org.springframework.boot.autoconfigure.ImportAutoConfiguration;
 import java.lang.annotation.*;
 
 /**
- * @ClassName : EnableAccessLogger
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2020/6/4 14:45
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2020/6/4 14:45
  * @Desc :
  */
 @Target({ElementType.TYPE, ElementType.METHOD})

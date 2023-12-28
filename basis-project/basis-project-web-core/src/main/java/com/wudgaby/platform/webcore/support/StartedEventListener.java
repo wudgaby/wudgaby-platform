@@ -13,10 +13,10 @@ import org.springframework.scheduling.annotation.Async;
 import org.springframework.util.ClassUtils;
 
 /**
- * @ClassName : StartedEventListener
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2019/8/9 15:54
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2019/8/9 15:54
  * @Desc :   springboot启动监听
  */
 @Slf4j

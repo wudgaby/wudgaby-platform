@@ -7,10 +7,10 @@ import org.springframework.context.annotation.Configuration;
 import java.time.Duration;
 
 /**
- * @ClassName : CorsProperties
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2020/5/20 10:52
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2020/5/20 10:52
  * @Desc :
  */
 @Data

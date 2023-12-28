@@ -12,10 +12,10 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * @ClassName : TraceFilter
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2022.02.23
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2022.02.23
  * @Desc :  请求追踪
  */
 @Slf4j

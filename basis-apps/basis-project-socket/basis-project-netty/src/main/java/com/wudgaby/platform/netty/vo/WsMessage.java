@@ -7,10 +7,10 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- * @ClassName : WebMessage
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2020/6/26 19:12
+ 
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2020/6/26 19:12
  * @Desc :   
  */
 @Data

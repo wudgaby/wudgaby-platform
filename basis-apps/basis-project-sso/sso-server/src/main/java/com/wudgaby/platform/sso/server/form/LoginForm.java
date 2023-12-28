@@ -6,10 +6,10 @@ import lombok.Data;
 import javax.validation.constraints.NotBlank;
 
 /**
- * @ClassName : LoginForm
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2020/12/8 10:17
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2020/12/8 10:17
  * @Desc :
  */
 @Data

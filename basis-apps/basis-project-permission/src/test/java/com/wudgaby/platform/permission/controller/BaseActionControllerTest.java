@@ -8,9 +8,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
- * @Author :  wudgaby
- * @Version :  since 1.0
- * @Date :  2021/7/20 16:52
+ * @author :  wudgaby
+ * @version :  since 1.0
+ * @date :  2021/7/20 16:52
  * @Desc :
  */
 @SpringBootTest

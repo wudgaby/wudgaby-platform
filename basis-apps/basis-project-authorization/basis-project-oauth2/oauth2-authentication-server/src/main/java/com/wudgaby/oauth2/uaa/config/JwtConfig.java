@@ -15,10 +15,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * @ClassName : JwtConfig
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2019/9/23 18:42
+ 
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2019/9/23 18:42
  * @Desc :   
  */
 @Configuration

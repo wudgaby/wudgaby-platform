@@ -10,10 +10,10 @@ import javax.servlet.ServletInputStream;
 import java.io.IOException;
 
 /**
- * @ClassName : NettyServletInputStream
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2020/6/17 0:54
+ 
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2020/6/17 0:54
  * @Desc :
  */
 public class NettyServletInputStream extends ServletInputStream {

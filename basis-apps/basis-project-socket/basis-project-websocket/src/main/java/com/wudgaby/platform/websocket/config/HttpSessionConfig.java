@@ -6,10 +6,10 @@ import org.springframework.session.web.http.CookieHttpSessionIdResolver;
 import org.springframework.session.web.http.HttpSessionIdResolver;
 
 /**
- * @ClassName : HttpSessionConfig
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2020/6/26 19:32
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2020/6/26 19:32
  * @Desc :
  */
 @EnableRedisHttpSession(maxInactiveIntervalInSeconds = 1800)

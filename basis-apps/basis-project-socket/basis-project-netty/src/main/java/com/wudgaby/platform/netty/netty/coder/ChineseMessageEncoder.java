@@ -6,10 +6,10 @@ import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.MessageToByteEncoder;
 
 /**
- * @ClassName : ChineseMessageEncoder
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2020/6/28 11:14
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2020/6/28 11:14
  * @Desc :
  */
 public class ChineseMessageEncoder extends MessageToByteEncoder<ChineseMessage> {

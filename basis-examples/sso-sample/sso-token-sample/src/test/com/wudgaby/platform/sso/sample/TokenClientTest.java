@@ -19,10 +19,10 @@ import org.springframework.web.util.UriComponentsBuilder;
 import java.net.URI;
 
 /**
- * @ClassName : IndexControllerTest
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2020/6/25 2:21
+ 
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2020/6/25 2:21
  * @Desc :
  */
 @Slf4j

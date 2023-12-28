@@ -6,7 +6,7 @@
     <parent>
         <groupId>com.wudgaby.platform</groupId>
         <artifactId>basis-examples</artifactId>
-        <version>${revision}</version>
+        <version>1.0.0</version>
     </parent>
 
     <artifactId>plumelog-sample</artifactId>
@@ -21,7 +21,6 @@
         <dependency>
             <groupId>com.wudgaby.platform</groupId>
             <artifactId>basis-project-web-core</artifactId>
-            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>com.plumelog</groupId>

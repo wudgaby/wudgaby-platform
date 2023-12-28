@@ -3,16 +3,10 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
-    <parent>
-        <groupId>com.wudgaby.platform</groupId>
-        <artifactId>wudgaby-platform</artifactId>
-        <version>${revision}</version>
-        <relativePath>../pom.xml</relativePath>
-    </parent>
-
     <modelVersion>4.0.0</modelVersion>
+    <groupId>com.wudgaby.platform</groupId>
     <artifactId>basis-examples</artifactId>
-    <version>${revision}</version>
+    <version>1.0.0</version>
     <packaging>pom</packaging>
     <name>Basis Examples</name>
 
@@ -22,6 +16,8 @@
         <maven.install.skip>true</maven.install.skip>
         <maven.deploy.skip>true</maven.deploy.skip>
         <maven-deploy-plugin.version>2.8.2</maven-deploy-plugin.version>
+
+        <basis-project.version>1.0.8-SNAPSHOT</basis-project.version>
     </properties>
 
     <modules>
@@ -40,7 +36,6 @@
         <module>distributed-lock-spring-boot-demo</module>
         <module>sso-sample</module>
         <module>swagger-aggregation</module>
-        <module>swagger3-sample</module>
         <module>security-sample</module>
         <module>simple-security-spring-boot-sample</module>
         <module>cached-sample</module>
@@ -48,19 +43,36 @@
         <module>redis-alone-spring-boot-sample</module>
         <module>ip-access-spring-boot-sample</module>
         <module>ip2region-spring-boot-sample</module>
-        <module>download-sample</module>
         <module>multi-ports-spring-boot-sample</module>
         <module>assembly-sample</module>
         <module>data-security-spring-boot-sample</module>
         <module>data-audit-spring-boot-sample</module>
         <module>enums-scanner-spring-boot-sample</module>
         <module>captcha-spring-boot-sample</module>
-        <module>tianai-captcha-sample</module>
         <module>app-health-client-sample</module>
         <module>access-limiter-spring-boot-sample</module>
         <module>plumelog-sample</module>
         <module>i18n-sample</module>
     </modules>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>2.3.3.RELEASE</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.wudgaby.platform</groupId>
+                <artifactId>basis-project-dependencies</artifactId>
+                <version>${basis-project.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
     <build>
         <plugins>
@@ -86,6 +98,7 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>2.3.3.RELEASE</version>
                 <configuration>
                     <finalName>${project.artifactId}</finalName>
                 </configuration>

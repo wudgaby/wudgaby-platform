@@ -11,10 +11,10 @@ import java.io.IOException;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 /**
- * @ClassName : BufferedHttpServletRequest
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2020/6/17 0:53
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2020/6/17 0:53
  * @Desc :
  */
 public class BufferedHttpServletRequest extends HttpServletRequestWrapper {

@@ -8,10 +8,10 @@ import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 
 /**
- * @ClassName : BaseEntity
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2019/7/18 16:03
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2019/7/18 16:03
  * @Desc :   
  */
 @Data

@@ -6,10 +6,10 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 /**
- * @ClassName : TableQueryForm
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2020/4/3 11:48
+ 
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2020/4/3 11:48
  * @Desc :   
  */
 @Data

@@ -24,10 +24,10 @@ import springfox.documentation.annotations.ApiIgnore;
 import javax.servlet.http.HttpServletRequest;
 
 /**
- * @ClassName : AuthController
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2020/2/3 13:48
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2020/2/3 13:48
  * @Desc :
  */
 @Slf4j

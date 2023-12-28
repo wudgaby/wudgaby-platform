@@ -3,9 +3,6 @@ package com.wudgaby.plugin.resubmit;
 import cn.hutool.crypto.digest.MD5;
 import cn.hutool.extra.servlet.ServletUtil;
 import cn.hutool.json.JSONUtil;
-import com.google.common.cache.Cache;
-import com.google.common.cache.CacheBuilder;
-import com.wudgaby.redis.api.RedisSupport;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
@@ -22,12 +19,11 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 import javax.servlet.http.HttpServletRequest;
 import java.lang.reflect.Method;
 import java.util.*;
-import java.util.concurrent.TimeUnit;
 
 /**
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2019/11/14 18:23
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2019/11/14 18:23
  * @Desc : RepeatSubmit 或 PostMapping 处理重复提交
  * 不可同时标记,会处理两次
  */
@@ -45,14 +41,7 @@ public class RepeatSubmitAspect {
      */
     private static final String PARAM_TIMESTAMP = "t";
 
-    private final RedisSupport redisSupport;
-
-    private final LoginUserService loginUserService;
-
-    private static final Cache<String, String> CACHE = CacheBuilder.newBuilder()
-            .expireAfterWrite(REPEAT_SUBMIT_EXPIRE_SEC, TimeUnit.SECONDS)
-            .maximumSize(99_999)
-            .build();
+    private final ResubmitService resubmitService;
 
     @Before("@within(org.springframework.web.bind.annotation.RestController) && @annotation(repeatSubmit)")
     public void before(JoinPoint joinPoint, RepeatSubmit repeatSubmit){
@@ -87,40 +76,15 @@ public class RepeatSubmitAspect {
         String key = getKey(request, joinPoint);
 
         log.info("重复提交监测. key = [{}]", key);
-        if(redisSupport != null){
-            redisReSubmit(key, message, expiresSec);
-        }else{
-            guavaReSubmit(key, message);
-        }
-    }
-
-    private void redisReSubmit(String key, String message, long expiresSec){
-        Object val = redisSupport.get(key);
-        if (val == null) {
-            redisSupport.set(key, key, expiresSec);
-        } else {
-            log.warn("重复提交. key = [{}]", key);
-            throw new ResubmitException(message);
-        }
-    }
-
-    private void guavaReSubmit(String key, String message){
-        String val = CACHE.getIfPresent(key);
-        if (val == null) {
-            CACHE.put(key, key);
-        } else {
-            log.warn("重复提交. key = [{}]", key);
-            throw new ResubmitException(message);
-        }
+        resubmitService.check(key, message, expiresSec);
     }
 
     private String getKey(HttpServletRequest request, JoinPoint joinPoint) {
-        String userId = Optional.ofNullable(loginUserService).map(LoginUserService::getLoggedUserId).orElse("anyone");
+        String userId = Optional.ofNullable(resubmitService).map(ResubmitService::getLoggedUserId).orElse("anyone");
         String path = Base64.getEncoder().encodeToString((request.getMethod() + " " + request.getServletPath()).getBytes());
         String timestamp = Optional.ofNullable(request.getParameter(PARAM_TIMESTAMP)).orElse("0");
         //String md5Param = getMd5Param(request);
         //String md5Query = MD5.create().digestHex(request.getQueryString());
-
 
         String ipBase64 = Base64.getEncoder().encodeToString(ServletUtil.getClientIP(request).getBytes());
         return new StringJoiner(":")

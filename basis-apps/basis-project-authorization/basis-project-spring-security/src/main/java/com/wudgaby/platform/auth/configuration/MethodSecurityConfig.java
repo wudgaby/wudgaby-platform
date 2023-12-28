@@ -9,10 +9,10 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.security.config.annotation.method.configuration.GlobalMethodSecurityConfiguration;
 
 /**
- * @ClassName : MethodSecurityConfig
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2020/6/19 23:04
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2020/6/19 23:04
  * @Desc :   @PreAuthorize("hasPermission(#baseReq,'read')")
  */
 @Configuration

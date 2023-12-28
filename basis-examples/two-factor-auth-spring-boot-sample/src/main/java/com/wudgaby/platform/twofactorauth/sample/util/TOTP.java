@@ -11,10 +11,10 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * @ClassName : TOTP
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2020/12/9 23:31
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2020/12/9 23:31
  * @Desc :   
  */
 @UtilityClass

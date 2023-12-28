@@ -11,10 +11,10 @@ import io.netty.handler.timeout.IdleStateHandler;
 import java.util.concurrent.TimeUnit;
 
 /**
- * @ClassName : ServerChannelInitializer
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2020/6/28 10:07
+ 
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2020/6/28 10:07
  * @Desc :
  */
 public class ServerChannelInitializer extends ChannelInitializer<SocketChannel> {

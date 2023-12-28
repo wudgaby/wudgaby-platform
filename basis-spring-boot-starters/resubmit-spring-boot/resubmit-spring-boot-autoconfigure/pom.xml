@@ -25,10 +25,5 @@
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
         </dependency>
-        <dependency>
-            <groupId>com.wudgaby.platform</groupId>
-            <artifactId>redis-api</artifactId>
-            <version>${revision}</version>
-        </dependency>
     </dependencies>
 </project>

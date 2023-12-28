@@ -1,10 +1,10 @@
 package com.wudgaby.platform.limiter.core;
 
 /**
- * @ClassName : com.wudgaby.platform.limiter.core.LimitException
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2020/4/30 23:51
+ .wudgaby.platform.limiter.core.LimitException
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2020/4/30 23:51
  * @Desc :
  */
 public class LimitException extends RuntimeException {

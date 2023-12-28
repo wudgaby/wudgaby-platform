@@ -6,10 +6,10 @@ import org.springframework.context.annotation.Import;
 import java.lang.annotation.*;
 
 /**
- * @ClassName : EnableRedisAutoConfiguration
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2019/8/16 10:32
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2019/8/16 10:32
  * @Desc :
  */
 @Target(ElementType.TYPE)

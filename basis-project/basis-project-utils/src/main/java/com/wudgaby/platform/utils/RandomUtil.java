@@ -7,10 +7,10 @@ import java.security.SecureRandom;
 import java.util.concurrent.ThreadLocalRandom;
 
 /**
- * @ClassName : RandomUtil
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2019/8/22 19:36
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2019/8/22 19:36
  * @Desc :
  */
 @UtilityClass

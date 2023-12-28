@@ -14,9 +14,8 @@ import java.util.Optional;
 /**
  * mybatis-plus 的自动填充功能
  *
- * @ClassName CustomMetaObjectHandler
- * @Author zouyong
- * @Date 2019/7/3 0003 12:08
+ * @author zouyong
+ * @date 2019/7/3 0003 12:08
  **/
 @Slf4j
 public class CustomMetaObjectHandler implements MetaObjectHandler {

@@ -12,10 +12,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @ClassName : MybatisConfiguration
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2019/7/8 10:40
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2019/7/8 10:40
  * @Desc :
  */
 @Configuration

@@ -8,10 +8,10 @@ import javax.websocket.Decoder;
 import javax.websocket.EndpointConfig;
 
 /**
- * @ClassName : MessageDecode
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2020/6/27 1:25
+ 
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2020/6/27 1:25
  * @Desc :
  */
 public class MessageDecode implements Decoder.Text<WsMessage> {

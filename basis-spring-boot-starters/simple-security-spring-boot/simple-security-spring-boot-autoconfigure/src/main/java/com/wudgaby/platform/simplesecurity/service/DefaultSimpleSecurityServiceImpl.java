@@ -4,9 +4,9 @@ import com.wudgaby.platform.security.core.UserInfo;
 import com.wudgaby.platform.simplesecurity.SecurityConst;
 
 /**
- * @Author :  wudgaby
- * @Version :  since 1.0
- * @Date :  2022/1/10 0010 15:20
+ * @author :  wudgaby
+ * @version :  since 1.0
+ * @date :  2022/1/10 0010 15:20
  * @Desc :  默认实现
  */
 public class DefaultSimpleSecurityServiceImpl extends AbstractSimpleSecurityService {

@@ -21,10 +21,10 @@ import java.io.IOException;
 import java.util.Map;
 
 /**
- * @ClassName : IpAccessFilter
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2022.02.23
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2022.02.23
  * @Desc :  ip黑白名单过滤
  */
 @Slf4j

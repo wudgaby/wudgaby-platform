@@ -34,15 +34,17 @@ echo "ACTION:%VAR_ACTION%"
 echo "PROFILE:%VAR_PROFILE%"
 
 call mvn clean
-call mvn %VAR_ACTION% -DskipTests=true %VAR_PROFILE% -pl basis-project/basis-project-ops,basis-project/basis-project-http-client,basis-project/basis-project-web-core -am
-call mvn %VAR_ACTION% -DskipTests=true %VAR_PROFILE% -f ./basis-spring-boot-starters -am
-call mvn %VAR_ACTION% -DskipTests=true %VAR_PROFILE% -f ./basis-project-dependencies -am
+call mvn %VAR_ACTION% -DskipTests=true %VAR_PROFILE% -pl basis-project/basis-project-web-core -am
+call mvn %VAR_ACTION% -DskipTests=true %VAR_PROFILE% -f ./basis-spring-boot-starters
+call mvn %VAR_ACTION% -DskipTests=true %VAR_PROFILE% -f ./basis-project-dependencies
 :: mvn clean %VAR_PROFILE% -DskipTests=true -f ./basis-apps
 echo "===================================execute install END==================================================="
 goto:eof
 
 
 :full_install
+set VAR_ACTION=install
+set VAR_PROFILE=
 call:flatten
 call:only_install
 goto end

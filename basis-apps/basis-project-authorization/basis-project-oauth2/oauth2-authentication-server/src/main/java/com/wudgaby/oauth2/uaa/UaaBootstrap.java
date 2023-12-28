@@ -5,10 +5,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 
 /**
- * @ClassName : UaaBootstrap
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2019/9/23 17:25
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2019/9/23 17:25
  * @Desc :   https://www.jianshu.com/p/24764aba1012?utm_source=oschina-app
  */
 @SpringBootApplication

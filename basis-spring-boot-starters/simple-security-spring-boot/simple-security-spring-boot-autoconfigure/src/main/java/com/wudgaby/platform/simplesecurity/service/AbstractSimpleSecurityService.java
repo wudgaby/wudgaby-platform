@@ -14,9 +14,9 @@ import java.util.*;
 ;
 
 /**
- * @Author :  wudgaby
- * @Version :  since 1.0
- * @Date :  2022/1/10 0010 19:31
+ * @author :  wudgaby
+ * @version :  since 1.0
+ * @date :  2022/1/10 0010 19:31
  * @Desc :
  */
 public abstract class AbstractSimpleSecurityService implements SimpleSecurityService {

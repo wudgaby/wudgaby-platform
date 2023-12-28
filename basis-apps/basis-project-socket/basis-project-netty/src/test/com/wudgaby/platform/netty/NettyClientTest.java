@@ -13,10 +13,10 @@ import io.netty.handler.codec.LengthFieldPrepender;
 import lombok.extern.slf4j.Slf4j;
 
 /**
- * @ClassName : NettyClientTest
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2020/6/28 10:30
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2020/6/28 10:30
  * @Desc :
  */
 @Slf4j

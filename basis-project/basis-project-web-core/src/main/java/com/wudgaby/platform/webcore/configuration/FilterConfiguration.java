@@ -14,10 +14,10 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
 
 /**
- * @ClassName : WebMvcConfiguration
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2019/7/31 16:08
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2019/7/31 16:08
  * @Desc :   
  */
 @Configuration

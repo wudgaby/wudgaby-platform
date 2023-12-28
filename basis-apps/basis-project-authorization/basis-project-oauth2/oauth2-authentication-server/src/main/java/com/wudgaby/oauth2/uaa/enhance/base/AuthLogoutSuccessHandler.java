@@ -9,10 +9,10 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * @ClassName : AuthLogoutSuccessHandler
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2019/10/9 18:48
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2019/10/9 18:48
  * @Desc :
  */
 public class AuthLogoutSuccessHandler implements LogoutSuccessHandler {

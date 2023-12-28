@@ -6,9 +6,9 @@ import com.wudgaby.platform.simplesecurity.annotations.AuthPermit;
 import org.springframework.web.bind.annotation.*;
 
 /**
- * @Author :  wudgaby
- * @Version :  since 1.0
- * @Date :  2022/1/10 0010 17:34
+ * @author :  wudgaby
+ * @version :  since 1.0
+ * @date :  2022/1/10 0010 17:34
  * @Desc :
  */
 @RestController

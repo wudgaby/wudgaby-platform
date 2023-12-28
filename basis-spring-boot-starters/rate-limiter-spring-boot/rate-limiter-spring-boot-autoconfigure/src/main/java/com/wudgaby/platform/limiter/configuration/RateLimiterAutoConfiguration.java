@@ -19,10 +19,10 @@ import org.springframework.scripting.support.ResourceScriptSource;
 import java.util.List;
 
 /**
- * @ClassName : RateLimiterAutoConfiguration
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2020/4/30 22:40
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2020/4/30 22:40
  * @Desc :
  */
 @Configuration

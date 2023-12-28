@@ -7,10 +7,10 @@ import org.springframework.security.core.SpringSecurityCoreVersion;
 import java.util.Collection;
 
 /**
- * @ClassName : SmsCodeAuthenticationToken
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2020/2/3 19:41
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2020/2/3 19:41
  * @Desc :
  */
 public class EmailAuthenticationToken extends AbstractAuthenticationToken{

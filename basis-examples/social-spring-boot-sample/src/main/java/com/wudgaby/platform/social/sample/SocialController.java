@@ -19,10 +19,10 @@ import java.io.IOException;
 import java.util.List;
 
 /**
- * @ClassName : SocialControoler
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2020/12/5 16:01
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2020/12/5 16:01
  * @Desc :
  */
 @Slf4j

@@ -8,10 +8,10 @@ import java.io.Serializable;
 import java.security.Principal;
 
 /**
- * @ClassName : FastPrincipal
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2020/6/26 16:20
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2020/6/26 16:20
  * @Desc :
  */
 @Data

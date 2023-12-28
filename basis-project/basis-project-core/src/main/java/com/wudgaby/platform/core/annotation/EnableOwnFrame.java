@@ -8,10 +8,10 @@ import org.springframework.core.annotation.AliasFor;
 import java.lang.annotation.*;
 
 /**
- * @ClassName : EnableOwnFrame
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2020/5/9 15:31
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2020/5/9 15:31
  * @Desc :
  */
 @Retention(RetentionPolicy.RUNTIME)

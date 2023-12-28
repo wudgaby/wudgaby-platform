@@ -6,10 +6,10 @@ import lombok.experimental.Accessors;
 import java.util.Map;
 
 /**
- * @ClassName : SignatureVo
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2020/6/21 2:19
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2020/6/21 2:19
  * @Desc :
  */
 @Data

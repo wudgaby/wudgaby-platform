@@ -7,9 +7,9 @@ import lombok.Data;
 import javax.validation.constraints.NotBlank;
 
 /**
- * @Author :  wudgaby
- * @Version :  since 1.0
- * @Date :  2021/7/15 16:31
+ * @author :  wudgaby
+ * @version :  since 1.0
+ * @date :  2021/7/15 16:31
  * @Desc :
  */
 @ApiModel("接口表单")

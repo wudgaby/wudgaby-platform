@@ -8,10 +8,10 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
- * @ClassName : SsoUserVo
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2020/6/3 9:57
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2020/6/3 9:57
  * @Desc :
  */
 @Data

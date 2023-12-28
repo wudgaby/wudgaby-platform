@@ -17,10 +17,10 @@ import javax.annotation.PreDestroy;
 import java.net.InetSocketAddress;
 
 /**
- * @ClassName : NettyServer
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2020/6/28 9:47
+ 
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2020/6/28 9:47
  * @Desc :
  */
 @Slf4j

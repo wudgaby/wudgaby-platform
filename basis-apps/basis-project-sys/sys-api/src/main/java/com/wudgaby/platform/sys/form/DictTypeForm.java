@@ -7,10 +7,10 @@ import lombok.Data;
 import javax.validation.constraints.NotBlank;
 
 /**
- * @ClassName : DictTypeForm
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2020/10/9 20:55
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2020/10/9 20:55
  * @Desc :
  */
 @Data

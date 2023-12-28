@@ -11,10 +11,10 @@ import javax.validation.constraints.Min;
 import java.util.List;
 
 /**
- * @ClassName : PageForm
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2019/7/22 14:45
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2019/7/22 14:45
  * @Desc :
  */
 @Data

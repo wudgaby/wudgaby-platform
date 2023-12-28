@@ -1,9 +1,9 @@
 package com.wudgaby.starter.resource.scan.service;
 
 /**
- * @Author :  wudgaby
- * @Version :  since 1.0
- * @Date :  2021/7/24 15:33
+ * @author :  wudgaby
+ * @version :  since 1.0
+ * @date :  2021/7/24 15:33
  * @Desc :  订阅
  */
 public interface SubscriberRedisListenerService {

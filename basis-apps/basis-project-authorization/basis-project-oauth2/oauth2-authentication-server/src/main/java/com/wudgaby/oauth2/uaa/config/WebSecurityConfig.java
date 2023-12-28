@@ -20,10 +20,10 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 /**
- * @ClassName : WebSecurityConfig
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2019/9/23 17:27
+ 
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2019/9/23 17:27
  * @Desc :
  */
 @Configuration

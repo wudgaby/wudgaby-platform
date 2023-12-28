@@ -3,10 +3,10 @@ package com.wudgaby.platform.utils;
 import lombok.experimental.UtilityClass;
 
 /**
- * @ClassName : ThreadPoolUtil
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2019/7/10 10:13
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2019/7/10 10:13
  * @Desc :
  */
 @UtilityClass

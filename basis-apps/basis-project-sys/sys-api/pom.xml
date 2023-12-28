@@ -5,8 +5,7 @@
     <parent>
         <artifactId>basis-project-sys</artifactId>
         <groupId>com.wudgaby.platform</groupId>
-        <version>${revision}</version>
-
+        <version>1.0.0</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
@@ -16,7 +15,6 @@
         <dependency>
             <groupId>com.wudgaby.platform</groupId>
             <artifactId>basis-project-core</artifactId>
-            <version>${revision}</version>
         </dependency>
         <dependency>
             <groupId>com.baomidou</groupId>

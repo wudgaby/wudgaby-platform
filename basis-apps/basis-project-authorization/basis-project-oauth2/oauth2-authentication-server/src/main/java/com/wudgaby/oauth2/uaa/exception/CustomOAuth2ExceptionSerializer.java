@@ -11,10 +11,10 @@ import java.io.IOException;
 import java.util.Map;
 
 /**
- * @ClassName : CustomOauthExceptionSerializer
- * @Author :  WudGaby
- * @Version :  1.0
- * @Date : 2019/10/9 12:08
+
+ * @author :  WudGaby
+ * @version :  1.0
+ * @date : 2019/10/9 12:08
  * @Desc :   
  */
 public class CustomOAuth2ExceptionSerializer extends StdSerializer<CustomerOAuth2Exception> {
