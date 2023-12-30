@@ -58,7 +58,7 @@
         </argline>
         <arguments/>
 
-        <hutool.version>5.7.19</hutool.version>
+        <hutool.version>5.8.24</hutool.version>
         <guava.version>28.0-jre</guava.version>
         <commons-math.version>3.6.1</commons-math.version>
         <commons-collections.version>4.1</commons-collections.version>
@@ -78,8 +78,8 @@
         <archetype-packaging.version>3.1.2</archetype-packaging.version>
 
         <spring.version>5.2.7.RELEASE</spring.version>
-        <mybatis.version>2.1.3</mybatis.version>
-        <mybatis-plus.version>3.3.1</mybatis-plus.version>
+        <mybatis.version>2.3.1</mybatis.version>
+        <mybatis-plus.version>3.5.5</mybatis-plus.version>
         <pagehelper.version>1.3.1</pagehelper.version>
         <java-mail.version>1.4.7</java-mail.version>
         <spring-retry.version>1.3.1</spring-retry.version>

@@ -16,7 +16,7 @@
     <properties>
         <java.version>8</java.version>
         <guava.version>28.0-jre</guava.version>
-        <hutool.version>5.7.19</hutool.version>
+        <hutool.version>5.8.24</hutool.version>
         <maven.install.skip>true</maven.install.skip>
         <maven.deploy.skip>true</maven.deploy.skip>
     </properties>

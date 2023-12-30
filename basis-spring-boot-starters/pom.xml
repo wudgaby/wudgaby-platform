@@ -52,5 +52,6 @@
         <module>captcha-spring-boot</module>
         <module>access-limiter-spring-boot</module>
         <module>dict-cache-spring-boot</module>
+        <module>tenant-spring-boot</module>
     </modules>
 </project>

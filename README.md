@@ -1,3 +1,9 @@
+1.限制密码长度和强度,弱口令检测
+2.密码md5/sha256二次加密
+3.验证码
+4.登录错误次数限制
+5.异地登录限制
+6.登录ip限制
 ```
 java: You aren’t using a compiler supported by lombok, so lombok will not work and has been disabled.
 Your processor is: com.sun.proxy.$Proxy26
