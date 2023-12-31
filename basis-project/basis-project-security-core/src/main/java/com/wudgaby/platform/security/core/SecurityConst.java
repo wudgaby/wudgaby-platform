@@ -1,4 +1,4 @@
-package com.wudgaby.platform.simplesecurity;
+package com.wudgaby.platform.security.core;
 
 /**
  * @author :  wudgaby
@@ -8,6 +8,9 @@ package com.wudgaby.platform.simplesecurity;
  */
 public interface SecurityConst {
     String SESSION_LOGGED_USER = "session_logged_user";
-
     String[] ADMIN_ROLE_CODE_LIST = new String[]{"superAdmin", "admin"};
+
+    Long SUPER_ADMIN_ID = 1L;
+
+    String TENANT_ADMIN_ROLE_KEY = "tenantAdmin";
 }

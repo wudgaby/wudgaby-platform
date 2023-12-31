@@ -1,7 +1,7 @@
 package com.wudgaby.platform.simplesecurity.service;
 
+import com.wudgaby.platform.security.core.SecurityConst;
 import com.wudgaby.platform.security.core.UserInfo;
-import com.wudgaby.platform.simplesecurity.SecurityConst;
 
 /**
  * @author :  wudgaby
@@ -17,10 +17,5 @@ public class DefaultSimpleSecurityServiceImpl extends AbstractSimpleSecurityServ
             return new UserInfo().setId(0).setAccount(account).setAdmin(false);
         }
         return null;
-    }
-
-    @Override
-    public String[] getAdminRoleCodes() {
-        return SecurityConst.ADMIN_ROLE_CODE_LIST;
     }
 }

@@ -1,9 +1,9 @@
 package com.wudgaby.starter.tenant;
 
-import com.baomidou.mybatisplus.autoconfigure.MybatisPlusAutoConfiguration;
 import com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.inner.InnerInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.inner.TenantLineInnerInterceptor;
+import com.wudgaby.starter.mybatisplus.helper.config.MyBatisConfig;
 import org.springframework.boot.autoconfigure.AutoConfigureAfter;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -21,7 +21,7 @@ import java.util.List;
  */
 @Configuration
 @EnableConfigurationProperties(TenantProperties.class)
-@AutoConfigureAfter(MybatisPlusAutoConfiguration.class)
+@AutoConfigureAfter(MyBatisConfig.class)
 @ConditionalOnProperty(value = "tenant.enable", havingValue = "true")
 public class TenantConfiguration {
     @Bean

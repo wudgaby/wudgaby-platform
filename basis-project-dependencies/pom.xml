@@ -214,6 +214,18 @@
                 <artifactId>access-limiter-spring-boot-starter</artifactId>
                 <version>${basis-starters.version}</version>
             </dependency>
+            <!--多租户-->
+            <dependency>
+                <groupId>com.wudgaby.platform</groupId>
+                <artifactId>tenant-spring-boot-stater</artifactId>
+                <version>${basis-starters.version}</version>
+            </dependency>
+            <!--数据权限-->
+            <dependency>
+                <groupId>com.wudgaby.platform</groupId>
+                <artifactId>data-scope-spring-boot-starter</artifactId>
+                <version>${basis-starters.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 

@@ -7,8 +7,6 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
-import org.apache.commons.collections4.CollectionUtils;
-import org.apache.commons.lang3.ArrayUtils;
 
 import java.io.Serializable;
 import java.util.Collection;
@@ -59,32 +57,24 @@ public class UserInfo implements Serializable {
     @ApiModelProperty("权限信息")
     private Collection<String> authorities;
 
-    @ApiModelProperty("角色")
-    private Collection<String> roles;
+    @ApiModelProperty("角色编码")
+    private Collection<String> roleCodes;
 
     @ApiModelProperty("请求资源")
     private Set<MetaResource> metaResources;
 
+    @ApiModelProperty("角色详情")
+    private Collection<RoleVo> roleList;
+
     @ApiModelProperty("管理员")
     private Boolean admin;
 
+    @ApiModelProperty("租户")
+    private Long tenantId;
 
-    public UserInfo verifyAdmin(String[] adminRoleCodes) {
-        if(ArrayUtils.isEmpty(adminRoleCodes) || CollectionUtils.isEmpty(roles)){
-            this.admin = false;
-            return this;
-        }
+    @ApiModelProperty("部门")
+    private Long deptId;
 
-        for (String authority : roles) {
-            for(String roleCode : adminRoleCodes){
-                if (authority.equals(roleCode)) {
-                    this.admin = true;
-                    return this;
-                }
-            }
-        }
-
-        this.admin = false;
-        return this;
-    }
+    @ApiModelProperty("用户类型")
+    private String userType;
 }

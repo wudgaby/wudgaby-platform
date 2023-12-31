@@ -1,21 +1,14 @@
 package com.wudgaby.starter.tenant;
 
-import cn.dev33.satoken.context.SaHolder;
-import cn.dev33.satoken.stp.StpUtil;
 import cn.hutool.core.convert.Convert;
 import cn.hutool.extra.spring.SpringUtil;
-import com.alibaba.ttl.TransmittableThreadLocal;
 import com.baomidou.mybatisplus.core.plugins.IgnoreStrategy;
 import com.baomidou.mybatisplus.core.plugins.InterceptorIgnoreHelper;
+import com.wudgaby.platform.security.core.SecurityUtils;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
-import org.dromara.common.core.constant.GlobalConstants;
-import org.dromara.common.core.utils.SpringUtils;
-import org.dromara.common.core.utils.StringUtils;
-import org.dromara.common.redis.utils.RedisUtils;
-import org.dromara.common.satoken.utils.LoginHelper;
 
 import java.util.function.Supplier;
 
@@ -29,8 +22,6 @@ import java.util.function.Supplier;
 public class TenantHelper {
 
     private static final String DYNAMIC_TENANT_KEY = "dynamicTenant";
-
-    private static final ThreadLocal<String> TEMP_DYNAMIC_TENANT = new TransmittableThreadLocal<>();
 
     /**
      * 租户功能是否启用
@@ -90,13 +81,8 @@ public class TenantHelper {
         if (!isEnable()) {
             return;
         }
-        if (!isLogin()) {
-            TEMP_DYNAMIC_TENANT.set(tenantId);
-            return;
-        }
-        String cacheKey = DYNAMIC_TENANT_KEY + ":" + LoginHelper.getUserId();
-        RedisUtils.setCacheObject(cacheKey, tenantId);
-        SaHolder.getStorage().set(cacheKey, tenantId);
+        String cacheKey = DYNAMIC_TENANT_KEY + ":" + SecurityUtils.get(SecurityUtils.USER_KEY);
+        SecurityUtils.set(cacheKey, tenantId);
     }
 
     /**
@@ -108,16 +94,10 @@ public class TenantHelper {
         if (!isEnable()) {
             return null;
         }
-        if (!isLogin()) {
-            return TEMP_DYNAMIC_TENANT.get();
-        }
-        String cacheKey = DYNAMIC_TENANT_KEY + ":" + LoginHelper.getUserId();
-        String tenantId = (String) SaHolder.getStorage().get(cacheKey);
+        String tenantId = SecurityUtils.get(SecurityUtils.TENANT_KEY, String.class);
         if (StringUtils.isNotBlank(tenantId)) {
             return tenantId;
         }
-        tenantId = RedisUtils.getCacheObject(cacheKey);
-        SaHolder.getStorage().set(cacheKey, tenantId);
         return tenantId;
     }
 
@@ -128,13 +108,8 @@ public class TenantHelper {
         if (!isEnable()) {
             return;
         }
-        if (!isLogin()) {
-            TEMP_DYNAMIC_TENANT.remove();
-            return;
-        }
-        String cacheKey = DYNAMIC_TENANT_KEY + ":" + LoginHelper.getUserId();
-        RedisUtils.deleteObject(cacheKey);
-        SaHolder.getStorage().delete(cacheKey);
+        String cacheKey = DYNAMIC_TENANT_KEY + ":" + SecurityUtils.get(SecurityUtils.USER_KEY);
+        SecurityUtils.del(cacheKey);
     }
 
     /**
@@ -174,18 +149,8 @@ public class TenantHelper {
         }
         String tenantId = TenantHelper.getDynamic();
         if (StringUtils.isBlank(tenantId)) {
-            tenantId = LoginHelper.getTenantId();
+            tenantId = SecurityUtils.get(SecurityUtils.TENANT_KEY, String.class);
         }
         return tenantId;
     }
-
-    private static boolean isLogin() {
-        try {
-            StpUtil.checkLogin();
-            return true;
-        } catch (Exception e) {
-            return false;
-        }
-    }
-
 }

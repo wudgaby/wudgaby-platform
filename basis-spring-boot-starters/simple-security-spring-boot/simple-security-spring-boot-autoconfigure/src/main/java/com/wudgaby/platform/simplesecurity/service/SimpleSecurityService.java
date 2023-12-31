@@ -15,12 +15,6 @@ public interface SimpleSecurityService {
      */
     UserInfo getLoginUser(String account, String password);
 
-    /**
-     * 设置管理员的role标识
-     * @return
-     */
-    String[] getAdminRoleCodes();
-
     Collection<String> getPermissionList();
 
     /**

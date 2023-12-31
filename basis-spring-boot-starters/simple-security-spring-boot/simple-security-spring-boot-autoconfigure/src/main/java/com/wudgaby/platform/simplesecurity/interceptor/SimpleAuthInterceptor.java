@@ -1,9 +1,9 @@
 package com.wudgaby.platform.simplesecurity.interceptor;
 
 import com.wudgaby.platform.core.result.ApiResult;
+import com.wudgaby.platform.security.core.SecurityConst;
 import com.wudgaby.platform.security.core.SecurityUtils;
 import com.wudgaby.platform.security.core.UserInfo;
-import com.wudgaby.platform.simplesecurity.SecurityConst;
 import com.wudgaby.platform.simplesecurity.annotations.AnonymousAccess;
 import com.wudgaby.platform.utils.JacksonUtil;
 import lombok.AllArgsConstructor;

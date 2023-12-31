@@ -18,10 +18,9 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.mybatis</groupId>
-            <artifactId>mybatis</artifactId>
-            <version>3.5.5</version>
-            <scope>compile</scope>
+            <groupId>com.wudgaby.platform</groupId>
+            <artifactId>mybatis-plus-helper-srping-boot-starter</artifactId>
+            <version>${revision}</version>
         </dependency>
     </dependencies>
 </project>

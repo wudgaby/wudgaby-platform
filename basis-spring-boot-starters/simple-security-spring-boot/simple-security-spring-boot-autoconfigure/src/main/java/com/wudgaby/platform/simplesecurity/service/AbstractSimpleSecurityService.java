@@ -2,8 +2,9 @@ package com.wudgaby.platform.simplesecurity.service;
 
 import com.google.common.collect.Sets;
 import com.wudgaby.platform.core.util.AssertUtil;
+import com.wudgaby.platform.security.core.SecurityConst;
+import com.wudgaby.platform.security.core.SecurityUtils;
 import com.wudgaby.platform.security.core.UserInfo;
-import com.wudgaby.platform.simplesecurity.SecurityConst;
 import com.wudgaby.platform.springext.MetaResource;
 import com.wudgaby.platform.springext.RequestContextHolderSupport;
 import org.apache.commons.collections4.CollectionUtils;
@@ -39,7 +40,7 @@ public abstract class AbstractSimpleSecurityService implements SimpleSecuritySer
     @Override
     public Collection<String> getRoleList() {
         UserInfo loginUser = (UserInfo) RequestContextHolderSupport.getRequest().getSession().getAttribute(SecurityConst.SESSION_LOGGED_USER);
-        return Optional.ofNullable(loginUser).map(UserInfo::getRoles).orElse(Collections.emptyList());
+        return Optional.ofNullable(loginUser).map(UserInfo::getRoleCodes).orElse(Collections.emptyList());
     }
 
     @Override
@@ -122,7 +123,7 @@ public abstract class AbstractSimpleSecurityService implements SimpleSecuritySer
         UserInfo loginUser = getLoginUser(account, password);
         AssertUtil.notNull(loginUser, "账号密码错误");
 
-        loginUser.verifyAdmin(getAdminRoleCodes());
+        loginUser.setAdmin(SecurityUtils.isSuperAdmin());
         RequestContextHolderSupport.getRequest().getSession().setAttribute(SecurityConst.SESSION_LOGGED_USER, loginUser);
     }
 

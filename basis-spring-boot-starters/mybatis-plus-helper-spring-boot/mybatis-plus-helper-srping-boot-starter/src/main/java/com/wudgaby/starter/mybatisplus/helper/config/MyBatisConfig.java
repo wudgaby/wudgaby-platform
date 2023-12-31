@@ -1,10 +1,9 @@
 package com.wudgaby.starter.mybatisplus.helper.config;
 
 import com.baomidou.mybatisplus.core.handlers.MetaObjectHandler;
-import com.baomidou.mybatisplus.core.parser.ISqlParser;
-import com.baomidou.mybatisplus.extension.parsers.BlockAttackSqlParser;
-import com.baomidou.mybatisplus.extension.plugins.OptimisticLockerInterceptor;
-import com.baomidou.mybatisplus.extension.plugins.PaginationInterceptor;
+import com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor;
+import com.baomidou.mybatisplus.extension.plugins.inner.OptimisticLockerInnerInterceptor;
+import com.baomidou.mybatisplus.extension.plugins.inner.PaginationInnerInterceptor;
 import com.wudgaby.starter.mybatisplus.helper.mybatis.CustomDatabaseIdProvider;
 import com.wudgaby.starter.mybatisplus.helper.mybatis.CustomMetaObjectHandler;
 import com.wudgaby.starter.mybatisplus.helper.mybatis.DemoProfileSqlInterceptor;
@@ -18,8 +17,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import javax.annotation.Resource;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * @author :  wudgaby
@@ -33,36 +30,36 @@ public class MyBatisConfig {
     @Resource
     private MybatisHelperProp mybatisHelperProp;
 
+    @Bean
+    public MybatisPlusInterceptor mybatisPlusInterceptor() {
+        MybatisPlusInterceptor interceptor = new MybatisPlusInterceptor();
+        // 分页插件
+        interceptor.addInnerInterceptor(paginationInnerInterceptor());
+        // 乐观锁插件
+        interceptor.addInnerInterceptor(optimisticLockerInnerInterceptor());
+        return interceptor;
+    }
+
     /**
      * 分页插件，自动识别数据库类型
      */
     @Bean
-    public PaginationInterceptor paginationInterceptor() {
-        PaginationInterceptor paginationInterceptor = new PaginationInterceptor();
-        List<ISqlParser> sqlParserList = new ArrayList<>();
-        // 攻击 SQL 阻断解析器、加入解析链
-        sqlParserList.add(new BlockAttackSqlParser());
-        paginationInterceptor.setSqlParserList(sqlParserList);
-        return paginationInterceptor;
+    public PaginationInnerInterceptor paginationInnerInterceptor() {
+        PaginationInnerInterceptor paginationInnerInterceptor = new PaginationInnerInterceptor();
+        // 设置最大单页限制数量，默认 500 条，-1 不受限制
+        paginationInnerInterceptor.setMaxLimit(-1L);
+        // 分页合理化
+        paginationInnerInterceptor.setOverflow(true);
+        return paginationInnerInterceptor;
     }
 
     /**
      * 乐观锁
-     * 仅支持 updateById(id) 与 update(entity, wrapper) 方法
-     * @return
      */
     @Bean
-    public OptimisticLockerInterceptor optimisticLockerInterceptor() {
-        return new OptimisticLockerInterceptor();
+    public OptimisticLockerInnerInterceptor optimisticLockerInnerInterceptor() {
+        return new OptimisticLockerInnerInterceptor();
     }
-
-    /*@Bean
-    public MybatisPlusInterceptor mybatisPlusInterceptor() {
-        MybatisPlusInterceptor interceptor = new MybatisPlusInterceptor();
-        interceptor.addInnerInterceptor(new BlockAttackInnerInterceptor());
-        interceptor.addInnerInterceptor(new OptimisticLockerInnerInterceptor());
-        return interceptor;
-    }*/
 
     /**
      * 数据库id选择器
@@ -74,15 +71,6 @@ public class MyBatisConfig {
         return new CustomDatabaseIdProvider();
     }
 
-    /**
-     * id生成器
-     * @return
-     */
-    /*@Bean
-    @ConditionalOnMissingBean
-    public IdentifierGenerator iKeyGenerator() {
-        return new CustomerIdGenerator();
-    }*/
 
     /**
      * mybatis plus 字段填充

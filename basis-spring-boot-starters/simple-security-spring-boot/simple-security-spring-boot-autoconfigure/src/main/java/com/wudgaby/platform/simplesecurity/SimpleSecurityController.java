@@ -1,6 +1,7 @@
 package com.wudgaby.platform.simplesecurity;
 
 import com.wudgaby.platform.core.result.ApiResult;
+import com.wudgaby.platform.security.core.SecurityConst;
 import com.wudgaby.platform.simplesecurity.annotations.AnonymousAccess;
 import com.wudgaby.platform.simplesecurity.service.SimpleSecurityService;
 import com.wudgaby.platform.springext.RequestContextHolderSupport;
