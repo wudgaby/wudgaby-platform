@@ -87,8 +87,7 @@ public class MyBatisConfig {
      * @return
      */
     @Bean
-    @ConditionalOnProperty(name = "demoEnv", havingValue = "true")
-    @ConditionalOnMissingBean
+    @ConditionalOnProperty(name = "mybatis-helper.demo-env", havingValue = "true")
     @ConditionalOnWebApplication
     public Interceptor demoProfileSqlInterceptor(){
         return new DemoProfileSqlInterceptor(mybatisHelperProp.getExcludeUrl());

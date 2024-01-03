@@ -1,8 +1,11 @@
 package com.wudgaby.starter.tenant;
 
 import com.wudgaby.platform.core.entity.BaseEntity;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+
+import java.io.Serializable;
 
 /**
  * @author :  wudgaby
@@ -13,8 +16,6 @@ import lombok.EqualsAndHashCode;
 @Data
 @EqualsAndHashCode(callSuper = true)
 public class TenantEntity extends BaseEntity {
-    /**
-     * 租户编号
-     */
-    private String tenantId;
+    @ApiModelProperty("租户id")
+    private Serializable tenantId;
 }

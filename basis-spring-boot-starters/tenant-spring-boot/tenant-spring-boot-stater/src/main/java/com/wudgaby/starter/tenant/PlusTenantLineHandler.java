@@ -1,6 +1,5 @@
 package com.wudgaby.starter.tenant;
 
-import cn.hutool.core.collection.ListUtil;
 import com.baomidou.mybatisplus.extension.plugins.handler.TenantLineHandler;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -40,13 +39,7 @@ public class PlusTenantLineHandler implements TenantLineHandler {
         if (StringUtils.isNotBlank(tenantId)) {
             // 不需要过滤租户的表
             List<String> excludes = tenantProperties.getExcludes();
-            // 非业务表
-            List<String> tables = ListUtil.toList(
-                "gen_table",
-                "gen_table_column"
-            );
-            tables.addAll(excludes);
-            return tables.contains(tableName);
+            return excludes.contains(tableName);
         }
         return true;
     }

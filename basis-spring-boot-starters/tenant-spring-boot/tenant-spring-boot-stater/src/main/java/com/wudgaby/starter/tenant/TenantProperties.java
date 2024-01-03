@@ -17,7 +17,7 @@ public class TenantProperties {
     /**
      * 是否启用
      */
-    private Boolean enable;
+    private boolean enable = true;
 
     /**
      * 排除表

@@ -20,17 +20,12 @@ public class MySimpleSecurityImpl extends AbstractSimpleSecurityService {
     @Override
     public UserInfo getLoginUser(String account, String password) {
         return new UserInfo().setId(1).setAccount(account).setAdmin(false)
-                .setRoles(Arrays.asList("role1"))
+                .setRoleCodes(Arrays.asList("role1"))
                 .setAuthorities(Arrays.asList("sys:user:add", "sys:user:del"))
                 .setMetaResources(CollUtil.set(false,
                         new MetaResource( "/req1", HttpMethod.GET.name()),
                         new MetaResource( "/req2", "POST")
                 ))
                 ;
-    }
-
-    @Override
-    public String[] getAdminRoleCodes() {
-        return new String[]{"admin"};
     }
 }

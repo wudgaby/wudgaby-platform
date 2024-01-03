@@ -46,8 +46,7 @@ public class SimpleSecurityConfiguration implements WebMvcConfigurer {
 
     @Bean
     public ExcludeRegistry secureRegistry() {
-        ExcludeRegistry excludeRegistry = new ExcludeRegistry();
-        return excludeRegistry;
+        return new ExcludeRegistry();
     }
 
     @Bean

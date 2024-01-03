@@ -22,7 +22,7 @@ import java.util.List;
 @Configuration
 @EnableConfigurationProperties(TenantProperties.class)
 @AutoConfigureAfter(MyBatisConfig.class)
-@ConditionalOnProperty(value = "tenant.enable", havingValue = "true")
+@ConditionalOnProperty(value = "tenant.enable", havingValue = "true", matchIfMissing = true)
 public class TenantConfiguration {
     @Bean
     public boolean tenantInit(MybatisPlusInterceptor mybatisPlusInterceptor,
