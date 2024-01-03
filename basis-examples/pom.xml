@@ -53,7 +53,15 @@
         <module>access-limiter-spring-boot-sample</module>
         <module>plumelog-sample</module>
         <module>i18n-sample</module>
+        <module>tenant-spring-boot-sample</module>
     </modules>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+        </dependency>
+    </dependencies>
 
     <dependencyManagement>
         <dependencies>

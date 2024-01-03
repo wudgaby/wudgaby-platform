@@ -6,7 +6,7 @@
     <parent>
         <groupId>com.wudgaby.platform</groupId>
         <artifactId>basis-project-ops</artifactId>
-        <version>1.0.0</version>
+        <version>1.0.0-SNAPSHOT</version>
     </parent>
 
     <artifactId>health-admin-server</artifactId>

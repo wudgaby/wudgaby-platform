@@ -1,5 +1,6 @@
 package com.wudgaby.platform.sso.server;
 
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -11,8 +12,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @Desc :  #todo role, resource表未实现.
  */
 @SpringBootApplication(scanBasePackages = "com.wudgaby.platform")
-/*@ComponentScan(value = "com.wudgaby.platform",
-        excludeFilters = @ComponentScan.Filter(type = FilterType.ASSIGNABLE_TYPE, classes = {GlobalExceptionAdvice.class}))*/
+@MapperScan("com.wudgaby.platform.sso.server.mapper")
 public class SsoServerBootstrap {
     public static void main(String[] args) {
         SpringApplication.run(SsoServerBootstrap.class, args);
