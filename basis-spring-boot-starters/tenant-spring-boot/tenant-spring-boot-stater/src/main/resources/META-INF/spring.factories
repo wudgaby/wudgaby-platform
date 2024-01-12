@@ -1,2 +1,2 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-  com.wudgaby.starter.tenant.TenantConfiguration
+  com.wudgaby.starter.tenant.config.TenantConfiguration

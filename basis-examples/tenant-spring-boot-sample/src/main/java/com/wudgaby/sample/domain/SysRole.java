@@ -1,7 +1,7 @@
 package com.wudgaby.sample.domain;
 
 import com.baomidou.mybatisplus.annotation.TableName;
-import com.wudgaby.starter.tenant.TenantEntity;
+import com.wudgaby.starter.tenant.db.TenantEntity;
 import lombok.Data;
 import lombok.experimental.Accessors;
 

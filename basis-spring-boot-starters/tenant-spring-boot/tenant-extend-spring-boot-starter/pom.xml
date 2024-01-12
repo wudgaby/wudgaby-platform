@@ -5,18 +5,11 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.wudgaby.platform</groupId>
-        <artifactId>basis-spring-boot-starters</artifactId>
+        <artifactId>tenant-spring-boot</artifactId>
         <version>${revision}</version>
     </parent>
 
-    <artifactId>tenant-spring-boot</artifactId>
-    <packaging>pom</packaging>
-    <name>Tenant Spring Boot</name>
-    <description>多租户实现</description>
-    <modules>
-        <module>tenant-spring-boot-stater</module>
-        <module>tenant-extend-spring-boot-starter</module>
-    </modules>
+    <artifactId>tenant-extend-spring-boot-starter</artifactId>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
@@ -24,4 +17,16 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.wudgaby.platform</groupId>
+            <artifactId>tenant-spring-boot-stater</artifactId>
+            <version>${revision}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.wudgaby.platform</groupId>
+            <artifactId>redis-spring-boot-starter</artifactId>
+            <version>${revision}</version>
+        </dependency>
+    </dependencies>
 </project>

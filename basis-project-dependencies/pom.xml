@@ -130,12 +130,6 @@
                 <artifactId>rate-limiter-spring-boot-starter</artifactId>
                 <version>${basis-starters.version}</version>
             </dependency>
-            <!--支持redis多库工具-->
-            <dependency>
-                <groupId>com.wudgaby.platform</groupId>
-                <artifactId>redis-alone-spring-boot-starter</artifactId>
-                <version>${basis-starters.version}</version>
-            </dependency>
             <!--重复提交-->
             <dependency>
                 <groupId>com.wudgaby.platform</groupId>
