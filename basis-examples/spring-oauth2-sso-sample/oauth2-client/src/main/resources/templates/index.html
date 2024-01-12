@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>oauth2客户端</title>
+</head>
+<body>
+登录用户：<span th:text="${user}"></span>
+<a href="./ssologout">退出</a>
+<hr/>
+<ul>
+    <li><a href="./server/a/res1">服务A —— 资源1</a></li>
+    <li><a href="./server/a/res2">服务A —— 资源2</a></li>
+    <li><a href="./server/b/res1">服务B —— 资源1</a></li>
+    <li><a href="./server/b/res2">服务B —— 资源2</a></li>
+    <li><a href="./server/b/res3">服务B —— 资源3</a></li>
+</ul>
+</body>
+</html>

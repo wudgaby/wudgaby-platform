@@ -13,7 +13,7 @@ import java.util.concurrent.TimeUnit;
  */
 public class MemoryResubmitService implements ResubmitService{
     private static final Cache<String, String> CACHE = CacheBuilder.newBuilder()
-            .expireAfterWrite(2, TimeUnit.SECONDS)
+            .expireAfterWrite(1, TimeUnit.SECONDS)
             .maximumSize(99_999)
             .build();
     @Override

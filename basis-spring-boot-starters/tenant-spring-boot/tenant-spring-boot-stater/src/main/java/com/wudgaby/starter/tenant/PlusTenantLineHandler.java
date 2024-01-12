@@ -1,5 +1,6 @@
 package com.wudgaby.starter.tenant;
 
+import cn.hutool.core.collection.CollUtil;
 import com.baomidou.mybatisplus.extension.plugins.handler.TenantLineHandler;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -8,7 +9,8 @@ import net.sf.jsqlparser.expression.NullValue;
 import net.sf.jsqlparser.expression.StringValue;
 import org.apache.commons.lang3.StringUtils;
 
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * 自定义租户处理器
@@ -19,7 +21,15 @@ import java.util.List;
 @AllArgsConstructor
 public class PlusTenantLineHandler implements TenantLineHandler {
 
-    private final TenantProperties tenantProperties;
+    private final Set<String> ignoreTables = new HashSet<>();
+
+    public PlusTenantLineHandler(TenantProperties tenantProperties) {
+        // 不同 DB 下，大小写的习惯不同，所以需要都添加进去
+        tenantProperties.getIgnoreTables().forEach(table -> {
+            ignoreTables.add(table.toLowerCase());
+            ignoreTables.add(table.toUpperCase());
+        });
+    }
 
     @Override
     public Expression getTenantId() {
@@ -38,8 +48,7 @@ public class PlusTenantLineHandler implements TenantLineHandler {
         // 判断是否有租户
         if (StringUtils.isNotBlank(tenantId)) {
             // 不需要过滤租户的表
-            List<String> excludes = tenantProperties.getExcludes();
-            return excludes.contains(tableName);
+            return CollUtil.contains(ignoreTables, tableName);
         }
         return true;
     }

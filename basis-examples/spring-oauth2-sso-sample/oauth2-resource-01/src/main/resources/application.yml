@@ -1,0 +1,10 @@
+server:
+  port: 9001
+
+jwt:
+  cert-info:
+    # 证书存放位置
+    public-key-location: jks/my.cer
+  claims:
+    # 令牌的鉴发方：即授权服务器的地址
+    issuer: http://ssoserver.cn:8080

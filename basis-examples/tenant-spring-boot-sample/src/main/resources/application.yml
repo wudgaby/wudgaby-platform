@@ -5,6 +5,7 @@ spring:
     username: root
     password: root
 
+
 mybatis-plus:
   mapper-locations: classpath*:mapper/**/*Mapper.xml
   type-aliases-package: com.wudgaby.sample.domain

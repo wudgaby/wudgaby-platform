@@ -22,6 +22,6 @@ public class TenantProperties {
     /**
      * 排除表
      */
-    private List<String> excludes;
+    private List<String> ignoreTables;
 
 }

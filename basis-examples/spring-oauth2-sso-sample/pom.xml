@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+>
+
+    <parent>
+        <artifactId>basis-examples</artifactId>
+        <groupId>com.wudgaby.platform</groupId>
+        <version>1.0.0</version>
+    </parent>
+
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>spring-oauth2-sso-sample</artifactId>
+    <packaging>pom</packaging>
+
+    <properties>
+        <maven.install.skip>true</maven.install.skip>
+        <maven.deploy.skip>true</maven.deploy.skip>
+    </properties>
+
+    <modules>
+        <module>oauth2-authorization-server</module>
+        <module>oauth2-client</module>
+        <module>oauth2-resource-01</module>
+        <module>oauth2-resource-02</module>
+    </modules>
+</project>

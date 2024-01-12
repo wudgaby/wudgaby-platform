@@ -54,6 +54,8 @@
         <module>plumelog-sample</module>
         <module>i18n-sample</module>
         <module>tenant-spring-boot-sample</module>
+        <module>data-scope-spring-boot</module>
+        <module>spring-oauth2-sso-sample</module>
     </modules>
 
     <dependencies>

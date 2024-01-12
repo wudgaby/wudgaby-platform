@@ -52,10 +52,10 @@ import java.util.List;
  */
 @Intercepts({@Signature(type = StatementHandler.class, method = "prepare", args = {Connection.class, Integer.class})})
 public class DemoProfileSqlInterceptor implements Interceptor {
-    private List<String> NONE_SECURITY_URL_PATTERNS;
+    private final List<String> EXCLUDE_URL_PATTERNS;
 
-    public DemoProfileSqlInterceptor(List<String> NONE_SECURITY_URL_PATTERNS){
-        this.NONE_SECURITY_URL_PATTERNS = NONE_SECURITY_URL_PATTERNS;
+    public DemoProfileSqlInterceptor(List<String> excludeUrls){
+        this.EXCLUDE_URL_PATTERNS = excludeUrls;
     }
 
     @Override
@@ -73,8 +73,8 @@ public class DemoProfileSqlInterceptor implements Interceptor {
             }
 
             //放开不进行安全过滤的接口
-            if(CollUtil.isNotEmpty(NONE_SECURITY_URL_PATTERNS)) {
-                for (String notAuthResource : NONE_SECURITY_URL_PATTERNS) {
+            if(CollUtil.isNotEmpty(EXCLUDE_URL_PATTERNS)) {
+                for (String notAuthResource : EXCLUDE_URL_PATTERNS) {
                     AntPathMatcher antPathMatcher = new AntPathMatcher();
                     if (antPathMatcher.match(notAuthResource, getRequest().getRequestURI())) {
                         return invocation.proceed();

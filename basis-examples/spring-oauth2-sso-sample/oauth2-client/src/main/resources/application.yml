@@ -1,0 +1,46 @@
+server:
+  port: 9000
+
+logging:
+  level:
+    root: INFO
+    org.springframework.web: DEBUG
+    org.springframework.security: DEBUG
+    org.springframework.security.oauth2: DEBUG
+    org.springframework.jdbc.core.JdbcTemplate: DEBUG
+
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          myClient:
+            client-id: my_client
+            client-secret: 123456
+            authorization-grant-type: authorization_code
+            #使用openid时,provider需要走jwk-set-uri. 不能走自定义user-info-uri
+            scope: read,write,profile #,openid
+            provider: spring
+            redirect-uri: '{baseUrl}/{action}/oauth2/code/{registrationId}'
+            # 认证方法
+            client-authentication-method: client_secret_basic
+
+
+        provider:
+          # 服务提供地址
+          spring:
+            # 配置该参数时, 启动会检测该地址是否可用, 不可用时会启动失败
+            #issuer-uri: http://ssoserver.cn:8080
+
+            # issuer-uri 可以简化下面的配置
+            # 请求授权码地址(默认)
+            authorization-uri: http://ssoserver.cn:8080/oauth2/authorize
+            # 请求令牌地址(默认)
+            token-uri: http://ssoserver.cn:8080/oauth2/token
+            # 默认的/userinfo端点需要IdToken获取. 自定义用户资源地址, 使用 OIDC 是为了使用默认的用户端点，假如不使用 OIDC 需要自定义用户端点接口，否则会报如下错误invalid_user_info_response
+            user-info-uri: http://ssoserver.cn:8080/oauth2/user
+            # OIDC(默认)
+            #jwk-set-uri: http://ssoserver.cn:8080/oauth2/jwks
+            # 用户资源返回中的一个属性名,默认sub
+            user-name-attribute: name
+            user-info-authentication-method: GET

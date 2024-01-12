@@ -22,4 +22,4 @@ logging:
 
 sso:
   logout-path: /sso/logout
-  server: http://ssoserver.com:9900
+  server: http://ssoserver.cn:9900

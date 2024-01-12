@@ -2,6 +2,7 @@ package com.wudgaby.starter.mybatisplus.helper.config;
 
 import com.baomidou.mybatisplus.core.handlers.MetaObjectHandler;
 import com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor;
+import com.baomidou.mybatisplus.extension.plugins.inner.BlockAttackInnerInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.inner.OptimisticLockerInnerInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.inner.PaginationInnerInterceptor;
 import com.wudgaby.starter.mybatisplus.helper.mybatis.CustomDatabaseIdProvider;
@@ -11,7 +12,6 @@ import org.apache.ibatis.mapping.DatabaseIdProvider;
 import org.apache.ibatis.plugin.Interceptor;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -36,7 +36,9 @@ public class MyBatisConfig {
         // 分页插件
         interceptor.addInnerInterceptor(paginationInnerInterceptor());
         // 乐观锁插件
-        interceptor.addInnerInterceptor(optimisticLockerInnerInterceptor());
+        interceptor.addInnerInterceptor(new OptimisticLockerInnerInterceptor());
+        // 防止全表更新与删除插件
+        interceptor.addInnerInterceptor(new BlockAttackInnerInterceptor());
         return interceptor;
     }
 
@@ -51,14 +53,6 @@ public class MyBatisConfig {
         // 分页合理化
         paginationInnerInterceptor.setOverflow(true);
         return paginationInnerInterceptor;
-    }
-
-    /**
-     * 乐观锁
-     */
-    @Bean
-    public OptimisticLockerInnerInterceptor optimisticLockerInnerInterceptor() {
-        return new OptimisticLockerInnerInterceptor();
     }
 
     /**
@@ -88,8 +82,7 @@ public class MyBatisConfig {
      */
     @Bean
     @ConditionalOnProperty(name = "mybatis-helper.demo-env", havingValue = "true")
-    @ConditionalOnWebApplication
     public Interceptor demoProfileSqlInterceptor(){
-        return new DemoProfileSqlInterceptor(mybatisHelperProp.getExcludeUrl());
+        return new DemoProfileSqlInterceptor(mybatisHelperProp.getExcludeUrls());
     }
 }

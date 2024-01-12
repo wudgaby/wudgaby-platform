@@ -15,5 +15,5 @@ import java.util.List;
 @ConfigurationProperties(prefix = "mybatis-helper")
 public class MybatisHelperProp {
     private boolean demoEnv;
-    private List<String> excludeUrl;
+    private List<String> excludeUrls;
 }

@@ -1,0 +1,45 @@
+server:
+  port: 8080
+
+logging:
+  level:
+    root: INFO
+    org.springframework.web: DEBUG
+    org.springframework.security: DEBUG
+    org.springframework.security.oauth2: DEBUG
+    org.springframework.jdbc.core.JdbcTemplate: DEBUG
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/oauth2_new?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8
+    username: root
+    password: root
+
+
+  # 提供常用的oauth2站点 CommonOAuth2Provider
+  security:
+    oauth2:
+      client:
+        registration:
+          github:
+            client-id: Iv1.29b3406f72bdb777
+            client-secret: fd83119803af5a4f2bf76d819577ef25e3336112
+            scope: read:user
+          gitee:
+            client-id: 835d9350cfa260df1d3db67ec3158ce99cea90340537e8a3d0229affc05fb0ee
+            client-secret: c0dac0a90dda1d5cd0c2315140d6cccce787aa5df9d7aaecc0638a5f70aa2004
+            authorization-grant-type: authorization_code
+            scope: user_info
+            provider: gitee
+            redirect-uri: '{baseUrl}/{action}/oauth2/code/{registrationId}'
+            # 认证方法
+            client-authentication-method: client_secret_basic
+        provider:
+          gitee:
+            authorization-uri: https://gitee.com/oauth/authorize
+            token-uri: https://gitee.com/oauth/token
+            user-info-uri: https://gitee.com/api/v5/user
+            user-name-attribute: "name"
+
+

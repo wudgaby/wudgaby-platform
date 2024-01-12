@@ -35,7 +35,7 @@ public class RepeatSubmitAspect {
     /**
      * key 过期时间
      */
-    private static final long REPEAT_SUBMIT_EXPIRE_SEC = 2;
+    private static final long REPEAT_SUBMIT_EXPIRE_SEC = 1;
     /**
      * 前端传过来的时间戳
      */

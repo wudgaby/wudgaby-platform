@@ -25,15 +25,10 @@ public class DataScopeConfig {
 
     @Bean
     public boolean datePermissionInit(MybatisPlusInterceptor mybatisPlusInterceptor) {
-        List<InnerInterceptor> interceptors = new ArrayList<>();
-        interceptors.addAll(mybatisPlusInterceptor.getInterceptors());
-        interceptors.add(dataPermissionInterceptor());
+        List<InnerInterceptor> interceptors = new ArrayList<>(mybatisPlusInterceptor.getInterceptors());
+        interceptors.add(new PlusDataPermissionInterceptor());
         mybatisPlusInterceptor.setInterceptors(interceptors);
         return true;
-    }
-
-    public PlusDataPermissionInterceptor dataPermissionInterceptor() {
-        return new PlusDataPermissionInterceptor();
     }
 
     @Bean
