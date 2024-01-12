@@ -35,14 +35,14 @@ public class Oauth2LoginSuccessHandler extends SimpleUrlAuthenticationSuccessHan
             if (authorizedProvider.equals("github")) {
                 DefaultOAuth2User oauth2User = (DefaultOAuth2User) authentication.getPrincipal();
                 //查询数据库,是否存在. 不存在注册, 存在直接返回token.
-                //response.sendRedirect("/signin");
+                //response.sendRedirect("/signup");
             } else if (authorizedProvider.equals("gitee")) {
                 GiteeOAuth2User giteeOAuth2User = (GiteeOAuth2User) authentication.getPrincipal();
                 //查询数据库,是否存在. 不存在注册, 存在直接返回token.
-                //response.sendRedirect("/signin");
+                //response.sendRedirect("/signup");
             } else {
                 log.info("不支持的oauth2 provider");
-                response.sendRedirect("/signin");
+                //response.sendRedirect("/signup");
             }
         }
     }

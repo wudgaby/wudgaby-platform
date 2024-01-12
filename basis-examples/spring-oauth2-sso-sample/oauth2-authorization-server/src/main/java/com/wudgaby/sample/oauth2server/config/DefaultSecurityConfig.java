@@ -35,10 +35,15 @@ public class DefaultSecurityConfig {
     public static final String LOGIN_PAGE = "/ssologin";
     public static final String LOGOUT_PAGE = "/ssologout";
 
+    //实现自定义OAuth2UserService 获取自定义OAuth2用户信息
     private final GiteeOAuth2UserService giteeOAuth2UserService;
+    //OAuth2登录成功处理类
     private final Oauth2LoginSuccessHandler oauth2LoginSuccessHandler;
+    //OAuth2登录失败处理类
     private final Oauth2LoginFailedHandler oauth2LoginFailedHandler;
+    //OAuth2 client 默认HttpSession
     private final OAuth2AuthorizedClientRepository oAuth2AuthorizedClientRepository;
+    //OAuth2 client存储方式. 默认内存, 框架提供JDBC.
     private final OAuth2AuthorizedClientService oAuth2AuthorizedClientService;
 
 
@@ -66,24 +71,22 @@ public class DefaultSecurityConfig {
                 //默认会启动CSRF防护，一旦启动了CSRF防护，“/logout” 需要用post的方式提交.
                 .logout(logoutConfigurer -> logoutConfigurer.logoutUrl(LOGOUT_PAGE))
                 .oauth2ResourceServer(OAuth2ResourceServerConfigurer::jwt)
+
                 // oauth2三方登录
                 //.oauth2Login(Customizer.withDefaults())
+                //OAuth2UserService, OAuth2User
+                .oauth2Login(oauth2LoginCustomizer -> oauth2LoginCustomizer
+                        .loginPage(LOGIN_PAGE)
+                        //.authorizedClientService(oAuth2AuthorizedClientService)
+                        //.authorizedClientRepository(oAuth2AuthorizedClientRepository)
+                        //.userInfoEndpoint().userService(giteeOAuth2UserService)
+                        //.and()
+                        //登录成功/失败的逻辑处理
+                        //.successHandler(oauth2LoginSuccessHandler)
+                        //.failureHandler(oauth2LoginFailedHandler)
+                )
                 .oauth2Client(Customizer.withDefaults())
         ;
-
-        //OAuth2UserService, OAuth2User
-        http.oauth2Login()
-                .loginPage(LOGIN_PAGE)
-                //.authorizedClientService(oAuth2AuthorizedClientService)
-                //.authorizedClientRepository(oAuth2AuthorizedClientRepository)
-                //.userInfoEndpoint().userService(giteeOAuth2UserService)
-                //.and()
-                //登录成功/失败的逻辑处理
-                //.successHandler(oauth2LoginSuccessHandler)
-                //.failureHandler(oauth2LoginFailedHandler)
-
-        ;
-
         return http.build();
     }
 

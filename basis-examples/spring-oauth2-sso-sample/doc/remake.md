@@ -13,6 +13,9 @@ http://ssoserver.cn:8080/oauth2/authorize?response_type=code&client_id=my_client
 
 ### 教程参考
 ```
+Spring Security OAuth2 完全解析 (流程/原理/实战定制) —— Client / ResourceServer 篇 
+https://www.cnblogs.com/simpleito/archive/2022/01/11/15786122.html
+
 https://blog.csdn.net/tu_wer/article/details/124872706
 https://blog.csdn.net/ACE_U_005A/article/details/128851814
 
@@ -31,6 +34,6 @@ org.springframework.security.oauth2.core.OAuth2AuthenticationException: [authori
 
 问题2:
 [invalid_user_info_response] An error occurred while attempting to retrieve the UserInfo Resource from 'http://ssoserver.cn:8080/oauth2/user': response contains invalid content type 'text/html;charset=UTF-8'. The UserInfo Response should return a JSON object (content type 'application/json') that contains a collection of name and value pairs of the claims about the authenticated End-User. Please ensure the UserInfo Uri in UserInfoEndpoint for Client Registration 'myClient' conforms to the UserInfo Endpoint, as defined in OpenID Connect 1.0: 'https://openid.net/specs/openid-connect-core-1_0.html#UserInfo'
-spring security配置 oauth2ResourceServer(OAuth2ResourceServerConfigurer::jwt) 需要放到DefaultSecurityConfig. 往前放.因为经过第一个认证就被拦截.
+spring security配置 oauth2ResourceServer(OAuth2ResourceServerConfigurer::jwt) 需要放到DefaultSecurityConfig. 端点未拦截问题.
 
 ```

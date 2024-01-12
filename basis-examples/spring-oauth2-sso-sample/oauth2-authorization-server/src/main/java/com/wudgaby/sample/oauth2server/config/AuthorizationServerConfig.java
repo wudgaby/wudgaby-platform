@@ -12,9 +12,7 @@ import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.oauth2.core.AuthorizationGrantType;
 import org.springframework.security.oauth2.core.ClientAuthenticationMethod;
@@ -52,7 +50,6 @@ import java.util.UUID;
  * @desc :
  */
 @Slf4j
-@EnableWebSecurity(debug = true)
 @Configuration(proxyBeanMethods = false)
 public class AuthorizationServerConfig {
 
@@ -66,11 +63,14 @@ public class AuthorizationServerConfig {
         //定义oauth2 server 配置
         OAuth2AuthorizationServerConfigurer authorizationServerConfigurer = oAuth2AuthorizationServerConfigurer();
         RequestMatcher endpointsMatcher = authorizationServerConfigurer.getEndpointsMatcher();
+
         http
-                // 拦截对 授权服务器 相关端点的请求
+                // 拦截对 授权服务器 相关端点的请求, 其他自定义端点无法拦截
                 .requestMatcher(endpointsMatcher)
                 // 拦载到的请求需要认证确认（登录）
-                .authorizeRequests(authorizeRequests -> authorizeRequests.anyRequest().authenticated())
+                .authorizeRequests(authorizeRequests -> authorizeRequests
+                        .anyRequest().authenticated()
+                )
                 // 忽略掉相关端点的csrf（跨站请求）：对授权端点的访问可以是跨站的
                 .csrf(csrf -> csrf.ignoringRequestMatchers(endpointsMatcher))
                 //默认会启动CSRF防护, 关闭csrf
@@ -78,8 +78,9 @@ public class AuthorizationServerConfig {
                 .exceptionHandling(exceptions ->
                         exceptions.authenticationEntryPoint(new LoginUrlAuthenticationEntryPoint(DefaultSecurityConfig.LOGIN_PAGE))
                 )
-                .formLogin(Customizer.withDefaults())
-                .logout(Customizer.withDefaults())
+                //.formLogin(Customizer.withDefaults())
+                //.logout(Customizer.withDefaults())
+                //.oauth2ResourceServer(OAuth2ResourceServerConfigurer::jwt)
                 // 应用授权服务器的配置
                 .apply(authorizationServerConfigurer)
         ;

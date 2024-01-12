@@ -8,3 +8,6 @@ jwt:
   claims:
     # 令牌的鉴发方：即授权服务器的地址
     issuer: http://ssoserver.cn:8080
+
+#spring.security.oauth2.resourceserver.jwt.issuer-uri=http://localhost:900
+#spring.security.oauth2.resourceserver.jwt.jwk-set-uri= http://localhost:9000/oauth2/jwks
