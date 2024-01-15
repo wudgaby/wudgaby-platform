@@ -1,6 +1,6 @@
 package com.wudgaby.platform.redis.demo;
 
-import com.wudgaby.redis.api.RedisSupport;
+import com.wudgaby.starter.redis.support.RedisSupport;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;

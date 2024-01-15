@@ -16,7 +16,6 @@
     <description>代码生成器-启动器 - DONE</description>
     <modules>
         <module>code-generator-ui</module>
-        <module>code-generator-spring-boot-autoconfigure</module>
         <module>code-generator-spring-boot-starter</module>
     </modules>
 

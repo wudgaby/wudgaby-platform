@@ -1,7 +1,7 @@
 package com.wudgaby.sample;
 
 import com.wudgaby.platform.core.result.ApiResult;
-import com.wudgaby.platform.simplesecurity.annotations.AnonymousAccess;
+import com.wudgaby.platform.security.core.annotations.AnonymousAccess;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;

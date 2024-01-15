@@ -24,7 +24,7 @@
         </dependency>
         <dependency>
             <groupId>com.wudgaby.platform</groupId>
-            <artifactId>redis-api</artifactId>
+            <artifactId>redis-spring-boot-starter</artifactId>
             <version>${revision}</version>
         </dependency>
     </dependencies>

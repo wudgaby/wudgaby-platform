@@ -1,7 +1,7 @@
 package com.wudgaby.sample;
 
 import cn.hutool.extra.spring.SpringUtil;
-import com.wudgaby.ip2region.Ip2RegionHelper;
+import com.wudgaby.starter.ip2region.Ip2RegionHelper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;

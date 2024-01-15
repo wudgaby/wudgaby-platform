@@ -1,0 +1,4 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.wudgaby.starter.mail.config.MailConfiguration
+org.springframework.boot.env.EnvironmentPostProcessor=\
+  com.wudgaby.starter.mail.support.MailEnvironmentPostProcessor

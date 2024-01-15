@@ -15,7 +15,6 @@
     <description>获取ip地区工具</description>
     <modules>
         <module>ip2region-spring-boot-starter</module>
-        <module>ip2region-spring-boot-autoconfigure</module>
     </modules>
 
     <properties>

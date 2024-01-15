@@ -2,7 +2,7 @@ package sample.controller;
 
 
 import com.wudgaby.platform.core.result.ApiResult;
-import com.wudgaby.platform.openapi.annotations.AccessTokenVerifier;
+import com.wudgaby.starter.openapi.annotations.AccessTokenVerifier;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.GetMapping;

@@ -18,9 +18,8 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.wudgaby.platform</groupId>
-            <artifactId>api-version-spring-boot-autoconfigure</artifactId>
-            <version>${revision}</version>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
     </dependencies>
 </project>

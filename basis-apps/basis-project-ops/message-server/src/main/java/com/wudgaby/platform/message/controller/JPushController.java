@@ -3,7 +3,7 @@ package com.wudgaby.platform.message.controller;
 import com.wudgaby.platform.core.result.ApiResult;
 import com.wudgaby.platform.message.api.form.JPushForm;
 import com.wudgaby.platform.message.service.JPushService;
-import com.wudgaby.plugin.resubmit.UnCheckRepeatSubmit;
+import com.wudgaby.starter.resubmit.UnCheckRepeatSubmit;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.AllArgsConstructor;

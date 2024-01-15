@@ -15,7 +15,6 @@
     <description>ip访问黑白名单</description>
     <modules>
         <module>ip-access-spring-boot-starter</module>
-        <module>ip-access-spring-boot-autoconfigure</module>
     </modules>
 
     <properties>

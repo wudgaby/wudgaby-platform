@@ -5,7 +5,7 @@ import com.wudgaby.platform.auth.extend.authway.username.LoginForm;
 import com.wudgaby.platform.core.result.ApiResult;
 import com.wudgaby.platform.security.core.SecurityUtils;
 import com.wudgaby.platform.springext.RequestContextHolderSupport;
-import com.wudgaby.redis.api.RedisSupport;
+import com.wudgaby.starter.redis.support.RedisSupport;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;

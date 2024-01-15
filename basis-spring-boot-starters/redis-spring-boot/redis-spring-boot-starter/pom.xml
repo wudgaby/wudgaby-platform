@@ -25,10 +25,5 @@
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-pool2</artifactId>
         </dependency>
-        <dependency>
-            <groupId>com.wudgaby.platform</groupId>
-            <artifactId>redis-api</artifactId>
-            <version>${revision}</version>
-        </dependency>
     </dependencies>
 </project>

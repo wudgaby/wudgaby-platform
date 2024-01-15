@@ -1,6 +1,6 @@
 package com.wudgaby.platform.redis.demo;
 
-import com.wudgaby.redis.starter.consts.RedisConst;
+import com.wudgaby.starter.redis.consts.RedisConst;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.event.ApplicationStartedEvent;

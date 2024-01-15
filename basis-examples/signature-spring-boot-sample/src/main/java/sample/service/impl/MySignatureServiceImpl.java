@@ -1,8 +1,8 @@
 package sample.service.impl;
 
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
-import com.wudgaby.platform.openapi.entity.ClientAppInfo;
-import com.wudgaby.sign.starter.service.SignatureService;
+import com.wudgaby.starter.openapi.entity.ClientAppInfo;
+import com.wudgaby.starter.sign.service.SignatureService;
 import org.springframework.beans.factory.annotation.Autowired;
 import sample.service.ClientAppInfoService;
 

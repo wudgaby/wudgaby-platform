@@ -1,0 +1,3 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.wudgaby.starter.limiter.configuration.RateLimiterAutoConfiguration, \
+  com.wudgaby.starter.limiter.configuration.GuavaRateLimiterAutoConfiguration

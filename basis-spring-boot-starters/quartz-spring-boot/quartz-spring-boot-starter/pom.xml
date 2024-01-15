@@ -13,9 +13,8 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.wudgaby.platform</groupId>
-            <artifactId>quartz-spring-boot-autoconfigure</artifactId>
-            <version>${revision}</version>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-quartz</artifactId>
         </dependency>
     </dependencies>
 </project>

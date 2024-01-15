@@ -15,7 +15,6 @@
     <description>接口限流-启动器 - DONE</description>
     <modules>
         <module>rate-limiter-spring-boot-starter</module>
-        <module>rate-limiter-spring-boot-autoconfigure</module>
         <module>rate-limiter-core</module>
     </modules>
 

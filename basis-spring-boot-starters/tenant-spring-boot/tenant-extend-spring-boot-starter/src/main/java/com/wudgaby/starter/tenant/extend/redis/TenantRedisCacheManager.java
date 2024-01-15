@@ -1,6 +1,6 @@
 package com.wudgaby.starter.tenant.extend.redis;
 
-import com.wudgaby.redis.starter.config.CustomRedisCacheManager;
+import com.wudgaby.starter.redis.config.CustomRedisCacheManager;
 import com.wudgaby.starter.tenant.context.TenantContextHolder;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cache.Cache;

@@ -1,8 +1,8 @@
 package com.wudgaby.sample;
 
 import com.wudgaby.platform.core.result.ApiResult;
-import com.wudgaby.platform.simplesecurity.annotations.AnonymousAccess;
-import com.wudgaby.platform.simplesecurity.annotations.AuthPermit;
+import com.wudgaby.platform.security.core.annotations.AnonymousAccess;
+import com.wudgaby.platform.security.core.annotations.AuthPermit;
 import org.springframework.web.bind.annotation.*;
 
 /**

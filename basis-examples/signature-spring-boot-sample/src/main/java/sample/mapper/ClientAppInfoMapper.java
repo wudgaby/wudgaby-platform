@@ -1,7 +1,7 @@
 package sample.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.wudgaby.platform.openapi.entity.ClientAppInfo;
+import com.wudgaby.starter.openapi.entity.ClientAppInfo;
 
 /**
  * <p>

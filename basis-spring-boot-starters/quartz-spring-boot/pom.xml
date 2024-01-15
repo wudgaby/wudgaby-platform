@@ -15,7 +15,6 @@
     <name>Quartz Spring Boot</name>
     <description>quartz定时任务-启动器 - OPTIMIZE</description>
     <modules>
-        <module>quartz-spring-boot-autoconfigure</module>
         <module>quartz-spring-boot-starter</module>
     </modules>
 

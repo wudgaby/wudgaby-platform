@@ -1,13 +1,13 @@
 package com.wudgaby.platform.message.service;
 
 import com.google.common.collect.Maps;
-import com.wudgaby.mail.starter.service.MailSendService;
-import com.wudgaby.mail.starter.vo.MailAccount;
-import com.wudgaby.mail.starter.vo.SendMailContent;
 import com.wudgaby.platform.message.api.form.MailTmplForm;
 import com.wudgaby.platform.message.api.form.NormalMailForm;
 import com.wudgaby.platform.message.constants.SystemConstants;
 import com.wudgaby.platform.message.exception.MailServiceException;
+import com.wudgaby.starter.mail.service.MailSendService;
+import com.wudgaby.starter.mail.vo.MailAccount;
+import com.wudgaby.starter.mail.vo.SendMailContent;
 import freemarker.template.Configuration;
 import freemarker.template.TemplateException;
 import lombok.extern.slf4j.Slf4j;

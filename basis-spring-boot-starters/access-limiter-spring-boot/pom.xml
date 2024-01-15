@@ -16,7 +16,6 @@
     <description>访问限制(接口防刷)</description>
     <modules>
         <module>access-limiter-spring-boot-starter</module>
-        <module>access-limiter-spring-boot-autoconfigure</module>
     </modules>
 
     <properties>

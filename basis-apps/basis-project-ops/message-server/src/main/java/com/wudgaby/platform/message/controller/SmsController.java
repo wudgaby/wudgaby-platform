@@ -5,7 +5,7 @@ import com.wudgaby.platform.message.api.enmus.SmsTmplEnum;
 import com.wudgaby.platform.message.api.form.SmsForm;
 import com.wudgaby.platform.message.api.form.SmsTmplForm;
 import com.wudgaby.platform.message.service.SmsService;
-import com.wudgaby.plugin.resubmit.UnCheckRepeatSubmit;
+import com.wudgaby.starter.resubmit.UnCheckRepeatSubmit;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.AllArgsConstructor;

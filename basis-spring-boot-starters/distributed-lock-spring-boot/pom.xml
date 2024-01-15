@@ -15,7 +15,6 @@
     <name>Distributed Lock Spring Boot</name>
     <description>分布式锁-启动器 - DONE</description>
     <modules>
-        <module>distributed-lock-spring-boot-autoconfigure</module>
         <module>distributed-lock-spring-boot-starter</module>
         <module>distributed-lock-api</module>
     </modules>

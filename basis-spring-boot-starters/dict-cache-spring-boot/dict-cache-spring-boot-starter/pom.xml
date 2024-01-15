@@ -19,9 +19,8 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.wudgaby.platform</groupId>
-            <artifactId>dict-cache-spring-boot-autoconfigure</artifactId>
-            <version>${revision}</version>
+            <groupId>com.github.ben-manes.caffeine</groupId>
+            <artifactId>caffeine</artifactId>
         </dependency>
     </dependencies>
 </project>

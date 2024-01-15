@@ -15,7 +15,6 @@
     <name>Swagger Spring Boot</name>
     <description>swagger接口文档-启动器 - DONE</description>
     <modules>
-        <module>swagger-spring-boot-autoconfigure</module>
         <module>swagger-spring-boot-starter</module>
     </modules>
 </project>

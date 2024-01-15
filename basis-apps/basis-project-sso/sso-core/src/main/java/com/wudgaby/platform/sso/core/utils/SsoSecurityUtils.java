@@ -15,7 +15,7 @@ import java.util.Optional;
  * @Desc :
  */
 public class SsoSecurityUtils {
-    private static final TransmittableThreadLocal<Map<String, Object>> ttl = new TransmittableThreadLocal();
+    private static final TransmittableThreadLocal<Map<String, Object>> ttl = new TransmittableThreadLocal<>();
 
     private static final String SECURITY_CONTEXT_ATTRIBUTES = "CONTEXT_AUTH_USER";
 

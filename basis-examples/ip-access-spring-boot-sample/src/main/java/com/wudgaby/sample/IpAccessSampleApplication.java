@@ -1,8 +1,8 @@
 package com.wudgaby.sample;
 
 import cn.hutool.core.net.Ipv4Util;
-import com.wudgaby.ipaccess.IpManage;
-import com.wudgaby.ipaccess.enums.BwType;
+import com.wudgaby.starter.ipaccess.IpManage;
+import com.wudgaby.starter.ipaccess.enums.BwType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

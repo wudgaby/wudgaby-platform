@@ -11,7 +11,7 @@ import com.wudgaby.platform.sso.server.entity.User;
 import com.wudgaby.platform.sso.server.form.LoginForm;
 import com.wudgaby.platform.sso.server.service.BaseAppService;
 import com.wudgaby.platform.sso.server.service.UserService;
-import com.wudgaby.redis.api.RedisSupport;
+import com.wudgaby.starter.redis.support.RedisSupport;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.AllArgsConstructor;

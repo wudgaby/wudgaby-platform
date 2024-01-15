@@ -1,7 +1,7 @@
 package com.wudgaby.platform.auth.extend.authway.sms;
 
 import com.wudgaby.platform.auth.exceptions.ValidateCodeException;
-import com.wudgaby.redis.api.RedisSupport;
+import com.wudgaby.starter.redis.support.RedisSupport;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;

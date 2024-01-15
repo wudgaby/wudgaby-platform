@@ -15,7 +15,6 @@
     <packaging>pom</packaging>
     <modules>
         <module>simple-security-spring-boot-starter</module>
-        <module>simple-security-spring-boot-autoconfigure</module>
     </modules>
 
     <properties>

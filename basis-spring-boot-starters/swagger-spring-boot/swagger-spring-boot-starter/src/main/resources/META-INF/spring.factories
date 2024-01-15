@@ -1,0 +1,6 @@
+# Auto Configure
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.wudgaby.starter.swagger.configuration.SwaggerAutoConfiguration
+
+org.springframework.boot.env.EnvironmentPostProcessor=\
+  com.wudgaby.starter.swagger.configuration.DefaultConfigEnvironmentPostProcessor

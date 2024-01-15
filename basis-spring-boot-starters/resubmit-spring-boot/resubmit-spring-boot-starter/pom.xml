@@ -14,8 +14,16 @@
     <dependencies>
         <dependency>
             <groupId>com.wudgaby.platform</groupId>
-            <artifactId>resubmit-spring-boot-autoconfigure</artifactId>
+            <artifactId>resubmit-api</artifactId>
             <version>${revision}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
         </dependency>
     </dependencies>
 </project>

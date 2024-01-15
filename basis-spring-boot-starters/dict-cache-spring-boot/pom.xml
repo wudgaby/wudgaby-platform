@@ -15,7 +15,6 @@
     <description>字典缓存</description>
     <modules>
         <module>dict-cache-spring-boot-starter</module>
-        <module>dict-cache-spring-boot-autoconfigure</module>
     </modules>
     <properties>
         <maven.compiler.source>8</maven.compiler.source>

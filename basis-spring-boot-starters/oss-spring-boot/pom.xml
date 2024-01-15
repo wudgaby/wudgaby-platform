@@ -15,7 +15,6 @@
     <description>OSS 操作工具</description>
     <modules>
         <module>oss-spring-boot-starter</module>
-        <module>oss-spring-boot-autoconfigure</module>
     </modules>
     <properties>
         <maven.compiler.source>8</maven.compiler.source>

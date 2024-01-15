@@ -15,7 +15,6 @@
     <name>Resource Scan Spring Boot</name>
     <description>资源扫描 - OPTIMIZE</description>
     <modules>
-        <module>resource-scan-spring-boot-autoconfigure</module>
         <module>resource-scan-spring-boot-starter</module>
     </modules>
 

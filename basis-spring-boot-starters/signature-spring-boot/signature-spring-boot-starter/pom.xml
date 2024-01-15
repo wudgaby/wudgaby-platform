@@ -14,7 +14,28 @@
     <dependencies>
         <dependency>
             <groupId>com.wudgaby.platform</groupId>
-            <artifactId>signature-spring-boot-autoconfigure</artifactId>
+            <artifactId>signature-api</artifactId>
+            <version>${revision}</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-codec</groupId>
+            <artifactId>commons-codec</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.wudgaby.platform</groupId>
+            <artifactId>redis-spring-boot-starter</artifactId>
             <version>${revision}</version>
         </dependency>
     </dependencies>

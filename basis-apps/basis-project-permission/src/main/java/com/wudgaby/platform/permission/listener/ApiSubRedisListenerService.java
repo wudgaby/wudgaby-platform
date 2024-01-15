@@ -8,7 +8,7 @@ import com.wudgaby.platform.permission.entity.BaseApi;
 import com.wudgaby.platform.permission.service.BaseApiService;
 import com.wudgaby.platform.permission.service.BaseAuthorityService;
 import com.wudgaby.platform.utils.JacksonUtil;
-import com.wudgaby.redis.api.RedisSupport;
+import com.wudgaby.starter.redis.support.RedisSupport;
 import com.wudgaby.starter.resource.scan.consts.ApiScanConst;
 import com.wudgaby.starter.resource.scan.pojo.ResourceDefinition;
 import com.wudgaby.starter.resource.scan.service.SubscriberRedisListenerService;

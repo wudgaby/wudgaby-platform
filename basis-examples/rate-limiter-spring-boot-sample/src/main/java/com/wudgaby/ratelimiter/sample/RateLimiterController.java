@@ -1,7 +1,7 @@
 package com.wudgaby.ratelimiter.sample;
 
 import com.wudgaby.platform.core.result.ApiResult;
-import com.wudgaby.platform.limiter.core.annotation.RateLimiter;
+import com.wudgaby.starter.limiter.core.annotation.RateLimiter;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.SneakyThrows;
