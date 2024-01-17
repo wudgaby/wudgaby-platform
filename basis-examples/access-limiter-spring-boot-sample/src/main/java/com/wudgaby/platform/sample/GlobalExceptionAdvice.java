@@ -20,6 +20,7 @@ public class GlobalExceptionAdvice {
     @ExceptionHandler(Exception.class)
     @ResponseBody
     public String ex(Exception ex) {
+        log.error(ex.getMessage(), ex);
         return ex.getMessage();
     }
 

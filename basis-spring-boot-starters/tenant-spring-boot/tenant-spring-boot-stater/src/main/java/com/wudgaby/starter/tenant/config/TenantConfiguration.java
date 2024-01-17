@@ -8,6 +8,7 @@ import com.wudgaby.starter.tenant.db.PlusTenantLineHandler;
 import com.wudgaby.starter.tenant.job.TenantJobAspect;
 import com.wudgaby.starter.tenant.service.TenantFrameworkService;
 import com.wudgaby.starter.tenant.web.TenantContextWebFilter;
+import com.wudgaby.starter.tenant.web.TenantSecurityInterceptor;
 import com.wudgaby.starter.tenant.web.TenantSecurityWebFilter;
 import org.springframework.boot.autoconfigure.AutoConfigureAfter;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
@@ -49,6 +50,7 @@ public class TenantConfiguration {
 
     /**
      * 从head获取租户id
+     * 优先于TenantSecurityWebFilter
      */
     @Bean
     public FilterRegistrationBean<TenantContextWebFilter> tenantContextWebFilter() {
@@ -58,16 +60,22 @@ public class TenantConfiguration {
         return registrationBean;
     }
 
-    /**
-     *
-     */
     @Bean
+    @ConditionalOnProperty(value = "tenant.type", havingValue = "FILTER")
     public FilterRegistrationBean<TenantSecurityWebFilter> tenantSecurityWebFilter(TenantProperties tenantProperties,
                                                                                    TenantFrameworkService tenantFrameworkService) {
         FilterRegistrationBean<TenantSecurityWebFilter> registrationBean = new FilterRegistrationBean<>();
         registrationBean.setFilter(new TenantSecurityWebFilter(tenantProperties, tenantFrameworkService));
         registrationBean.setOrder(-99);
         return registrationBean;
+    }
+
+    @Bean
+    @ConditionalOnProperty(value = "tenant.type", havingValue = "ASPECT")
+    @ConditionalOnMissingBean
+    public TenantSecurityInterceptor tenantSecurityInterceptor(TenantProperties tenantProperties,
+                                                               TenantFrameworkService tenantFrameworkService){
+        return new TenantSecurityInterceptor(tenantProperties, tenantFrameworkService);
     }
 
     @Bean

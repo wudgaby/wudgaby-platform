@@ -1,5 +1,6 @@
 package com.wudgaby.starter.tenant.config;
 
+import com.wudgaby.starter.tenant.TenantModeEnum;
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
@@ -18,6 +19,12 @@ public class TenantProperties {
      * 是否启用
      */
     private boolean enable = true;
+
+    /**
+     * 多租户模式. 过滤器/拦截器.
+     * 与认证执行顺序有关.
+     */
+    private TenantModeEnum type = TenantModeEnum.FILTER;
 
     /**
      * 排除表

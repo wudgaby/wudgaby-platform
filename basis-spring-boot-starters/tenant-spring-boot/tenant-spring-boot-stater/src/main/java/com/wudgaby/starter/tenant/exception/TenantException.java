@@ -1,4 +1,4 @@
-package com.wudgaby.starter.tenant;
+package com.wudgaby.starter.tenant.exception;
 
 /**
  * 租户异常类

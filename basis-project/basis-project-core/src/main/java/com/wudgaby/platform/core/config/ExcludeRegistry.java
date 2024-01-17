@@ -1,6 +1,5 @@
 package com.wudgaby.platform.core.config;
 
-import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Sets;
 import lombok.Data;
 import org.apache.commons.collections4.CollectionUtils;
@@ -22,11 +21,9 @@ public class ExcludeRegistry {
     private final Set<String> excludePatterns = Sets.newHashSet();
 
     public ExcludeRegistry(){
-        //this.defaultExcludePatterns.add("/");
         this.defaultExcludePatterns.add("/actuator/**");
         this.defaultExcludePatterns.add("/v2/api-docs/**");
         this.defaultExcludePatterns.add("/v2/api-docs-ext/**");
-        this.defaultExcludePatterns.add("/log/**");
         this.defaultExcludePatterns.add("/error/**");
         this.defaultExcludePatterns.add("/assets/**");
         this.defaultExcludePatterns.add("/static/**");
@@ -82,6 +79,6 @@ public class ExcludeRegistry {
         Set<String> all = Sets.newHashSet();
         all.addAll(defaultExcludePatterns);
         all.addAll(excludePatterns);
-        return ImmutableSet.copyOf(all);
+        return all;
     }
 }

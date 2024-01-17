@@ -15,11 +15,16 @@ mybatis-plus:
 
 mybatis-helper:
   demo-env: true
-  exclude-url:
+  exclude-urls:
     - /sysTenants/**
+    - /sysUsers/**
 
 tenant:
-  excludes:
+  enable: true
+  ignore-tables:
     - sys_config
     - sys_tenant
-  enable: true
+  ignore-urls:
+    - /sysUsers/login
+    - /doc.html
+  type: aspect

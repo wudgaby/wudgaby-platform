@@ -21,6 +21,7 @@
             <result property="email" column="email" jdbcType="VARCHAR"/>
             <result property="sex" column="sex" jdbcType="VARCHAR"/>
             <result property="avatar" column="avatar" jdbcType="VARCHAR"/>
+            <result property="tenantId" column="tenant_id" jdbcType="BIGINT"/>
     </resultMap>
 
     <sql id="Base_Column_List">
@@ -29,6 +30,6 @@
         version,deleted,account,
         password,salt,user_name,
         phone,email,sex,
-        avatar
+        avatar,tenant_id
     </sql>
 </mapper>

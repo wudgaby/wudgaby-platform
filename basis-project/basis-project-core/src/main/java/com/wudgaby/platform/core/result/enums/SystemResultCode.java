@@ -65,8 +65,8 @@ public enum SystemResultCode implements ApiResultCode {
     INTERFACE_EXCEED_LOAD(60006, "接口负载过高"),
     ;
 
-    private int code;
-    private String reason;
+    private final int code;
+    private final String reason;
 
     @Override
     public String toString() {

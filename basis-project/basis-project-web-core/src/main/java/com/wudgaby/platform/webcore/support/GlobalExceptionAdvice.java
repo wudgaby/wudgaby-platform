@@ -11,6 +11,7 @@ import com.wudgaby.platform.core.result.enums.SystemResultCode;
 import com.wudgaby.platform.core.support.FormValidator;
 import com.wudgaby.platform.springext.RequestContextHolderSupport;
 import com.wudgaby.starter.limiter.core.LimitException;
+import com.wudgaby.starter.resubmit.ResubmitException;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.ibatis.exceptions.PersistenceException;
@@ -89,6 +90,7 @@ public class GlobalExceptionAdvice {
     @ResponseBody
     public ApiResult<String> httpMessageNotReadableException(HttpMessageNotReadableException ex) {
         log.error(ex.getMessage(), ex);
+        showStackTraceInfo(ex);
         ApiResult apiResult = ApiResult.failure(SystemResultCode.PARAM_IS_INVALID);
         process(apiResult, ex);
         return apiResult;
@@ -104,6 +106,7 @@ public class GlobalExceptionAdvice {
     @ResponseBody
     public ApiResult handleMethodArgumentNotValidException(ServletRequestBindingException ex) {
         log.error(ex.getMessage(), ex);
+        showStackTraceInfo(ex);
         ApiResult apiResult = ApiResult.failure(SystemResultCode.MISSING_REQ_DATA).message(ex.getMessage());
         process(apiResult, ex);
         return apiResult;
@@ -119,6 +122,7 @@ public class GlobalExceptionAdvice {
     @ResponseBody
     public ApiResult<String> handleMethodArgumentNotValidException(HttpRequestMethodNotSupportedException ex) {
         log.error(ex.getMessage(), ex);
+        showStackTraceInfo(ex);
         ApiResult apiResult = ApiResult.failure(SystemResultCode.METHOD_NOT_ALLOWED);
         process(apiResult, ex);
         return apiResult;
@@ -134,6 +138,7 @@ public class GlobalExceptionAdvice {
     @ResponseBody
     public ApiResult<String> httpMediaTypeNotSupportedException(HttpMediaTypeNotSupportedException ex) {
         log.error(ex.getMessage(), ex);
+        showStackTraceInfo(ex);
         ApiResult apiResult = ApiResult.failure(SystemResultCode.UNSUPPORTED_MEDIA_TYPE);
         process(apiResult, ex);
         return apiResult;
@@ -148,6 +153,7 @@ public class GlobalExceptionAdvice {
     @ResponseBody
     public ApiResult handleMethodArgumentNotValidException(ConstraintViolationException ex) {
         log.error(ex.getMessage(), ex);
+        showStackTraceInfo(ex);
         Iterator<ConstraintViolation<?>> iterator = ex.getConstraintViolations().iterator();
         String message = null;
         if (iterator.hasNext()) {
@@ -167,6 +173,7 @@ public class GlobalExceptionAdvice {
     @ResponseBody
     public ApiResult missingServletRequestPartException(MissingServletRequestPartException ex) {
         log.error(ex.getMessage(), ex);
+        showStackTraceInfo(ex);
         ApiResult apiResult = ApiResult.failure(SystemResultCode.PARAM_IS_INVALID).message(ex.getMessage());
         process(apiResult, ex);
         return apiResult;
@@ -181,6 +188,8 @@ public class GlobalExceptionAdvice {
     //@ResponseStatus(HttpStatus.BAD_REQUEST)
     @ResponseBody
     public ApiResult methodArgumentTypeMismatchException(MethodArgumentTypeMismatchException ex) {
+        log.error(ex.getMessage(), ex);
+        showStackTraceInfo(ex);
         ApiResult apiResult = ApiResult.failure(SystemResultCode.MISSING_REQ_DATA).message("缺少参数 " + ex.getName());
         process(apiResult, ex);
         return apiResult;
@@ -194,6 +203,8 @@ public class GlobalExceptionAdvice {
     @ExceptionHandler(ValidatorFormException.class)
     //@ResponseStatus(HttpStatus.BAD_REQUEST)
     public ApiResult paramException(ValidatorFormException ex){
+        log.error(ex.getMessage(), ex);
+        showStackTraceInfo(ex);
         ApiResult apiResult = ApiResult.failure(SystemResultCode.PARAM_IS_INVALID).message(String.valueOf(ex.getData()));
         process(apiResult, ex);
         return apiResult;
@@ -208,7 +219,8 @@ public class GlobalExceptionAdvice {
     //@ResponseStatus(HttpStatus.BAD_REQUEST)
     @ResponseBody
     public ApiResult processValidationError(Exception ex) {
-        log.error(ex.getMessage());
+        log.error(ex.getMessage(), ex);
+        showStackTraceInfo(ex);
         BindingResult bindResult = null;
         if (ex instanceof BindException) {
             bindResult = ((BindException) ex).getBindingResult();
@@ -235,7 +247,7 @@ public class GlobalExceptionAdvice {
     public ApiResult handleAllUnCatchException(Exception ex) {
         log.error(ex.getMessage(), ex);
         showStackTraceInfo(ex);
-        ApiResult apiResult = ApiResult.failure(SystemResultCode.SYSTEM_INNER_ERROR).code(HttpStatus.INTERNAL_SERVER_ERROR.value());
+        ApiResult apiResult = ApiResult.failure(SystemResultCode.SYSTEM_INNER_ERROR);
         process(apiResult, ex);
         return apiResult;
     }
@@ -254,6 +266,8 @@ public class GlobalExceptionAdvice {
     @ExceptionHandler({MyBatisSystemException.class})
     @ResponseBody
     public ApiResult myBatisSystemException(MyBatisSystemException ex) {
+        log.error(ex.getMessage(), ex);
+        showStackTraceInfo(ex);
         ApiResult apiResult = ApiResult.failure().code(HttpStatus.INTERNAL_SERVER_ERROR.value()).message("数据库异常.");
 
         Throwable cause = ex.getCause();
@@ -264,7 +278,6 @@ public class GlobalExceptionAdvice {
                 apiResult = ApiResult.failure().code(demoException.getErrorCode()).message(demoException.getMessage());
             }
         }
-        showStackTraceInfo(ex);
         process(apiResult, ex);
         return apiResult;
     }
@@ -272,6 +285,7 @@ public class GlobalExceptionAdvice {
     @ExceptionHandler(DuplicateKeyException.class)
     public ApiResult duplicateKeyException(DuplicateKeyException ex){
         log.error(ex.getMessage(), ex);
+        showStackTraceInfo(ex);
         ApiResult apiResult = ApiResult.failure(SystemResultCode.EXISTED);
         process(apiResult, ex);
         return apiResult;
@@ -296,6 +310,7 @@ public class GlobalExceptionAdvice {
     @ResponseStatus(HttpStatus.OK)
     @ResponseBody
     public ApiResult illegalArgumentException(IllegalArgumentException ex) {
+        log.error(ex.getMessage(), ex);
         showStackTraceInfo(ex);
         ApiResult apiResult = ApiResult.failure(ex.getMessage());
         process(apiResult, ex);
@@ -311,6 +326,7 @@ public class GlobalExceptionAdvice {
     //@ResponseStatus(HttpStatus.FORBIDDEN)
     public ApiResult authenticationException(AuthenticationException ex) {
         log.error(ex.getMessage(), ex);
+        showStackTraceInfo(ex);
         ApiResult apiResult = ApiResult.failure(ex.getMessage()).code(HttpStatus.FORBIDDEN.value());
         process(apiResult, ex);
         return apiResult;
@@ -325,6 +341,7 @@ public class GlobalExceptionAdvice {
     //@ResponseStatus(HttpStatus.UNAUTHORIZED)
     public ApiResult accessDeniedException(AccessDeniedException ex) {
         log.error(ex.getMessage(), ex);
+        showStackTraceInfo(ex);
         ApiResult apiResult = ApiResult.<String>failure(ex.getMessage()).code(HttpStatus.UNAUTHORIZED.value());
         process(apiResult, ex);
         return apiResult;
@@ -334,6 +351,7 @@ public class GlobalExceptionAdvice {
     //@ResponseStatus(HttpStatus.UNAUTHORIZED)
     public ApiResult badCredentialsException(BadCredentialsException ex) {
         log.error(ex.getMessage(), ex);
+        showStackTraceInfo(ex);
         ApiResult apiResult = ApiResult.<String>failure("无效账号或密码");
         process(apiResult, ex);
         return apiResult;
@@ -342,7 +360,18 @@ public class GlobalExceptionAdvice {
     @ExceptionHandler(LimitException.class)
     //@ResponseStatus(HttpStatus.FORBIDDEN)
     public ApiResult limitException(LimitException ex) {
+        log.error(ex.getMessage(), ex);
+        showStackTraceInfo(ex);
         ApiResult apiResult = ApiResult.<String>failure("已限流,请慢点.").code(HttpStatus.FORBIDDEN.value());
+        process(apiResult, ex);
+        return apiResult;
+    }
+
+    @ExceptionHandler(ResubmitException.class)
+    public ApiResult resubmitException(ResubmitException ex) {
+        log.error(ex.getMessage(), ex);
+        showStackTraceInfo(ex);
+        ApiResult apiResult = ApiResult.<String>failure(ex.getMessage()).code(HttpStatus.BAD_REQUEST.value());
         process(apiResult, ex);
         return apiResult;
     }

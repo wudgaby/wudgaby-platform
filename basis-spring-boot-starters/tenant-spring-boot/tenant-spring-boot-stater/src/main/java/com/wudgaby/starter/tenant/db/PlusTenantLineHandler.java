@@ -25,11 +25,13 @@ public class PlusTenantLineHandler implements TenantLineHandler {
     private final Set<String> ignoreTables = new HashSet<>();
 
     public PlusTenantLineHandler(TenantProperties tenantProperties) {
-        // 不同 DB 下，大小写的习惯不同，所以需要都添加进去
-        tenantProperties.getIgnoreTables().forEach(table -> {
-            ignoreTables.add(table.toLowerCase());
-            ignoreTables.add(table.toUpperCase());
-        });
+        if(CollUtil.isNotEmpty(tenantProperties.getIgnoreTables())){
+            // 不同 DB 下，大小写的习惯不同，所以需要都添加进去
+            tenantProperties.getIgnoreTables().forEach(table -> {
+                ignoreTables.add(table.toLowerCase());
+                ignoreTables.add(table.toUpperCase());
+            });
+        }
     }
 
     @Override
@@ -47,7 +49,7 @@ public class PlusTenantLineHandler implements TenantLineHandler {
     public boolean ignoreTable(String tableName) {
         Long tenantId = TenantContextHolder.getTenantId();
         // 判断是否有租户
-        if (null == tenantId) {
+        if (null != tenantId) {
             // 不需要过滤租户的表
             return CollUtil.contains(ignoreTables, tableName);
         }

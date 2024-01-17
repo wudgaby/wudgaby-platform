@@ -41,7 +41,7 @@ public class CustomMetaObjectHandler implements MetaObjectHandler {
 
                 Optional<UserInfo> loginUser = SecurityUtils.getOptionalUser();
                 if (loginUser.isPresent()) {
-                    String userId = ObjectUtil.isNotNull(baseEntity.getCreateBy()) ? baseEntity.getCreateBy() : String.valueOf(loginUser.get());
+                    String userId = ObjectUtil.isNotNull(baseEntity.getCreateBy()) ? baseEntity.getCreateBy() : String.valueOf(loginUser.get().getId());
                     // 当前已登录 且 创建人为空 则填充
                     baseEntity.setCreateBy(userId);
                     // 当前已登录 且 更新人为空 则填充
@@ -56,7 +56,7 @@ public class CustomMetaObjectHandler implements MetaObjectHandler {
                 Optional<UserInfo> loginUser = SecurityUtils.getOptionalUser();
                 if (loginUser.isPresent()) {
                     Object createBy = metaObject.getValue(CREATE_BY_VALUE);
-                    String userId = ObjectUtil.isNotNull(createBy) ? (String) createBy : String.valueOf(loginUser.get());
+                    String userId = ObjectUtil.isNotNull(createBy) ? (String) createBy : String.valueOf(loginUser.get().getId());
                     this.strictInsertFill(metaObject, CREATE_BY_VALUE, String.class, userId);
                     this.strictInsertFill(metaObject, UPDATE_BY_VALUE, String.class, userId);
                 }
@@ -81,7 +81,7 @@ public class CustomMetaObjectHandler implements MetaObjectHandler {
 
                 Optional<UserInfo> loginUser = SecurityUtils.getOptionalUser();
                 if (loginUser.isPresent()) {
-                    String userId = ObjectUtil.isNotNull(baseEntity.getUpdateBy()) ? baseEntity.getUpdateBy() : String.valueOf(loginUser.get());
+                    String userId = ObjectUtil.isNotNull(baseEntity.getUpdateBy()) ? baseEntity.getUpdateBy() : String.valueOf(loginUser.get().getId());
                     // 当前已登录 且 更新人为空 则填充
                     baseEntity.setUpdateBy(userId);
                 }
@@ -91,7 +91,7 @@ public class CustomMetaObjectHandler implements MetaObjectHandler {
                 Optional<UserInfo> loginUser = SecurityUtils.getOptionalUser();
                 if (loginUser.isPresent()) {
                     Object updateBy = metaObject.getValue(UPDATE_BY_VALUE);
-                    String userId = ObjectUtil.isNotNull(updateBy) ? (String) updateBy : String.valueOf(loginUser.get());
+                    String userId = ObjectUtil.isNotNull(updateBy) ? (String) updateBy : String.valueOf(loginUser.get().getId());
                     this.strictInsertFill(metaObject, UPDATE_BY_VALUE, String.class, userId);
                 }
             }
