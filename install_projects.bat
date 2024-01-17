@@ -37,6 +37,7 @@ call mvn clean
 call mvn %VAR_ACTION% -DskipTests=true %VAR_PROFILE% -pl basis-project/basis-project-web-core -am
 call mvn %VAR_ACTION% -DskipTests=true %VAR_PROFILE% -f ./basis-spring-boot-starters
 call mvn %VAR_ACTION% -DskipTests=true %VAR_PROFILE% -f ./basis-project-dependencies
+call mvn %VAR_ACTION% -DskipTests=true %VAR_PROFILE% -f ./basis-apps
 :: mvn clean %VAR_PROFILE% -DskipTests=true -f ./basis-apps
 echo "===================================execute install END==================================================="
 goto:eof

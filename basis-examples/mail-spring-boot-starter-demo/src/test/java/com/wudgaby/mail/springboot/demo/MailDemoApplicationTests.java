@@ -1,12 +1,12 @@
 package com.wudgaby.mail.springboot.demo;
 
 import com.google.common.collect.Lists;
-import com.wudgaby.mail.starter.service.MailReceiveService;
-import com.wudgaby.mail.starter.service.MailSendService;
-import com.wudgaby.mail.starter.vo.EmailMessage;
-import com.wudgaby.mail.starter.vo.MailAccount;
-import com.wudgaby.mail.starter.vo.MailQueryForm;
-import com.wudgaby.mail.starter.vo.SendMailContent;
+import com.wudgaby.starter.mail.service.MailReceiveService;
+import com.wudgaby.starter.mail.service.MailSendService;
+import com.wudgaby.starter.mail.vo.EmailMessage;
+import com.wudgaby.starter.mail.vo.MailAccount;
+import com.wudgaby.starter.mail.vo.MailQueryForm;
+import com.wudgaby.starter.mail.vo.SendMailContent;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
