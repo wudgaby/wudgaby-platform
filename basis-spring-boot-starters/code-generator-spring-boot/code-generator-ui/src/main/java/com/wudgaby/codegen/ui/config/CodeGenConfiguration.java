@@ -1,10 +1,8 @@
 package com.wudgaby.codegen.ui.config;
 
 import com.wudgaby.codegen.ui.filter.CodeGenFilter;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.env.Environment;
 
 /**
 
@@ -15,11 +13,9 @@ import org.springframework.core.env.Environment;
  */
 @Configuration
 public class CodeGenConfiguration {
-    @Autowired private Environment environment;
-    @Autowired private CodeGenProperties codeGenProperties;
 
     @Bean
-    public CodeGenFilter codeGenFilter(){
+    public CodeGenFilter codeGenFilter(CodeGenProperties codeGenProperties){
         return new CodeGenFilter(codeGenProperties.isEnabled());
     }
 

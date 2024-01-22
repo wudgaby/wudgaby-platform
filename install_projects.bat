@@ -1,4 +1,6 @@
 @echo off
+rem 解决中文乱码
+chcp 65001
 
 set VAR_ACTION=install
 set VAR_PROFILE=

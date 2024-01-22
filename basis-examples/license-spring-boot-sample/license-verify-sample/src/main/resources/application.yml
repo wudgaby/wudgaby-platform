@@ -1,0 +1,16 @@
+# 许可
+license:
+  # 主题
+  subject: XXX公司
+  # 公钥别称
+  publicAlias: pubCert
+  # 访问公钥的密码
+  storePass: pubwd123
+  # license 位置
+  licensePath: D:\\license-demo\\license.lic
+  # 公钥位置
+  publicKeysStorePath: D:\\license-demo\\pub.keystore
+  import-license-url: /license/import
+  install-type: import
+server:
+  port: 8081

@@ -1,10 +1,19 @@
 ```cmd
-#jks
-keytool -genkeypair -alias myjks -keyalg RSA -validity 3650 -keystore my.jks
-keytool -genkeypair -alias serverkey -keypass 123456 -storepass 123456 
--dname "C=CN,ST=GD,L=SZ,O=demo,OU=dev,CN=demo.com" -keyalg RSA -keysize 2048 -validity 3650 -keystore server.keystore
+#新建密钥条目
+keytool -genkeypair -alias myjks -keyalg RSA -validity 3650 -keystore my.keystore
+#追加密钥条目
+keytool -genkeypair -alias myjks2 -keyalg RSA -validity 3650 -keystore my.keystore -storepass 111111
 
-keytool -exportcert -keystore my.jks -file my.cer -alias myjks 
+keytool -genkeypair -alias demo -keypass 123456 -storepass 123456789 ^
+-dname "C=CN,ST=GD,L=SZ,O=demo,OU=dev,CN=demo.com" -keyalg RSA -keysize 2048 -validity 3650 -keystore my.keystore
+
+#生成证书文件
+keytool -exportcert -keystore my.keystore -file certfile.cer -alias demo
+
+#导入证书
+keytool -import -alias demo -file certfile.cer -keystore my.keystore
+
+keytool -import -alias "publicCert" -file "certfile.cer" -keystore "publicCerts.keystore" 
 ```
 
 ```

@@ -59,6 +59,7 @@
         <arguments/>
 
         <hutool.version>5.8.24</hutool.version>
+        <oshi-core.version>5.6.1</oshi-core.version>
         <guava.version>28.0-jre</guava.version>
         <commons-math.version>3.6.1</commons-math.version>
         <commons-collections.version>4.1</commons-collections.version>
@@ -178,6 +179,12 @@
             <groupId>cn.hutool</groupId>
             <artifactId>hutool-all</artifactId>
             <version>${hutool.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.github.oshi</groupId>
+            <artifactId>oshi-core</artifactId>
+            <version>${oshi-core.version}</version>
         </dependency>
 
         <dependency>

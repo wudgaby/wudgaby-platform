@@ -42,7 +42,7 @@ public class BasicThreadPoolExecutor {
      */
     private static final RejectedExecutionHandler HANDLER = new ThreadPoolExecutor.CallerRunsPolicy();
 
-    private static final BasicThreadFactory factory = new BasicThreadFactory.Builder().namingPattern("basic-thread-pool-%d").build();
+    private static final BasicThreadFactory FACTORY = new BasicThreadFactory.Builder().namingPattern("basic-thread-pool-%d").build();
 
     private BasicThreadPoolExecutor() { }
 
@@ -50,7 +50,7 @@ public class BasicThreadPoolExecutor {
         if (threadPoolExecutor == null) {
             synchronized (BasicThreadPoolExecutor.class) {
                 if (threadPoolExecutor == null) {
-                    threadPoolExecutor = new ThreadPoolExecutor(CORE_POOL_SIZE, MAX_MUM_POOL_SIZE, KEEP_ALIVE_TIME, UNIT, new ArrayBlockingQueue<>(CAPACITY), factory, HANDLER);
+                    threadPoolExecutor = new ThreadPoolExecutor(CORE_POOL_SIZE, MAX_MUM_POOL_SIZE, KEEP_ALIVE_TIME, UNIT, new ArrayBlockingQueue<>(CAPACITY), FACTORY, HANDLER);
                 }
             }
         }

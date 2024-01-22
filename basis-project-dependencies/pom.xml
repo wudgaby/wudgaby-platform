@@ -220,6 +220,18 @@
                 <artifactId>data-scope-spring-boot-starter</artifactId>
                 <version>${basis-starters.version}</version>
             </dependency>
+            <!--License创建-->
+            <dependency>
+                <groupId>com.wudgaby.platform</groupId>
+                <artifactId>license-creator-spring-boot-starter</artifactId>
+                <version>${basis-starters.version}</version>
+            </dependency>
+            <!--License校验-->
+            <dependency>
+                <groupId>com.wudgaby.platform</groupId>
+                <artifactId>license-verify-spring-boot-starter</artifactId>
+                <version>${basis-starters.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 

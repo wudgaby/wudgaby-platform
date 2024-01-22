@@ -1,5 +1,6 @@
 package com.wudgaby.platform.webcore.support;
 
+import cn.hutool.core.util.ClassUtil;
 import cn.hutool.core.util.StrUtil;
 import com.wudgaby.platform.core.constant.SystemConstant;
 import com.wudgaby.platform.core.exception.BusinessException;
@@ -248,6 +249,11 @@ public class GlobalExceptionAdvice {
         log.error(ex.getMessage(), ex);
         showStackTraceInfo(ex);
         ApiResult apiResult = ApiResult.failure(SystemResultCode.SYSTEM_INNER_ERROR);
+
+        //租户异常
+        if(ClassUtil.equals(ex.getClass(), "com.wudgaby.starter.tenant.exception.TenantException", true)){
+            apiResult.setMessage(ex.getMessage());
+        }
         process(apiResult, ex);
         return apiResult;
     }

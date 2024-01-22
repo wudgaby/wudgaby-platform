@@ -1,6 +1,6 @@
 package com.wudgaby.starter.tenant.config;
 
-import com.wudgaby.starter.tenant.TenantModeEnum;
+import com.wudgaby.starter.tenant.enums.TenantModeEnum;
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * 租户 配置属性
  *
- * @author Lion Li
+ * @author wudgaby
  */
 @Data
 @ConfigurationProperties(prefix = "tenant")
