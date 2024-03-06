@@ -5,11 +5,11 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.wudgaby.platform</groupId>
-        <artifactId>basis-examples</artifactId>
-        <version>1.0.0</version>
+        <artifactId>license-spring-boot</artifactId>
+        <version>${revision}</version>
     </parent>
 
-    <artifactId>data-scope-spring-boot</artifactId>
+    <artifactId>license-ext-creator-spring-boot-starter</artifactId>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
@@ -17,14 +17,4 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
-    <dependencies>
-        <dependency>
-            <groupId>com.wudgaby.platform</groupId>
-            <artifactId>data-scope-spring-boot-starter</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.wudgaby.platform</groupId>
-            <artifactId>basis-project-web-core</artifactId>
-        </dependency>
-    </dependencies>
 </project>

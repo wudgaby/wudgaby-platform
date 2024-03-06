@@ -34,7 +34,7 @@
     </scm>
 
     <properties>
-        <revision>1.1.1-SNAPSHOT</revision>
+        <revision>1.1.3-SNAPSHOT</revision>
         <basis-project.version>${revision}</basis-project.version>
         <basis-starters.version>${revision}</basis-starters.version>
 

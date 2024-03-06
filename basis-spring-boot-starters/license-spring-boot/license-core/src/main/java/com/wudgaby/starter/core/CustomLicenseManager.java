@@ -36,18 +36,8 @@ public class CustomLicenseManager extends LicenseManager {
      */
     private static final int DEFAULT_BUFFER_SIZE = 8 * 1024;
 
-    /**
-     *  额外参数
-     */
-    private Map<String, Object> extraParam;
-
     public CustomLicenseManager(LicenseParam param) {
         super(param);
-    }
-
-    public CustomLicenseManager(LicenseParam param, Map<String, Object> extraParam) {
-        super(param);
-        this.extraParam = extraParam;
     }
 
     /**
@@ -132,35 +122,7 @@ public class CustomLicenseManager extends LicenseManager {
         //当前服务器真实的参数信息
         LicenseExtraParam serverExtraParam = getServerInfos();
 
-        if (licenseExtraParam != null && serverExtraParam != null) {
-            //校验IP地址
-            if (!checkIpAddress(licenseExtraParam.getIpAddress(), serverExtraParam.getIpAddress())) {
-                throw new LicenseContentException("当前服务器的IP没在授权范围内");
-            }
-
-            //校验Mac地址
-            if (!checkIpAddress(licenseExtraParam.getMacAddress(), serverExtraParam.getMacAddress())) {
-                throw new LicenseContentException("当前服务器的Mac地址没在授权范围内");
-            }
-
-            //校验主板序列号
-            if (!checkSerial(licenseExtraParam.getMainBoardSerial(), serverExtraParam.getMainBoardSerial())) {
-                throw new LicenseContentException("当前服务器的主板序列号没在授权范围内");
-            }
-
-            //校验CPU序列号
-            if (!checkSerial(licenseExtraParam.getCpuSerial(), serverExtraParam.getCpuSerial())) {
-                throw new LicenseContentException("当前服务器的CPU序列号没在授权范围内");
-            }
-
-            //校验额外参数
-            if (!checkExtra(licenseExtraParam.getExtraMap(), serverExtraParam.getExtraMap())) {
-                throw new LicenseContentException("当前服务器的额外参数没在授权范围内");
-            }
-
-        } else {
-            throw new LicenseContentException("不能获取服务器硬件信息");
-        }
+        checkExtraParam(licenseExtraParam, serverExtraParam);
     }
 
     /**
@@ -192,6 +154,50 @@ public class CustomLicenseManager extends LicenseManager {
             abstractServerInfos = new LinuxServerInfos();
         }
         return abstractServerInfos.getServerInfos();
+    }
+
+    private void checkExtraParam(LicenseExtraParam licenseExtraParam, LicenseExtraParam serverExtraParam) throws LicenseContentException {
+        if (licenseExtraParam != null && serverExtraParam != null) {
+            //osuuid不为空时,优先校验uuid.
+            if(StrUtil.isNotBlank(licenseExtraParam.getOsUuid())){
+                if (!checkSerial(licenseExtraParam.getOsUuid(), serverExtraParam.getOsUuid())) {
+                    throw new LicenseContentException("当前服务器的系统唯一值不匹配");
+                }else{
+                    return;
+                }
+            }
+
+            //校验IP地址
+            if (!checkIpAddress(licenseExtraParam.getIpAddress(), serverExtraParam.getIpAddress())) {
+                throw new LicenseContentException("当前服务器的IP没在授权范围内");
+            }
+
+            //校验Mac地址
+            if (!checkIpAddress(licenseExtraParam.getMacAddress(), serverExtraParam.getMacAddress())) {
+                throw new LicenseContentException("当前服务器的Mac地址没在授权范围内");
+            }
+
+            //校验主板序列号
+            if (!checkSerial(licenseExtraParam.getMainBoardSerial(), serverExtraParam.getMainBoardSerial())) {
+                throw new LicenseContentException("当前服务器的主板序列号没在授权范围内");
+            }
+
+            //校验CPU序列号
+            if (!checkSerial(licenseExtraParam.getCpuSerial(), serverExtraParam.getCpuSerial())) {
+                throw new LicenseContentException("当前服务器的CPU序列号没在授权范围内");
+            }
+
+            //校验额外参数
+            if (!checkExtra(licenseExtraParam.getExtraMap(), serverExtraParam.getExtraMap())) {
+                throw new LicenseContentException("当前服务器的额外参数没在授权范围内");
+            }
+
+            if (!checkSerial(licenseExtraParam.getSystemSerial(), serverExtraParam.getSystemSerial())) {
+                throw new LicenseContentException("当前服务器的系统序列号没在授权范围内");
+            }
+        } else {
+            throw new LicenseContentException("不能获取服务器硬件信息");
+        }
     }
 
     /**

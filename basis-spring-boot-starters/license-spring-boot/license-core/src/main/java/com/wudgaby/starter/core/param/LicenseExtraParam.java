@@ -36,6 +36,16 @@ public class LicenseExtraParam implements Serializable {
     private String mainBoardSerial;
 
     /**
+     * 系统序列号
+     */
+    private String systemSerial;
+
+    /**
+     * os全局唯一
+     */
+    private String osUuid;
+
+    /**
      * 扩展参数
      */
     private Map<String, Object> extraMap;

@@ -1,6 +1,7 @@
 package com.wudgaby.starter.core.hdw;
 
 import cn.hutool.core.collection.CollUtil;
+import cn.hutool.crypto.SecureUtil;
 import cn.hutool.system.oshi.OshiUtil;
 
 import java.net.InetAddress;
@@ -59,5 +60,17 @@ public class WindowsServerInfos extends AbstractServerInfos {
     @Override
     protected String getMainBoardSerial() throws Exception {
         return OshiUtil.getSystem().getBaseboard().getSerialNumber();
+    }
+
+    @Override
+    protected String getSystemSerial() throws Exception {
+        return OshiUtil.getSystem().getSerialNumber();
+    }
+
+    @Override
+    protected String getOsUuid() throws Exception {
+        String serialNumber = OshiUtil.getSystem().getSerialNumber();
+        String hardwareUuid = OshiUtil.getSystem().getHardwareUUID();
+        return SecureUtil.sha256(serialNumber + hardwareUuid);
     }
 }

@@ -24,7 +24,7 @@ public class ApiVersionProperties implements Serializable {
     private String uriPrefix;
 
     /**
-     * URI的位置
+     * uriPrefix在url中的位置
      */
     private UriLocation uriLocation = UriLocation.BEGIN;
 

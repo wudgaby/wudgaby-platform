@@ -25,5 +25,6 @@
         <module>basis-project-websocket</module>
         <module>basis-project-netty</module>
         <module>basis-project-tio</module>
+        <module>basis-project-socketio</module>
     </modules>
 </project>

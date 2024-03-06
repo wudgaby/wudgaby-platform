@@ -64,6 +64,16 @@ public abstract class AbstractServerInfos {
     protected abstract String getMainBoardSerial() throws Exception;
 
     /**
+     * 系统序列号
+     */
+    protected abstract String getSystemSerial() throws Exception;
+
+    /**
+     * 系统hash
+     */
+    protected abstract String getOsUuid() throws Exception;
+
+    /**
      * 获取当前服务器所有符合条件的InetAddress
      */
     protected List<InetAddress> getLocalAllInetAddress() throws Exception {

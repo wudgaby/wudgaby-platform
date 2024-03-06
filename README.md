@@ -1,61 +1,48 @@
-1.限制密码长度和强度,弱口令检测
-2.密码md5/sha256二次加密
-3.验证码
-4.登录错误次数限制
-5.异地登录限制
-6.登录ip限制
-```
-java: You aren’t using a compiler supported by lombok, so lombok will not work and has been disabled.
-Your processor is: com.sun.proxy.$Proxy26
-Lombok supports: OpenJDK javac, ECJ
+# wudgaby-platform
+
+## 主要功能
+自用框架，包含基础组件和业务组件.
+
+## 组件
+![basis.png](document%2Fres%2Fbasis.png)
+![starters.png](document%2Fres%2Fstarters.png)
+
+
+## 如何构建
+```bat
+./install_projects.bat
+选择3构建整个项目
 ```
 
-### 解决办法：
-```
-settings中搜索Compiler，在Idea的全局配置Compiler中添加如下配置：
--Djps.track.ap.dependencies=false
-```
----
-### Map<object, list<object>>使用不加判断处理的处理方法
-```java
-public static void test001() {
-    HashMap<Integer, List<Integer>> objectObjectHashMap =
-            Maps.newHashMap();
-    for (int i = 0; i < 10; i++) {
-        //不使用判断直接操作 也就是省略了 最后边的代码
-        objectObjectHashMap.computeIfAbsent(i%2, ArrayList::new).add(i);
-    }
-    //也可以使用这个 google的这个
-    ListMultimap<Integer, Integer> build = MultimapBuilder.hashKeys()
-                                                        .arrayListValues()
-                                                        .build();
-    build.put(1,100000);
-    objectObjectHashMap.forEach(build::putAll);
-    System.out.println(build.get(1));
-
-    //以上代码可以省略此处的判断
-    if(objectObjectHashMap.containsKey(1)) {
-        objectObjectHashMap.get(1).add(1);
-    } else {
-        ArrayList<Integer> objects = new ArrayList<>();
-        objects.add(1);
-        objectObjectHashMap.put(1, objects);
-    }
-    //end
-}
+## 如何使用
+### 如何引入依赖
+如果需要使用已发布的版本，在 `dependencyManagement` 中添加如下配置.
+然后在 `dependencies` 中添加自己所需使用的依赖即可使用
+```xml
+<dependencyManagement>
+    <dependencies>
+        <dependency>
+            <groupId>com.wudgaby.platform</groupId>
+            <artifactId>basis-project-dependencies</artifactId>
+            <version>latest</version>
+            <type>pom</type>
+            <scope>import</scope>
+        </dependency>
+    </dependencies>
+</dependencyManagement>
 ```
 
-引入
-```
+### 引入单个包
+```xml
 <dependency>
     <groupId>com.wudgaby.platform</groupId>
     <artifactId>api-version-spring-boot-starter</artifactId>
-    <version>1.0.1-SNAPSHOT</version>
+    <version>latest</version>
 </dependency>
 ```
 
-snapshot版本需引入
-```
+### SNAPSHOT 版本需在maven中加入
+```xml
 <repositories>
     <repository>
       <id>snapshots-repo</id>
@@ -63,4 +50,32 @@ snapshot版本需引入
     </repository>
 </repositories>
 ```
+
+## 版本管理规范
+
+项目的版本号格式为 x.x.x 的形式，其中 x 的数值类型为数字，从 0 开始取值，且不限于 0~9 这个范围。项目处于孵化器阶段时，第一位版本号固定使用 0，即版本号为 0.x.x 的格式。
+版本号与springboot版本号靠近
+
+* 1.x.x 版本适用于 Spring Boot 2.3.x
+* 2.x.x 版本适用于 Spring Boot 2.7.x
+* 3.x.x 版本适用于 Spring Boot 3.x.x
+
+## 演示 Demo
+为了演示如何使用，项目包含了一个子模块 `basis-examples`。此模块中提供了演示用的 example ，您可以阅读对应的 example 工程下的 readme 文档，根据里面的步骤来体验。
+
+
+## FAQ
+```
+java: You aren’t using a compiler supported by lombok, so lombok will not work and has been disabled.
+Your processor is: com.sun.proxy.$Proxy26
+Lombok supports: OpenJDK javac, ECJ
+
+解决办法：
+settings中搜索Compiler，在Idea的全局配置Compiler中添加如下配置：
+-Djps.track.ap.dependencies=false
+```
+
+## 交流群
+QQ: 暂无
+钉钉: 暂无
 

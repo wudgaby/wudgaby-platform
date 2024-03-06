@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Demo Chat</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+
+	<style>
+		body {
+			padding:20px;
+		}
+		#console {
+			height: 400px;
+			overflow: auto;
+		}
+		.username-msg {color:orange;}
+		.connect-msg {color:green;}
+		.disconnect-msg {color:red;}
+        .system-msg{color: blue;}
+		.send-msg {color:#888}
+	</style>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/moment@2.30.1/moment.min.js"></script>
+    <script src="https://cdn.socket.io/4.7.4/socket.io.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+	<script>
+        localStorage.debug = 'socket.io-client:socket'
+
+       /*const manager = new Manager("http://localhost:9092", {
+            reconnectionDelayMax: 10000,
+            query: {
+                "my-key": "my-value"
+            }
+        });
+        const socket = manager.socket("/", {
+            auth: {
+                token: "123"
+            }
+        });*/
+
+        const userName = 'guest-' + Math.floor((Math.random()*1000)+1);
+        const socket = io("http://localhost:9092",{
+            reconnectionDelayMax: 10000,
+            auth: {
+                token: "1234"
+            },
+            query: {
+                "my-key": "my-value"
+            }
+        });
+        socket.on("connect", () => {
+            console.log(socket.id);
+            output('<span class="connect-msg">已连接服务器...</span>');
+
+            const engine = socket.io.engine;
+            console.log(engine.transport.name); // in most cases, prints "polling"
+
+            engine.once("upgrade", () => {
+                // called when the transport is upgraded (i.e. from HTTP long-polling to WebSocket)
+                console.log(engine.transport.name); // in most cases, prints "websocket"
+            });
+
+            engine.on("packet", ({ type, data }) => {
+                // called for each packet received
+            });
+
+            engine.on("packetCreate", ({ type, data }) => {
+                // called for each packet sent
+            });
+
+            engine.on("drain", () => {
+                // called when the write buffer is drained
+            });
+
+            engine.on("close", (reason) => {
+                // called when the underlying connection is closed
+            });
+        });
+        socket.on("disconnect", (reason) => {
+            console.log(socket.id);
+            output('<span class="disconnect-msg">已断开...reason</span>');
+            if (reason === "io server disconnect") {
+                socket.connect();
+            }
+        });
+        socket.on("connect_error", () => {
+            socket.auth.token = "abcd";
+            socket.connect();
+        });
+
+        socket.on("hello", (arg, callback) => {
+            output('<span class="system-msg">system:</span> ' + arg);
+            callback("hello的ack");
+        });
+
+        socket.emit("update item", "update item 1", { name: "updated" }, (response) => {
+            console.log(response.status); // ok
+        });
+
+		socket.on('chatevent', function(data) {
+			output('<span class="username-msg">' + data.userName + ':</span> ' + data.message);
+		});
+
+        function connect() {
+            socket.connect();
+        }
+
+        function disconnect() {
+            socket.disconnect();
+        }
+
+		function sendMessage() {
+            let message = $('#msg').val();
+            $('#msg').val('');
+
+            var jsonObject = {userName: userName, message: message};
+            socket.emit('chatevent', jsonObject);
+		}
+
+		function output(message) {
+            let currentTime = "<span class='time'>" +  moment().format('HH:mm:ss.SSS') + "</span>";
+            let element = $("<div>" + currentTime + " " + message + "</div>");
+			$('#console').prepend(element);
+		}
+
+        function timeoutTest(){
+            socket.timeout(5000).emit("timeoutTest", (err, response) => {
+                if (err) {
+                    console.error(err);
+                } else {
+                    console.log(response);
+                }
+            });
+        }
+
+        $(document).keydown(function(e){
+            if(e.keyCode == 13) {
+                $('#send').click();
+            }
+        });
+	</script>
+</head>
+
+<body>
+
+	<h1>Netty-socketio Demo Chat</h1>
+
+	<br/>
+
+	<div id="console" class="well">
+	</div>
+
+        <form class="well form-inline" onsubmit="return false;">
+           <input id="msg" class="input-xlarge" type="text" placeholder="Type something..."/>
+           <button type="button" onClick="sendMessage()" class="btn" id="send">发送</button>
+            <button type="button" onClick="connect()" class="btn">连接</button>
+           <button type="button" onClick="disconnect()" class="btn">断开</button>
+        </form>
+
+
+</body>
+
+</html>
