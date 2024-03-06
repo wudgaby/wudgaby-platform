@@ -46,7 +46,7 @@ public class MessageEventHandler {
 
     @OnEvent("messageevent")
     public void onMessage(SocketIOClient client, SocketMessage socketMessage) {
-        log.info("发来消息：" + socketMessage.getData());
+        log.info("messageevent发来消息：" + socketMessage.getMessage());
         //回发消息
         client.sendEvent("messageevent", "我是服务器发送的信息");
 
@@ -56,8 +56,15 @@ public class MessageEventHandler {
 
     @OnEvent("chatevent")
     public void chatevent(SocketIOClient client, SocketMessage socketMessage) {
-        log.info("发来消息：" + socketMessage.getData());
-        NettySocketUtil.sendBroadcast("chatevent", socketMessage);
+        log.info("chatevent发来消息：" + socketMessage.getMessage());
+
+        //回发消息
+        client.sendEvent("chatevent", socketMessage);
+        socketMessage.setMessage("我是服务器发送的信息");
+        client.sendEvent("chatevent", socketMessage);
+
+        //广播消息
+        NettySocketUtil.sendBroadcast(socketMessage);
     }
 
     @OnEvent("update item")

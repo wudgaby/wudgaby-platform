@@ -4,7 +4,11 @@ import com.corundumstudio.socketio.*;
 import com.corundumstudio.socketio.annotation.SpringAnnotationScanner;
 import com.corundumstudio.socketio.listener.DataListener;
 import com.corundumstudio.socketio.namespace.Namespace;
+import com.corundumstudio.socketio.store.RedissonStoreFactory;
 import lombok.extern.slf4j.Slf4j;
+import org.redisson.Redisson;
+import org.redisson.api.RedissonClient;
+import org.redisson.config.Config;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -43,8 +47,8 @@ public class SocketServerConfig {
         config.getSocketConfig().setTcpNoDelay(true);
         config.getSocketConfig().setTcpKeepAlive(true);
 
-        // 基于redis集群
-        //config.setStoreFactory(getRedisStoreFactory());
+        // 基于redis存储
+        config.setStoreFactory(getRedisStoreFactory());
 
         SocketIOServer socketIOServer =  new SocketIOServer(config);
         socketIOServer.addConnectListener(client -> {
@@ -78,13 +82,15 @@ public class SocketServerConfig {
         return new SpringAnnotationScanner(socketIOServer());
     }
 
-    /*private RedissonStoreFactory getRedisStoreFactory(){
+    private RedissonStoreFactory getRedisStoreFactory(){
         Config redissonConfig = new Config();
-        redissonConfig.useSingleServer().setAddress("127.0.0.1:6379");
+        redissonConfig.useSingleServer().setAddress("redis://localhost:6379");
+        redissonConfig.useSingleServer().setDatabase(1);
+        //redissonConfig.useSingleServer().setPassword("redis-pwd");
         RedissonClient redisson = Redisson.create(redissonConfig);
         RedissonStoreFactory redisStoreFactory = new RedissonStoreFactory(redisson);
         return redisStoreFactory;
-    }*/
+    }
 
     private void ack(SocketIOServer socketIOServer){
         //ACK

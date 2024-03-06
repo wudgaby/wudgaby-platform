@@ -92,14 +92,69 @@
         </filter>
     </appender>
 
-    <root level="INFO">
-        <appender-ref ref="STDOUT"/>
+    <!-- 异步输出 -->
+    <appender name="ASYNC-INFO" class="ch.qos.logback.classic.AsyncAppender">
+        <!-- 不丢失日志.默认的,如果队列的80%已满,则会丢弃TRACT、DEBUG、INFO级别的日志 -->
+        <discardingThreshold>0</discardingThreshold>
+        <!-- 更改默认的队列的深度,该值会影响性能.默认值为256 -->
+        <queueSize>256</queueSize>
+        <!-- 添加附加的appender,最多只能添加一个 -->
         <appender-ref ref="INFO"/>
+    </appender>
+
+    <appender name="ASYNC-ERROR" class="ch.qos.logback.classic.AsyncAppender">
+        <!-- 不丢失日志.默认的,如果队列的80%已满,则会丢弃TRACT、DEBUG、INFO级别的日志 -->
+        <discardingThreshold>0</discardingThreshold>
+        <!-- 更改默认的队列的深度,该值会影响性能.默认值为256 -->
+        <queueSize>256</queueSize>
+        <!-- 添加附加的appender,最多只能添加一个 -->
         <appender-ref ref="ERROR"/>
+    </appender>
+
+    <!--
+    <root level="INFO">
+        &lt;!&ndash;Console是同步,阻塞的. 推荐线上注释,开发打开&ndash;&gt;
+        <appender-ref ref="STDOUT"/>
+        <appender-ref ref="ASYNC-INFO"/>
+        <appender-ref ref="ASYNC-ERROR"/>
     </root>
 
     <logger name="daoLog" level="DEBUG" additivity="false">
         <appender-ref ref="STDOUT"/>
         <appender-ref ref="SQL"/>
     </logger>
+    -->
+
+    <!-- 本地/开发环境日志级别-->
+    <springProfile name="dev | local | !prod | !test">
+        <root level="DEBUG">
+            <!--Console是同步,阻塞的. 推荐线上注释,开发打开-->
+            <appender-ref ref="STDOUT"/>
+            <appender-ref ref="ASYNC-INFO"/>
+            <appender-ref ref="ASYNC-ERROR"/>
+        </root>
+        <logger name="daoLog" level="DEBUG" additivity="false">
+            <appender-ref ref="STDOUT"/>
+            <appender-ref ref="SQL"/>
+        </logger>
+    </springProfile>
+
+    <!-- 测试环境日志 -->
+    <springProfile name="test">
+        <root level="INFO">
+            <!--Console是同步,阻塞的. 推荐线上注释,开发打开-->
+            <appender-ref ref="STDOUT"/>
+            <appender-ref ref="ASYNC-INFO"/>
+            <appender-ref ref="ASYNC-ERROR"/>
+        </root>
+    </springProfile>
+
+    <!-- 生产环境日志 -->
+    <springProfile name="prod">
+        <root level="INFO">
+            <appender-ref ref="ASYNC-INFO"/>
+            <appender-ref ref="ASYNC-ERROR"/>
+        </root>
+    </springProfile>
+
 </configuration>

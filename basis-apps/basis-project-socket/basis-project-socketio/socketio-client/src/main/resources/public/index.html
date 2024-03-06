@@ -115,7 +115,7 @@
             let message = $('#msg').val();
             $('#msg').val('');
 
-            var jsonObject = {userName: userName, message: message};
+            var jsonObject = {"userName": userName, "message": message};
             socket.emit('chatevent', jsonObject);
 		}
 

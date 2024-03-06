@@ -27,10 +27,10 @@
             <groupId>com.wudgaby.platform</groupId>
             <artifactId>basis-project-web-core</artifactId>
         </dependency>
-        <!--<dependency>
+        <dependency>
             <groupId>org.redisson</groupId>
             <artifactId>redisson-spring-boot-starter</artifactId>
             <version>3.24.3</version>
-        </dependency>-->
+        </dependency>
     </dependencies>
 </project>

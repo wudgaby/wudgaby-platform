@@ -15,7 +15,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class SocketMessage {
     private String userName;
-    private String data;
+    private String message;
 
     /*private String type;
     private String content;
